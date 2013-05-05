@@ -1,7 +1,8 @@
-CodeEdval Solutions
+CodeEval Solutions
 ===================
 
 Some solutions to the CodeEval challenges.
+https://www.codeeval.com/
 
 License
 =======
