@@ -1,5 +1,4 @@
 """predict the next word using the n-gram algorithm"""
-from __future__ import print_function
 import fileinput, string
 
 TEXT = """
@@ -23,12 +22,12 @@ for line in fileinput.input():
 
     tnl = []
     for ix, i in enumerate(TXL[:len(TXL) - n + 1]):
-        tnl.append(tuple(TXL[ix + j] for j in xrange(n)))
+        tnl.append(tuple(TXL[ix + j] for j in range(n)))
 
     r = []
     for ix, i in enumerate(tnl):
         f = True
-        for j in xrange(len(x)):
+        for j in range(len(x)):
             if i[j] != x[j]:
                 f = False
         if f:

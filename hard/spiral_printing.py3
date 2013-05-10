@@ -1,5 +1,4 @@
 """print a 2D array (n x m) in spiral order (clockwise)"""
-from __future__ import print_function
 import fileinput
 
 for line in fileinput.input():
@@ -15,7 +14,7 @@ for line in fileinput.input():
     ha = a - 1
     hb = b - 1
 
-    while 1:
+    while True:
         while c % b < hb:
             if c > 0:
                 print(" ", end = '')
@@ -25,7 +24,7 @@ for line in fileinput.input():
         if (c + b >= a * b) or (m[c + b] == -1):
             break
         la += 1
-        while c / b < ha:
+        while int(c / b) < ha:
             if c > 0:
                 print(" ", end = '')
             print(m[c], end = '')
@@ -41,7 +40,7 @@ for line in fileinput.input():
         if m[c - b] == -1:
             break
         ha -= 1
-        while c / b > la:
+        while int(c / b) > la:
             print('', m[c], end = '')
             m[c] = -1
             c -= b
