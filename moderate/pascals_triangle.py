@@ -8,10 +8,10 @@ for line in fileinput.input():
         continue
     l = [1]
     st = [1]
-    for i in xrange(n-1):
+    for _ in xrange(n-1):
         m = [0] + l
-        for jx, j in enumerate(l):
-            m[jx] += j
+        for ix, i in enumerate(l):
+            m[ix] += i
         st += m
         l = m
     print ' '.join(str(i) for i in st)

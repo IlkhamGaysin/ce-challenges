@@ -13,7 +13,7 @@ And waited patiently about till Mary did appear.
 
 TXL = TEXT.split()
 for ix, i in enumerate(TXL):
-    TXL[ix] = TXL[ix].strip(string.punctuation)
+    TXL[ix] = i.strip(string.punctuation)
 
 for line in fileinput.input():
     st = line.split(',')
@@ -21,11 +21,11 @@ for line in fileinput.input():
     x = st[1].split()
 
     tnl = []
-    for ix, i in enumerate(TXL[:len(TXL) - n + 1]):
-        tnl.append(tuple(TXL[ix + j] for j in range(n)))
+    for i in range(len(TXL) - n + 1):
+        tnl.append(tuple(TXL[i + j] for j in range(n)))
 
     r = []
-    for ix, i in enumerate(tnl):
+    for i in tnl:
         f = True
         for j in range(len(x)):
             if i[j] != x[j]:

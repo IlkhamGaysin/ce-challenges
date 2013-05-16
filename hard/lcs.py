@@ -21,7 +21,7 @@ for test in fileinput.input():
     except IndexError:
         continue
 
-    c = [[0 for j in range(len(y)+1)] for i in range(len(x)+1)]
+    c = [[0 for _ in range(len(y)+1)] for _ in range(len(x)+1)]
     for ix, i in enumerate(x):
         for jx, j in enumerate(y):
             if i == j:

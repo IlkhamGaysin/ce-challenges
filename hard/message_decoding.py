@@ -32,7 +32,7 @@ while ST:
     IX += 3
     while SEGW > 0:
         CST = ""
-        for i in range(SEGW):
+        for _ in range(SEGW):
             CST += ST[IX]
             IX += 1
         if CST == '1' * SEGW:
