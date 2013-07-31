@@ -23,7 +23,7 @@ func main() {
 			break
 		}
 		m, mink, minv := make(map[int]int), math.MaxInt32, 0
-		for ix, i := range strings.Split(strings.TrimSpace(s), " ") {
+		for ix, i := range strings.Fields(strings.TrimSpace(s)) {
 			k, err := strconv.Atoi(i)
 			if err != nil {
 				log.Fatal(err)

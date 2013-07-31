@@ -21,7 +21,7 @@ func main() {
 		if err != nil {
 			break
 		}
-		t := strings.Split(strings.TrimSpace(s), " ")
+		t := strings.Fields(strings.TrimSpace(s))
 		r := []int{}
 		for _, i := range t {
 			var x int
