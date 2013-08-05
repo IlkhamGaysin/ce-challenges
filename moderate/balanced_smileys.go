@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"regexp"
 	"strings"
 )
 
@@ -16,18 +15,17 @@ func isBalanced(s string, c int) bool {
 		} else if s == "" {
 			return c == 0
 		}
-		m1, err1 := regexp.Match(`[a-z ]`, []byte{s[0]})
-		m2, err2 := regexp.Match(`[a-z :]`, []byte{s[len(s)-1]})
+		first, last := s[0], s[len(s)-1]
 		switch {
-		case m1:
+		case (first >= 'a' && first <= 'z') || first == ' ':
 			s = s[1:]
-		case m2:
+		case (last >= 'a' && last <= 'z') || last == ' ' || last == ':':
 			s = s[:len(s)-1]
-		case s[0] == '(':
+		case first == '(':
 			c, s = c+1, s[1:]
-		case s[0] == ')':
+		case first == ')':
 			c, s = c-1, s[1:]
-		case s[0] == ':':
+		case first == ':':
 			if s[1] == '(' {
 				return isBalanced(s[2:], c) || isBalanced(s[2:], c+1)
 			} else if s[1] == ')' {
@@ -35,7 +33,6 @@ func isBalanced(s string, c int) bool {
 			} else {
 				s = s[1:]
 			}
-		case err1 != nil || err2 != nil:
 		default:
 			return false
 		}
