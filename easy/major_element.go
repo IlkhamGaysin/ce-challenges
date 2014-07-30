@@ -21,10 +21,8 @@ func main() {
 		if err != nil {
 			break
 		}
-		var (
-			num              [101]int
-			maxnum, maxcount int
-		)
+		var maxnum, maxcount int
+		num := make([]int, 101)
 		sequ := strings.Split(strings.TrimSpace(s), ",")
 		for ix, i := range sequ {
 			k, err := strconv.Atoi(i)
@@ -33,8 +31,7 @@ func main() {
 			}
 			num[k]++
 			if num[k] > maxcount {
-				maxnum = k
-				maxcount = num[k]
+				maxnum, maxcount = k, num[k]
 			}
 			if len(sequ)/2+1 > maxcount+len(sequ)-ix-1 {
 				fmt.Println("None")
