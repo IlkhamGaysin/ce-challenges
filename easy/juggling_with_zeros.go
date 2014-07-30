@@ -22,12 +22,10 @@ func main() {
 		}
 		var num int
 		t := strings.Fields(strings.TrimSpace(s))
-		for i := 0; i < len(t)/2; i++ {
-			num <<= uint(len(t[2*i+1]))
-			if t[2*i] == "00" {
-				for j := 0; j < len(t[2*i+1]); j++ {
-					num += 1 << uint(j)
-				}
+		for i := 0; i < len(t); i += 2 {
+			num <<= uint(len(t[i+1]))
+			if t[i] == "00" {
+				num += (1 << uint(len(t[i+1]))) - 1
 			}
 		}
 		fmt.Println(num)
