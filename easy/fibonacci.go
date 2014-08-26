@@ -24,13 +24,11 @@ func main() {
 		if n < 2 {
 			fmt.Println(n)
 		} else {
-			b, c := []int64{1, 1, 0}, 1
-			for n > c {
-				c++
-				b[0], b[2] = b[1]+b[2], b[1]
-				b[1] = b[0]
+			r := 1
+			for p := 1; n > 2; n-- {
+				r, p = r+p, r
 			}
-			fmt.Println(b[0])
+			fmt.Println(r)
 		}
 	}
 }
