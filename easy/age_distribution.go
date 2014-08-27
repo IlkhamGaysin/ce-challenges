@@ -5,17 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
-	"strings"
 )
-
-func powi(a, b int) (ret int) {
-	ret = 1
-	for i := 0; i < b; i++ {
-		ret *= a
-	}
-	return ret
-}
 
 func main() {
 	category := []string{"This program is for humans",
@@ -35,17 +25,13 @@ func main() {
 	}
 	defer data.Close()
 	reader := bufio.NewReader(data)
-	var s string
 	for {
-		s, err = reader.ReadString('\n')
+		s, _, err := reader.ReadLine()
 		if err != nil {
 			break
 		}
-		m, err := strconv.Atoi(strings.TrimSpace(s))
-		if err != nil {
-			log.Fatal(err)
-		}
-		var cat int
+		var cat, m int
+		fmt.Sscanf(string(s), "%d", &m)
 		for cat < len(age) && m >= age[cat] {
 			cat++
 		}
