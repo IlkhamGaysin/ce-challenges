@@ -13,24 +13,19 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var n int
-		fmt.Sscan(s, &n)
-		l, st := []int{1}, []int{1}
-		for i := 0; i < n-1; i++ {
-			m := append([]int{0}, l...)
-			for jx, j := range l {
-				m[jx] += j
+		fmt.Sscanf(scanner.Text(), "%d", &n)
+		fmt.Print("1")
+		for i := 1; i < n; i++ {
+			fmt.Print(" 1")
+			r := 1
+			for j := 1; j <= i; j++ {
+				r = (r * (i + 1 - j)) / j
+				fmt.Printf(" %d", r)
 			}
-			st = append(st, m...)
-			l = m
 		}
-		t := fmt.Sprint(st)
-		fmt.Println(t[1 : len(t)-1])
+		fmt.Println()
 	}
 }
