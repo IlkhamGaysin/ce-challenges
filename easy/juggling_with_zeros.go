@@ -20,7 +20,7 @@ func main() {
 		if err != nil {
 			break
 		}
-		var num int
+		var num uint64
 		t := strings.Fields(strings.TrimSpace(s))
 		for i := 0; i < len(t); i += 2 {
 			num <<= uint(len(t[i+1]))
