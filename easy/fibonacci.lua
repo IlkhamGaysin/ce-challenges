@@ -3,14 +3,10 @@ for line in io.lines(arg[1]) do
   if a < 2 then
     print(a)
   else
-    local b = {1, 1, 0}
-    local c = 1
-    while a > c do
-      c = c + 1
-      b[1] = b[2] + b[3]
-      b[3] = b[2]
-      b[2] = b[1]
+    local b, c = 1, 1
+    while a > 2 do
+      a, b, c = a-1, b+c, b
     end
-    print(b[1])
+    print(b)
   end
 end
