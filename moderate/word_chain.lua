@@ -1,11 +1,14 @@
 function lwc(f, c)
   local m = #c/2
   if #f == 0 then return m end
-  for ix, i in pairs(f) do
+  for ix, i in ipairs(f) do
     if #c == 0 or i:sub(-1) == c:sub(1, 1) then
-      local g = {}
-      for jx, j in pairs(f) do
-        if ix ~= jx then g[#g + 1] = j end
+      local g, h = {}, {}
+      for jx, j in ipairs(f) do
+        h[j:sub(1,1)] = true
+      end
+      for jx, j in ipairs(f) do
+        if ix ~= jx and h[j:sub(-1)] then g[#g + 1] = j end
       end
       local l = lwc(g, i .. c)
       if l > m then
