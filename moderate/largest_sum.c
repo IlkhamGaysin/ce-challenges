@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 			m = a + l;
 		if (a + l > 0)
 			l += a;
-
+		else
+			l = 0;
 		if (c == '\n') {
 			printf("%d\n", m);
 			l = 0;
