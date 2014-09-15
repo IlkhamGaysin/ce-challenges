@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
 		fscanf(fp, "%d%*c", &d);
 		d = 1 << (d - 1);
 		crow |= d;
-		csqu[i % sq(a)] |= d;
-		col[i] |= d;
+		csqu[j / sq(a)] |= d;
+		col[j] |= d;
 	    }
 	    d = (1 << a) - 1;
 	    if (crow != d) {
