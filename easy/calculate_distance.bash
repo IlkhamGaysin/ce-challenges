@@ -1,5 +1,5 @@
 #!/bin/bash
-sed -e "s/[(),]//g" $1 | while read line; do
+tr -d "[()," <$1 | while read line; do
     a=( $line )
     x=$((${a[0]}-${a[2]}))
     y=$((${a[1]}-${a[3]}))

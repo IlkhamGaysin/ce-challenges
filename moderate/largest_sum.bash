@@ -1,5 +1,5 @@
 #!/bin/bash
-sed -e "s/,[:space:]*/ /g" $1 | while read line; do
+tr -d "[:blank:]" <$1 | tr "," " " | while read line; do
     a=( $line )
     l=0
     m=${a[0]}

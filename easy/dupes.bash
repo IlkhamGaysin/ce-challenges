@@ -1,5 +1,5 @@
 #!/bin/bash
-sed -e "s/,/ /g" $1 | while read line; do
+tr "," " " <$1 | while read line; do
     a=( $line )
     printf ${a[0]}
     for ((i=1; i<${#a[*]}; i++)); do
