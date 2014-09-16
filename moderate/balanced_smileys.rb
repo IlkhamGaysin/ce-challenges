@@ -29,5 +29,5 @@ def balanced(s, c)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  puts balanced(line.sub("\n", ""), 0) ? "YES" : "NO"
+  puts balanced(line.chomp, 0) ? "YES" : "NO"
 end

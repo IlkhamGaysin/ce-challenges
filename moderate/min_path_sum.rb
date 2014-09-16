@@ -13,5 +13,5 @@ def decode(s)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  puts decode(line.sub( "\n", ""))
+  puts decode(line.chomp)
 end

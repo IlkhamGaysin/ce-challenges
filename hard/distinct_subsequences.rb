@@ -8,6 +8,6 @@ def subs(s, t)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.sub("\n", "").split(',')
+  s = line.chomp.split(',')
   puts subs(s[0], s[1])
 end

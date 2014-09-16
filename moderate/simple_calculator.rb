@@ -92,7 +92,7 @@ def parse(s)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.sub("\n", "").gsub("\t", '').gsub(' ', '')
+  s = line.gsub(/\s+/, "")
   p = parse(s)
   if p == $error
     puts " on input " + s

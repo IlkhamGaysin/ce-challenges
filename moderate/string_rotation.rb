@@ -6,8 +6,7 @@ class String
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.sub( "\n", "").split(',')
-  r = false
+  s, r = line.chomp.split(','), false
   s[0].length.times do
     if s[0] == s[1]
       r = true

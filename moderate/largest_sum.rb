@@ -1,5 +1,5 @@
 File.open(ARGV[0]).each_line do |line|
-  s = line.sub( "\n", "").split(',').map(&:to_i)
+  s = line.split(',').map(&:to_i)
   l, m = 0, s[0]
   s.each do |i|
     m = i if i > m
