@@ -3,7 +3,7 @@ j = []
 sol = 1970
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.sub("\n", "").split(' ')
+  s = line.sub("\n", "").split
   if s[0] == "C"
     c << [s[1], s[2][2..-1].to_i, s[3][2..-1].to_i, s[4][2..-1].to_i, []]
   elsif s[0] == "J"

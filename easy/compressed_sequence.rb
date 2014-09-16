@@ -1,7 +1,5 @@
 File.open(ARGV[0]).each_line do |line|
-  s = line.split(' ').map(&:to_i)
-  b = -1
-  c = 1
+  s, b, c = line.split.map(&:to_i), -1, 1
   for i in s
     if i == b
       c += 1

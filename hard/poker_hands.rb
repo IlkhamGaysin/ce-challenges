@@ -67,6 +67,6 @@ def hand_rank(hand)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.split(" ")
+  s = line.split
   puts poker(hand_rank(s[0..4]), hand_rank(s[5..-1]))
 end

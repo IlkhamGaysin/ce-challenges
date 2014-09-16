@@ -1,6 +1,6 @@
 File.open(ARGV[0]).each_line do |line|
   s = line.split(";")
-  row, col, t = s[0].to_i, s[1].to_i, s[2].split(" ")
+  row, col, t = s[0].to_i, s[1].to_i, s[2].split
   i, j = 0, 1
   tn, te, ts, tw = 0, col - 1, row - 1, 0
   print t[0]
