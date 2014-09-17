@@ -59,41 +59,34 @@ func main() {
 	}
 	path := []int{}
 	for {
-		for i, nr := 0, len(north); i < nr; i++ {
-			curr := north[0]
-			copy(north, north[1:])
-			north = north[:len(north)-1]
-			count := 0
+		nr := len(north)
+		for i := 0; i < nr; i++ {
+			curr, count := north[i], 0
 			checks := []int{curr.pos + n, curr.pos - 1, curr.pos + 1, curr.pos - n}
 			for _, check := range checks {
-				if check != curr.from.pos {
-					if _, open := m[check]; open {
-						var f bool
-						for _, j := range north {
-							if check == j.pos {
-								f = true
-								break
+				if check != curr.from.pos && m[check] {
+					for _, j := range south {
+						if check == j.pos {
+							for ; curr.pos > n; curr = *curr.from {
+								path = append([]int{curr.pos}, path...)
 							}
+							path = append([]int{curr.pos}, path...)
+							for curr = j; curr.pos < (n-1)*n; curr = *curr.from {
+								path = append(path, curr.pos)
+							}
+							path = append(path, curr.pos)
+							goto out
 						}
-						if f {
+					}
+					var f bool
+					for jx := i + 1; jx < len(north); jx++ {
+						if check == north[jx].pos {
+							f = true
 							break
 						}
-						for _, j := range south {
-							if check == j.pos {
-								for ; curr.pos > n; curr = *curr.from {
-									path = append([]int{curr.pos}, path...)
-								}
-								path = append([]int{curr.pos}, path...)
-								for curr = j; curr.pos < (n-1)*n; curr = *curr.from {
-									path = append(path, curr.pos)
-								}
-								path = append(path, curr.pos)
-								goto out
-							}
-						}
-						next := seg{check, &curr, []int{}}
-						north = append(north, next)
-						curr.to = append(curr.to, check)
+					}
+					if !f {
+						north, curr.to = append(north, seg{check, &curr, []int{}}), append(curr.to, check)
 						count++
 					}
 				}
@@ -102,42 +95,36 @@ func main() {
 				kill(*curr.from, curr.pos)
 			}
 		}
-
-		for i, sr := 0, len(south); i < sr; i++ {
-			curr := south[0]
-			copy(south, south[1:])
-			south = south[:len(south)-1]
-			count := 0
+		copy(north, north[nr:])
+		north = north[:len(north)-nr]
+		sr := len(south)
+		for i := 0; i < sr; i++ {
+			curr, count := south[i], 0
 			checks := []int{curr.pos + n, curr.pos - 1, curr.pos + 1, curr.pos - n}
 			for _, check := range checks {
-				if check != curr.from.pos {
-					if _, open := m[check]; open {
-						var f bool
-						for _, j := range south {
-							if check == j.pos {
-								f = true
-								break
+				if check != curr.from.pos && m[check] {
+					for _, j := range north {
+						if check == j.pos {
+							for ; curr.pos < (n-1)*n; curr = *curr.from {
+								path = append(path, curr.pos)
 							}
+							path = append(path, curr.pos)
+							for curr = j; curr.pos > n; curr = *curr.from {
+								path = append([]int{curr.pos}, path...)
+							}
+							path = append([]int{curr.pos}, path...)
+							goto out
 						}
-						if f {
+					}
+					var f bool
+					for jx := i + 1; jx < len(south); jx++ {
+						if check == south[jx].pos {
+							f = true
 							break
 						}
-						for _, j := range north {
-							if check == j.pos {
-								for ; curr.pos < (n-1)*n; curr = *curr.from {
-									path = append(path, curr.pos)
-								}
-								path = append(path, curr.pos)
-								for curr = j; curr.pos > n; curr = *curr.from {
-									path = append([]int{curr.pos}, path...)
-								}
-								path = append([]int{curr.pos}, path...)
-								goto out
-							}
-						}
-						next := seg{check, &curr, []int{}}
-						south = append(south, next)
-						curr.to = append(curr.to, check)
+					}
+					if !f {
+						south, curr.to = append(south, seg{check, &curr, []int{}}), append(curr.to, check)
 						count++
 					}
 				}
@@ -146,17 +133,18 @@ func main() {
 				kill(*curr.from, curr.pos)
 			}
 		}
+		copy(south, south[sr:])
+		south = south[:len(south)-sr]
 	}
 out:
 	sort.Ints(path)
-	count := 0
-	for i := 0; i < n; i++ {
+	for count, i := 0, 0; i < n; i++ {
 		for j := 0; j < n; j++ {
-			if m[i*n+j] {
-				for path[count] < i*n+j {
+			if x := i*n + j; m[x] {
+				for path[count] < x {
 					count++
 				}
-				if path[count] == i*n+j {
+				if path[count] == x {
 					fmt.Print("+")
 				} else {
 					fmt.Print(" ")
