@@ -4,14 +4,8 @@ for line in io.lines(arg[1]) do
     io.write(b .. ".")
     a = (a - b) * 60
     b = math.floor(a)
-    if b <= 9 then
-        io.write("0")
-    end
-    io.write(b .. "'")
+    io.write(string.format("%02d", b) .. "'")
     a = (a - b) * 60
     b = math.floor(a)
-    if b <= 9 then
-        io.write("0")
-    end
-    print(b .. "\"")
+    print(string.format("%02d", b) .. "\"")
 end
