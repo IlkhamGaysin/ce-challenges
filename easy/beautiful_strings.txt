@@ -1,4 +1,6 @@
 ABbCcc
+<3
+The quick brown fox jumps over the lazy dog
 Good luck in the Facebook Hacker Cup this year!
 Ignore punctuation, please :)
 Sometimes test cases are hard to make up.
