@@ -22,6 +22,9 @@ func main() {
 			break
 		}
 		t := strings.Split(s, ";")
+		if len(t) < 2 {
+			continue
+		}
 		words, sequ := strings.Fields(t[0]), strings.Fields(t[1])
 		reco := make([]string, len(words))
 		for ix, i := range sequ {
