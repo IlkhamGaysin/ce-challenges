@@ -27,8 +27,14 @@ function primeSeq()
          end
 end
 
-local primesum, nextPrime = 0, primeSeq()
-for _ = 1, 1000 do
-  primesum = primesum + nextPrime()
+for line in io.lines(arg[1]) do
+  local a, b = line:match("(%d+),(%d+)")
+  a, b = tonumber(a), tonumber(b)
+  local n, nextPrime = 0, primeSeq()
+  local i = nextPrime()
+  while i <= b do
+    if i >= a then n = n + 1 end
+    i = nextPrime()
+  end
+  print(n)
 end
-print(primesum)

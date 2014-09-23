@@ -27,8 +27,13 @@ function primeSeq()
          end
 end
 
-local primesum, nextPrime = 0, primeSeq()
-for _ = 1, 1000 do
-  primesum = primesum + nextPrime()
+for line in io.lines(arg[1]) do
+  local n, nextPrime = tonumber(line), primeSeq()
+  local i = nextPrime()
+  while i < n do
+    if i > 2 then io.write(",") end
+    io.write(i)
+    i = nextPrime()
+  end
+  print()
 end
-print(primesum)

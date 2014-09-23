@@ -14,7 +14,7 @@ end
 function primeSeq()
   local p0, i = 1, 0
   return function()
-           if p0 < #primes then
+           if p0 <= #primes then
              i, p0 = primes[p0], p0+1
              return i
            end
