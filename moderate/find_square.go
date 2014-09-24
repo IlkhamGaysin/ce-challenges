@@ -27,11 +27,11 @@ func main() {
 			break
 		}
 		t := strings.Split(strings.TrimSpace(s), ", ")
-		u := [][]int{}
-		for _, i := range t {
+		u := make([][]int, 4)
+		for ix, i := range t {
 			var x, y int
 			fmt.Sscanf(i, "(%d,%d)", &x, &y)
-			u = append(u, []int{x, y})
+			u[ix] = []int{x, y}
 		}
 		d := []int{}
 		for i := 0; i < 3; i++ {

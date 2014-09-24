@@ -9,7 +9,12 @@ import (
 	"strings"
 )
 
-var v = make(map[byte]int)
+const num_cards = 5
+
+var (
+	v  map[byte]int
+	ra []int
+)
 
 func sliceq(a, b []int) bool {
 	for ix, i := range a {
@@ -21,16 +26,15 @@ func sliceq(a, b []int) bool {
 }
 
 func card_ranks(cards []string) int {
-	ranks := []int{}
-	for _, i := range cards {
-		ranks = append(ranks, v[i[0]])
+	for ix, i := range cards {
+		ra[ix] = v[i[0]]
 	}
-	sort.Ints(ranks)
-	if sliceq(ranks, []int{2, 3, 4, 5, 14}) {
-		ranks = []int{1, 2, 3, 4, 5}
+	sort.Ints(ra)
+	if sliceq(ra, []int{2, 3, 4, 5, 14}) {
+		ra = []int{1, 2, 3, 4, 5}
 	}
 	var rank int
-	for ix, i := range ranks {
+	for ix, i := range ra {
 		rank += i << uint(4*ix)
 	}
 	return rank
@@ -128,6 +132,7 @@ func hand_rank(hand []string) int {
 func main() {
 	v = map[byte]int{'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
 		'8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+	ra = make([]int, num_cards)
 
 	data, err := os.Open(os.Args[1])
 	if err != nil {
