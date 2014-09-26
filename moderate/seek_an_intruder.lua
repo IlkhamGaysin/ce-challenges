@@ -1,5 +1,9 @@
 function o2d(a)
-  return 64*tonumber(a:sub(1, 1)) + 8*tonumber(a:sub(2,2)) + tonumber(a:sub(3,3))
+  local ret = 0
+  for i = 1, #a do
+    ret = ret*8 + a:sub(i, i)
+  end
+  return ret
 end
 
 function b2d(a)
@@ -47,9 +51,10 @@ for line in io.lines(arg[1]) do
       ips[#ips + 1] = b1 .. "." .. b2 .. "." .. b3 .. "." .. b4
     end
   end
-  for i in line:gmatch("0[0-3][0-7][0-7][0-3][0-7][0-7][0-3][0-7][0-7][0-3][0-7][0-7]") do
-    _, _, a1, a2, a3, a4 = i:find("0([0-3][0-7][0-7])([0-3][0-7][0-7])([0-3][0-7][0-7])([0-3][0-7][0-7])")
-    local b1, b2, b3, b4 = o2d(a1), o2d(a2), o2d(a3), o2d(a4)
+  for i in line:gmatch("0[0-3][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7]") do
+    _, _, a1 = i:find("0([0-3][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7])")
+    a1 = o2d(a1)
+    local b1, b2, b3, b4 = math.floor(a1/2^24)%256, math.floor(a1/2^16)%256, math.floor(a1/2^8)%256, a1%256
     if b1 > 0 and b1 < 256 and b2 < 256 and b3 < 256 and b4 < 255 then
       ips[#ips + 1] = b1 .. "." .. b2 .. "." .. b3 .. "." .. b4
     end
@@ -69,14 +74,18 @@ for line in io.lines(arg[1]) do
   end
 end
 
-m, s = 0, ""
-for i = 1, #ips-1 do
-  local c = 0
-  for j = i+1, #ips do
-    if ips[i] == ips[j] then c = c + 1 end
+nips = {}
+for _, i in ipairs(ips) do
+  if nips[i] == nil then
+    nips[i] = 1
+  else
+    nips[i] = nips[i] + 1
   end
-  if c > m then
-    m, s = c, ips[i]
+end
+m, s = 0, ""
+for k, v in pairs(nips) do
+  if v > m then
+    m, s = v, k
   end
 end
 print(s)
