@@ -14,20 +14,21 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
+	scanner := bufio.NewScanner(data)
 
-	s, _ := reader.ReadString('\n')
+	scanner.Scan()
+	s := scanner.Text()
 	curr := strings.Index(s, "C")
 	if curr == -1 {
 		curr = strings.Index(s, "_")
 	}
-	fmt.Print(s[:curr] + "|" + s[curr+1:])
+	fmt.Println(s[:curr] + "|" + s[curr+1:])
 	var px int
-	for {
+	for scanner.Scan() {
 		px = curr
-		s, err = reader.ReadString('\n')
-		if err != nil {
-			break
+		s = scanner.Text()
+		if len(s) < 1 {
+			continue
 		}
 		a, b := px-1, px+2
 		if a < 0 {
@@ -38,9 +39,9 @@ func main() {
 		}
 		curr = strings.Index(s[a:b], "C")
 		if curr == -1 {
-			curr = px + strings.Index(s[a:b], "_") - 1
+			curr = a + strings.Index(s[a:b], "_")
 		} else {
-			curr += px - 1
+			curr += a
 		}
 		if curr < px {
 			s = s[:curr] + "/" + s[curr+1:]
@@ -49,6 +50,6 @@ func main() {
 		} else {
 			s = s[:curr] + "\\" + s[curr+1:]
 		}
-		fmt.Print(s)
+		fmt.Println(s)
 	}
 }
