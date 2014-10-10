@@ -1,35 +1,28 @@
 #include <stdio.h>
-#include <stdint.h>
-#include <inttypes.h>
 
-int64_t dsig(int64_t a)
+int dsig(int a)
 {
-	int i, d[9] = {0};
-	int64_t b = a;
+	int d = 0, b = a, r;
 	while (b) {
-		int r = b%10;
+		r = b%10;
 		if (r)
-			d[r-1] += 1;
+			d += 1 << (3 * r);
 		b /= 10;
 	}
-	for (i = 0; i < 9; i++) {
-		b *= 8;
-		b += d[i];
-	}
-	return b;
+	return d;
 }
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	int64_t a;
+	int a;
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%" PRId64, &a) != EOF) {
-		int64_t b = a + 1;
-		while (dsig(a) != dsig(b))
-			b++;
-		printf("%" PRId64 "\n", b);
+	while (fscanf(fp, "%d", &a) != EOF) {
+		int b = a + 9, d = dsig(a);
+		while (d != dsig(b))
+			b += 9;
+		printf("%d\n", b);
 	}
 	return 0;
 }

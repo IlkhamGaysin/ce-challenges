@@ -5,27 +5,19 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"sort"
 )
 
-var r []int
-func dsig(a int) (ret int) {
-	r = r[:0]
+func dsig(a int) (r int) {
 	for a > 0 {
 		if a%10 > 0 {
-			r = append(r, a%10)
+			r += 1 << uint(3*(a%10))
 		}
 		a /= 10
 	}
-	sort.Ints(r)
-	for _, i := range r {
-		ret = 10*ret + i
-	}
-	return ret
+	return r
 }
 
 func main() {
-	r = []int{}
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -36,9 +28,8 @@ func main() {
 	for scanner.Scan() {
 		var d int
 		fmt.Sscanf(scanner.Text(), "%d", &d)
-		m9, ds, e := d%9, dsig(d), d+1
-		for e%9 != m9 || dsig(e) != ds {
-			e++
+		e := d + 9
+		for ds := dsig(d); dsig(e) != ds; e += 9 {
 		}
 		fmt.Println(e)
 	}
