@@ -1,5 +1,5 @@
 #!/bin/bash
-{ cat $1; echo; } | while read line; do
+while read line || [ -n "$line" ]; do
     u=1
     for ((i=0; i<${#line}; i++)); do
         a="${line:$i:1}"
@@ -16,4 +16,4 @@
         fi
     done
     echo
-done
+done <$1
