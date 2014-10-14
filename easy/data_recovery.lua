@@ -8,9 +8,5 @@ for line in io.lines(arg[1]) do
   for i = 1, h do
     if r[i] == nil then r[i] = a[h] break end
   end
-  for i = 1, #r do
-    if i > 1 then io.write(" ") end
-    io.write(r[i])
-  end
-  print()
+  print(table.concat(r, " "))
 end
