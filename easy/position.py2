@@ -1,0 +1,9 @@
+import fileinput
+
+for line in fileinput.input():
+    st = line.split(',')
+    i, a, b = int(st[0]), int(st[1]), int(st[2])
+    if (i & (1 << (a - 1)) == 0) == (i & (1 << (b - 1)) == 0):
+        print "true"
+    else:
+        print "false"
