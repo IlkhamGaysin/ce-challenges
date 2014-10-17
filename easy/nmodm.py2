@@ -1,0 +1,6 @@
+import fileinput
+
+for line in fileinput.input():
+    st = line.split(',')
+    h, l = int(st[0]), int(st[1])
+    print h - (h / l) * l
