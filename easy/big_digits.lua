@@ -14,5 +14,5 @@ for line in io.lines(arg[1]) do
       r[j] = r[j] .. digits[j]:sub(pos, pos+w-1)
     end
   end
-  for i = 1, h do print(r[i]) end
+  print(table.concat(r, "\n"))
 end

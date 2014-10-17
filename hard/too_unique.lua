@@ -45,6 +45,4 @@ for i = 1, #res do
     mat[j] = mat[j]:sub(1, res[i][1]-1) .. string.rep("*", res[i][3]) .. mat[j]:sub(res[i][1]+res[i][3])
   end
 end
-for i = 1, h do
-  print(mat[i])
-end
+print(table.concat(mat, "\n"))
