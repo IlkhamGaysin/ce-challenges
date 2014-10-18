@@ -1,0 +1,10 @@
+import fileinput
+
+for line in fileinput.input():
+    st, n = line.rstrip('\n'), 0
+    for i in st:
+        n += pow(int(i), len(st))
+    if int(st) == n:
+        print "True"
+    else:
+        print "False"
