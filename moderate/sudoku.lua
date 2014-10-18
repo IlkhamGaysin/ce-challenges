@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 sq = {[4]=2, [9]=3}
 function set(a, b)
   if a % (b + b) < b then
@@ -20,7 +22,7 @@ for line in io.lines(arg[1]) do
       d = 2^(t[(i-1)*n+j]-1)
       crow, ok = set(crow, d)
       if not ok then valid = false; break end
-      csq[math.floor((j-1)/sq[n])], ok = set(csq[math.floor((j-1)/sq[n])], d)
+      csq[div(j-1, sq[n])], ok = set(csq[div(j-1, sq[n])], d)
       if not ok then valid = false; break end
       col[j], ok = set(col[j], d)
       if not ok then valid = false; break end

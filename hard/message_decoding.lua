@@ -1,14 +1,16 @@
+function div(a, b) return math.floor(a/b) end
+
 function binary(sl, a)
   if a == 0 then
     return string.rep("0", sl)
   else
     local b, c, ret = 0, a, ""
     while a > 0 do
-      b, a = b * 2 + a % 2, math.floor(a/2)
+      b, a = b * 2 + a % 2, div(a, 2)
     end
     while c > 0 do
       ret = ret .. tostring(b % 2)
-      b, c = math.floor(b/2), math.floor(c/2)
+      b, c = div(b, 2), div(c, 2)
     end
     return string.rep("0", sl-#ret) .. ret
   end

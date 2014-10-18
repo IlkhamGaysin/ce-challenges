@@ -1,8 +1,10 @@
+function div(a, b) return math.floor(a/b) end
+
 t = {}
 function pali(a)
   local y, c = 1, a
   while c > 0 do
-    t[y], y, c = c % 10, y + 1, math.floor(c / 10)
+    t[y], y, c = c % 10, y + 1, div(c, 10)
   end
   y = y - 1
   for x = 1, y/2 do

@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 s = {[0]="", "One", "Two", "Three", "Four",
      "Five", "Six", "Seven", "Eight", "Nine",
      "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
@@ -25,7 +27,7 @@ for line in io.lines(arg[1]) do
     io.write("Zero")
   else
     for i = 9, 1, -1 do
-      c[i], b = b%10, math.floor(b/10)
+      c[i], b = b%10, div(b, 10)
     end
     if wrd(c[1], c[2], c[3]) then io.write(s[30]) end
     if wrd(c[4], c[5], c[6]) then io.write(s[29]) end

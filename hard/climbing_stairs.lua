@@ -1,26 +1,37 @@
-function add(x, y)
-  if #x > #y then
-    a, b = x, y
-  else
-    a, b = y, x
+plen = 13
+function addp(x, y, c, f)
+  local ret = tostring(tonumber(x) + tonumber(y) + c)
+  if f then return ret, 0 end
+  if #ret < plen then
+    return string.rep("0", plen - #ret) .. ret, 0
+  elseif #ret > plen then
+    return ret:sub(2), 1
   end
+  return ret, 0
+end
+
+function add(x, y)
+  if #x > #y then a, b = x, y else a, b = y, x end
   local r, c = "", 0
   local i, j = #a, #b
   while i > 0 do
-    local s, t = tonumber(a:sub(i, i)), 0
-    if j > 0 then
-      t = tonumber(b:sub(j, j))
-    end
-    if c+s+t < 10 then
-      r = tostring(c+s+t) .. r
-      c = 0
+    i, j = i - plen, j - plen
+    local s, t, f = "", "", false
+    if i <= 0 then
+      s, f = a:sub(1, i+plen), true
     else
-      r = tostring((c+s+t)%10) .. r
-      c = math.floor((c+s+t)/10)
+      s = a:sub(i+1, i+plen)
     end
-    i, j = i-1, j-1
+    if j <= -plen then
+      t = "0"
+    elseif j <= 0 then
+      t = b:sub(1, j+plen)
+    else
+      t = b:sub(j+1, j+plen)
+    end
+    sum, c = addp(s, t, c, f)
+    r = sum .. r
   end
-  if c > 0 then r = tostring(c) .. r end
   return r
 end
 

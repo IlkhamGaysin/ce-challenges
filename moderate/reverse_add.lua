@@ -1,7 +1,9 @@
+function div(a, b) return math.floor(a/b) end
+
 function rev(a)
   local r = 0
   while a >= 1 do
-    r, a = 10*r + a%10, math.floor(a/10)
+    r, a = 10*r + a%10, div(a, 10)
   end
   return r
 end

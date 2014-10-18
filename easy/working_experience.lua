@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 moy = {Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6,
        Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12}
 function month(s)
@@ -14,5 +16,5 @@ for line in io.lines(arg[1]) do
     end
   end
   for _, _ in pairs(work) do w = w + 1 end
-  print(math.floor(w/12))
+  print(div(w, 12))
 end

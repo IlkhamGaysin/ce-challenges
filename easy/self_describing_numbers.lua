@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 for line in io.lines(arg[1]) do
   n = tonumber(line)
   local m, r = n, 0
@@ -14,7 +16,7 @@ for line in io.lines(arg[1]) do
       self = false
       break
     end
-    m = math.floor(m/10)
+    m = div(m, 10)
   end
   if self then
     for i = 0, #a do

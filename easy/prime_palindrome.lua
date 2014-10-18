@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 primes = {2, 3, 5, 7, 11, 13}
 function isPrime(a)
   local b = 1
@@ -35,7 +37,7 @@ function isPalindrome(a)
   while a > r do
     r = 10*r + a%10
     if a == r then return true end
-    a = math.floor(a / 10)
+    a = div(a, 10)
   end
   return r == a
 end

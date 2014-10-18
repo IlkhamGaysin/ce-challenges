@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 function o2d(a)
   local ret = 0
   for i = 1, #a do
@@ -54,7 +56,7 @@ for line in io.lines(arg[1]) do
   for i in line:gmatch("0[0-3][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7]") do
     _, _, a1 = i:find("0([0-3][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7][0-7])")
     a1 = o2d(a1)
-    local b1, b2, b3, b4 = math.floor(a1/2^24)%256, math.floor(a1/2^16)%256, math.floor(a1/2^8)%256, a1%256
+    local b1, b2, b3, b4 = div(a1, 2^24)%256, div(a1, 2^16)%256, div(a1, 2^8)%256, a1%256
     if b1 > 0 and b1 < 256 and b2 < 256 and b3 < 256 and b4 < 255 then
       ips[#ips + 1] = b1 .. "." .. b2 .. "." .. b3 .. "." .. b4
     end
@@ -69,7 +71,7 @@ for line in io.lines(arg[1]) do
   for i in line:gmatch("[1-4]?%d?%d?%d?%d?%d?%d?%d?%d?%d") do
     a1 = tonumber(i)
     if a1 >= 2^24 and a1 < 2^32-1 then
-      ips[#ips + 1] = math.floor(a1/2^24)%256 .. "." .. math.floor(a1/2^16)%256 .. "." .. math.floor(a1/2^8)%256 .. "." .. a1%256
+      ips[#ips + 1] = div(a1, 2^24)%256 .. "." .. div(a1, 2^16)%256 .. "." .. div(a1, 2^8)%256 .. "." .. a1%256
     end
   end
 end

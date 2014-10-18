@@ -1,3 +1,5 @@
+function div(a, b) return math.floor(a/b) end
+
 for line in io.lines(arg[1]) do
   local a = tonumber(line)
   if a == 0 then
@@ -5,11 +7,11 @@ for line in io.lines(arg[1]) do
   else
     local b, c = 0, a
     while a > 0 do
-      b, a = b * 2 + a % 2, math.floor(a/2)
+      b, a = b * 2 + a % 2, div(a, 2)
     end
     while c > 0 do
       io.write(b % 2)
-      b, c = math.floor(b/2), math.floor(c/2)
+      b, c = div(b, 2), div(c, 2)
     end
     print()
   end
