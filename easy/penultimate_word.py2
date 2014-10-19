@@ -1,0 +1,8 @@
+import fileinput
+
+for line in fileinput.input():
+    st = line.rstrip('\n').split()
+    if len(st) < 2:
+        print
+    else:
+        print st[-2]
