@@ -1,0 +1,6 @@
+import fileinput
+
+for line in fileinput.input():
+    s = line.replace(":", " ").split()
+    t = abs((int(s[0]) - int(s[3]))*3600 + (int(s[1]) - int(s[4]))*60 + int(s[2]) - int(s[5]))
+    print "{:0>2d}".format(t/3600) + ":" + "{:0>2d}".format((t/60)%60) + ":" + "{:0>2d}".format(t%60)
