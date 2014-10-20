@@ -1,0 +1,13 @@
+import fileinput
+
+def clean(a):
+    if a in "abcdefghij":
+        return chr(ord(a) - 49)
+    return a
+
+for line in fileinput.input():
+    st = ''.join(clean(c) for c in line if c in "0123456789abcdefghij")
+    if len(st) > 0:
+        print st
+    else:
+        print "NONE"
