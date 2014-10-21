@@ -1,8 +1,8 @@
 import System.Environment (getArgs)
 import Data.Char (toUpper)
 
-capitalize   :: String -> String
-capitalize s = toUpper (head s) : tail s
+capitalize          :: String -> String
+capitalize (x : xs) = toUpper x : xs
 
 main = do
     [inpFile] <- getArgs

@@ -2,7 +2,7 @@ import System.Environment (getArgs)
 
 penulti   :: [String] -> String
 penulti s | length s < 2 = ""
-          | otherwise    = last $ init s
+          | otherwise    = s !! (length s - 2)
 
 main = do
     [inpFile] <- getArgs

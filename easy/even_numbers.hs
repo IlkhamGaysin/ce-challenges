@@ -1,7 +1,7 @@
 import System.Environment (getArgs)
 
 isEven   :: Integer -> Integer
-isEven i = mod ((+) i 1) 2
+isEven i = mod (succ i) 2
 
 main = do
     [inpFile] <- getArgs
