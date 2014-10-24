@@ -1,0 +1,11 @@
+import fileinput
+import math
+
+for line in fileinput.input():
+    st = line.split(",")
+    a, b = int(st[0]), int(st[1])
+    c = a - int(math.floor(a * math.pow(2, -math.log(b, 2))) * math.pow(2, math.log(b, 2)))
+    if c > 0:
+        print a - c + b
+    else:
+        print a
