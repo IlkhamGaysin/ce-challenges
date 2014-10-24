@@ -23,7 +23,7 @@ func main() {
 				}
 			}
 			if len(line) > 55 {
-				line = ""
+				line = line[:40]
 			}
 			line += "... <Read More>"
 		}
