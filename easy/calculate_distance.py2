@@ -1,0 +1,7 @@
+import fileinput
+import math
+
+for line in fileinput.input():
+    st = line.translate(None, '(),').split()
+    x, y = int(st[0])-int(st[2]), int(st[1])-int(st[3])
+    print int(math.sqrt(x*x+y*y))
