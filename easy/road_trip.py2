@@ -1,0 +1,10 @@
+import fileinput
+
+for line in fileinput.input():
+    st = ''.join(c for c in line if c in "0123456789 ").split()
+    st = [int(s) for s in st]
+    st.sort()
+    for i in xrange(len(st)-1, 0, -1):
+        st[i] -= st[i-1]
+    st = [str(i) for i in st]
+    print ','.join(st)
