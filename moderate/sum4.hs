@@ -10,4 +10,4 @@ numzero c z s | c == 0 && z == 0 = 1
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map show . map (numzero 4 0) . map (map read) . map (splitOn ",") $ lines input
+    putStr . unlines . map (show . (numzero 4 0) . (map read) . (splitOn ",")) $ lines input

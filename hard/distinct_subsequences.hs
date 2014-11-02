@@ -10,4 +10,4 @@ subs s | null (last s)                  = 1
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map show . map subs . map (splitOn ",") $ lines input
+    putStr . unlines . map (show . subs . (splitOn ",")) $ lines input

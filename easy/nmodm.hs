@@ -9,4 +9,4 @@ modulo a = h - div h l * l
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map show . map modulo . map (map read) . map (splitOn ",") $ lines input
+    putStr . unlines . map (show . modulo . (map read) . (splitOn ",")) $ lines input

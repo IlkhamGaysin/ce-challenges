@@ -7,4 +7,4 @@ coin i = show (fromInteger (div i 5) + b !! fromInteger (mod i 5))
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map coin . map (read :: String -> Integer) $ lines input
+    putStr . unlines . map (coin . (read :: String -> Integer)) $ lines input

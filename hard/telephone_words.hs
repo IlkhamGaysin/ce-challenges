@@ -17,4 +17,4 @@ tele t s | length s == 0 = [t]
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (intercalate ",") . map (tele "") $ lines input
+    putStr . unlines . map ((intercalate ",") . (tele "")) $ lines input
