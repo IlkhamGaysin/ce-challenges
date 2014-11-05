@@ -10,4 +10,4 @@ roadTrip w x y | null y    = x
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (intercalate ",") . map (map show) . map (roadTrip 0 []). map sort . map (map read) . map words . lines $ [x | x <- input, isDigit x || isSpace x]
+    putStr . unlines . map (intercalate "," . map show . roadTrip 0 []. sort . map read . words) . lines $ [x | x <- input, isDigit x || isSpace x]
