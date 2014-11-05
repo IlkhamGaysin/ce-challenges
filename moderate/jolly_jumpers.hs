@@ -6,9 +6,9 @@ jolly xs | null xs              = "Jolly"
          | head xs /= length xs = "Not jolly"
          | otherwise            = jolly (tail xs)
 
-delta      :: [Int] -> [Int] -> [Int]
-delta xs ys | length ys == 1 = xs
-            | otherwise      = delta ((abs (head ys - ys!!1)) : xs) (tail ys)
+delta          :: [Int] -> [Int] -> [Int]
+delta xs (y:ys) | null ys   = xs
+                | otherwise = delta ((abs (y - head ys)) : xs) ys
 
 main = do
     [inpFile] <- getArgs

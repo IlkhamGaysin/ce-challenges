@@ -10,4 +10,4 @@ largest i j xs | null xs     = show i
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (largest (minBound::Int) 0) . map (map read) . map (splitOn ",") $ lines input
+    putStr . unlines . map (largest (minBound::Int) 0 . map read . splitOn ",") $ lines input
