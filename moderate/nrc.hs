@@ -11,6 +11,7 @@ nrc i xs ys | i == length ys = ""
             where y = ys!!i
                   c = count y ys
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

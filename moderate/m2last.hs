@@ -8,6 +8,7 @@ m2last s | l > length s = ""
          | otherwise    = s !! ((length s) - l)
          where l = succ . read $ last s
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

@@ -12,5 +12,6 @@ robot f x y | x == 3 && y == 3 = 1
                   w | x > 0 && not (testBit f (x-1+4*y))   = robot (setBit f (x-1+4*y)) (x-1) y
                     | otherwise = 0
 
+main :: IO ()
 main = do
     putStrLn . show $ robot 1 0 0

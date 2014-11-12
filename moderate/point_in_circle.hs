@@ -7,6 +7,7 @@ pic xs | x*x + y*y <= r*r = "true"
              y = last xs - xs!!1
              r = xs!!2
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

@@ -17,6 +17,7 @@ lca w xs | x == y    = x
          where x = head xs
                y = last xs
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

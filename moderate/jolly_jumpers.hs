@@ -7,9 +7,11 @@ jolly xs | null xs              = "Jolly"
          | otherwise            = jolly (tail xs)
 
 delta          :: [Int] -> [Int] -> [Int]
+delta _ []      = []
 delta xs (y:ys) | null ys   = xs
                 | otherwise = delta ((abs (y - head ys)) : xs) ys
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

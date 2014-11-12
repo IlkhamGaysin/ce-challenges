@@ -9,6 +9,7 @@ isSuff   :: [String] -> String
 isSuff xs | isSuffixOf (last xs) (head xs) = "1"
           | otherwise                      = "0"
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

@@ -7,6 +7,7 @@ subs s | null (last s)                  = 1
        | head (head s) == head (last s) = subs [tail (head s), tail (last s)] + subs [tail (head s), last s]
        | otherwise                      = subs [tail (head s), last s]
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

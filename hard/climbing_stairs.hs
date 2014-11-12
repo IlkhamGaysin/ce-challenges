@@ -1,5 +1,6 @@
 import System.Environment (getArgs)
 
+main :: IO ()
 main = do
     let stairs = 1 : 1 : zipWith (+) stairs (tail stairs)
     [inpFile] <- getArgs

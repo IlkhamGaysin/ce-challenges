@@ -1,6 +1,7 @@
 import System.Environment (getArgs)
 import Data.Bits (popCount)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

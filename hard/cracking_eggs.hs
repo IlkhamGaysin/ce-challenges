@@ -13,6 +13,7 @@ tryFloor n xs | floors e n < s = tryFloor (succ n) xs
               where e = head xs
                     s = last xs
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

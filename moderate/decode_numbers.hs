@@ -8,6 +8,7 @@ decode s | length s < 2                                     = 1
          | otherwise                                        = decode t + decode (tail t)
          where t = tail s
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

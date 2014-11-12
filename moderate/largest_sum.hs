@@ -7,6 +7,7 @@ largest i j xs | null xs     = show i
                where k = maximum [head xs, (head xs) + j, i]
                      l = max ((head xs) + j) 0
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

@@ -14,6 +14,7 @@ tele t s | length s == 0 = [t]
          | otherwise     = tele (t ++ [h]) (tail s)
          where h = head s
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
