@@ -7,6 +7,7 @@ lastIndex s | null e    = "-1"
             | otherwise = show . last $ e
             where e = elemIndices (head (last s)) (head s)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

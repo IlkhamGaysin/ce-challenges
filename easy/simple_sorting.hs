@@ -5,6 +5,7 @@ import Numeric (showFFloat)
 formatFloat3  :: Double -> String
 formatFloat3 f = showFFloat (Just 3) f ""
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

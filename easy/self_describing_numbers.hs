@@ -13,6 +13,7 @@ selfDesc  :: String -> String
 selfDesc s | selfd 0 s = "1"
            | otherwise = "0"
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

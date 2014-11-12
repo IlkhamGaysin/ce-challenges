@@ -7,6 +7,7 @@ roadTrip w x y | null y    = x
                | null x    = roadTrip (head y) [head y] (tail y)
                | otherwise = roadTrip (head y) (x ++ [head y - w]) (tail y)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
