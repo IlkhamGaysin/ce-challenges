@@ -15,11 +15,13 @@ lowest i j [ws, xs] | null xs && i == 0 = 0
                     | otherwise   = lowest (setBit i x) j [ws, ys]
                     where x = head xs
                           ys = tail xs
+lowest _ _ _        = 0
 
 twice   :: [Int] -> [[Int]]
 twice xs = [xs, xs]
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (show . (lowest 0 0 . twice) . (map read) . words) $ lines input
+    putStr . unlines . map (show . lowest 0 0 . twice . map read . words) $ lines input

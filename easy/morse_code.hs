@@ -8,6 +8,7 @@ morse i xs ys | null ys        = xs ++ [m !! (i - 2)]
               | otherwise      = morse 1 (xs ++ [m !! (i - 2)]) (tail ys)
               where m = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90"
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

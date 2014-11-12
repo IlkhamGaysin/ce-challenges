@@ -10,6 +10,7 @@ testHappy i j | i >= 127 || j == 0 = "0"
               | j == 1             = "1"
               | otherwise          = testHappy (succ i) (happy j 0)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

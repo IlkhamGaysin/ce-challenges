@@ -2,7 +2,7 @@ import System.Environment (getArgs)
 import Data.Char (chr, isAlpha, toLower)
 import Data.List (sort)
 
-count :: (Eq a) => a -> [a] -> Int
+count     :: (Eq a) => a -> [a] -> Int
 count x ys = length (filter (== x) ys)
 
 countChars       :: Int -> [Int] -> String -> [Int]
@@ -13,6 +13,7 @@ beauty       :: Int -> Int -> [Int] -> String
 beauty i x xs | i == 0 || head xs == 0 = show x
               | otherwise              = beauty (i-1) (head xs * i + x) (tail xs)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

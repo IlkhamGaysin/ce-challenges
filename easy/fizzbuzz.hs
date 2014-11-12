@@ -9,6 +9,7 @@ fizz i xs ys | i > last ys                  = xs
              where f = head ys
                    b = ys!!1
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile

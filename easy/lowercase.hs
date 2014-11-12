@@ -1,6 +1,7 @@
 import System.Environment (getArgs)
-import Data.Char
+import Data.Char (toLower)
 
+main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
