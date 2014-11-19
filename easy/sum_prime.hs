@@ -5,4 +5,4 @@ prime  :: Int -> Bool
 prime x = factors x == [1, x]
 
 main :: IO ()
-main = putStrLn . show . sum $ take 1000 [x | x <- [2, 3..], prime x]
+main = putStrLn . show . sum $ take 1000 [x | x <- 2 : [3, 5..], prime x]
