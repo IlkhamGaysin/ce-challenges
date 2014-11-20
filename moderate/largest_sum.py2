@@ -1,0 +1,16 @@
+import fileinput
+
+for line in fileinput.input():
+    st, l = line.split(","), 0
+    m = int(st[0])
+    for i in st:
+        a = int(i)
+        if a > m:
+            m = a
+        if a+l > m:
+            m = a+l
+        if a+l > 0:
+            l = l+a
+        else:
+            l = 0
+    print(m)
