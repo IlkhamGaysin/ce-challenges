@@ -1,0 +1,8 @@
+import fileinput
+
+for line in fileinput.input():
+    st, r = line.split(" | "), []
+    s0, s1 = st[0].split(), st[1].split()
+    for i in xrange(len(s0)):
+        r.append(str(int(s0[i]) * int(s1[i])))
+    print ' '.join(r)
