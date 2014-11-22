@@ -1,0 +1,10 @@
+import fileinput
+import math
+
+for line in fileinput.input():
+    st = line.translate(None, 'Center:RadiusPoint(),;').split()
+    x, y, r = float(st[3]) - float(st[0]), float(st[4]) - float(st[1]), float(st[2])
+    if x*x + y*y <= r*r:
+        print "true"
+    else:
+        print "false"
