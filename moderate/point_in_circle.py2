@@ -1,5 +1,4 @@
 import fileinput
-import math
 
 for line in fileinput.input():
     st = line.translate(None, 'Center:RadiusPoint(),;').split()
