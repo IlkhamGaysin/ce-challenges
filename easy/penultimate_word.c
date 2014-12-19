@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
 			sbp[0] = '\0';
 			i = 0;
 		} else if (c == ' ') {
+			char *temp = sbp;
 			sb[i] = '\0';
-			free(sbp);
 			sbp = sb;
-			sb = malloc(sbs);
+			sb = temp;
 			i = 0;
 		} else {
 			if (i == sbs-1) {
