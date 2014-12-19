@@ -5,7 +5,7 @@ nonempty s = [x | x <- s, not (null x)]
 
 m2last  :: [String] -> String
 m2last s | l > length s = ""
-         | otherwise    = s !! ((length s) - l)
+         | otherwise    = s !! (length s - l)
          where l = succ . read $ last s
 
 main :: IO ()

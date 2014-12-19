@@ -15,4 +15,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map age . map read $ lines input
+    putStr . unlines . map (age . read) $ lines input

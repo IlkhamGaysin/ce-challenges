@@ -11,7 +11,7 @@ digits  = [
     "--------------------------------------------------"]
 
 bigdigit     :: [String] -> Int -> [String]
-bigdigit [x0s, x1s, x2s, x3s, x4s, x5s] y = [x0s ++ take 5 (drop (5 * y) (digits!!0)), x1s ++ take 5 (drop (5 * y) (digits!!1)), x2s ++ take 5 (drop (5 * y) (digits!!2)), x3s ++ take 5 (drop (5 * y) (digits!!3)), x4s ++ take 5 (drop (5 * y) (digits!!4)), x5s ++ take 5 (drop (5 * y) (digits!!5))]
+bigdigit [x0s, x1s, x2s, x3s, x4s, x5s] y = [x0s ++ take 5 (drop (5 * y) (head digits)), x1s ++ take 5 (drop (5 * y) (digits!!1)), x2s ++ take 5 (drop (5 * y) (digits!!2)), x3s ++ take 5 (drop (5 * y) (digits!!3)), x4s ++ take 5 (drop (5 * y) (digits!!4)), x5s ++ take 5 (drop (5 * y) (digits!!5))]
 
 bigdigits :: [String] -> String -> [String]
 bigdigits xs []     = xs
@@ -23,4 +23,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . concat . map (unlines . bigdigits ["", "", "", "", "", ""]) $ lines input
+    putStr . concatMap (unlines . bigdigits ["", "", "", "", "", ""]) $ lines input

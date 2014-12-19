@@ -3,8 +3,8 @@ import System.Environment (getArgs)
 isBalanced     :: Int -> String -> Bool
 isBalanced c xs | null xs && c == 0                 = True
                 | null xs || c < 0                  = False
-                | not (elem x ":()")                = isBalanced c (tail xs)
-                | not (elem y "()")                 = isBalanced c (init xs)
+                | notElem x ":()"                   = isBalanced c (tail xs)
+                | notElem y "()"                    = isBalanced c (init xs)
                 | x == '('                          = isBalanced (succ c) (tail xs)
                 | x == ')'                          = isBalanced (pred c) (tail xs)
                 | x == ':' && head (tail xs) == '(' = isBalanced c (tail (tail xs)) || isBalanced (succ c) (tail (tail xs))

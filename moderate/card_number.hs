@@ -4,7 +4,7 @@ import Data.Char (isDigit)
 toDigits  :: Integer -> [Integer]
 toDigits x | x < 0     = [-1]
            | x < 10    = [x]
-           | otherwise = (toDigits (div x 10)) ++ [mod x 10]
+           | otherwise = toDigits (div x 10) ++ [mod x 10]
 
 toDigitsRev  :: Integer -> [Integer]
 toDigitsRev x | x < 0  = [-1]
@@ -18,11 +18,10 @@ dobSec xs ys = dobSec (xs ++ [y, 2*z]) (tail (tail ys))
                    z = head (tail ys)
 
 doubleSecond :: [Integer] -> [Integer]
-doubleSecond xs = dobSec [] xs
+doubleSecond = dobSec []
 
 sumDigits :: [Integer] -> Integer
-sumDigits [] = 0
-sumDigits (x:xs) = (div x 10) + (mod x 10) + sumDigits xs
+sumDigits = foldr (\ x -> (+) (div x 10 + mod x 10)) 0
 
 isValid  :: Integer -> String
 isValid x | mod (sumDigits (doubleSecond (toDigitsRev x))) 10 == 0 = "1"

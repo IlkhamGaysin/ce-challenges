@@ -18,4 +18,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (intercalate "," . map show . (primesTo [] 2) . read) $ lines input
+    putStr . unlines . map (intercalate "," . map show . primesTo [] 2 . read) $ lines input

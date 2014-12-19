@@ -4,4 +4,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStrLn . show . sum . map read $ lines input
+    print . sum . map read $ lines input

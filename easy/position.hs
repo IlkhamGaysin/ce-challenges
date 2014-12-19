@@ -8,7 +8,7 @@ compareBits s = if testBit i a == testBit i b
                   else "false"
                 where i = head s
                       a = (s !! 1) - 1
-                      b = (last s) - 1
+                      b = last s - 1
 
 main :: IO ()
 main = do

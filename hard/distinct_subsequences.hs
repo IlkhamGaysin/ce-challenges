@@ -11,4 +11,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (show . subs . (splitOn ",")) $ lines input
+    putStr . unlines . map (show . subs . splitOn ",") $ lines input

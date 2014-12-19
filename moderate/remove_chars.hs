@@ -2,7 +2,7 @@ import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 
 remove  :: [String] -> String
-remove s = [x | x <- head s, not . elem x $ last s]
+remove s = [x | x <- head s, notElem x $ last s]
 
 main :: IO ()
 main = do

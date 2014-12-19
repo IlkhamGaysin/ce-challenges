@@ -1,7 +1,7 @@
 import System.Environment (getArgs)
 
 swapel       :: Int -> Int -> [String] -> [String]
-swapel a b xs = (take a xs) ++ [xs!!b] ++ (take (b-a-1) (drop (a+1) xs)) ++ [xs!!a] ++ drop (b+1) xs
+swapel a b xs = take a xs ++ [xs!!b] ++ take (b-a-1) (drop (a+1) xs) ++ [xs!!a] ++ drop (b+1) xs
 
 swe          :: [String] -> [String] -> [String]
 swe xs []     = xs

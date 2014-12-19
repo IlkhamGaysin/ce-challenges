@@ -12,8 +12,8 @@ mixed                :: [[String]] -> [String] -> String
 mixed [[], ys] []     = intercalate "," ys
 mixed [xs, []] []     = intercalate "," xs
 mixed [xs, ys] []     = intercalate "," ys ++ "|" ++ intercalate "," xs
-mixed [xs, ys] (z:zs) | areDigits(z) = mixed [xs ++ [z], ys] zs
-                      | otherwise    = mixed [xs, ys ++ [z]] zs
+mixed [xs, ys] (z:zs) | areDigits z = mixed [xs ++ [z], ys] zs
+                      | otherwise   = mixed [xs, ys ++ [z]] zs
 
 main :: IO ()
 main = do

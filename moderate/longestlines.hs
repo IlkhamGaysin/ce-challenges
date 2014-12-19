@@ -9,10 +9,10 @@ merge     :: Int -> [String] -> [String]
 merge i xs | length xs <= i = sortBy sortLength xs
            | otherwise      = take i (sortBy sortLength xs)
 
-longest        :: Int -> [String] -> [String] -> [String]
-longest i xs ys | null ys   = xs
-                | i == 0    = longest (read $ head ys) [] (tail ys)
-                | otherwise = longest i (merge i ((head ys) : xs)) (tail ys)
+longest            :: Int -> [String] -> [String] -> [String]
+longest _ xs []     = xs
+longest 0 _  (y:ys) = longest (read y) [] ys
+longest i xs (y:ys) = longest i (merge i (y : xs)) ys
 
 main :: IO ()
 main = do

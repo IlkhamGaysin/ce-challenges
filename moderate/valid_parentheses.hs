@@ -6,7 +6,7 @@ parens _ []  = "False"
 parens xs ys | y == ')' && not (null xs) && x == '(' = parens (tail xs) (tail ys)
              | y == ']' && not (null xs) && x == '[' = parens (tail xs) (tail ys)
              | y == '}' && not (null xs) && x == '{' = parens (tail xs) (tail ys)
-             | y == ')' || y == ']' || y == '}'      = "False"
+             | elem y ")]}"                          = "False"
              | otherwise                             = parens (y : xs) (tail ys)
              where x = head xs
                    y = head ys

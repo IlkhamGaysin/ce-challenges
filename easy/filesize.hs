@@ -5,4 +5,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     status <- getFileStatus inpFile
-    putStrLn . show . toInteger . fileSize $ status
+    print . toInteger . fileSize $ status

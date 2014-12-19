@@ -11,4 +11,4 @@ pali x | x < 10                             = True
        | otherwise                          = False
 
 main :: IO ()
-main = putStrLn . show $ last [x | x <- 2 : [3, 5..1000], pali x, prime x]
+main = print $ last [x | x <- 2 : [3, 5..1000], pali x, prime x]
