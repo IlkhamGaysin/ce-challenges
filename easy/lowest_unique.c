@@ -10,8 +10,8 @@ struct item {
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	int a, i = 0, j = 1, ibs = 32 * sizeof(struct item);
-	struct item *ib = malloc(ibs);
+	int a, i = 0, j = 1, ibs = 32;
+	struct item *ib = malloc(ibs * sizeof(struct item));
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 					m = a;
 				if (i == ibs) {
 					ibs += ibs/2;
-					ib = realloc(ib, ibs);
+					ib = realloc(ib, ibs * sizeof(struct item));
 				}
 				ib[i].num = a;
 				ib[i++].pos = j;
