@@ -16,7 +16,7 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if len(line) > 55 {
-			for i := 40; i > 0; i-- {
+			for i := 39; i >= 0; i-- {
 				if line[i] == ' ' {
 					line = line[:i]
 					break

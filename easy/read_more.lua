@@ -3,7 +3,7 @@ for line in io.lines(arg[1]) do
     local i, p = 0, 41
     while true do
       i = string.find(line, " ", i+1)
-      if i == nil or i > 41 then break end
+      if i == nil or i > 40 then break end
       p = i
     end
     line = line:sub(1, p-1) .. "... <Read More>"
