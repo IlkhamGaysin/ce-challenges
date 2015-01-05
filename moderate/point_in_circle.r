@@ -1,8 +1,6 @@
-ns <- strsplit(" -0123456789.", "")[[1]]
 numf <- function(s) {
-  strsplit(paste(Filter(function(c) c %in% ns, strsplit(s, "")[[1]]), collapse=""), " ")[[1]]
+  strsplit(gsub("[^-. 0123456789]", "", s), " ")[[1]]
 }
-
 cat(sapply(lapply(readLines(tail(commandArgs(), n=1)), numf), function(s) {
   t <- as.double(s)
   t <- t[!is.na(t)]
