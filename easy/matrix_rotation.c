@@ -9,7 +9,7 @@ int sq(int a) {
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c, m[100], t[100];
+	char c, m[100];
 	int n = 0, l, i, j;
 
 	fp = fopen(*++argv, "r");
@@ -17,11 +17,8 @@ int main(int argc, char *argv[])
 		if (c == '\n' || c == EOF) {
 			l = sq(n);
 			for (i = 0; i < l; i++)
-				for (j = 0; j < l; j++)
-					t[i*l + j] = m[j*l + i];
-			for (i = 0; i < l; i++)
 				for (j = l-1; j >= 0; j--) {
-					putchar(t[i*l + j]);
+					putchar(m[j*l + i]);
 					if (i != l-1 || j > 0)
 						putchar(' ');
 					else
