@@ -10,7 +10,7 @@ for line in io.lines(arg[1]) do
       for i = #st, 1, -1 do st[i] = st[i] - st[1] end
     end
     if av[1] ~= 0 then
-      for i = #st, 1, -1 do av[i] = av[i] - av[1] end
+      for i = #av, 1, -1 do av[i] = av[i] - av[1] end
     end
     local intersec, stl, avl = 0, st[#st], av[#av]
     for i = 1, #av do av[i] = av[i] * stl / avl end
