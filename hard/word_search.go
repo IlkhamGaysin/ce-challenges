@@ -14,16 +14,16 @@ func isContained(pos []int, bee []string, st0 string) bool {
 	}
 	neigh := [][]int{}
 	if pos[0] > 0 && bee[pos[0]-1][pos[1]] == st0[0] {
-		neigh = append(neigh, []int{pos[0]-1, pos[1]})
+		neigh = append(neigh, []int{pos[0] - 1, pos[1]})
 	}
 	if pos[0] < 2 && bee[pos[0]+1][pos[1]] == st0[0] {
-		neigh = append(neigh, []int{pos[0]+1, pos[1]})
+		neigh = append(neigh, []int{pos[0] + 1, pos[1]})
 	}
 	if pos[1] > 0 && bee[pos[0]][pos[1]-1] == st0[0] {
-		neigh = append(neigh, []int{pos[0], pos[1]-1})
+		neigh = append(neigh, []int{pos[0], pos[1] - 1})
 	}
 	if pos[1] < 3 && bee[pos[0]][pos[1]+1] == st0[0] {
-		neigh = append(neigh, []int{pos[0], pos[1]+1})
+		neigh = append(neigh, []int{pos[0], pos[1] + 1})
 	}
 	if len(neigh) == 0 {
 		return false

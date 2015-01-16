@@ -56,7 +56,7 @@ func main() {
 				if submat < minmat {
 					minmat = submat
 				}
-				if submat - minmat > maxmat {
+				if submat-minmat > maxmat {
 					maxmat = submat - minmat
 				}
 			}

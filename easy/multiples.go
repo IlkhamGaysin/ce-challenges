@@ -29,7 +29,7 @@ func main() {
 		}
 		for c > 0 {
 			c--
-			for r + (n << c) <= x {
+			for r+(n<<c) <= x {
 				r += n << c
 			}
 		}
@@ -39,4 +39,3 @@ func main() {
 		fmt.Println(r)
 	}
 }
-
