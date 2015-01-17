@@ -1,4 +1,4 @@
-beautiful <- function(s) {
+cat(sapply(tolower(readLines(tail(commandArgs(), n=1))), function(s) {
   xs <- strsplit(s, "")[[1]]
   ct <- rep.int(0, 26)
   for (i in 1:length(xs)) {
@@ -14,6 +14,4 @@ beautiful <- function(s) {
     i <- i - 1
   }
   b
-}
-
-cat(sapply(tolower(readLines(tail(commandArgs(), n=1))), beautiful), sep="\n")
+}), sep="\n")
