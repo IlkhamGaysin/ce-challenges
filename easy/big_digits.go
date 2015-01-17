@@ -20,6 +20,7 @@ const (
 )
 
 func main() {
+	r := make([]string, h)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -27,7 +28,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		r := make([]string, h)
 		for _, i := range scanner.Text() {
 			if i >= '0' && i <= '9' {
 				for j := 0; j < h; j++ {
@@ -38,6 +38,7 @@ func main() {
 		}
 		for i := 0; i < h; i++ {
 			fmt.Println(r[i])
+			r[i] = ""
 		}
 	}
 }

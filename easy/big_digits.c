@@ -6,30 +6,22 @@ const char *digits = "-**----*--***--***---*---****--**--****--**---**--"
 		     "*--*---*--*-------*----*----*-*--*--*---*--*----*-"
 		     "-**---***-****-***-----*-***---**---*----**---**--"
 		     "--------------------------------------------------";
-const int w = 5;
-const int h = 6;
+const int w = 5, h = 6;
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char line[32] = {'\n'};
+	int i, j, k;
+	char line[18];
 
 	fp = fopen(*++argv, "r");
-	while (fgets(line, 32, fp) != 0) {
-		int i, j, k;
+	while (fgets(line, 18, fp) != 0)
 		for (i = 0; i < h; i++) {
-			for (j = 0; line[j] != '\n'; j++) {
-				for (k = 0; k < w; k++) {
-					if (line[j] >= '0' && line[j] <= '9') {
+			for (j = 0; line[j] != '\n' && line[j] != '\0'; j++)
+				for (k = 0; k < w; k++)
+					if (line[j] >= '0' && line[j] <= '9')
 						printf("%c", digits[i*10*w + (line[j]-'0')*w + k]);
-					}
-				}
-			}
 			printf("\n");
 		}
-		for (i = 0; i < 32; i++) {
-			line[i] = '\n';
-		}
-	}
 	return 0;
 }

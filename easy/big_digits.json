@@ -1,5 +1,6 @@
 {
   "name": "Big Digits",
   "summary": "Print out magnified digits using pseudographics.",
+  "constraints": "Each line of input contains up to 16 symbols. The number of input lines is unconstrained.",
   "url": "https://www.codeeval.com/open_challenges/163"
 }
