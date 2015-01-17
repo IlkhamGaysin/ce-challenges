@@ -24,14 +24,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var cat, m int
-		fmt.Sscanf(string(s), "%d", &m)
+		fmt.Sscanf(scanner.Text(), "%d", &m)
 		for cat < len(age) && m >= age[cat] {
 			cat++
 		}
