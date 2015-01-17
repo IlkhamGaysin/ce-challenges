@@ -14,14 +14,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var x1, y1, x2, y2 int
-		fmt.Sscanf(string(s), "(%d, %d) (%d, %d)", &x1, &y1, &x2, &y2)
+		fmt.Sscanf(scanner.Text(), "(%d, %d) (%d, %d)", &x1, &y1, &x2, &y2)
 		x, y := x1-x2, y1-y2
 		fmt.Println(int(math.Sqrt(float64(x*x + y*y))))
 	}
