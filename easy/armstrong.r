@@ -1,4 +1,4 @@
-armstrong <- function(s) {
+cat(sapply(as.integer(readLines(tail(commandArgs(), n=1))), function(s) {
   if (s < 10) { return("True") }
   e <- as.integer(log10(s)) + 1
   r <- s
@@ -8,6 +8,4 @@ armstrong <- function(s) {
   }
   if (r == 0) { return("True") }
   "False"
-}
-
-cat(sapply(as.integer(readLines(tail(commandArgs(), n=1))), armstrong), sep="\n")
+}), sep="\n")

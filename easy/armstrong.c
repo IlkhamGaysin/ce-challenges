@@ -15,17 +15,15 @@ int main(int argc, char *argv[])
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d;", &n) != EOF) {
-		int a, e = 0, s = 0, r;
+		int a, e = 0, s = 0;
 		for (a = n; a; a /= 10)
 			e++;
-		for (a = n; a; a /= 10) {
-			r = a % 10;
-			s += powi(r, e);
-		}
+		for (a = n; a; a /= 10)
+			s += powi(a % 10, e);
 		if (n == s)
-			printf("True\n");
+			puts("True");
 		else
-			printf("False\n");
+			puts("False");
 	}
 	return 0;
 }

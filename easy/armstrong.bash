@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     e=0
     s=0
     for ((i=$line; i>0; i/=10)); do
