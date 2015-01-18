@@ -1,9 +1,10 @@
 import System.Environment (getArgs)
 
-compress      :: [Int] -> [Int] -> [Int]
-compress xs ys | null ys                       = xs
-               | null xs || last xs /= head ys = compress (xs ++ [1, head ys]) (tail ys)
-               | otherwise                     = compress (init (init xs) ++ [succ . last $ init xs] ++ [last xs]) (tail ys)
+compress                :: [Int] -> [Int] -> [Int]
+compress xs       []     = reverse xs
+compress []       (y:ys) = compress [y, 1] ys
+compress (x:n:xs) (y:ys) | x /= y    = compress (y:1:x:n:xs) ys
+                         | otherwise = compress (x:(n+1):xs) ys
 
 main :: IO ()
 main = do

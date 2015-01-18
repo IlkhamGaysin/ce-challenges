@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -15,19 +14,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		var num, count int
-		sequ := strings.Fields(strings.TrimSpace(s))
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		var num, count, k int
+		sequ := strings.Fields(strings.TrimSpace(scanner.Text()))
 		for _, i := range sequ {
-			k, err := strconv.Atoi(i)
-			if err != nil {
-				log.Fatal(err)
-			}
+			fmt.Sscanf(i, "%d", &k)
 			if k == num {
 				count++
 			} else {

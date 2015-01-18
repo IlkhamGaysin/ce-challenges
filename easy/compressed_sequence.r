@@ -1,4 +1,4 @@
-compr <- function(s) {
+cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), function(s) {
   paste(Reduce(function(x,y) {
     if (x[1] == 0) {
       c(1, y)
@@ -11,6 +11,4 @@ compr <- function(s) {
       }
     }
   }, s, c(0, "")), collapse=" ")
-}
-
-cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), compr), sep="\n")
+}), sep="\n")
