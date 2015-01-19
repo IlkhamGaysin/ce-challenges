@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 				pb[i] = -1;
 			for (i = 0; i < n; i++) {
 				fscanf(fp, "%d", &t);
-				pb[t-1] = nb[i];
+				pb[t - 1] = nb[i];
 				nb[i] = -1;
 			}
 			for (i = 0; i <= n; i++) {
@@ -37,25 +37,25 @@ int main(int argc, char *argv[])
 			getc(fp);
 			break;
 		case ' ':
-			if (s == sbs-1) {
-				sbs += sbs/2;
+			if (s == sbs - 1) {
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 			}
 			sb[s++] = '\0';
-			if (n == nbs-1) {
-				nbs += nbs/2;
+			if (n == nbs - 1) {
+				nbs += nbs / 2;
 				nb = realloc(nb, nbs * sizeof(int));
 				pb = realloc(pb, nbs * sizeof(int));
 			}
 			nb[++n] = s;
 			break;
 		default:
-			if (s == sbs-1) {
-				sbs += sbs/2;
+			if (s == sbs - 1) {
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 			}
 			sb[s++] = c;
 		}
 	}
-return 0;
+	return 0;
 }
