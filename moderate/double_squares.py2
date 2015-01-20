@@ -1,5 +1,4 @@
-import fileinput
-import math
+import fileinput, math
 
 buckets = 7759
 

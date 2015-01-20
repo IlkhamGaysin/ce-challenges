@@ -1,5 +1,4 @@
-import collections
-import fileinput
+import collections, fileinput
 
 cat = collections.OrderedDict(
      ((0, "This program is for humans"),

@@ -1,5 +1,4 @@
-import fileinput
-import sys
+import fileinput, sys
 
 for line in fileinput.input():
     up = True

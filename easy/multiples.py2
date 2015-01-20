@@ -1,5 +1,4 @@
-import fileinput
-import math
+import fileinput, math
 
 for line in fileinput.input():
     st = line.split(",")
