@@ -6,8 +6,7 @@ int main(int argc, char *argv[])
 	int a;
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d", &a) != EOF) {
-		printf("%d\n", !(a%2));
-	}
+	while (fscanf(fp, "%d", &a) != EOF)
+		printf("%d\n", 1 - (a & 1));
 	return 0;
 }

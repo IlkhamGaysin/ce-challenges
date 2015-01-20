@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
@@ -15,17 +13,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s string
-	for {
-		s, err = reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		m, err := strconv.Atoi(strings.TrimSpace(s))
-		if err != nil {
-			log.Fatal(err)
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		var m int
+		fmt.Sscanf(scanner.Text(), "%d", &m)
 		if m%2 != 0 {
 			fmt.Println(0)
 		} else {
