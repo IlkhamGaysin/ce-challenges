@@ -10,6 +10,6 @@ cat(sapply(as.integer(readLines(tail(commandArgs(), n=1))), function(x) {
   if (x == 0) {
     0
   } else {
-    fibo(x, 0, 1)
+    fibo(x)
   }
 }), sep="\n")

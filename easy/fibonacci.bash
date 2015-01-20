@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     if [ $line -eq 0 ] || [ $line -eq 1 ]; then
         echo $line
     else
