@@ -1,23 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
-    FILE *fp;
-    char c, line[64];
-    int d;
+	FILE *fp;
+	int sbs = 32, a, n = 0;
+	char c;
+	char *sb = malloc(sbs);
 
-    fp = fopen(*++argv, "r");
-    while (fgets(line, 64, fp) != 0) {
-        if (line[0] == '\n')
-            continue;
-        while (1) {
-            fscanf(fp, "%c", &c);
-            if (c == '\n')
-                break;
-            fscanf(fp, "%d", &d);
-            printf("%c", line[d-1]);
-        }
-        printf("\n");
-    }
-    return 0;
+	fp = fopen(*++argv, "r");
+	while ((c = getc(fp)) != EOF) {
+		if (c == '|') {
+			while ((c = getc(fp)) == ' ') {
+				fscanf(fp, "%d", &a);
+				putchar(sb[a - 1]);
+			}
+			putchar('\n');
+			n = 0;
+		} else if (c != '\n') {
+			if (n == sbs) {
+				sbs += sbs / 2;
+				sb = realloc(sb, sbs);
+			}
+			sb[n++] = c;
+		}
+	}
+	return 0;
 }

@@ -14,20 +14,17 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		} else if len(s) < 3 {
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		if scanner.Text() == "" {
 			continue
 		}
-		t := strings.Split(s, "|")
+		t := strings.Split(scanner.Text(), "|")
 		u := strings.Fields(strings.TrimSpace(t[1]))
 		for _, i := range u {
 			var f int
 			fmt.Sscan(i, &f)
-			fmt.Print(string(t[0][f-1]))
+			fmt.Printf("%c", t[0][f-1])
 		}
 		fmt.Println()
 	}
