@@ -1,5 +1,5 @@
 for line in io.lines(arg[1]) do
-  _, _, f, b, n = string.find(line, "(%d+) (%d+) (%d+)")
+  local f, b, n = line:match("(%d+) (%d+) (%d+)")
   for i = 1, n do
     if i > 1 then
       io.write(" ")

@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     a=( $line )
     i=1
     while [ $i -le ${a[2]} ]; do
