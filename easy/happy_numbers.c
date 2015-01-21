@@ -1,43 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int happy(int a)
 {
-	int i = 0, ret = 0;
-	char line[13];
-
-	sprintf(line, "%d", a);
-	do {
-		int c = line[i] - 48;
-		ret += c * c;
-	} while (line[++i] != '\0');
+	int i, ret = 0, t;
+	for (i = a; i > 0; i /= 10) {
+		t = i % 10;
+		ret += t * t;
+	}
 	return ret;
 }
 
 int main(int argc, char *argv[])
 {
-    FILE *fp;
-    char line[22];
+	FILE *fp;
+	int a = 0;
+	char c;
 
-    fp = fopen(*++argv, "r");
-    while (fgets(line, 22, fp) != 0) {
-	int i = 0, a = atoi(line), b[128] = {a,0};
-
-	while (a != 1) {
-	    int j = 0;
-	    if (i > 126)
-		goto out;
-	    a = happy(a);
-	    while (b[j] != 0) {
-		if (b[j++] == a)
-		    goto out;
-	    }
-	    b[++i] = a;
+	fp = fopen(*++argv, "r");
+	while ((c = getc(fp)) != EOF || a) {
+		if (c == '\n' || c == EOF) {
+			int i, j, b[128] = { a, 0 };
+			for (i = 0; i < 128 && a > 0; i++) {
+				a = happy(a);
+				if (a == 1) {
+					puts("1");
+					break;
+				}
+				for (j = 0; j < i; j++) {
+					if (b[j] == a) {
+						a = 0;
+						break;
+					}
+				}
+			}
+			if (a != 1)
+				puts("0");
+			a = 0;
+		} else {
+			a += (c - '0') * (c - '0');
+		}
 	}
-	printf("1\n");
-	continue;
-out:
-	printf("0\n");
-    }
-    return 0;
+	return 0;
 }

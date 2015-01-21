@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     b=( $line )
     for ((i=128; i>0; i--)); do
         if [ $line -le 1 ]; then

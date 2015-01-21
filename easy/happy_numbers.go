@@ -22,14 +22,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var a uint
-		fmt.Sscanf(string(s), "%d", &a)
+		fmt.Sscanf(scanner.Text(), "%d", &a)
 		b := []uint{a}
 		for i := 0; a > 1 && i < 127; i++ {
 			a = happy(a)
