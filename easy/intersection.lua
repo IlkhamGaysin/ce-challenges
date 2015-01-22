@@ -1,5 +1,5 @@
 for line in io.lines(arg[1]) do
-  _, _, r, s = line:find("([^;]+);([^;]+)")
+  local r, s = line:match("([^;]+);([^;]+)")
   local a, b, first = {}, {}, true
   for i in r:gmatch("[-]?%d+") do
     a[#a + 1] = tonumber(i)

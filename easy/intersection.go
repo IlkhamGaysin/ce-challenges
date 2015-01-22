@@ -14,13 +14,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
-		t := strings.Split(string(s), ";")
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Split(scanner.Text(), ";")
 		u, v := strings.Split(t[0], ","), strings.Split(t[1], ",")
 		x, y := []int{}, []int{}
 		for _, i := range u {
