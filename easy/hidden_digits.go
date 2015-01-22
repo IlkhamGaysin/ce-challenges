@@ -14,13 +14,8 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s string
-	for {
-		s, err = reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		maph := func(r rune) rune {
 			if strings.Contains("0123456789", string(r)) {
 				return r
@@ -29,7 +24,7 @@ func main() {
 			}
 			return -1
 		}
-		t := strings.Map(maph, s)
+		t := strings.Map(maph, scanner.Text())
 
 		if len(t) == 0 {
 			fmt.Println("NONE")
