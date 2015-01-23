@@ -7,10 +7,10 @@ int main(int argc, char *argv[])
 	int i = 0, s = -1, n;
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
+	while ((c = getc(fp)) != EOF || s >= 0) {
 		if (s < 0 && c == '{') {
 			s = 0;
-		} else if (c == '\n') {
+		} else if (c == '\n' || c == EOF) {
 			if (s >= 0) {
 				printf("%d\n", s);
 				s = -1;
