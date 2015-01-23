@@ -14,14 +14,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var num uint64
-		t := strings.Fields(strings.TrimSpace(s))
+		t := strings.Fields(strings.TrimSpace(scanner.Text()))
 		for i := 0; i < len(t); i += 2 {
 			num <<= uint(len(t[i+1]))
 			if t[i] == "00" {
