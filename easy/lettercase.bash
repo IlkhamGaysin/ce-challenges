@@ -9,5 +9,9 @@ while read line || [ -n "$line" ]; do
       ((u++))
     fi
   done
-  awk 'BEGIN {printf "lowercase: %.2f uppercase: %.2f\n", 100*'$l'/('$l'+'$u'), 100*'$u'/('$l'+'$u')}'
+  s=$(($l+$u))
+  if [ $s -eq 0 ]; then
+    s=1
+  fi
+  awk 'BEGIN {printf "lowercase: %.2f uppercase: %.2f\n", 100*'$l'/('$s'), 100*'$u'/('$s')}'
 done <$1

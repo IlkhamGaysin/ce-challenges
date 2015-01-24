@@ -7,18 +7,17 @@ int main(int argc, char *argv[])
 	float count = 0, lower = 0, ratio;
 
 	fp = fopen(*++argv, "r");
-	while (1) {
-		if (fscanf(fp, "%c", &c) == EOF) {
-			if (count == 0)
-				break;
-			else
-				c = '\n';
-		}
-		if (c == '\n') {
-			ratio = 100 * lower / count;
-			printf("lowercase: %.2f uppercase: %.2f\n", ratio, 100-ratio);
-			count = 0;
-			lower = 0;
+	while ((c = getc(fp)) != EOF || count > 0) {
+		if (c == '\n' || c == EOF) {
+			if (count > 0) {
+				ratio = 100 * lower / count;
+				printf("lowercase: %.2f uppercase: %.2f\n",
+				       ratio, 100 - ratio);
+				count = 0;
+				lower = 0;
+			} else {
+				puts("lowercase: 0.00 uppercase: 0.00");
+			}
 		} else if (c >= 'a' && c <= 'z') {
 			lower++;
 			count++;

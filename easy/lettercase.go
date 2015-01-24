@@ -13,14 +13,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var count, lower, ratio float64
-		for _, i := range s {
+		for _, i := range scanner.Text() {
 			if i >= 'a' && i <= 'z' {
 				lower++
 				count++
@@ -28,7 +24,11 @@ func main() {
 				count++
 			}
 		}
-		ratio = 100 * lower / count
-		fmt.Printf("lowercase: %.2f uppercase: %.2f\n", ratio, 100-ratio)
+		if count > 0 {
+			ratio = 100 * lower / count
+			fmt.Printf("lowercase: %.2f uppercase: %.2f\n", ratio, 100-ratio)
+		} else {
+			fmt.Println("lowercase: 0.00 uppercase: 0.00")
+		}
 	}
 }
