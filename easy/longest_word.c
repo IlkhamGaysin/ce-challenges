@@ -1,27 +1,35 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c, longest[80], current[80];
-	int l = 0, i = 0, j;
+	int sbs = 32, l = 0, i = 0;
+	char c;
+	char *sb = malloc(sbs), *cb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
-		if (c == ' ' || c == '\n') {
+	while ((c = getc(fp)) != EOF || i > 0) {
+		if (c == ' ' || c == '\n' || c == EOF) {
 			if (i > l) {
-				for (j = 0; j < i; j++)
-					longest[j] = current[j];
-				longest[i] = '\0';
+				char *tb = sb;
+				sb = cb;
+				cb = tb;
+				sb[i] = '\0';
 				l = i;
 			}
 			i = 0;
-			if (c == '\n') {
-				puts(longest);
+			if (c != ' ') {
+				puts(sb);
 				l = 0;
 			}
 		} else {
-			current[i++] = c;
+			if (i == sbs - 1) {
+				sbs += sbs / 2;
+				sb = realloc(sb, sbs);
+				cb = realloc(cb, sbs);
+			}
+			cb[i++] = c;
 		}
 	}
 	return 0;

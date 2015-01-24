@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     l=
     for i in $line; do
         if [ ${#i} -gt ${#l} ]; then
