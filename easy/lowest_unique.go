@@ -6,7 +6,6 @@ import (
 	"log"
 	"math"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -16,18 +15,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		m, mink, minv := make(map[int]int), math.MaxInt32, 0
-		for ix, i := range strings.Fields(strings.TrimSpace(s)) {
-			k, err := strconv.Atoi(i)
-			if err != nil {
-				log.Fatal(err)
-			}
+		for ix, i := range strings.Fields(strings.TrimSpace(scanner.Text())) {
+			var k int
+			fmt.Sscanf(i, "%d", &k)
 			if m[k] == 0 {
 				m[k] = ix + 1
 			} else {

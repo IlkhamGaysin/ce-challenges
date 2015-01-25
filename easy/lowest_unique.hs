@@ -8,9 +8,9 @@ lowes i | testBit i 1 = 1
         | otherwise   = succ (lowes (div i 2))
 
 lowest          :: Int -> Int -> [[Int]] -> Int
-lowest i j [ws, xs] | null xs && i == 0 = 0
-                    | null xs           = succ . fromJust $ elemIndex (lowes i) ws
-                    | testBit j x = lowest i j [ws, ys]
+lowest 0 _ [_,  []] = 0
+lowest i _ [ws, []] = succ . fromJust $ elemIndex (lowes i) ws
+lowest i j [ws, xs] | testBit j x = lowest i j [ws, ys]
                     | testBit i x = lowest (clearBit i x) (setBit j x) [ws, ys]
                     | otherwise   = lowest (setBit i x) j [ws, ys]
                     where x = head xs
