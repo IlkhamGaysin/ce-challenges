@@ -5,4 +5,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr $ map toLower input
+    putStr . unlines . map (map toLower) $ lines input
