@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 			n++;
 			while isdigit(c) {
 				num *= 10;
-				num += c-48;
+				num += c - 48;
 				c = getc(fp);
 			}
 			z[num]++;
@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
 			}
 			if (c == ',')
 				c = getc(fp);
-		} while (c != '\n');
+		} while isdigit(c);
 		free(z);
-		if (mc > n/2)
+		if (mc > n / 2)
 			printf("%d\n", mn);
 		else
 			puts("None");

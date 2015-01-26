@@ -15,15 +15,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var maxnum, maxcount int
 		num := make([]int, 101)
-		sequ := strings.Split(strings.TrimSpace(s), ",")
+		sequ := strings.Split(strings.TrimSpace(scanner.Text()), ",")
 		for ix, i := range sequ {
 			k, err := strconv.Atoi(i)
 			if err != nil {
