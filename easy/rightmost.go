@@ -14,17 +14,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s, t string
-	for {
-		s, err = reader.ReadString(',')
-		if err != nil {
-			break
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		s := strings.Split(scanner.Text(), ",")
+		if len(s) > 1 {
+			fmt.Println(strings.LastIndex(s[0], s[1]))
 		}
-		t, err = reader.ReadString('\n')
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(strings.LastIndex(s, strings.TrimSpace(t)))
 	}
 }

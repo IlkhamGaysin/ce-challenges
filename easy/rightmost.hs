@@ -11,4 +11,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (lastIndex . splitOn ",") $ lines input
+    putStr . unlines . map (lastIndex . splitOn ",") $ [x | x <- lines input, not (null x)]
