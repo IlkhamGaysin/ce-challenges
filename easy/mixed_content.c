@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
 	bool str = false, dig = false, d = true;
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
-		if (c == '\n' || c == ',') {
+	while ((c = getc(fp)) != EOF || p > 0) {
+		if (c == '\n' || c == ',' || c == EOF) {
 			if (d) {
 				if (s + dig + p >= sbs) {
 					do {
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 				for (i = 0; i < p; i++)
 					printf("%c", pb[i]);
 			}
-			if (c == '\n') {
+			if (c == '\n' || c == EOF) {
 				if (dig) {
 					if (str) {
 						printf("|");

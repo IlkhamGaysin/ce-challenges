@@ -15,15 +15,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s string
-	for {
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var t, r1, r2 []string
-		s, err = reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		t = strings.Split(strings.TrimRight(s, "\n"), ",")
+		t = strings.Split(scanner.Text(), ",")
 		for _, i := range t {
 			_, err := strconv.ParseUint(i, 10, 64)
 			if err != nil {

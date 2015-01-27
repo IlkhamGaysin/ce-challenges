@@ -1,7 +1,7 @@
 File.open(ARGV[0]).each_line do |line|
   v, w = Array.new, Array.new
   line.chomp.split(",").each do |x|
-    if x =~ /\d+/
+    if x =~ /^\d+$/
       v << x
     else
       w << x

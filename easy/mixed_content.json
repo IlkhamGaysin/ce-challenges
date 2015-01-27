@@ -1,5 +1,6 @@
 {
   "name": "Mixed Content",
   "summary": "Separate words with digits",
-  "url": "https://www.codeeval.com/open_challenges/115/"
+  "constraints": "Each line of input contains a list of strings and/or integers. Length and number of input lines are unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/115"
 }
