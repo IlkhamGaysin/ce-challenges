@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-int sq(int a) {
+int sq(int a)
+{
 	int i;
-	for (i = 1; i*i < a; i++);
+	for (i = 1; i * i < a; i++) ;
 	return i;
 }
 
@@ -17,9 +18,9 @@ int main(int argc, char *argv[])
 		if (c == '\n' || c == EOF) {
 			l = sq(n);
 			for (i = 0; i < l; i++)
-				for (j = l-1; j >= 0; j--) {
-					putchar(m[j*l + i]);
-					if (i != l-1 || j > 0)
+				for (j = l - 1; j >= 0; j--) {
+					putchar(m[j * l + i]);
+					if (i != l - 1 || j > 0)
 						putchar(' ');
 					else
 						putchar('\n');
