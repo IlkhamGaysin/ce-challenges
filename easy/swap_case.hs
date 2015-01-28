@@ -10,4 +10,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr $ map swapCase input
+    putStr . unlines . map (map swapCase) $ lines input

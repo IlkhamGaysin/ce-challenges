@@ -8,3 +8,5 @@ for line in fileinput.input():
             sys.stdout.write(c.lower())
         else:
             sys.stdout.write(c)
+    if line[-1] != '\n':
+        print

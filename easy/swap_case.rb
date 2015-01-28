@@ -8,5 +8,5 @@ class String
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.split("").each {|x| print (x.is_lower? ? x.upcase : (x.is_upper? ? x.downcase : x))}
+  puts line.split("").each {|x| x = (x.is_lower? ? x.upcase : (x.is_upper? ? x.downcase : x))}.join()
 end
