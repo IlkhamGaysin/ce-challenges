@@ -14,14 +14,10 @@ func main() {
 	}
 	defer data.Close()
 	var sum int
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var v int
-		fmt.Sscanf(string(s), "%d", &v)
+		fmt.Sscanf(scanner.Text(), "%d", &v)
 		sum += v
 	}
 	fmt.Println(sum)

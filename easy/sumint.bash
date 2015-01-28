@@ -1,6 +1,5 @@
 #!/bin/bash
-let s=0
-while read line; do
-    let "s += $line"
+while read line || [ -n "$line" ]; do
+  ((s+=$line))
 done < $1
 echo $s
