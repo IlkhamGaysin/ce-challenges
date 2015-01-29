@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;;
 	char c;
-	int b[10] = {0};
+	int b[10] = { 0 };
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 			}
 			a = 0;
 			while (c >= '0' && c <= '9') {
-				a = a*10 + c - '0';
+				a = a * 10 + c - '0';
 				if (fscanf(fp, "%c", &c) == EOF)
 					goto fail_eof;
 			}
@@ -36,9 +36,9 @@ int main(int argc, char *argv[])
 			}
 			a = 0;
 			while (c >= '0' && c <= '9') {
-				a = a*10 + c - '0';
+				a = a * 10 + c - '0';
 				if (fscanf(fp, "%c", &c) == EOF) {
-					if (i < n-1)
+					if (i < n - 1)
 						goto fail_eof;
 					else
 						break;
@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
 			}
 			if (i > 0)
 				printf(" ");
-			printf("%d", b[i]*a);
-			if (i < n-1 && fscanf(fp, "%c", &c) == EOF)
+			printf("%d", b[i] * a);
+			if (i < n - 1 && fscanf(fp, "%c", &c) == EOF)
 				goto fail_eof;
 		}
 		printf("\n");

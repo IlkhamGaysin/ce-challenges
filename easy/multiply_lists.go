@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -15,28 +14,15 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s, t string
-	for {
-		s, err = reader.ReadString('|')
-		if err != nil {
-			break
-		}
-		t, err = reader.ReadString('\n')
-		if err != nil {
-			log.Fatal(err)
-		}
-		s2, t2 := strings.Fields(strings.TrimSpace(s)), strings.Fields(strings.TrimSpace(t))
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		s := strings.Split(scanner.Text(), "|")
+		s2, t2 := strings.Fields(strings.TrimSpace(s[0])), strings.Fields(strings.TrimSpace(s[1]))
 		var r []string
 		for i := 0; i < len(t2); i++ {
-			sx, err := strconv.Atoi(s2[i])
-			if err != nil {
-				log.Fatal(err)
-			}
-			tx, err := strconv.Atoi(t2[i])
-			if err != nil {
-				log.Fatal(err)
-			}
+			var sx, tx int
+			fmt.Sscanf(s2[i], "%d", &sx)
+			fmt.Sscanf(t2[i], "%d", &tx)
 			r = append(r, fmt.Sprint(sx*tx))
 		}
 		fmt.Println(strings.Join(r, " "))
