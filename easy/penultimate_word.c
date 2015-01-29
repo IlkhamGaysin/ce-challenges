@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 	sbp[0] = '\0';
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
-		if (c == '\n') {
+	while ((c = getc(fp)) != EOF || i > 0) {
+		if (c == '\n' || c == EOF) {
 			printf("%s\n", sbp);
 			sbp[0] = '\0';
 			i = 0;
@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
 			sb = temp;
 			i = 0;
 		} else {
-			if (i == sbs-1) {
-				sbs += sbs/2;
+			if (i == sbs - 1) {
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 				sbp = realloc(sbp, sbs);
 			}

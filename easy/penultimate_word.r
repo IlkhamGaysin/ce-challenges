@@ -1,8 +1,7 @@
-penultimate <- function(xs) {
+cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), function(xs) {
   if (length(xs) < 2) {
-    return("")
+    ""
+  } else {
+    xs[[length(xs)-1]]
   }
-  xs[[length(xs)-1]]
-}
-
-cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), penultimate), sep="\n")
+}), sep="\n")
