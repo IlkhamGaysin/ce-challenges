@@ -4,10 +4,10 @@ $c = 0;
 while (true) {
 	$test = fgetc($fh);
 
-	if ($test == "") {
+	if ($test == "" && $c == 0) {
 		break;
 	}
-	elseif ($test == "\n") {
+	elseif ($test == "" || $test == "\n") {
 		echo $c, "\n";
 		$c = 0;
 	}

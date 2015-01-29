@@ -2,15 +2,17 @@
 
 int main(int argc, char *argv[])
 {
-    FILE *fp;
-    char line[22];
+	FILE *fp;
+	int n = 0;
+	char c;
 
-    fp = fopen(*++argv, "r");
-    while (fgets(line, 22, fp) != 0) {
-	int i = 0, j = 0;
-	while (line[i] != '\n')
-	    j += line[i++] - 48;
-	printf("%d\n", j);
-    }
-    return 0;
+	fp = fopen(*++argv, "r");
+	while ((c = getc(fp)) != EOF || n > 0)
+		if (c == '\n' || c == EOF) {
+			printf("%d\n", n);
+			n = 0;
+		} else {
+			n += c - '0';
+		}
+	return 0;
 }

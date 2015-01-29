@@ -13,18 +13,19 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
+	scanner := bufio.NewScanner(data)
+	scanner.Split(bufio.ScanBytes)
 	var r int
-	for {
-		c, err := reader.ReadByte()
-		if err != nil {
-			break
-		}
+	for scanner.Scan() {
+		c := rune(scanner.Text()[0])
 		if c >= '0' && c <= '9' {
 			r += int(c - '0')
 		} else {
 			fmt.Println(r)
 			r = 0
 		}
+	}
+	if r > 0 {
+		fmt.Println(r)
 	}
 }
