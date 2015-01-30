@@ -1,5 +1,6 @@
 {
   "name": "Spiral Printing",
   "summary": "Print out a 2D array in spiral order",
-  "url": "https://www.codeeval.com/open_challenges/57/"
+  "constraints": "Each line of input contains two integers n and m, and a list of length n times m of characters or numbers of unconstrained length. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/57"
 }

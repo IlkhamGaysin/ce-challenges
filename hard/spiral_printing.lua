@@ -1,5 +1,5 @@
 for line in io.lines(arg[1]) do
-  _, _, row, col, line = string.find(line, "(%d+);(%d+);(.*)")
+  row, col, line = line:match("(%d+);(%d+);(.*)")
   t = {}
   for i in string.gmatch(line, "%S+") do
     t[#t + 1] = i
