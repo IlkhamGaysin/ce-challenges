@@ -14,25 +14,15 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var s, t string
-	for {
-		s, err = reader.ReadString(',')
-		if err != nil {
-			break
-		}
-		s = strings.TrimRight(s, ",")
-		t, err = reader.ReadString('\n')
-		if err != nil {
-			log.Fatal(err)
-		}
-		t = strings.TrimSpace(t)
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		s := strings.Split(scanner.Text(), ", ")
 		mapf := func(r rune) rune {
-			if strings.Contains(t, string(r)) {
+			if strings.Contains(s[1], string(r)) {
 				return -1
 			}
 			return r
 		}
-		fmt.Println(strings.Map(mapf, s))
+		fmt.Println(strings.Map(mapf, s[0]))
 	}
 }

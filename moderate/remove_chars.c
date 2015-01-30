@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 		if (c == ',') {
 			int j;
 			getc(fp);
-			while ((c = getc(fp)) != '\n')
+			while ((c = getc(fp)) != '\n' && c != EOF)
 				for (j = 0; j < i; j++)
 					if (sb[j] == c)
 						sb[j] = ',';

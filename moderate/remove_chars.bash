@@ -1,5 +1,5 @@
 #!/bin/bash
-sed -e "s/, / /g" $1| while read line; do
+sed -e "s/, / /g" $1| while read line || [ -n "$line" ]; do
   a=( $line )
   l=$(( ${#a[@]} - 1 ))
   m=$(( ${#line} - ${#a[$l]} - 1 ))
