@@ -2,9 +2,7 @@ import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 
 modulo  :: [Integer] -> Integer
-modulo a = h - div h l * l
-       where h = head a
-             l = last a
+modulo [n, m] = n - div n m * m
 
 main :: IO ()
 main = do
