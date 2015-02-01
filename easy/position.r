@@ -1,4 +1,4 @@
-position <- function(s) {
+cat(sapply(readLines(tail(commandArgs(), n=1)), function(s) {
   xs <- strsplit(s, ",")[[1]]
   x <- as.integer(xs[1])
   p1 <- 2^(as.integer(xs[2])-1)
@@ -8,6 +8,4 @@ position <- function(s) {
   } else {
     "false"
   }
-}
-
-cat(sapply(readLines(tail(commandArgs(), n=1)), position), sep="\n")
+}), sep="\n")

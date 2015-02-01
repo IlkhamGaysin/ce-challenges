@@ -2,13 +2,9 @@ import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 import Data.Bits (testBit)
 
-compareBits  :: [Int] -> String
-compareBits s = if testBit i a == testBit i b
-                  then "true"
-                  else "false"
-                where i = head s
-                      a = (s !! 1) - 1
-                      b = last s - 1
+compareBits          :: [Int] -> String
+compareBits [i, a, b] | testBit i (a - 1) == testBit i (b - 1) = "true"
+                      | otherwise                              = "false"
 
 main :: IO ()
 main = do
