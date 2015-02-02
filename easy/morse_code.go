@@ -15,13 +15,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
+	scanner := bufio.NewScanner(data)
+	scanner.Split(bufio.ScanBytes)
 	m := 1
-	for {
-		c, err := reader.ReadByte()
-		if err != nil {
-			break
-		}
+	for scanner.Scan() {
+		c := rune(scanner.Text()[0])
 		switch {
 		case c == '.':
 			m <<= 1
@@ -38,5 +36,11 @@ func main() {
 			}
 			m = 1
 		}
+	}
+	if m > 1 {
+		if m < 64 {
+			fmt.Print(string(morse[m-2]))
+		}
+		fmt.Println()
 	}
 }

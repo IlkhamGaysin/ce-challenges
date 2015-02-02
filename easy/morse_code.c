@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	int m = 1;
 	char *morse = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90";
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
+	while ((c = getc(fp)) != EOF || m > 1) {
 		if (c == '.') {
 			m <<= 1;
 		} else if (c == '-') {
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 		} else {
 			if (m < 64)
 				putchar(morse[m-2]);
-			if (c == '\n')
+			if (c == '\n' || c == EOF)
 				putchar('\n');
 			m = 1;
 		}

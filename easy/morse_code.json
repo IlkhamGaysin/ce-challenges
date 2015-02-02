@@ -1,5 +1,6 @@
 {
   "name": "Morse Code",
   "summary": "Decode Morse code",
-  "url": "https://www.codeeval.com/open_challenges/116/"
+  "constraints": "Each line of input contains one string. Length and number of input lines are unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/116"
 }
