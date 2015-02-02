@@ -13,15 +13,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var x, n, r int
 		var c uint
-		fmt.Sscanf(string(s), "%d,%d", &x, &n)
+		fmt.Sscanf(scanner.Text(), "%d,%d", &x, &n)
 		r = n
 		for (r << 1) <= x {
 			r <<= 1

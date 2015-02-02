@@ -3,14 +3,13 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char line[48];
+	int a, b, i = 0;
 
 	fp = fopen(*++argv, "r");
-	while (fgets(line, 48, fp) != 0) {
-		int a, b, i = 0;
-		sscanf(line, "%d,%d", &a, &b);
+	while (fscanf(fp, "%d,%d", &a, &b) != EOF) {
 		while (b * ++i < a);
 		printf("%d\n", b * i);
+		i = 0;
 	}
 	return 0;
 }
