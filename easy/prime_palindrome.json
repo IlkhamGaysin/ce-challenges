@@ -1,5 +1,6 @@
 {
   "name": "Prime Palindrome",
   "summary": "Biggest prime palindrome < 1000.",
-  "url": "https://www.codeeval.com/open_challenges/3/"
+  "constraints": "No input.",
+  "url": "https://www.codeeval.com/open_challenges/3"
 }
