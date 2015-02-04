@@ -1,5 +1,6 @@
 {
   "name": "Endianness",
   "summary": "Determine the endianness of a system.",
-  "url": "https://www.codeeval.com/open_challenges/15/"
+  "constraints": "No input.",
+  "url": "https://www.codeeval.com/open_challenges/15"
 }
