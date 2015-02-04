@@ -2,10 +2,10 @@ import System.Environment (getArgs)
 import Data.Char (isDigit, isSpace)
 import Data.List (intercalate, sort)
 
-roadTrip      :: Int -> [Int] -> [Int] -> [Int]
-roadTrip w x y | null y    = x
-               | null x    = roadTrip (head y) [head y] (tail y)
-               | otherwise = roadTrip (head y) (x ++ [head y - w]) (tail y)
+roadTrip            :: Int -> [Int] -> [Int] -> [Int]
+roadTrip _ xs []     = xs
+roadTrip _ [] (y:ys) = roadTrip y [y] ys
+roadTrip w xs (y:ys) = roadTrip y (xs ++ [y - w]) ys
 
 main :: IO ()
 main = do

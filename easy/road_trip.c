@@ -9,7 +9,7 @@ static int cmpint(const void *p1, const void *p2)
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	int a;
+	int a, b[600], i, n;
 	char c;
 
 	fp = fopen(*++argv, "r");
@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 		c = getc(fp);
 	} while (c != ',' && c != EOF);
 	while (fscanf(fp, "%d", &a) != EOF) {
-		int b[600]= { a }, i, n = 1;
+		b[0]= a;
+		n = 1;
 		while (getc(fp) == ';' && getc(fp) == ' ') {
 			do {
 				c = getc(fp);
