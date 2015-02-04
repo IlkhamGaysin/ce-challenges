@@ -1,3 +1,3 @@
 File.open(ARGV[0]).each_line do |line|
-  puts line.split.reverse.join(' ')
+  puts line.split.reverse.join(' ') if line !~ /^$/
 end

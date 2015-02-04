@@ -1,27 +1,45 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char b[256];
+	int sbs = 16, s = 0, rbs = 32, r = 0;
+	char c;
+	char *sb = malloc(sbs), *rb = malloc(rbs);
 
 	fp = fopen(*++argv, "r");
-	while (fgets(b, 31, fp) != 0) {
-		int p = strlen(b) - 1, q = p;
-		while (p >= -1) {
-			if (p == -1 || isblank(b[p])) {
-				int r = p;
-				while (++r < q)
-					putchar(b[r]);
-				if (p >= 0)
-					printf(" ");
-				q = p;
+	while ((c = getc(fp)) != EOF) {
+		if (c == '\n')
+			continue;
+		while (c != '\n' && c != EOF) {
+			if isblank(c) {
+				while (r + s > rbs - 1) {
+					rbs += rbs / 2;
+					rb = realloc(rb, rbs);
+				}
+				while (s > 0) {
+					rb[r++] = sb[--s];
+				}
+				rb[r++] = ' ';
+				s = 0;
+			} else {
+				if (s == sbs - 1) {
+					sbs += sbs / 2;
+					sb = realloc(sb, sbs);
+				}
+				sb[s++] = c;
 			}
-			p--;
+			c = getc(fp);
 		}
+		sb[s] = '\0';
+		printf("%s", sb);
+		while (r > 0)
+			printf("%c", rb[--r]);
 		printf("\n");
+		r = 0;
+		s = 0;
 	}
 	return 0;
 }

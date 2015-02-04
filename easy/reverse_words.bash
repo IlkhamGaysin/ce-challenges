@@ -1,5 +1,6 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
+  if [ -n "$line" ]; then
     a=( $line )
     l=$((${#a[@]}-1))
     printf "${a[$l]}"
@@ -7,4 +8,5 @@ while read line; do
         printf " ${a[$i]}"
     done
     echo
-done < $1
+  fi
+done <$1

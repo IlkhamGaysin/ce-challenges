@@ -14,23 +14,21 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
-		var c string
-		t := []string{}
-		for _, i := range s {
-			if i == ' ' {
-				t = append([]string{c}, t...)
-				c = ""
-			} else {
-				c += string(i)
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		if len(scanner.Text()) > 0 {
+			var c string
+			t := []string{}
+			for _, i := range scanner.Text() {
+				if i == ' ' {
+					t = append([]string{c}, t...)
+					c = ""
+				} else {
+					c += string(i)
+				}
 			}
+			t = append([]string{c}, t...)
+			fmt.Println(strings.Join(t, " "))
 		}
-		t = append([]string{c}, t...)
-		fmt.Println(strings.Join(t, " "))
 	}
 }
