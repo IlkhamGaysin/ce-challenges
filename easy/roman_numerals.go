@@ -17,15 +17,10 @@ func main() {
 	ronum, rostr := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1},
 		[]string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
 
-	reader := bufio.NewReader(data)
-	var s string
-	for {
-		s, err = reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var num int
-		fmt.Sscan(s, &num)
+		fmt.Sscan(scanner.Text(), &num)
 		for i := 0; num > 0; {
 			if num >= ronum[i] {
 				fmt.Print(rostr[i])
