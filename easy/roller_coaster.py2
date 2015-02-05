@@ -12,3 +12,5 @@ for line in fileinput.input():
                 up = True
         else:
             sys.stdout.write(c)
+    if line[-1] != '\n':
+        print

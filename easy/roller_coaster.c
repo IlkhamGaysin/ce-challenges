@@ -5,11 +5,11 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c;
+	char c, p = '\n';
 	bool u = false;
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF)
+	while ((c = getc(fp)) != EOF) {
 		if isalpha(c) {
 			u = !u;
 			if (u)
@@ -21,5 +21,9 @@ int main(int argc, char *argv[])
 				u = false;
 			putchar(c);
 		}
+		p = c;
+	}
+	if (p != '\n')
+		putchar('\n');
 	return 0;
 }

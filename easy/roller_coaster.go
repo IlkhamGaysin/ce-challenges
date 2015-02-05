@@ -9,18 +9,17 @@ import (
 )
 
 func main() {
+	var u bool
+	c := '\n'
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	var u bool
-	for {
-		c, err := reader.ReadByte()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	scanner.Split(bufio.ScanBytes)
+	for scanner.Scan() {
+		c = rune(scanner.Text()[0])
 		if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') {
 			u = !u
 			if u {
@@ -34,5 +33,8 @@ func main() {
 			}
 			fmt.Print(string(c))
 		}
+	}
+	if c != '\n' {
+		fmt.Println()
 	}
 }
