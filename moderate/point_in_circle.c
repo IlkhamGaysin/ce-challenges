@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 bool incircle(float a, float b, float c) {
-	return a*a + b*b <= c*c;
+	return a * a + b * b <= c * c;
 }
 
 int main(int argc, char *argv[])
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "Center: (%f, %f); Radius: %f; Point: (%f, %f)\n", &cx, &cy, &r, &px, &py) != EOF) {
-		if (incircle(cx-px, cy-py, r)) {
+		if (incircle(cx - px, cy - py, r)) {
 			puts("true");
 		} else {
 			puts("false");

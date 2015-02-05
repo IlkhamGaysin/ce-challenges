@@ -17,14 +17,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		f := make([]float64, 5)
-		fmt.Sscanf(s, "Center: (%f, %f); Radius: %f; Point: (%f, %f)",
+		fmt.Sscanf(scanner.Text(), "Center: (%f, %f); Radius: %f; Point: (%f, %f)",
 			&f[0], &f[1], &f[2], &f[3], &f[4])
 		if inCircle(f[0]-f[3], f[1]-f[4], f[2]) {
 			fmt.Println("true")
