@@ -18,13 +18,9 @@ func main() {
 	for i := 0; i < 256; i++ {
 		m[i] = make([]int, 256)
 	}
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
-		t := strings.Split(string(s), " ")
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Fields(scanner.Text())
 		if strings.HasPrefix(t[0], "Query") {
 			var p, sum int
 			fmt.Sscanf(t[1], "%d", &p)
