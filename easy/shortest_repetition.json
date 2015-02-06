@@ -1,5 +1,6 @@
 {
   "name": "Shortest Repetition",
   "summary": "Find the shortest repetition in a string",
-  "url": "https://www.codeeval.com/open_challenges/107/"
+  "constraints": "Each line of input contains one string with 80 or less characters. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/107"
 }
