@@ -13,15 +13,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var n, r int
-		fmt.Sscanf(string(s), "%d", &n)
-		p := make([]int, len(s))
+		fmt.Sscanf(scanner.Text(), "%d", &n)
+		p := make([]int, len(scanner.Text()))
 		for m := n; m > 0; m /= 10 {
 			if v := m % 10; v < len(p) {
 				p[v]++
