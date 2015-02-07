@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
 			b += a & 1;
 			a >>= 1;
 		}
+		if (c == 0)
+			printf("0");
 		while (c) {
 			printf("%d", b & 1);
 			b >>= 1;

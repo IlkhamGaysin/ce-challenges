@@ -1,4 +1,5 @@
 import fileinput
 
 for line in fileinput.input():
-    print "{0:b}".format(int(line))
+    if line != "\n":
+        print "{0:b}".format(int(line))

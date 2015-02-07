@@ -9,4 +9,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr . unlines . map (binary . read) $ lines input
+    putStr . unlines . map (binary . read) $ [x | x <- lines input, not (null x)]

@@ -15,8 +15,10 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var t int
-		fmt.Sscanf(scanner.Text(), "%d", &t)
-		fmt.Printf("%b\n", t)
+		if len(scanner.Text()) > 0 {
+			var t int
+			fmt.Sscanf(scanner.Text(), "%d", &t)
+			fmt.Printf("%b\n", t)
+		}
 	}
 }
