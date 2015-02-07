@@ -2,12 +2,10 @@ import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 import Data.List (sort)
 
-absurd   :: [String] -> String
-absurd xs | length xs < 2 = ""
-          | x == head ys  = x
-          | otherwise     = absurd ys
-          where x  = head xs
-                ys = tail xs
+absurd       :: [String] -> String
+absurd [_]    = ""
+absurd (x:xs) | x == head xs = x
+              | otherwise    = absurd xs
 
 main :: IO ()
 main = do
