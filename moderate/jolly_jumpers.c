@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	while (fscanf(fp, "%d", &n) != EOF) {
 		int xo, i;
 		bool jolly = true, done = false;
-		int *diff = (int *) calloc(n, sizeof(int));
+		int *diff = (int *)calloc(n, sizeof(int));
 		if (diff == NULL) {
 			printf("Out of memory\n");
 			exit(-1);
@@ -25,11 +25,11 @@ int main(int argc, char *argv[])
 			if (done)
 				continue;
 			x = abs(xc - xo);
-			if (x >= n || diff[x-1]) {
+			if (x >= n || x == 0 || diff[x - 1]) {
 				jolly = false;
 				done = true;
 			} else {
-				diff[x-1] = 1;
+				diff[x - 1] = 1;
 				xo = xc;
 			}
 		}
