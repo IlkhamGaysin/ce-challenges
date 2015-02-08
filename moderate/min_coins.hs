@@ -1,8 +1,10 @@
 import System.Environment (getArgs)
 
+b :: [Integer]
+b = [0, 1, 2, 1, 2]
+
 coin   :: Integer -> String
-coin i = show (fromInteger (div i 5) + b !! fromInteger (mod i 5))
-       where b = [0, 1, 2, 1, 2]
+coin i = show (div i 5 + b !! fromInteger (rem i 5))
 
 main :: IO ()
 main = do
