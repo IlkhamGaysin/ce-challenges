@@ -1,5 +1,5 @@
 #!/bin/bash
-tr "," " " <$1 | while read line; do
+tr "," " " <$1 | while read line || [ -n "$line" ]; do
     a=( $line )
     l=0
     m=${a[0]}

@@ -1,11 +1,11 @@
 import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 
-largest       :: Int -> Int -> [Int] -> String
-largest i j xs | null xs     = show i
-               | otherwise   = largest k l (tail xs)
-               where k = maximum [head xs, head xs + j, i]
-                     l = max (head xs + j) 0
+largest           :: Int -> Int -> [Int] -> String
+largest i _ []     = show i
+largest i j (x:xs) = largest k l xs
+               where k = maximum [x, x + j, i]
+                     l = max (x + j) 0
 
 main :: IO ()
 main = do

@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	int a, l = 0, m = INT_MIN;
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d", &a) != EOF) {
+	while (fscanf(fp, "%d", &a) != EOF || m > INT_MIN) {
 		char c = getc(fp);
 
 		if (a > m)
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 			l += a;
 		else
 			l = 0;
-		if (c == '\n') {
+		if (c == '\n' || c == EOF) {
 			printf("%d\n", m);
 			l = 0;
 			m = INT_MIN;

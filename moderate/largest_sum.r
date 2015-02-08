@@ -1,4 +1,4 @@
-largest <- function(s) {
+cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), ","), function(s) {
   m <- as.integer(s[1])
   l <- 0
   for (i in 1:length(s)) {
@@ -16,6 +16,4 @@ largest <- function(s) {
     }
   }
   m
-}
-
-cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), ","), largest), sep="\n")
+}), sep="\n")
