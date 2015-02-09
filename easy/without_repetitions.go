@@ -21,4 +21,7 @@ func main() {
 		}
 		c = scanner.Text()
 	}
+	if c != "\n" {
+		fmt.Println()
+	}
 }

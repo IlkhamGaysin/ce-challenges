@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 			putchar(c);
 		p = c;
 	}
+	if (p != '\n')
+		putchar('\n');
 	return 0;
 }
-
