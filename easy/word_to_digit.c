@@ -61,8 +61,7 @@ int main(int argc, char *argv[])
 			skip(3, fp);
 			break;
 		}
-		fscanf(fp, "%c", &c);
-		if (c == '\n')
+		if (fscanf(fp, "%c", &c) == EOF || c == '\n')
 			printf("\n");
 	}
 	return 0;
