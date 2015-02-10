@@ -1,5 +1,6 @@
 {
   "name": "Swap Elements",
   "summary": "Swap elements in a list",
-  "url": "https://www.codeeval.com/open_challenges/112/"
+  "constraints": "Each line of input contains a list of integers and a list of two integers. Length and number of input lines are unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/112"
 }

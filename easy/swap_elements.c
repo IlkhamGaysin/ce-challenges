@@ -15,11 +15,11 @@ int main(int argc, char *argv[])
 		switch (c) {
 		case '0': case '1': case '2': case '3': case '4':
 		case '5': case '6': case '7': case '8': case '9':
-			num = 10*num + (c - '0');
+			num = 10 * num + (c - '0');
 			break;
 		case ' ':
 			if (ix == ibs) {
-				ibs += ibs/2;
+				ibs += ibs / 2;
 				ib = realloc(ib, ibs * sizeof(int));
 			}
 			ib[ix++] = num;
