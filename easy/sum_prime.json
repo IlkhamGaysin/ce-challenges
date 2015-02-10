@@ -1,5 +1,6 @@
 {
   "name": "Sum of Primes",
   "summary": "Sum of first 1000 primes.",
-  "url": "https://www.codeeval.com/open_challenges/4/"
+  "constraints": "No input.",
+  "url": "https://www.codeeval.com/open_challenges/4"
 }

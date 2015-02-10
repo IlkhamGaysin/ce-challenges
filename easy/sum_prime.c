@@ -12,7 +12,7 @@ bool prime(int a, int *p) {
 
 int main(int argc, char *argv[])
 {
-	int primes[1000] = {2, 3};
+	int primes[1000] = { 2, 3 };
 	int i, c = 5, s = 5;
 	for (i = 2; i < 1000; i++) {
 		while (!prime(c, primes))
