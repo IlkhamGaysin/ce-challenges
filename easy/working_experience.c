@@ -71,20 +71,20 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char c;
-	int work[12] = {0};
+	int work[12] = { 0 };
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
 		int i, t0, t1, m = month(c, fp) - 1;
 		fscanf(fp, "%d", &t0);
-		t0 = 12*(t0-1990) + m;
+		t0 = 12 * (t0 - 1990) + m;
 		skip(1, fp);
 		fscanf(fp, "%c", &c);
 		m = month(c, fp) - 1;
 		fscanf(fp, "%d", &t1);
-		t1 = 12*(t1-1990) + m;
+		t1 = 12 * (t1 - 1990) + m;
 		for (i = t0; i <= t1; i++) {
-			work[i/30] |= (1 << (i%30));
+			work[i / 30] |= (1 << (i % 30));
 		}
 		fscanf(fp, "%c", &c);
 		if (c == ';') {
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 						w++;
 				work[i] = 0;
 			}
-			printf("%d\n", w/12);
+			printf("%d\n", w / 12);
 		}
 	}
 	return 0;

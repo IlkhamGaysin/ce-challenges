@@ -5,17 +5,14 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 )
 
 var moy map[string]int
 
 func month(s string) int {
-	k, err := strconv.Atoi(s[4:8])
-	if err != nil {
-		log.Fatal(err)
-	}
+	var k int
+	fmt.Sscanf(s[4:8], "%d", &k)
 	return 12*(k-1990) + moy[s[0:3]]
 }
 
@@ -29,14 +26,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		work := make(map[int]bool)
-		t := strings.Split(s, "; ")
+		t := strings.Split(scanner.Text(), "; ")
 		for _, i := range t {
 			t0, t1 := month(i[0:8]), month(i[9:17])
 			for j := t0; j <= t1; j++ {
