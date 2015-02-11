@@ -1,19 +1,17 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c;
+	char c, z[10];
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
-		char *z = malloc(10);
 		int n = 0, i;
 		while isdigit(c) {
-			z[n] = c-48;
+			z[n] = c - 48;
 			n++;
 			c = getc(fp);
 		}
@@ -22,7 +20,7 @@ int main(int argc, char *argv[])
 		bool sg = true;
 		for (i = 0; i < n;) {
 			if isalpha(c) {
-				op = 10*op + z[i];
+				op = 10 * op + z[i];
 				i++;
 			} else {
 				if (sg)
@@ -38,7 +36,6 @@ int main(int argc, char *argv[])
 			num += op;
 		else
 			num -= op;
-		free(z);
 		printf("%d\n", num);
 	}
 	return 0;

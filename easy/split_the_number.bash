@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
   a=( $line )
   if [ ${#a[*]} -gt 1 ]; then
     s0=${a[0]}
