@@ -15,4 +15,4 @@ main :: IO ()
 main = do
     [inpFile] <- getArgs
     input <- readFile inpFile
-    putStr $ slang 0 False input
+    putStr $ slang 0 False (if last input == '\n' then input else input ++ "\n")

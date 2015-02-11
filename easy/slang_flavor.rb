@@ -21,4 +21,5 @@ File.open(ARGV[0]).each_line do |line|
       print x
     end
   }
+  puts if s.last != "\n"
 end

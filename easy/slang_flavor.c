@@ -8,7 +8,7 @@ const char *phrases[] = {", yeah!", ", this is crazy, I tell ya.",
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c;
+	char c, p = '\n';
 	bool l = false;
 	int i = 0;
 
@@ -18,14 +18,17 @@ int main(int argc, char *argv[])
 			if (l) {
 				printf("%s", phrases[i]);
 				l = false;
-				i = (i+1) % 8;
+				i = (i + 1) % 8;
 			} else {
-				printf("%c", c);
+				putchar(c);
 				l = true;
 			}
 		} else {
-			printf("%c", c);
+			putchar(c);
 		}
+		p = c;
 	}
+	if (p != '\n')
+		putchar('\n');
 	return 0;
 }
