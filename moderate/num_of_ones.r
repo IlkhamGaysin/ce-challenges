@@ -1,4 +1,4 @@
-noo <- function(s) {
+cat(sapply(as.integer(readLines(tail(commandArgs(), n=1))), function(s) {
   r <- 0
   while (s > 0) {
     o <- s %% 2
@@ -6,6 +6,4 @@ noo <- function(s) {
     s <- (s - o) / 2
   }
   r
-}
-
-cat(sapply(as.integer(readLines(tail(commandArgs(), n=1))), noo), sep="\n")
+}), sep="\n")

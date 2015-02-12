@@ -1,9 +1,9 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     i=0
     while [ $line -gt 0 ]; do
         i=$(($i + ($line & 1)))
         line=$(($line >> 1))
     done
     echo $i
-done < $1
+done <$1
