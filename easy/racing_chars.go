@@ -34,8 +34,8 @@ func main() {
 		if a < 0 {
 			a = 0
 		}
-		if b > len(s)-1 {
-			b = len(s) - 1
+		if b > len(s) {
+			b = len(s)
 		}
 		curr = strings.Index(s[a:b], "C")
 		if curr == -1 {
