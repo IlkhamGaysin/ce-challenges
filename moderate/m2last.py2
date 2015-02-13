@@ -1,0 +1,7 @@
+import fileinput
+
+for line in fileinput.input():
+    st = line.split(' ')
+    n = len(st) - 1 - int(st[-1])
+    if n >= 0:
+        print st[n]
