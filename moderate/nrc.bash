@@ -3,7 +3,7 @@ ord() {
   printf '%d' "'$1"
 }
 
-while read line; do
+while read line || [ -n "$line" ]; do
   declare -a ch
   for ((c=0; c<${#line}; c++)); do
     ((ch[`ord ${line:$c:1}`]++))

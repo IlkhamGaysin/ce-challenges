@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		struct node *head = NULL;
-		while (c != '\n') {
+		while (c != '\n' && c != EOF) {
 			struct node *temp;
 			temp = malloc(sizeof(struct node));
 			temp->data = c;
@@ -40,8 +40,7 @@ int main(int argc, char *argv[])
 			}
 
 skip:
-			if ((c = getc(fp)) == EOF)
-				return 0;
+			c = getc(fp);
 		}
 		firstnrc(head);
 		if (head) {
