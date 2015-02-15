@@ -1,5 +1,5 @@
 #!/bin/bash
-while read line; do
+while read line || [ -n "$line" ]; do
     printf 1
     for ((i=1; i<$line; i++)); do
         printf " 1"
@@ -10,4 +10,4 @@ while read line; do
         done
     done
     echo
-done < $1
+done <$1
