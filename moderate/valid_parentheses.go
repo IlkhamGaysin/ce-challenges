@@ -17,8 +17,9 @@ func main() {
 	scanner.Split(bufio.ScanBytes)
 	valid := true
 	stack := []byte{}
+	var c uint8
 	for scanner.Scan() {
-		c := scanner.Text()[0]
+		c = scanner.Text()[0]
 		if !valid {
 			if c == '\n' {
 				valid = true
@@ -57,6 +58,13 @@ func main() {
 		if !valid {
 			fmt.Println("False")
 			stack = []byte{}
+		}
+	}
+	if c != '\n' {
+		if len(stack) > 0 {
+			fmt.Println("False")
+		} else {
+			fmt.Println("True")
 		}
 	}
 }

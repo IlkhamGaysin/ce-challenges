@@ -13,12 +13,10 @@ paren <- function(xs, ys) {
   paren(c(ys[1], xs, recursive=TRUE), ys[2:length(ys)])
 }
 
-parens <- function(s) {
+cat(sapply(readLines(tail(commandArgs(), n=1)), function(s) {
   if (paren(list(), strsplit(s, "")[[1]])) {
     "True"
   } else {
     "False"
   }
-}
-
-cat(sapply(readLines(tail(commandArgs(), n=1)), parens), sep="\n")
+}), sep="\n")

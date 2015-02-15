@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,18 +11,21 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	char c;
 	struct node *head = NULL, *temp = NULL;
-	bool valid = true;
+	char valid = -1;
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
-		if (!valid) {
-			if (c == '\n') {
-				valid = true;
+	while ((c = getc(fp)) != EOF || valid > -1) {
+		if (valid == 0) {
+			if (c == '\n' || c == EOF) {
+				valid = -1;
 			}
 			continue;
+		} else if (valid == -1) {
+			valid = 1;
 		}
 		switch (c) {
 		case '\n':
+		case EOF:
 			if (head) {
 				puts("False");
 				while (head) {
@@ -31,7 +33,7 @@ int main(int argc, char *argv[])
 					head = head->next;
 					free(done);
 				}
-				valid = true;
+				valid = -1;
 			} else {
 				puts("True");
 			}
@@ -42,7 +44,7 @@ int main(int argc, char *argv[])
 				head = head->next;
 				free(done);
 			} else {
-				valid = false;
+				valid = 0;
 			}
 			break;
 		case ']':
@@ -51,7 +53,7 @@ int main(int argc, char *argv[])
 				head = head->next;
 				free(done);
 			} else {
-				valid = false;
+				valid = 0;
 			}
 			break;
 		case '}':
@@ -60,7 +62,7 @@ int main(int argc, char *argv[])
 				head = head->next;
 				free(done);
 			} else {
-				valid = false;
+				valid = 0;
 			}
 			break;
 		default:
@@ -69,7 +71,7 @@ int main(int argc, char *argv[])
 			temp->next = head;
 			head = temp;
 		}
-		if (!valid) {
+		if (valid == 0) {
 			puts("False");
 			while (head) {
 				struct node *done = head;
