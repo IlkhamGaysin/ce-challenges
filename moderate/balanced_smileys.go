@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func isBalanced(s string, c int) bool {
@@ -46,13 +45,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		if isBalanced(strings.TrimSpace(s), 0) {
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		if isBalanced(scanner.Text(), 0) {
 			fmt.Println("YES")
 		} else {
 			fmt.Println("NO")

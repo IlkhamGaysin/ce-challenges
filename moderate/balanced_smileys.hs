@@ -1,18 +1,17 @@
 import System.Environment (getArgs)
 
-isBalanced     :: Int -> String -> Bool
-isBalanced c xs | null xs && c == 0                 = True
-                | null xs || c < 0                  = False
-                | notElem x ":()"                   = isBalanced c (tail xs)
-                | notElem y "()"                    = isBalanced c (init xs)
-                | x == '('                          = isBalanced (succ c) (tail xs)
-                | x == ')'                          = isBalanced (pred c) (tail xs)
-                | x == ':' && head (tail xs) == '(' = isBalanced c (tail (tail xs)) || isBalanced (succ c) (tail (tail xs))
-                | x == ':' && head (tail xs) == ')' = isBalanced c (tail (tail xs)) || isBalanced (pred c) (tail (tail xs))
-                | x == ':'                          = isBalanced c (tail xs)
-                | otherwise                         = False
-                where x = head xs
-                      y = last xs
+isBalanced         :: Int -> String -> Bool
+isBalanced 0 []     = True
+isBalanced _ []     = False
+isBalanced (-1) _   = False
+isBalanced c (x:xs) | notElem x ":()"            = isBalanced c xs
+                    | notElem (last (x:xs)) "()" = isBalanced c (x : init xs)
+                    | x == '('                   = isBalanced (succ c) xs
+                    | x == ')'                   = isBalanced (pred c) xs
+                    | x == ':' && head xs == '(' = isBalanced c (tail xs) || isBalanced (succ c) (tail xs)
+                    | x == ':' && head xs == ')' = isBalanced c (tail xs) || isBalanced (pred c) (tail xs)
+                    | x == ':'                   = isBalanced c xs
+                    | otherwise                  = False
 
 balance   :: String -> String
 balance xs | isBalanced 0 xs = "YES"
