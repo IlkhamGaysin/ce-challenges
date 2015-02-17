@@ -16,16 +16,16 @@ int main(int argc, char *argv[])
 		char c;
 		int l = 0;
 		while (1) {
-			int cr = (l+h) % 2;
+			int cr = (l + h) % 2;
 			fscanf(fp, "%c", &c);
 			if (c == 'L') {
-				h = (l+h)/2 + cr - 1;
+				h = (l + h) / 2 + cr - 1;
 				skip(5, fp);
 			} else if (c == 'H') {
-				l = (l+h)/2 + cr + 1;
+				l = (l + h) / 2 + cr + 1;
 				skip(6, fp);
 			} else {
-				printf("%d\n", (l+h)/2 + cr);
+				printf("%d\n", (l + h) / 2 + cr);
 				skip(4, fp);
 				break;
 			}
