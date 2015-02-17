@@ -27,7 +27,7 @@ bool wrd(int a1, int a2, int a3) {
 	if (a1)
 		printf("%s%s", str0[a1], str3[0]);
 	if (a2 > 1)
-		printf("%s%s", str2[a2-2], str0[a3]);
+		printf("%s%s", str2[a2 - 2], str0[a3]);
 	else if (a2)
 		printf("%s", str1[a3]);
 	else
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &b) != EOF) {
-		int c[9] = {0};
+		int c[9] = { 0 };
 		int i = 8;
 		if (b == 0) {
 			printf("Zero");
