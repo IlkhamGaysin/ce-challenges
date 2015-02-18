@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 				for (i = 0; i < s; i++) {
 					rot = true;
 					for (j = 0; j < s; j++) {
-						if (sb[j] != tb[(i+j)%s]) {
+						if (sb[j] != tb[(i + j) % s]) {
 							rot = false;
 							break;
 						}
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 			t = 0;
 		} else {
 			if (s == sbs) {
-				sbs += sbs/2;
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 				tb = realloc(tb, sbs);
 			}
