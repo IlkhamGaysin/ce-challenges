@@ -9,7 +9,7 @@ bool pali(int a)
 		c /= 10;
 	}
 	while (true) {
-		if (l[x] != l[y-1])
+		if (l[x] != l[y - 1])
 			return false;
 		if (y - x < 3)
 			return true;
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 							p++;
 					}
 				}
-				if (p%2 == 0)
+				if (p % 2 == 0)
 					n++;
 				prev = p;
 			}

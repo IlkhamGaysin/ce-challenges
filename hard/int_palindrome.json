@@ -1,5 +1,6 @@
 {
   "name": "Palindromic Ranges",
   "summary": "Find out a range of palindromic numbers",
-  "url": "https://www.codeeval.com/open_challenges/47/"
+  "constraints": "Each line of input contains two positive integers. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/47"
 }
