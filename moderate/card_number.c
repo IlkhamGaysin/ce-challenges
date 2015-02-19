@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 	while ((c = getc(fp)) != EOF || i) {
 		if (c == '\n' || c == EOF) {
 			if (i % 2) {
-				printf("%d\n", o%10 == 0);
+				printf("%d\n", o % 10 == 0);
 			} else {
-				printf("%d\n", e%10 == 0);
+				printf("%d\n", e % 10 == 0);
 			}
 			i = 0;
 			e = 0;
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 				e += x;
 				x *= 2;
 				if (x > 9) {
-					o += x%10 + 1;
+					o += x % 10 + 1;
 				} else {
 					o += x;
 				}
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 				o += x;
 				x *= 2;
 				if (x > 9) {
-					e += x%10 + 1;
+					e += x % 10 + 1;
 				} else {
 					e += x;
 				}
