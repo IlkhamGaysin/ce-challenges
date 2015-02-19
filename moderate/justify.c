@@ -41,9 +41,9 @@ int main(int argc, char *argv[])
 					j = 0;
 					while (line[j] != '\0') {
 						if (line[j] == ' ') {
-							for (h = 0; h < l/n; h++)
+							for (h = 0; h < l / n; h++)
 								putchar(' ');
-							if (k++ < l%n)
+							if (k++ < l % n)
 								putchar(' ');
 						} else {
 							putchar(line[j]);
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 					putchar('\n');
 					j = i++;
 					while (i <= 80) {
-						line[i-j-1] = line[i];
+						line[i - j - 1] = line[i];
 						i++;
 					}
 					i = 80 - j;
