@@ -1,5 +1,6 @@
 lol, n = Array.new(), 0
 File.open(ARGV[0]).each_line do |line|
+  line.chomp!
   if n == 0
     n = line.to_i
   else
@@ -13,4 +14,4 @@ File.open(ARGV[0]).each_line do |line|
     end
   end
 end
-puts lol.join()
+puts lol.join("\n")

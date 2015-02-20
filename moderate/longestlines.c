@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
 		lb[i].length = 0;
 		lb[i].buffer = malloc(sbs);
 	}
-	while ((c = getc(fp)) != EOF) {
-		if (c == '\n') {
+	while ((c = getc(fp)) != EOF || s > 0) {
+		if (c == '\n' || c == EOF) {
 			sb[s] = '\0';
 			for (i = 0; i < n; i++) {
 				if (s > lb[i].length) {
@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 			}
 			s = 0;
 		} else {
-			if (s == sbs-1) {
-				sbs += sbs/2;
+			if (s == sbs - 1) {
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 				for (i = 0; i < n; i++)
 					lb[i].buffer = realloc(lb[i].buffer, sbs);
