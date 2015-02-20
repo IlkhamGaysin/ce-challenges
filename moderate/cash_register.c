@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		} else if (p == c) {
 			printf("ZERO");
 		} else {
-			int change[12] = {0};
+			int change[12] = { 0 };
 			bool con = false;
 			for (i = 11; i >= 0; i--) {
 				while (c - p >= value[i]) {

@@ -1,5 +1,6 @@
 {
   "name": "Cash Register",
   "summary": "Determine the amount of change to be returned",
-  "url": "https://www.codeeval.com/open_challenges/54/"
+  "constraints": "Each line of input contains two floating point numbers. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/54"
 }
