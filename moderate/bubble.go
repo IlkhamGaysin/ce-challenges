@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"sort"
-	"strconv"
 	"strings"
 )
 
@@ -16,24 +15,16 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, _, err := reader.ReadLine()
-		if err != nil {
-			break
-		}
-		t := strings.Split(strings.TrimSpace(string(s)), " | ")
-		n, err := strconv.Atoi(t[1])
-		if err != nil {
-			log.Fatal(err)
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Split(scanner.Text(), " | ")
+		var n int
+		fmt.Sscanf(t[1], "%d", &n)
 		u := strings.Fields(t[0])
 		v := []int{}
 		for _, i := range u {
-			k, err := strconv.Atoi(i)
-			if err != nil {
-				log.Fatal(err)
-			}
+			var k int
+			fmt.Sscanf(i, "%d", &k)
 			v = append(v, k)
 		}
 		for i := 0; i < len(v)-n; i++ {
