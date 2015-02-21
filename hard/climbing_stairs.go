@@ -18,7 +18,8 @@ func main() {
 	for scanner.Scan() {
 		var n int
 		fmt.Sscan(scanner.Text(), &n)
-		if n < 2 {
+		if n < 1 {
+		} else if n < 4 {
 			fmt.Println(n)
 		} else {
 			r := big.NewInt(1)

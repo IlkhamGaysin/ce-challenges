@@ -36,14 +36,16 @@ function add(x, y)
 end
 
 for line in io.lines(arg[1]) do
-  local a = tonumber(line)
-  if a < 2 then
-    print(a)
-  else
-    local b, c = "1", "1"
-    while a > 1 do
-      a, b, c = a-1, add(b, c), b
+  if #line > 0 then
+    local a = tonumber(line)
+    if a < 2 then
+      print(a)
+    else
+      local b, c = "1", "1"
+      while a > 1 do
+        a, b, c = a-1, add(b, c), b
+      end
+      print(b)
     end
-    print(b)
   end
 end

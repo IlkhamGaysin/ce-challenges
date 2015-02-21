@@ -7,4 +7,5 @@ def stairs(a):
     return c
 
 for line in fileinput.input():
-    print stairs(int(line))
+    if not line == '\n':
+        print stairs(int(line))
