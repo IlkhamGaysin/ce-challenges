@@ -19,3 +19,5 @@ for line in fileinput.input():
             f.append(i)
     if f:
         print ' '.join(i for i in f)
+    else:
+        print

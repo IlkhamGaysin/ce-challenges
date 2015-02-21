@@ -1,5 +1,6 @@
 {
   "name": "Detecting Cycles",
   "summary": "Detecting loops within a sequence.",
-  "url": "https://www.codeeval.com/open_challenges/5/"
+  "constraints": "Each line of input contains a list of 0 to 50 integers from 0 to 99. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/5"
 }

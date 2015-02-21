@@ -29,7 +29,7 @@ func main() {
 		for len(s) > 1 && uniq(s[1:len(s)], s[0]) {
 			s = s[1:len(s)]
 		}
-		if len(s) == 1 {
+		if len(s) <= 1 {
 			fmt.Println()
 			continue
 		}
