@@ -41,14 +41,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var a, b, count int
-		fmt.Sscanf(s, "%d,%d", &a, &b)
+		fmt.Sscanf(scanner.Text(), "%d,%d", &a, &b)
 		nextPrime := primeSeq()
 		for i := nextPrime(); i <= b; i = nextPrime() {
 			if i >= a {
