@@ -20,14 +20,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
 		var n, m int
-		fmt.Sscanf(s, "%d,%d", &n, &m)
+		fmt.Sscanf(scanner.Text(), "%d,%d", &n, &m)
 
 		tail := Node{n - 1, nil}
 		list := &tail
