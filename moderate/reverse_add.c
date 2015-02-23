@@ -3,7 +3,7 @@
 int rev(int a) {
 	int r = 0, s;
 	for (s = a; s > 0; s /= 10)
-		r = 10*r + s%10;
+		r = 10 * r + s % 10;
 	return r;
 }
 

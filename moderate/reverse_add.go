@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func rev(a int) (ret int) {
@@ -21,16 +20,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		var a, b int
-		fmt.Sscan(strings.TrimSpace(s), &a)
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		var a, b, r int
+		fmt.Sscan(scanner.Text(), &a)
 		for b < 100 {
-			r := rev(a)
+			r = rev(a)
 			if r == a {
 				break
 			}
