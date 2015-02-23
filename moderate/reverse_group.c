@@ -10,15 +10,15 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		if (i == ibs) {
-			ibs += ibs/2;
+			ibs += ibs / 2;
 			ib = realloc(ib, ibs * sizeof(int));
 		}
 		ib[i++] = a;
 		if (getc(fp) == ';') {
 			int j = 0, k = 0, l = 0;
 			fscanf(fp, "%d", &n);
-			while (j+n <= i) {
-				for (k = j+n-1; k >= j; k--) {
+			while (j + n <= i) {
+				for (k = j + n - 1; k >= j; k--) {
 					printf("%d", ib[k]);
 					if (++l < i)
 						printf(",");
