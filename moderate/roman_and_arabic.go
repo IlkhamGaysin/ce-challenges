@@ -48,4 +48,7 @@ func main() {
 			ar, rr = a, r
 		}
 	}
+	if rr > 0 {
+		fmt.Printf("%d\n", num+ar*rr)
+	}
 }

@@ -7,16 +7,16 @@ int main(int argc, char *argv[])
 	int num = 0, ar = 0, rr = 0;
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
+	while ((c = getc(fp)) != EOF || rr > 0) {
 		int a, r = 0;
-		if (c == '\n') {
+		if (c == '\n' || c == EOF) {
 			printf("%d\n", num + ar * rr);
 			num = 0;
 			ar = 0;
 			rr = 0;
 			continue;
 		}
-		a = c-48;
+		a = c - 48;
 		switch (getc(fp)) {
 		case 'M':
 			r = 1000;
