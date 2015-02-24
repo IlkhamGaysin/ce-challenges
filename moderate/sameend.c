@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 			}
 			if (f) {
 				for (k = 1; k <= j; k++) {
-					if (tb[j-k] != sb[i-k]) {
+					if (tb[j - k] != sb[i - k]) {
 						f = false;
 						break;
 					}
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 			j = 0;
 		} else if (c != '\n') {
 			if (i == sbs) {
-				sbs += sbs/2;
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 				tb = realloc(tb, sbs);
 			}
