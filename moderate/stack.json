@@ -1,5 +1,6 @@
 {
   "name": "Stack Implementation",
   "summary": "Implement a stack interface",
-  "url": "https://www.codeeval.com/open_challenges/9/"
+  "constraints": "Each line of input contains a list of integers. Length and number of input lines are unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/9"
 }

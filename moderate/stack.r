@@ -9,7 +9,7 @@ pop <- function(s) {
 }
 
 s <- c()
-stack <- function(ss) {
+cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), function(ss) {
   s <<- c()
   for (i in 1:length(ss)) {
     s <<- push(s, ss[[i]])
@@ -24,6 +24,4 @@ stack <- function(ss) {
     h <- !h
   }
   paste(r, collapse=" ")
-}
-
-cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), stack), sep="\n")
+}), sep="\n")

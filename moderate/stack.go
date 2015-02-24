@@ -27,13 +27,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		t, stack := strings.Fields(strings.TrimSpace(s)), []int{}
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t, stack := strings.Fields(scanner.Text()), []int{}
 		for _, i := range t {
 			var u int
 			fmt.Sscan(i, &u)
