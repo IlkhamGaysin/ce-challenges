@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func isContained(pos []int, bee []string, st0 string) bool {
@@ -48,13 +47,9 @@ func main() {
 
 	board := []string{"ABCE", "SFCS", "ADEE"}
 
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		s = strings.TrimSpace(s)
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		s := scanner.Text()
 
 		start := [][]int{}
 		for ix, i := range board {
