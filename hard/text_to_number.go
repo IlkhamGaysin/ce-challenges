@@ -27,13 +27,9 @@ func main() {
 		"ninety": 90}
 	d3 := []string{"hundred", "thousand", "million"}
 
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		t := strings.Fields(strings.TrimSpace(s))
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Fields(scanner.Text())
 		var n, h, q, r int
 		if t[0] == dn {
 			n = -1
