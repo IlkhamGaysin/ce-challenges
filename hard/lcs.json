@@ -1,5 +1,6 @@
 {
   "name": "Longest Common Subsequence",
   "summary": "LCS between two strings.",
-  "url": "https://www.codeeval.com/open_challenges/6/"
+  "constraints": "Each line of input may contain two strings with 50 or less characters each. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/6"
 }

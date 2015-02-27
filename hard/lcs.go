@@ -34,15 +34,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		} else if len(s) < 3 {
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Split(scanner.Text(), ";")
+		if len(t) < 2 {
 			continue
 		}
-		t := strings.Split(strings.TrimSpace(s), ";")
 		c := make([][]int, len(t[0])+1)
 		c[0] = make([]int, len(t[1])+1)
 		for ix, i := range t[0] {
