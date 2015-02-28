@@ -67,15 +67,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		} else if len(s) < 3 {
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		if len(scanner.Text()) < 3 {
 			continue
 		}
-		ts := strings.Split(strings.TrimSpace(s), "(")
+		ts := strings.Split(scanner.Text(), "(")
 
 		var ks int64
 		n := len(ts) - 1
