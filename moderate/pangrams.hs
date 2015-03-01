@@ -1,5 +1,13 @@
 import System.Environment (getArgs)
 import Data.Char (toLower)
+import Control.Applicative
+import qualified Data.ByteString.Char8 as B
+
+readFileAscii     :: String -> IO String
+readFileAscii path = B.unpack <$> B.map (clearChar '-') <$> B.readFile path
+    where clearChar    :: Char -> Char -> Char
+          clearChar d c | c < '\128' = c
+                        | otherwise  = d
 
 pang          :: String -> String -> String
 pang []     _  = ""
@@ -14,5 +22,5 @@ pangram s | null ls   = "NULL"
 main :: IO ()
 main = do
     [inpFile] <- getArgs
-    input <- readFile inpFile
+    input <- readFileAscii inpFile
     putStr . unlines . map pangram $ lines [toLower x | x <- input, x == '\n' || elem x ['a'..'z'] || elem x ['A'..'Z']]
