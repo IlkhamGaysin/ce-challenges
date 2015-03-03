@@ -7,7 +7,7 @@ int max(int a, int b) {
 int nrow(int a) {
 	int p = 0, c = 0;
 	while (a > c)
-		c += ++p+1;
+		c += ++p + 1;
 	return p;
 }
 
