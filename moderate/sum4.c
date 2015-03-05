@@ -10,7 +10,7 @@ int numzero(int *ib, int i, int c, int z) {
 	}
 	if (i < c)
 		return 0;
-	return numzero(ib+1, i-1, c-1, z + ib[0]) + numzero(ib+1, i-1, c, z);
+	return numzero(ib + 1, i - 1, c - 1, z + ib[0]) + numzero(ib + 1, i - 1, c, z);
 }
 
 int main(int argc, char *argv[])
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		if (i == ibs) {
-			ibs += ibs/2;
+			ibs += ibs / 2;
 			ib = realloc(ib, ibs * sizeof(int));
 		}
 		ib[i++] = a;

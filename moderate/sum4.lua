@@ -5,8 +5,9 @@ function numzero(s, c, z)
     else
       return 0
     end
+  elseif z > 0 or #s < c then
+    return 0
   end
-  if #s < c then return 0 end
   local t = {}
   for i = 1, #s-1 do t[#t+1] = s[i+1] end
   return numzero(t, c-1, z + s[1]) + numzero(t, c, z)
@@ -17,5 +18,6 @@ for line in io.lines(arg[1]) do
   for i in line:gmatch("[-]?%d+") do
     s[#s+1] = tonumber(i)
   end
+  table.sort(s)
   print(numzero(s, 4, 0))
 end
