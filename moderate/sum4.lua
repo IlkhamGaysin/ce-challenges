@@ -5,7 +5,7 @@ function numzero(s, c, z)
     else
       return 0
     end
-  elseif z > 0 or #s < c then
+  elseif #s < c or z + c * s[1] > 0 or z + c * s[#s] < 0 then
     return 0
   end
   local t = {}
