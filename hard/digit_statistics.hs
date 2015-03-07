@@ -9,13 +9,13 @@ dig2 i a n xs | i == fromIntegral (mod n 4) = xs
               where j = stats!!(a*4+i)
 
 dig1         :: Int -> Int -> Integer -> [Integer] -> [Integer]
-dig1 i a m xs | i == 4    = xs
-              | otherwise = dig1 (i+1) a m (take j xs ++ [xs!!j + m] ++ drop (j+1) xs)
+dig1 4 _ _ xs = xs
+dig1 i a m xs = dig1 (i+1) a m (take j xs ++ [xs!!j + m] ++ drop (j+1) xs)
               where j = stats!!(a*4+i)
 
 beautify       :: [Integer] -> String
-beautify (x:xs) | null xs   = "9: " ++ show x
-                | otherwise = show (9 - length xs) ++ ": " ++ show x ++ ", " ++ beautify xs
+beautify [x]    = "9: " ++ show x
+beautify (x:xs) = show (9 - length xs) ++ ": " ++ show x ++ ", " ++ beautify xs
 
 digitStat       :: [Integer] -> String
 digitStat [b, n] = beautify (dig2 0 a n (dig1 0 a m (replicate 10 0)))
