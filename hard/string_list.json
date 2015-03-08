@@ -1,5 +1,6 @@
 {
   "name": "String List",
   "summary": "Create a new string from constituent alphabets",
-  "url": "https://www.codeeval.com/open_challenges/38/"
+  "constraints": "Each line of input contains one integer and one string. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/38"
 }
