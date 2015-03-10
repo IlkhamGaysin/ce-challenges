@@ -17,8 +17,8 @@ bool ugly(int j, int i, int *n)
 	int64_t s = 0, c = n[0];
 	bool p = true;
 
-	while (k < i-1) {
-		int ops = cj%3;
+	while (k < i - 1) {
+		int ops = cj % 3;
 		cj /= 3;
 		if (ops == 0) {
 			c *= 10;
@@ -41,7 +41,7 @@ bool ugly(int j, int i, int *n)
 		s += c;
 	else
 		s -= c;
-	if (s%2 == 0 || s%3 == 0 || s%5 == 0 || s%7 == 0)
+	if (s % 2 == 0 || s % 3 == 0 || s % 5 == 0 || s % 7 == 0)
 		return true;
 	return false;
 }
@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		int i = 0, j, u = 0, n[13];
-		while (c != '\n') {
+		while (c != '\n' && c != EOF) {
 			n[i++] = c - 48;
 			c = getc(fp);
 		}
-		for (j = 0; j < powi(3,i-1); j++) {
-			if (ugly(j,i,n))
+		for (j = 0; j < powi(3, i - 1); j++) {
+			if (ugly(j, i, n))
 				u++;
 		}
 
