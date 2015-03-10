@@ -4,16 +4,22 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"sort"
 	"strings"
 )
 
 func abs(a int) int {
-	if a >= 0 {
-		return a
+	if a < 0 {
+		return -a
 	}
-	return -a
+	return a
+}
+
+func diagonal(c, h []int) bool {
+	a, b, p, q := float64(h[0]), float64(h[1]), float64(c[0]), float64(c[1])
+	return (p > a) && (b >= (2*p*q*a+(p*p-q*q)*math.Sqrt(p*p+q*q-a*a))/(p*p+q*q))
 }
 
 func main() {
@@ -22,26 +28,22 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	reader := bufio.NewReader(data)
-	for {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		t := strings.Split(s, "|")
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Split(scanner.Text(), "|")
 		u := strings.Split(t[1], ";")
-		h, h1, h2 := make([]int, 2), make([]int, 2), make([]int, 2)
-		fmt.Sscanf(t[0], "[%d,%d] [%d,%d]", &h1[0], &h1[1], &h2[0], &h2[1])
-		h[0], h[1] = abs(h1[0]-h2[0]), abs(h1[1]-h2[1])
+		h, b := make([]int, 2), make([]int, 3)
+		var s1, s2, s3, s4, s5, s6 int
+		fmt.Sscanf(t[0], "[%d,%d] [%d,%d]", &s1, &s2, &s3, &s4)
+		h[0], h[1] = abs(s1-s3), abs(s2-s4)
 		sort.Ints(h)
-		b, b1, b2 := make([]int, 3), make([]int, 3), make([]int, 3)
 		var r []int
 		for _, i := range u {
 			var j int
-			fmt.Sscanf(i, "(%d [%d,%d,%d] [%d,%d,%d])", &j, &b1[0], &b1[1], &b1[2], &b2[0], &b2[1], &b2[2])
-			b[0], b[1], b[2] = abs(b1[0]-b2[0]), abs(b1[1]-b2[1]), abs(b1[2]-b2[2])
+			fmt.Sscanf(i, "(%d [%d,%d,%d] [%d,%d,%d])", &j, &s1, &s2, &s3, &s4, &s5, &s6)
+			b[0], b[1], b[2] = abs(s1-s4), abs(s2-s5), abs(s3-s6)
 			sort.Ints(b)
-			if b[0] <= h[0] && b[1] <= h[1] {
+			if b[0] <= h[0] && b[1] <= h[1] { // || diagonal(b, h)
 				r = append(r, j)
 			}
 		}
