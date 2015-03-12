@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
 	char *sb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");
-	while ((c = getc(fp)) != EOF) {
-		if (c == '\n') {
+	while ((c = getc(fp)) != EOF || s > 0) {
+		if (c == '\n' || c == EOF) {
 			sb[s] = '\0';
 			rs = 0;
 			if (s > 0) {
