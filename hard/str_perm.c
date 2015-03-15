@@ -7,15 +7,15 @@ int next_permu(char *c, int strl)
 	char t;
 	int i, k = -1, l = 0;
 
-	for (i = strl-2; i >= 0; i--) {
-		if (c[i] < c[i+1]) {
+	for (i = strl - 2; i >= 0; i--) {
+		if (c[i] < c[i + 1]) {
 			k = i;
 			break;
 		}
 	}
 	if (k == -1)
 		return 0;
-	for (i = strl-1; i > 0; i--) {
+	for (i = strl - 1; i > 0; i--) {
 		if (c[i] > c[k]) {
 			l = i;
 			break;
@@ -27,10 +27,10 @@ int next_permu(char *c, int strl)
 	c[l] = t;
 
 	l = strl - k - 1;
-	for (i = 0; (l-1)-i > i; i++) {
-		t = c[strl-1-i];
-		c[strl-1-i] = c[k+1+i];
-		c[k+1+i] = t;
+	for (i = 0; (l - 1) - i > i; i++) {
+		t = c[strl - 1 - i];
+		c[strl - 1 - i] = c[k + 1 + i];
+		c[k + 1 + i] = t;
 	}
 	return l;
 }
@@ -50,8 +50,9 @@ int main(int argc, char *argv[])
 
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
-		int strl = strlen(line)-1;
-		char *c, *w =  malloc(strl*sizeof(char));
+		int strl = strlen(line);
+		strl -= line[strl - 1] == '\n';
+		char *c, *w = malloc(strl * sizeof(char));
 		c = strncpy(w, line, strl);
 		qsort(c, strl, sizeof(char), ccmp);
 		printf("%s", c);
