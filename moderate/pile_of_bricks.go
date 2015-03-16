@@ -28,12 +28,12 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
+	h, b := make([]int, 2), make([]int, 3)
+	var s1, s2, s3, s4, s5, s6 int
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), "|")
 		u := strings.Split(t[1], ";")
-		h, b := make([]int, 2), make([]int, 3)
-		var s1, s2, s3, s4, s5, s6 int
 		fmt.Sscanf(t[0], "[%d,%d] [%d,%d]", &s1, &s2, &s3, &s4)
 		h[0], h[1] = abs(s1-s3), abs(s2-s4)
 		sort.Ints(h)
