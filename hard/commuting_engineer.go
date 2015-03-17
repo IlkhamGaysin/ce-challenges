@@ -107,14 +107,11 @@ func main() {
 	}
 	defer data.Close()
 
+	var n int
 	places, path := []place{}, []int{}
-	reader := bufio.NewReader(data)
-	for i := 0; ; i++ {
-		s, err := reader.ReadString('\n')
-		if err != nil {
-			break
-		}
-		t := strings.Fields(s)
+	scanner := bufio.NewScanner(data)
+	for scanner.Scan() {
+		t := strings.Fields(scanner.Text())
 		var (
 			id   int
 			x, y float64
@@ -123,7 +120,8 @@ func main() {
 		fmt.Sscanf(t[len(t)-2], "(%f,", &x)
 		fmt.Sscanf(t[len(t)-1], "%f)", &y)
 		places = append(places, place{id, x, y})
-		path = append(path, i)
+		path = append(path, n)
+		n++
 	}
 	shortest_path, _ := find_path(path, []int{}, 0, tour(places, path), len(path), places)
 	for _, i := range shortest_path {
