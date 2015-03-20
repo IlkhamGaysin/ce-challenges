@@ -11,8 +11,8 @@ void cls(char c[10][10]) {
 int prn(char c[10][10], int x, int y, char d, bool insr) {
 	if (insr) {
 		int i;
-		for (i = 8; i >= y ; i--)
-			c[x][i+1] = c[x][i];
+		for (i = 8; i >= y; i--)
+			c[x][i + 1] = c[x][i];
 	}
 	c[x][y] = d;
 	if (y < 9)
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 				ctrl = false;
 				break;
 			case 'e':
-				for (i = 8; i >= y ; i--)
+				for (i = 8; i >= y; i--)
 					scrn[x][i] = ' ';
 				ctrl = false;
 				break;
