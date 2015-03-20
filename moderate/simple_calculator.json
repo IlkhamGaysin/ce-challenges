@@ -1,5 +1,6 @@
 {
   "name": "Simple Calculator",
   "summary": "Create a simple calculator",
-  "url": "https://www.codeeval.com/open_challenges/94/"
+  "constraints": "Each line of input contains one string consisting of numbers, brackets, and operators. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/94"
 }
