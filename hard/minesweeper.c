@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	    if (prev[j] == -1) {
 		printf("*");
 	    } else {
-		d = prev[j] + (j < n + 1 && prev[j + 1] == -1);
+		d = prev[j] + (j < n - 1 && prev[j + 1] == -1);
 		printf("%d", d);
 	    }
 	}
