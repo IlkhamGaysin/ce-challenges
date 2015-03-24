@@ -1,5 +1,6 @@
 {
   "name": "Peak Traffic",
   "summary": "Finding out which friends you interact with most",
-  "url": "https://www.codeeval.com/open_challenges/49/"
+  "constraints": "Each line of input contains one date string and two email addresses. The number of input lines is unconstrained.",
+  "url": "https://www.codeeval.com/open_challenges/49"
 }
