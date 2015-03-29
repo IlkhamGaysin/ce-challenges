@@ -19,12 +19,14 @@ int main(int argc, char *argv[])
 			fscanf(fp, "%d", &a);
 			int n = 0, j, k;
 			for (j = 0; j < i - 1 && 2 * ib[j] < a; j++)
-				for (k = i - 1; k > j && ib[j] + ib[k] >= a; k--)
+				for (k = i - 1; k > j && ib[j] + ib[k] >= a; k--) {
+					i--;
 					if (ib[j] + ib[k] == a) {
 						if (n++ > 0)
 							putchar(';');
 						printf("%d,%d", ib[j], ib[k]);
 					}
+				}
 			if (n == 0)
 				printf("NULL");
 			putchar('\n');
