@@ -1,16 +1,16 @@
 import System.Environment (getArgs)
 
-dsig    :: Int -> Int -> Int
-dsig x y | y == 0       = x
-         | mod y 10 > 0 = dsig (x + 2^(3 * mod y 10)) (div y 10)
-         | otherwise    = dsig x (div y 10)
+dsig  :: Int -> Int
+dsig 0 = 0
+dsig x | mod x 10 > 0 = 2^(3 * mod x 10) + dsig (div x 10)
+       | otherwise    = dsig (div x 10)
 
 nextNu    :: Int -> Int -> Int
-nextNu x y | x == dsig 0 y = y
-           | otherwise     = nextNu x (y + 9)
+nextNu x y | x == dsig y = y
+           | otherwise   = nextNu x (y + 9)
 
 nextNum  :: Int -> Int
-nextNum x = nextNu (dsig 0 x) (x + 9)
+nextNum x = nextNu (dsig x) (x + 9)
 
 main :: IO ()
 main = do

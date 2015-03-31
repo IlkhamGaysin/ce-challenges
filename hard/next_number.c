@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int dsig(int a)
+int dsig(int b)
 {
-	int d = 0, b = a, r;
+	int d = 0, r;
 	while (b) {
 		r = b%10;
 		if (r)
