@@ -55,6 +55,7 @@ func main() {
 		for i := 0; i < len(s[0]); i++ {
 			if subcheck(s[0], s[1], i, 0) {
 				match = true
+				break
 			}
 		}
 		if match {
