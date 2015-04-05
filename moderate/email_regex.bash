@@ -1,4 +1,3 @@
-#!/bin/bash
 email_regex="^((\"[0-9A-Za-z@.+-=]+\")|([0-9A-Za-z.+-=]+))@\w*(\w+\.)+\w{2,4}$"
 
 while read -r line || [ -n "$line" ]; do

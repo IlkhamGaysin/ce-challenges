@@ -1,4 +1,3 @@
-#!/bin/bash
 tr ";" " " <$1 | while read line || [ -n "$line" ]; do
   a=( $line )
   for i in ${a[*]}; do

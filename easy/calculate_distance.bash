@@ -1,4 +1,3 @@
-#!/bin/bash
 tr -d "[()," <$1 | while read line || [ -n "$line" ]; do
     a=( $line )
     x=$((${a[0]}-${a[2]}))

@@ -1,4 +1,3 @@
-#!/bin/bash
 while read -r line || [ -n "$line" ]; do
     a=( $line )
     l=${#a[*]}

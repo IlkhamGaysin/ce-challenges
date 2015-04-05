@@ -1,4 +1,3 @@
-#!/bin/bash
 while read line || [ -n "$line" ]; do
     a=( $line )
     for ((i=0; i<${#a[*]}/2; i++)); do

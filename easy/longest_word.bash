@@ -1,4 +1,3 @@
-#!/bin/bash
 while read line || [ -n "$line" ]; do
     l=
     for i in $line; do

@@ -1,4 +1,3 @@
-#!/bin/bash
 read n <$1
 while read -r line || [ -n "$line" ]; do
     for (( i=1; i<=$n; i++ )); do

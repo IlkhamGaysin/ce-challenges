@@ -1,4 +1,3 @@
-#!/bin/bash
 category=("This program is for humans" "Still in Mama's arms" "Preschool Maniac" "Elementary school" "Middle school" "High school" "College" "Working for the man" "The Golden Years")
 age=(0 3 5 12 15 19 23 66 101)
 

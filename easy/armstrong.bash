@@ -1,4 +1,3 @@
-#!/bin/bash
 while read line || [ -n "$line" ]; do
     e=0
     s=0

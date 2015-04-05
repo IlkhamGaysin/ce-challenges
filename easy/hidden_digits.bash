@@ -1,4 +1,3 @@
-#!/bin/bash
 tr -cd "[:digit:]a-j\n" <$1 | while read line || [ -n "$line" ]; do
     if [ ${#line} -eq 0 ]; then
         echo NONE

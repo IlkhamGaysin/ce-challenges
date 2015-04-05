@@ -1,4 +1,3 @@
-#!/bin/bash
 sed -e "s/, / /g" $1| while read line || [ -n "$line" ]; do
   a=( $line )
   l=$(( ${#a[@]} - 1 ))

@@ -1,4 +1,3 @@
-#!/bin/bash
 declare -a a
 DONE=false
 until $DONE; do

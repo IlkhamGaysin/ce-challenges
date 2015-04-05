@@ -1,4 +1,3 @@
-#!/bin/bash
 while read line || [ -n "$line" ]; do
   if [ -n "$line" ]; then
     a=( $line )

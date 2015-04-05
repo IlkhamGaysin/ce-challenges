@@ -1,4 +1,3 @@
-#!/bin/bash
 tr "," " " <$1 | while read line || [ -n "$line" ]; do
     a=( $line )
     printf ${a[0]}
