@@ -1,12 +1,12 @@
 n=0
 i=0
-tr "," " " <$1 | while read line || [ -n "$line" ]; do
+while read line || [ -n "$line" ]; do
   if [ $n -eq 0 ]; then
     n=$line
     i=$n
     declare -a b
   else
-    s=( $line )
+    s=( ${line//,/ } )
     if [ $i -eq $n ]; then
       b[0]=${s[0]}
       for ((j=1; j<$n; j++)); do
@@ -29,4 +29,4 @@ tr "," " " <$1 | while read line || [ -n "$line" ]; do
       unset b
     fi
   fi
-done
+done <$1

@@ -1,7 +1,7 @@
-tr "," " " <$1 | while read line || [ -n "$line" ]; do
-    a=( $line )
+while read line || [ -n "$line" ]; do
+    a=( ${line//,/ } )
     l=0
-    m=${a[0]}
+    m=$a
     for i in ${a[*]}; do
         if [ $i -gt $m ]; then
             m=$i
@@ -16,4 +16,4 @@ tr "," " " <$1 | while read line || [ -n "$line" ]; do
         fi
     done
     echo $m
-done
+done <$1

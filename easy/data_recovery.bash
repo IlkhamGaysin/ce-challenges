@@ -1,5 +1,5 @@
-tr ";" " " <$1 | while read line || [ -n "$line" ]; do
-  a=( $line )
+while read line || [ -n "$line" ]; do
+  a=( ${line/;/ } )
   declare -a r
   h=$(( ${#a[*]}/2+1 ))
   for ((i=0; i<$h-1; i++)); do
@@ -12,4 +12,4 @@ tr ";" " " <$1 | while read line || [ -n "$line" ]; do
   done
   echo ${r[*]}
   unset a r
-done
+done <$1

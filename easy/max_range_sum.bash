@@ -1,5 +1,5 @@
-tr ";" " " <$1 | while read line || [ -n "$line" ]; do
-  a=( $line )
+while read line || [ -n "$line" ]; do
+  a=( ${line//;/ } )
   m=0
   cm=0
   for ((i=1; i<${#a[*]}; i++)); do
@@ -13,4 +13,4 @@ tr ";" " " <$1 | while read line || [ -n "$line" ]; do
     fi
   done
   echo $m
-done
+done <$1

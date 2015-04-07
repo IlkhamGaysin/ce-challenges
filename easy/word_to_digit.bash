@@ -1,5 +1,5 @@
-tr ";" " " <$1 | while read line || [ -n "$line" ]; do
-  a=( $line )
+while read line || [ -n "$line" ]; do
+  a=( ${line//;/ } )
   for i in ${a[*]}; do
     case $i in
     zero ) printf 0;;
@@ -15,4 +15,4 @@ tr ";" " " <$1 | while read line || [ -n "$line" ]; do
     esac
   done
   echo
-done
+done <$1
