@@ -57,5 +57,8 @@ int main(int argc, char *argv[])
 			sb[s++] = c;
 		}
 	}
+	free(pb);
+	free(nb);
+	free(sb);
 	return 0;
 }

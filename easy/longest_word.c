@@ -32,5 +32,7 @@ int main(int argc, char *argv[])
 			cb[i++] = c;
 		}
 	}
+	free(cb);
+	free(sb);
 	return 0;
 }

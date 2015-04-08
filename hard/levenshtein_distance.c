@@ -102,6 +102,7 @@ int main(int argc, char *argv[])
 		done = curf;
 		curf = curf->next;
 		netw++;
+		free(done->data);
 		free(done);
 	}
 	printf("%d\n", netw);

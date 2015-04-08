@@ -29,5 +29,6 @@ int main(int argc, char *argv[])
 		i = 0;
 		j = -1;
 	}
+	free(sb);
 	return 0;
 }

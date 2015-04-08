@@ -25,5 +25,6 @@ int main(int argc, char *argv[])
 			sb[n++] = c;
 		}
 	}
+	free(sb);
 	return 0;
 }

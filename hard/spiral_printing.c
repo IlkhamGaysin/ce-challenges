@@ -66,5 +66,7 @@ int main(int argc, char *argv[])
 		s = 0;
 		i = 0;
 	}
+	free(ib);
+	free(sb);
 	return 0;
 }

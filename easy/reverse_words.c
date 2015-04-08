@@ -41,5 +41,7 @@ int main(int argc, char *argv[])
 		r = 0;
 		s = 0;
 	}
+	free(rb);
+	free(sb);
 	return 0;
 }
