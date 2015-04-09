@@ -13,10 +13,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	var sum int
+	var sum, v int
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var v int
 		fmt.Sscanf(scanner.Text(), "%d", &v)
 		sum += v
 	}
