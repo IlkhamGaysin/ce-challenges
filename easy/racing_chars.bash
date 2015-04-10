@@ -1,8 +1,5 @@
-n=0
-c=0
-p=0
 while read line || [ -n "$line" ]; do
-  if [ $n -eq 0 ]; then
+  if [ -z $n ]; then
     n=${#line}
     for ((i=0; i<${#line}; i++)); do
       if [ ${line:$i:1} == "C" ]; then

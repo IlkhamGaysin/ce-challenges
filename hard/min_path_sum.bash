@@ -1,7 +1,5 @@
-n=0
-i=0
 while read line || [ -n "$line" ]; do
-  if [ $n -eq 0 ]; then
+  if [ -z $n ]; then
     n=$line
     i=$n
     declare -a b
@@ -25,7 +23,7 @@ while read line || [ -n "$line" ]; do
     ((i--))
     if [ $i -eq 0 ]; then
       echo ${b[$(($n-1))]}
-      n=0
+      n=
       unset b
     fi
   fi
