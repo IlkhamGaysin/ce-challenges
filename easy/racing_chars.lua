@@ -1,29 +1,12 @@
 for line in io.lines(arg[1]) do
-  if #line < 1 then
-  elseif curr == nil then
-    curr = line:find("C")
-    if curr == nil then
-      curr = line:find("_")
-    end
+  if not #line then
+  elseif not curr then
+    curr = line:find("C") or line:find("_")
     print(line:sub(1, curr-1) .. "|" .. line:sub(curr+1))
   else
     px = curr
-    local a, b = px-1, px+2
-    if a < 1 then a = 1 end
-    if b > #line then b = #line end
-    curr = line:sub(a, b):find("C")
-    if curr == nil then
-      curr = line:sub(a, b):find("_")
-    end
-    curr = curr + a - 1
-    io.write(line:sub(1, curr-1))
-    if curr < px then
-      io.write("/")
-    elseif curr == px then
-      io.write("|")
-    else
-      io.write("\\")
-    end
-    print(line:sub(curr+1))
+    local a, b = (px < 2) and 1 or px-1, (px+2 > #line) and #line or px+2
+    curr = (line:sub(a, b):find("C") or line:sub(a, b):find("_")) + a - 1
+    print(line:sub(1, curr-1) .. ((curr < px) and "/" or (curr == px) and "|" or "\\") .. line:sub(curr+1))
   end
 end

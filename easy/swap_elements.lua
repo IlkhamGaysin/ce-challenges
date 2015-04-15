@@ -10,9 +10,5 @@ for line in io.lines(arg[1]) do
       a[#a + 1] = i
     end
   end
-  for i = 1, #a do
-    if i > 1 then io.write(" ") end
-    io.write(a[i])
-  end
-  print()
+  print(table.concat(a, " "))
 end

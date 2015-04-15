@@ -6,9 +6,5 @@ for line in io.lines(arg[1]) do
   local a, b = line:match("(%d+),(%d+)")
   a, b = tonumber(a), tonumber(b)
   c = a - math.floor(a * 2^(-log2(b))) * 2^log2(b)
-  if c > 0 then
-    print(string.format("%.0f", a - c + b))
-  else
-    print(string.format("%.0f", a))
-  end
+  print(string.format("%.0f", (c > 0) and a - c + b or a))
 end

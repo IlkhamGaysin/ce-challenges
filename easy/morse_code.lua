@@ -15,9 +15,5 @@ for line in io.lines(arg[1]) do
       m = 1
     end
   end
-  if m < 64 then
-    print(morse:sub(m-1, m-1))
-  else
-    print()
-  end
+  print((m < 64) and morse:sub(m-1, m-1) or "")
 end

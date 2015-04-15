@@ -2,8 +2,7 @@ function happy (a)
   local ret = 0
   while #a > 0 do
     local b = tonumber(a:sub(#a))
-    ret = ret +  b * b
-    a = a:sub(1, #a-1)
+    ret, a = ret +  b * b, a:sub(1, #a-1)
   end
   return tostring(ret)
 end
@@ -23,9 +22,5 @@ for line in io.lines(arg[1]) do
     end
     b[#b + 1] = a
   end
-  if a == "1" then
-    print(1)
-  else
-    print(0)
-  end
+  print((a == "1") and 1 or 0)
 end
