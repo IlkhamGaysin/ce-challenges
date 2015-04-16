@@ -11,9 +11,5 @@ for line in io.lines(arg[1]) do
       a[c+1-i], a[c-l+i] = a[c-l+i], a[c+1-i]
     end
   end
-  for i = 1, #a do
-    if i > 1 then io.write(",") end
-    io.write(a[i])
-  end
-  io.write("\n")
+  print(table.concat(a, ","))
 end

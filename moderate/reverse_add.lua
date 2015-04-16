@@ -15,5 +15,5 @@ for line in io.lines(arg[1]) do
     if r == a then break end
     a, i = a+r, i+1
   end
-  if i < 100 then print(i .. " " .. a) else print("not found") end
+  print((i < 100) and i .. " " .. a or "not found")
 end

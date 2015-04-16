@@ -9,9 +9,5 @@ for line in io.lines(arg[1]) do
       if a[j] < a[j-1] then a[j], a[j-1] = a[j-1], a[j] end
     end
   end
-  for i = 1, #a do
-    if i > 1 then io.write(" ") end
-    io.write(a[i])
-  end
-  print()
+  print(table.concat(a, " "))
 end

@@ -29,9 +29,5 @@ function isBalanced(s, c)
 end
 
 for line in io.lines(arg[1]) do
-  if isBalanced(line, 0) then
-    print("YES")
-  else
-    print("NO")
-  end
+  print(isBalanced(line, 0) and "YES" or "NO")
 end

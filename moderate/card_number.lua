@@ -12,9 +12,5 @@ for line in io.lines(arg[1]) do
   for i = 1, #a do
     su = su + a[i]
   end
-  if su%10 == 0 then
-    print("1")
-  else
-    print("0")
-  end
+  print((su%10 == 0) and 1 or 0)
 end

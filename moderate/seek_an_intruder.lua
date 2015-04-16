@@ -78,11 +78,7 @@ end
 
 nips = {}
 for _, i in ipairs(ips) do
-  if nips[i] == nil then
-    nips[i] = 1
-  else
-    nips[i] = nips[i] + 1
-  end
+  nips[i] = nips[i] and nips[i] + 1 or 1
 end
 m, s = 0, ""
 for k, v in pairs(nips) do

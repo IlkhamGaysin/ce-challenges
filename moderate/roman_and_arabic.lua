@@ -10,11 +10,7 @@ for line in io.lines(arg[1]) do
     elseif b == 'V' then r = 5
     else r = 1
     end
-    if r > rr then
-      num = num - ar * rr
-    else
-      num = num + ar * rr
-    end
+    num = (r > rr) and num - ar * rr or num + ar * rr
     ar, rr = a, r
   end
   print(num + ar * rr)

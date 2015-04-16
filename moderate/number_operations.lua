@@ -26,37 +26,13 @@ for line in io.lines(arg[1]) do
   end
   for i in permutations(a) do
     for o1 = 1, 3 do
-      if o1 == 1 then
-        r1 = i[1] + i[2]
-      elseif o1 == 2 then
-        r1 = i[1] - i[2]
-      else
-        r1 = i[1] * i[2]
-      end
+      r1 = (o1 == 1) and i[1] + i[2] or (o1 == 2) and i[1] - i[2] or i[1] * i[2]
       for o2 = 1, 3 do
-        if o2 == 1 then
-          r2 = r1 + i[3]
-        elseif o2 == 2 then
-          r2 = r1 - i[3]
-        else
-          r2 = r1 * i[3]
-        end
+        r2 = (o2 == 1) and r1 + i[3] or (o2 == 2) and r1 - i[3] or r1 * i[3]
         for o3 = 1, 3 do
-          if o3 == 1 then
-            r3 = r2 + i[4]
-          elseif o3 == 2 then
-            r3 = r2 - i[4]
-          else
-            r3 = r2 * i[4]
-          end
+          r3 = (o3 == 1) and r2 + i[4] or (o3 == 2) and r2 - i[4] or r2 * i[4]
           for o4 = 1, 3 do
-            if o4 == 1 then
-              r4 = r3 + i[5]
-            elseif o4 == 2 then
-              r4 = r3 - i[5]
-            else
-              r4 = r3 * i[5]
-            end
+            r4 = (o4 == 1) and r3 + i[5] or (o4 == 2) and r3 - i[5] or r3 * i[5]
             if r4 == 42 then
               f = true
               break
@@ -69,9 +45,5 @@ for line in io.lines(arg[1]) do
       if f then break end
     end
   end
-  if f then
-    print("YES")
-  else
-    print("NO")
-  end
+  print(f and "YES" or "NO")
 end

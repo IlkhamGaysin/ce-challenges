@@ -16,9 +16,5 @@ for line in io.lines(arg[1]) do
       end
     end
   end
-  if jolly == true then
-    print("Jolly")
-  else
-    print("Not jolly")
-  end
+  print(jolly and "Jolly" or "Not jolly")
 end

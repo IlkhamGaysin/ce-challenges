@@ -26,9 +26,5 @@ for line in io.lines(arg[1]) do
       stack[#stack+1] = i
     end
   end
-  if valid and #stack == 0 then
-    print("True")
-  else
-    print("False")
-  end
+  print((valid and #stack == 0) and "True" or "False")
 end

@@ -25,9 +25,5 @@ for line in io.lines(arg[1]) do
     s[#s + 1] = i:sub(1, 1) .. i:sub(-1)
   end
   local l = lwc(s, "")
-  if l == 1 then
-    print("None")
-  else
-    print(l)
-  end
+  print((l == 1) and "None" or l)
 end

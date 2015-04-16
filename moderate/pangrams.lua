@@ -6,5 +6,5 @@ for line in io.lines(arg[1]) do
       f = true
     end
   end
-  if f then io.write('\n') else io.write("NULL\n") end
+  print(f and "" or "NULL")
 end

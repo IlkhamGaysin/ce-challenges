@@ -19,9 +19,5 @@ for line in io.lines(arg[1]) do
     end
     if #r > 0 then res[#res + 1] = r end
   end
-  if c <= #u then
-    print("I cannot fix history")
-  else
-    print(table.concat(res, " "))
-  end
+  print((c <= #u) and "I cannot fix history" or table.concat(res, " "))
 end

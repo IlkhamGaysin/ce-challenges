@@ -1,10 +1,6 @@
 function numzero(s, c, z)
   if c == 0 then
-    if z == 0 then
-      return 1
-    else
-      return 0
-    end
+    return (z == 0) and 1 or 0
   elseif #s < c or z + c * s[1] > 0 or z + c * s[#s] < 0 then
     return 0
   end

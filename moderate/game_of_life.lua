@@ -18,11 +18,7 @@ for _ = 1, 10 do
   for _, i in ipairs(c) do
     for jx, j in ipairs(d) do
       if j ~= 0 and i+j >= 0 and i+j < n*n and (i%n > 0 or jx%3 ~= 1) and (i%n < n-1 or jx%3 > 0) then
-        if m[i+j] ~= nil then
-          m[i+j] = m[i+j] + 1
-        else
-          m[i+j] = 1
-        end
+        m[i+j] = m[i+j] and m[i+j] + 1 or 1
       end
     end
   end

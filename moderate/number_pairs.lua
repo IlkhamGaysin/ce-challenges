@@ -9,9 +9,5 @@ for line in io.lines(arg[1]) do
       res[#res+1] = vk[i] .. "," .. tostring(n-vk[i])
     end
   end
-  if #res > 0 then
-    print(table.concat(res, ";"))
-  else
-    print("NULL")
-  end
+  print((#res > 0) and table.concat(res, ";") or "NULL")
 end

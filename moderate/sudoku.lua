@@ -32,9 +32,5 @@ for line in io.lines(arg[1]) do
     end
     if not valid then break end
   end
-  if valid then
-    print("True")
-  else
-    print("False")
-  end
+  print(valid and "True" or "False")
 end

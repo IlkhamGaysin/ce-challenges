@@ -12,9 +12,5 @@ for line in io.lines(arg[1]) do
     end
     been[b] = true
   end
-  if b == "END" then
-    print("GOOD")
-  else
-    print("BAD")
-  end
+  print((b == "END") and "GOOD" or "BAD")
 end
