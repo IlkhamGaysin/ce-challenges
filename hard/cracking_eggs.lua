@@ -9,7 +9,7 @@ function floors(e, s)
   elseif e > s then
     return floors(s, s)
   end
-  if ht[e*ec+s] == nil then
+  if not ht[e*ec+s] then
     ht[e*ec+s] = floors(e-1, s-1) + floors(e, s-1) + 1
   end
   return ht[e*ec+s]

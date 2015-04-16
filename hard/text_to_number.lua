@@ -19,11 +19,11 @@ for line in io.lines(arg[1]) do
   for i = 1, #t do
     if t[i] == dz then
       q = 0
-    elseif d0[t[i]] ~= nil then
+    elseif d0[t[i]] then
       h = d0[t[i]]
-    elseif d1[t[i]] ~= nil then
+    elseif d1[t[i]] then
       q = q + d1[t[i]]
-    elseif d2[t[i]] ~= nil then
+    elseif d2[t[i]] then
       q = q + d2[t[i]]
     elseif t[i] == d3[1] then
       q, h = h*100, 0

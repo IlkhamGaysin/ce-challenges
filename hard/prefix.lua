@@ -1,8 +1,5 @@
 function pol(o, a, b)
-  if o == '*' then return a * b
-  elseif o == '/' then return a / b
-  end
-  return a + b
+  return (o == '*') and a * b or (o == '/') and a / b or a + b
 end
 
 for line in io.lines(arg[1]) do

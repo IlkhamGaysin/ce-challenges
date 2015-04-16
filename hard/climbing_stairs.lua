@@ -22,13 +22,7 @@ function add(x, y)
     else
       s = a:sub(i+1, i+plen)
     end
-    if j <= -plen then
-      t = "0"
-    elseif j <= 0 then
-      t = b:sub(1, j+plen)
-    else
-      t = b:sub(j+1, j+plen)
-    end
+    t = (j <= -plen) and "0" or (j <= 0) and b:sub(1, j+plen) or b:sub(j+1, j+plen)
     sum, c = addp(s, t, c, f)
     r = sum .. r
   end

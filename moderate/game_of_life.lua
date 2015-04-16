@@ -7,7 +7,7 @@ for line in io.lines(arg[1]) do
   local i = 0
   while true do
     i = line:find("*", i+1)
-    if i == nil then break end
+    if not i then break end
     c[#c+1] = l*n + i - 1
   end
   l = l + 1

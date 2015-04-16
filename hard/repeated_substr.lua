@@ -14,9 +14,5 @@ for line in io.lines(arg[1]) do
       if f == false then break end
     end
   end
-  if m == "" then
-    print("NONE")
-  else
-    print(m)
-  end
+  print((m == "") and "NONE" or m)
 end

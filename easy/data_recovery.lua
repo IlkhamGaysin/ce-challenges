@@ -6,7 +6,7 @@ for line in io.lines(arg[1]) do
     r[tonumber(a[h+i])] = a[i]
   end
   for i = 1, h do
-    if r[i] == nil then r[i] = a[h] break end
+    if not r[i] then r[i] = a[h] break end
   end
   print(table.concat(r, " "))
 end
