@@ -10,6 +10,10 @@ import (
 
 var h map[string][]int
 
+func init() {
+	h = make(map[string][]int)
+}
+
 func min(a, b int) int {
 	if a < b {
 		return a
@@ -49,8 +53,6 @@ func overlap(a, b string) []int {
 }
 
 func main() {
-	h = make(map[string][]int)
-
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

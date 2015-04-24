@@ -9,6 +9,16 @@ import (
 
 var s0, s1, s2, s3 []string
 
+func init() {
+	s0 = []string{"", "One", "Two", "Three", "Four", "Five",
+		"Six", "Seven", "Eight", "Nine"}
+	s1 = []string{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
+		"Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
+	s2 = []string{"Twenty", "Thirty", "Forty", "Fifty",
+		"Sixty", "Seventy", "Eighty", "Ninety"}
+	s3 = []string{"Hundred", "Thousand", "Million"}
+}
+
 func wrd(a1, a2, a3 byte) bool {
 	if a1+a2+a3 == 0 {
 		return false
@@ -27,14 +37,6 @@ func wrd(a1, a2, a3 byte) bool {
 }
 
 func main() {
-	s0 = []string{"", "One", "Two", "Three", "Four", "Five",
-		"Six", "Seven", "Eight", "Nine"}
-	s1 = []string{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
-		"Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
-	s2 = []string{"Twenty", "Thirty", "Forty", "Fifty",
-		"Sixty", "Seventy", "Eighty", "Ninety"}
-	s3 = []string{"Hundred", "Thousand", "Million"}
-
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

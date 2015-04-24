@@ -10,6 +10,13 @@ import (
 
 var digits map[uint8]int
 
+func init() {
+	digits = map[uint8]int{'0': 252, '1': 96,
+		'2': 218, '3': 242, '4': 102,
+		'5': 182, '6': 190, '7': 224,
+		'8': 254, '9': 246}
+}
+
 func valid(y int, d bool, x int) bool {
 	if d && (x&1 == 0) {
 		return false
@@ -18,11 +25,6 @@ func valid(y int, d bool, x int) bool {
 }
 
 func main() {
-	digits = map[uint8]int{'0': 252, '1': 96,
-		'2': 218, '3': 242, '4': 102,
-		'5': 182, '6': 190, '7': 224,
-		'8': 254, '9': 246}
-
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

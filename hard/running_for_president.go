@@ -40,6 +40,11 @@ var (
 	id2ix  map[int]int
 )
 
+func init() {
+	states = []state{}
+	id2ix = make(map[int]int)
+}
+
 func popular(is []int, s state) bool {
 	var v float64
 	for _, i := range is {
@@ -95,7 +100,6 @@ func main() {
 		issues[i] = issue{i, strings.TrimRight(s[0], ":"), cost, 0}
 		iss[issues[i].name] = i
 	}
-	states = []state{}
 	for scanner.Scan() {
 		name := scanner.Text()
 		if len(name) == 0 {
@@ -126,7 +130,6 @@ func main() {
 		tvot += votes
 	}
 	sort.Sort(descend(issues))
-	id2ix = make(map[int]int)
 	for ix, i := range issues {
 		id2ix[i.id] = ix
 	}

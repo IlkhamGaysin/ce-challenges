@@ -9,6 +9,10 @@ import (
 
 var h map[int]int
 
+func init() {
+	h = map[int]int{}
+}
+
 func floors(e, s int) int {
 	switch {
 	case e == 0 || s == 0:
@@ -28,7 +32,6 @@ func floors(e, s int) int {
 }
 
 func main() {
-	h = map[int]int{}
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

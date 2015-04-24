@@ -10,6 +10,12 @@ import (
 
 var moy map[string]int
 
+func init() {
+	moy = map[string]int{"Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3,
+		"May": 4, "Jun": 5, "Jul": 6, "Aug": 7,
+		"Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11}
+}
+
 func month(s string) int {
 	var k int
 	fmt.Sscanf(s[4:8], "%d", &k)
@@ -17,10 +23,6 @@ func month(s string) int {
 }
 
 func main() {
-	moy = map[string]int{"Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3,
-		"May": 4, "Jun": 5, "Jul": 6, "Aug": 7,
-		"Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11}
-
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

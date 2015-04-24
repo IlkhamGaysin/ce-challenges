@@ -9,6 +9,10 @@ import (
 
 var t []int
 
+func init() {
+	t = make([]int, 10)
+}
+
 func pali(a int) bool {
 	y := 0
 	for c := a; c > 0; c /= 10 {
@@ -26,7 +30,6 @@ func pali(a int) bool {
 }
 
 func main() {
-	t = make([]int, 10)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

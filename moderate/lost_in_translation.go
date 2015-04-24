@@ -10,11 +10,7 @@ import (
 
 var m map[rune]rune
 
-func mf(a rune) rune {
-	return m[a]
-}
-
-func main() {
+func init() {
 	codel := `nug
 rbc vjnmkf kd yxyqci na rbc zjkfoscdd ew rbc ujllmcp
 tc rbkso rbyr ejp mysljylc kd kxveddknmc re jsicpdrysi
@@ -42,7 +38,13 @@ so it is okay if you decided to quit`
 	for ix, i := range misscod {
 		m[i] = missdec[ix]
 	}
+}
 
+func mf(a rune) rune {
+	return m[a]
+}
+
+func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)

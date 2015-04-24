@@ -16,6 +16,12 @@ var (
 	ra []int
 )
 
+func init() {
+	v = map[byte]int{'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
+		'8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+	ra = make([]int, num_cards)
+}
+
 func sliceq(a, b []int) bool {
 	for ix, i := range a {
 		if i != b[ix] {
@@ -130,10 +136,6 @@ func hand_rank(hand []string) int {
 }
 
 func main() {
-	v = map[byte]int{'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
-		'8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-	ra = make([]int, num_cards)
-
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
