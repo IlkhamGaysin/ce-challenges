@@ -16,8 +16,7 @@ end
 
 function maxwords(s)
   local t = (#s > 81) and s:sub(1,81) or s
-  local f = t:find(" %S*$")
-  return f - 1
+  return t:find(" %S*$") - 1
 end
 
 function justify(s)

@@ -10,6 +10,5 @@ function subs(s, t)
 end
 
 for line in io.lines(arg[1]) do
-  local s, t = line:match("([^,]+),([^,]+)")
-  print(subs(s, t))
+  print(subs(line:match("([^,]+),([^,]+)")))
 end
