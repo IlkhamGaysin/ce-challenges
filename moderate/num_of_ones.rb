@@ -1,9 +1,8 @@
 File.open(ARGV[0]).each_line do |line|
-  s = line.to_i
-  r = 0
+  s, r = line.to_i, 0
   while s > 0 do
-    r += s & 1
-    s /= 2
+    s &= s - 1
+    r += 1
   end
   puts r
 end

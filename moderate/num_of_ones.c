@@ -3,15 +3,12 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	int a;
+	int a, i;
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
-		int i = 0;
-		while (a) {
-			i += a & 1;
-			a >>= 1;
-		}
+		for (i = 0; a > 0; a &= a - 1)
+			i++;
 		printf("%d\n", i);
 	}
 	return 0;
