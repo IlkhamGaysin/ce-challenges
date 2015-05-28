@@ -5,8 +5,8 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c, p = '\n';
-	bool u = false;
+	char c;
+	bool p = true, u = false;
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
 				u = false;
 			putchar(c);
 		}
-		p = c;
+		p = c == '\n';
 	}
-	if (p != '\n')
+	if (!p)
 		putchar('\n');
 	return 0;
 }

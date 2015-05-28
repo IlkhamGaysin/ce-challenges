@@ -8,8 +8,8 @@ const char *phrases[] = {", yeah!", ", this is crazy, I tell ya.",
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c, p = '\n';
-	bool l = false;
+	char c;
+	bool p = true, l = false;
 	int i = 0;
 
 	fp = fopen(*++argv, "r");
@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
 		} else {
 			putchar(c);
 		}
-		p = c;
+		p = c == '\n';
 	}
-	if (p != '\n')
+	if (!p)
 		putchar('\n');
 	return 0;
 }

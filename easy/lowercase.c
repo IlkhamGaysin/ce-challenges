@@ -1,17 +1,19 @@
 #include <ctype.h>
+#include <stdbool.h>
 #include <stdio.h>
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char c, p = '\n';
+	bool p = true;
+	char c;
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		putchar(tolower(c));
-		p = c;
+		p = c == '\n';
 	}
-	if (p != '\n')
+	if (!p)
 		putchar('\n');
 	return 0;
 }
