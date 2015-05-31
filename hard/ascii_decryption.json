@@ -2,5 +2,5 @@
   "name": "ASCII Decryption",
   "summary": "Decrypt a message.",
   "constraints": "Each line of input contains an integer, a character, and a list of integers. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/155"
+  "url": "https://www.codeeval.com/browse/155"
 }

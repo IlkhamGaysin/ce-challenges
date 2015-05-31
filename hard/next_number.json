@@ -2,5 +2,5 @@
   "name": "Following Integer",
   "summary": "Determine the next number in a sequence",
   "constraints": "Each line of input contains one integer lower than 1000000. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/44"
+  "url": "https://www.codeeval.com/browse/44"
 }

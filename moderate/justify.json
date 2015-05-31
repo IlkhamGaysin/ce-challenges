@@ -2,5 +2,5 @@
   "name": "Justify the Text",
   "summary": "Align the text to the specified width.",
   "constraints": "The input contains text. Length and number of input lines are unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/177"
+  "url": "https://www.codeeval.com/browse/177"
 }

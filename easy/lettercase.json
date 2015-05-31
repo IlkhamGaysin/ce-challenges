@@ -2,5 +2,5 @@
   "name": "Lettercase Percentage Ratio",
   "summary": "Find the percentage ratio.",
   "constraints": "Each line of input contains one string. Number and length of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/147"
+  "url": "https://www.codeeval.com/browse/147"
 }

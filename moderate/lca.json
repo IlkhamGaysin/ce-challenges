@@ -2,5 +2,5 @@
   "name": "Lowest Common Ancestor",
   "summary": "Determine the lowest common ancestor within a tree",
   "constraints": "Each line of input contains two nodes of a given binary search tree. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/11"
+  "url": "https://www.codeeval.com/browse/11"
 }

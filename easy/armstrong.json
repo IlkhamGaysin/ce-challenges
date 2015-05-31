@@ -2,5 +2,5 @@
   "name": "Armstrong Numbers",
   "summary": "Determine if a number is an armstrong number.",
   "constraints": "Each line of input contains one positive integer. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/82"
+  "url": "https://www.codeeval.com/browse/82"
 }

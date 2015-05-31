@@ -2,5 +2,5 @@
   "name": "Bit Positions",
   "summary": "Bits in position x,y are same or different.",
   "constraints": "Each line of input contains one integer and two positive integers. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/19"
+  "url": "https://www.codeeval.com/browse/19"
 }

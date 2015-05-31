@@ -2,5 +2,5 @@
   "name": "Nice angles",
   "summary": "Convert angle values to sexagesimal format.",
   "constraints": "Each line of input contains one floating point number. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/160"
+  "url": "https://www.codeeval.com/browse/160"
 }

@@ -2,5 +2,5 @@
   "name": "Counting Primes",
   "summary": "Count the number of primes between two integers.",
   "constraints": "Each line of input contains two positive integers. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/63"
+  "url": "https://www.codeeval.com/browse/63"
 }

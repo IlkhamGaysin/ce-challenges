@@ -2,5 +2,5 @@
   "name": "Reverse words",
   "summary": "Reversing an input sequence of words.",
   "constraints": "Each line of input may contain one string. Length and number of input lines are unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/8"
+  "url": "https://www.codeeval.com/browse/8"
 }

@@ -2,5 +2,5 @@
   "name": "Climbing Stairs",
   "summary": "Count the number of ways to climb to the top of a staircase.",
   "constraints": "Each line of input may contain one positive integer equal or below 1000. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/64"
+  "url": "https://www.codeeval.com/browse/64"
 }

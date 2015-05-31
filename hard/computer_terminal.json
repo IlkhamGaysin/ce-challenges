@@ -2,5 +2,5 @@
   "name": "Computer Terminal",
   "summary": "Print text to terminal with control sequences",
   "constraints": "The input consists of a string that includes control sequences. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/108"
+  "url": "https://www.codeeval.com/browse/108"
 }

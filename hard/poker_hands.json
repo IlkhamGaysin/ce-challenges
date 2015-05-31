@@ -2,5 +2,5 @@
   "name": "Poker hands",
   "summary": "Compare two poker hands.",
   "constraints": "Each line of input contains ten pairs of characters. The number of input lines is unconstrained.",
-  "url": "https://www.codeeval.com/open_challenges/86"
+  "url": "https://www.codeeval.com/browse/86"
 }
