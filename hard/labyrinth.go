@@ -50,11 +50,11 @@ func main() {
 	for i := 0; i < n; i++ {
 		if m[i] && m[i+n] {
 			start := seg{i, nil, []int{i + n}}
-			north = append(north, seg{i + n, &start, []int{}})
+			north = append(north, seg{pos: i + n, from: &start})
 		}
 		if m[(n-1)*n+i] && m[(n-2)*n+i] {
 			start := seg{(n-1)*n + i, nil, []int{(n-2)*n + i}}
-			south = append(south, seg{(n-2)*n + i, &start, []int{}})
+			south = append(south, seg{pos: (n-2)*n + i, from: &start})
 		}
 	}
 	path := []int{}
@@ -86,7 +86,7 @@ func main() {
 						}
 					}
 					if !f {
-						north, curr.to = append(north, seg{check, &curr, []int{}}), append(curr.to, check)
+						north, curr.to = append(north, seg{pos: check, from: &curr}), append(curr.to, check)
 						count++
 					}
 				}
@@ -124,7 +124,7 @@ func main() {
 						}
 					}
 					if !f {
-						south, curr.to = append(south, seg{check, &curr, []int{}}), append(curr.to, check)
+						south, curr.to = append(south, seg{pos: check, from: &curr}), append(curr.to, check)
 						count++
 					}
 				}

@@ -75,9 +75,9 @@ func main() {
 						floor[x+k] = true
 						if j == 0 || j == n-1 || k == 0 || k == n-1 {
 							if i == 0 {
-								downside = append(downside, seg{x + k, []int{}})
+								downside = append(downside, seg{pos: x + k})
 							} else if i == n-1 {
-								upside = append(upside, seg{x + k, []int{}})
+								upside = append(upside, seg{pos: x + k})
 							}
 						}
 					}

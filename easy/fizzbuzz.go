@@ -27,7 +27,7 @@ func main() {
 		var fizz, buzz, n int
 		fmt.Sscanf(scanner.Text(), "%d %d %d", &fizz, &buzz, &n)
 
-		tail := Node{"FB", nil}
+		tail := Node{value: "FB"}
 		list := &tail
 		for a, b := fizz-1, buzz-1; a > 0 || b > 0; a, b = (a+fizz-1)%fizz, (b+buzz-1)%buzz {
 			var value string

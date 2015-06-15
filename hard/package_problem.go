@@ -102,7 +102,7 @@ func main() {
 
 		t, bound, tl := boundary(ks, int64(0), items[1:], []int64{})
 		todo, best, bestl := []task{}, t, make([]int64, len(tl))
-		todo = append(todo, task{int64(0), bound, int64(0), ks, []int64{}})
+		todo = append(todo, task{bound: bound, room: ks})
 		copy(bestl, tl)
 
 		t, bound, tl = boundary(ks, int64(0), items, []int64{})

@@ -25,7 +25,7 @@ func main() {
 		var n, m int
 		fmt.Sscanf(scanner.Text(), "%d,%d", &n, &m)
 
-		tail := Node{n - 1, nil}
+		tail := Node{value: n - 1}
 		list := &tail
 		for i := n - 2; i >= 0; i-- {
 			list = &Node{i, list}

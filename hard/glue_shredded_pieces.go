@@ -43,7 +43,7 @@ func main() {
 		n := len(p[0])
 		segs := make([]seg, len(p))
 		for ix, i := range p {
-			segs[ix] = seg{i, []*seg{}, []*seg{}}
+			segs[ix] = seg{s: i}
 		}
 
 		for ix := 0; ix < len(p)-1; ix++ {
