@@ -18,9 +18,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	m := []string{}
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var m []string
 		l, r := scanner.Text()[0]-'a', scanner.Text()[1]-'1'
 		if l > 1 && r > 0 {
 			m = append(m, pos(l-2, r-1))
@@ -47,6 +47,5 @@ func main() {
 			m = append(m, pos(l+2, r+1))
 		}
 		fmt.Println(strings.Join(m, " "))
-		m = []string{}
 	}
 }

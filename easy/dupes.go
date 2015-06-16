@@ -16,9 +16,11 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var (
+			p string
+			q []string
+		)
 		t := strings.Split(scanner.Text(), ",")
-		var p string
-		q := []string{}
 		for _, i := range t {
 			if i != p {
 				q = append(q, i)
