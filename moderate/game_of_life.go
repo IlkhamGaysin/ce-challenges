@@ -15,10 +15,9 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	var (
-		n int
-		d []int
+		n    int
+		c, d []int
 	)
-	c := []int{}
 	for i := 0; scanner.Scan(); i++ {
 		if n == 0 {
 			n = len(scanner.Text())
@@ -32,6 +31,7 @@ func main() {
 	}
 
 	for r := 0; r < 10; r++ {
+		var c2 []int
 		m := make([]int, n*n)
 		for _, i := range c {
 			for jx, j := range d {
@@ -41,7 +41,6 @@ func main() {
 			}
 		}
 
-		c2 := []int{}
 		for i, j := 0, 0; i < n*n; i++ {
 			switch m[i] {
 			case 2:

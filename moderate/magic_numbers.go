@@ -9,8 +9,10 @@ import (
 )
 
 func isMagic(a int) bool {
-	var dig, r uint
-	ns := []uint{}
+	var (
+		dig, r uint
+		ns     []uint
+	)
 	for a > 0 {
 		r = uint(a % 10)
 		if r == 0 || dig&(1<<r) > 0 {
@@ -34,7 +36,6 @@ func isMagic(a int) bool {
 var magic []int
 
 func init() {
-	magic = []int{}
 	for i := 1; i <= 9876; i++ {
 		if isMagic(i) {
 			magic = append(magic, i)
@@ -43,6 +44,7 @@ func init() {
 }
 
 func main() {
+	var a, b int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -50,9 +52,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var a, b int
+		var r []string
 		fmt.Sscanf(scanner.Text(), "%d %d", &a, &b)
-		r := []string{}
 		for i := 0; i < len(magic) && magic[i] <= b; i++ {
 			if magic[i] >= a {
 				r = append(r, fmt.Sprint(magic[i]))

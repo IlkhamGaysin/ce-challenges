@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var m int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,11 +17,10 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var ret []string
 		t := strings.Split(scanner.Text(), ";")
-		var m int
 		fmt.Sscan(t[1], &m)
 		u := strings.Split(t[0], ",")
-		ret := []string{}
 		mi := m
 		for ix := range u {
 			var o int

@@ -40,8 +40,8 @@ func main() {
 		} else if p == c {
 			fmt.Println("ZERO")
 		} else {
+			var res []string
 			change := make([]int, 12)
-			res := []string{}
 			for i := 11; i >= 0; i-- {
 				for c-p >= value[i] {
 					change[i]++

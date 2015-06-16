@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var found bool
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,8 +17,9 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var been []string
 		s := strings.Split(scanner.Text(), ";")
-		m, b, been := map[string]string{}, "BEGIN", []string{}
+		m, b := make(map[string]string, len(s)), "BEGIN"
 		for _, i := range s {
 			t := strings.Split(i, "-")
 			if t[0] == t[1] {
@@ -26,7 +28,6 @@ func main() {
 			m[t[0]] = t[1]
 		}
 		for i := 0; i < len(s); i++ {
-			var found bool
 			if b, found = m[b]; !found {
 				goto invalid
 			}

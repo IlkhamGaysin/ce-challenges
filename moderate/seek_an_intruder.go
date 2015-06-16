@@ -36,7 +36,11 @@ func main() {
 	}
 	defer data.Close()
 
-	ips := []uint32{}
+	var (
+		ips  []uint32
+		ip   uint32
+		nmax int
+	)
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := scanner.Text()
@@ -116,8 +120,6 @@ func main() {
 			}
 		}
 	}
-	var ip uint32
-	var nmax int
 	nips := make(map[uint32]int)
 	for _, i := range ips {
 		if _, f := nips[i]; f {

@@ -21,7 +21,7 @@ we think that our language is impossible to understand
 so it is okay if you decided to quit`
 
 	m = map[rune]rune{' ': ' '}
-	misscod, missdec := []rune{}, []rune{}
+	var misscod, missdec []rune
 	for i := 'a'; i <= 'z'; i++ {
 		ix := strings.IndexRune(codel, i)
 		if ix != -1 {

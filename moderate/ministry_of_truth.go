@@ -25,9 +25,12 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var (
+			c   int
+			res []string
+		)
 		s := strings.Split(scanner.Text(), ";")
 		t, u := strings.Fields(s[0]), strings.Fields(s[1])
-		c, res := 0, []string{}
 		for i := 0; i < len(t); i++ {
 			var r string
 			if c < len(u) {

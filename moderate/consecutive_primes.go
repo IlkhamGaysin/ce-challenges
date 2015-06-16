@@ -40,6 +40,7 @@ func consecutive(g [][]uint, d int, c uint) (r int) {
 }
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -50,7 +51,6 @@ func main() {
 
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var n int
 		fmt.Sscanf(scanner.Text(), "%d", &n)
 		for maxP < 2*n-1 {
 			maxP += 2
@@ -61,7 +61,6 @@ func main() {
 
 		g := make([][]uint, n+1)
 		for i := 1; i <= n; i++ {
-			g[i] = []uint{}
 			for j := 1; j <= n; j++ {
 				if i != j && isPrime(i+j) {
 					g[i] = append(g[i], uint(j))

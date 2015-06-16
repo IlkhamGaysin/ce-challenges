@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+	var (
+		stack []byte
+		c     uint8
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,8 +20,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	valid := true
-	stack := []byte{}
-	var c uint8
 	for scanner.Scan() {
 		c = scanner.Text()[0]
 		if !valid {
@@ -57,7 +59,7 @@ func main() {
 		}
 		if !valid {
 			fmt.Println("False")
-			stack = []byte{}
+			stack = stack[0:0]
 		}
 	}
 	if c != '\n' {

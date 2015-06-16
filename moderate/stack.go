@@ -29,7 +29,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t, stack := strings.Fields(scanner.Text()), []int{}
+		var stack []int
+		t := strings.Fields(scanner.Text())
 		for _, i := range t {
 			var u int
 			fmt.Sscan(i, &u)

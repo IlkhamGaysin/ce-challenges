@@ -15,6 +15,7 @@ type Node struct {
 }
 
 func main() {
+	var n, m int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -22,7 +23,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var n, m int
+		var t []string
 		fmt.Sscanf(scanner.Text(), "%d,%d", &n, &m)
 
 		tail := Node{value: n - 1}
@@ -32,7 +33,6 @@ func main() {
 		}
 		tail.next, list = list, &tail
 
-		t := []string{}
 		for i := 0; i < n; i++ {
 			for j := 0; j < m-1; j++ {
 				list = list.next

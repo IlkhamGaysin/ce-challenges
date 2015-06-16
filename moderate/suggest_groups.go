@@ -37,7 +37,10 @@ func main() {
 	}
 	defer data.Close()
 
-	userlist, gnames, unames := []user{}, []string{}, []string{}
+	var (
+		userlist            []user
+		gnames, unames, ret []string
+	)
 	gid, uid := map[string]int{}, map[string]int{}
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
@@ -67,9 +70,8 @@ func main() {
 		userlist = append(userlist, newuser)
 	}
 	sort.Sort(byid(userlist))
-	ret := []string{}
 	for _, i := range userlist {
-		suggest := []string{}
+		var suggest []string
 		for j := 0; j < len(gnames); j++ {
 			if !contains(i.groups, j) {
 				var ing int

@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -18,9 +19,8 @@ func main() {
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), ";")
 		u := strings.Split(t[0], ",")
-		var n int
 		fmt.Sscan(t[1], &n)
-		v, vk := make(map[int]bool, len(u)), []int{}
+		v, vk := make(map[int]bool, len(u)), make([]int, len(u))
 		for i := range u {
 			var w int
 			fmt.Sscan(u[i], &w)

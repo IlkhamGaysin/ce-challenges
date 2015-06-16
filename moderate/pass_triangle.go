@@ -26,13 +26,13 @@ func maxis(a []int) (ret int) {
 }
 
 func main() {
+	var r []int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
-	r := []int{}
 	for scanner.Scan() {
 		s := strings.Fields(scanner.Text())
 		t := make([]int, len(s))

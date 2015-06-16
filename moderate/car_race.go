@@ -45,7 +45,7 @@ func main() {
 		track[i/2] = segment{v, w}
 	}
 
-	cars := []car{}
+	var cars []car
 	for scanner.Scan() {
 		var (
 			num                                int

@@ -22,7 +22,10 @@ func main() {
 			fmt.Println(0)
 			continue
 		}
-		st, av := []float32{}, []float32{}
+		var (
+			st, av   []float32
+			intersec int
+		)
 		for _, i := range p {
 			var v float32
 			fmt.Sscanf(i, "%f", &v)
@@ -49,7 +52,6 @@ func main() {
 		for ix, i := range av {
 			av[ix] = i * stl / avl
 		}
-		var intersec int
 		for i, j := 0, 0; i < len(st) && j < len(av); {
 			if st[i] == av[j] {
 				intersec++
