@@ -11,7 +11,7 @@ import (
 var mat []string
 
 func uniq(x, y, cw, ch int) bool {
-	d := map[uint8]bool{}
+	d := make(map[uint8]bool)
 	for i := x; i < x+cw; i++ {
 		for j := y; j < y+ch; j++ {
 			if d[mat[j][i]] {
@@ -30,8 +30,10 @@ func main() {
 	}
 	defer data.Close()
 
-	var w, h int
-	mat = []string{}
+	var (
+		w, h int
+		res  [][]int
+	)
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		h++
@@ -41,7 +43,6 @@ func main() {
 		mat = append(mat, scanner.Text())
 	}
 
-	res := [][]int{}
 	ma, ch, cw := 1, 1, 1
 	for x, y := 0, 0; ch <= h; {
 		if uniq(x, y, cw, ch) {

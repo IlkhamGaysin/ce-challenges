@@ -41,7 +41,6 @@ var (
 )
 
 func init() {
-	states = []state{}
 	id2ix = make(map[int]int)
 }
 
@@ -88,7 +87,7 @@ func main() {
 	scanner.Scan()
 	fmt.Sscanf(scanner.Text(), "Social issues: %d", &niss)
 	issues = make([]issue, niss)
-	iss := map[string]int{}
+	iss := make(map[string]int)
 	for i := 0; i < niss; i++ {
 		scanner.Scan()
 		for scanner.Text() == "" {
@@ -135,7 +134,7 @@ func main() {
 	}
 
 	votes, cost := elect([]int{issues[0].id})
-	todo := []task{task{0, 0, 0, []int{}}, task{0, votes, cost, []int{issues[0].id}}}
+	todo := []task{task{}, task{0, votes, cost, []int{issues[0].id}}}
 	best, bestc, bestl := niss, 0, make([]int, niss)
 	for i := 0; i < niss; i++ {
 		bestc += issues[i].cost
@@ -170,7 +169,7 @@ func main() {
 			}
 		}
 	}
-	ret := []string{}
+	var ret []string
 	for _, i := range bestl {
 		ret = append(ret, issues[id2ix[i]].name)
 	}

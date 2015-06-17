@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var row, col int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,14 +17,15 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var (
+			r            []string
+			i, j, tn, tw int
+		)
 		s := strings.Split(scanner.Text(), ";")
-		var row, col int
 		fmt.Sscanf(s[0], "%d", &row)
 		fmt.Sscanf(s[1], "%d", &col)
 		t := strings.Fields(s[2])
-		i, j := 0, 0
-		tn, te, ts, tw := 0, col-1, row-1, 0
-		r := []string{}
+		te, ts := col-1, row-1
 		for {
 			for j <= te {
 				r = append(r, t[i*col+j])

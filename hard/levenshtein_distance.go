@@ -40,7 +40,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	test := []string{}
+	var test []string
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan(); scanner.Text() != "END OF INPUT"; scanner.Scan() {
 		test = append(test, scanner.Text())
@@ -50,7 +50,12 @@ func main() {
 		words[len(scanner.Text())] = append(words[len(scanner.Text())], scanner.Text())
 	}
 	for _, i := range test {
-		been, curr, n, c := []string{}, []string{i}, 0, ""
+		var (
+			been []string
+			n    int
+			c    string
+		)
+		curr := []string{i}
 		for len(curr) > 0 {
 			c, curr, been, n = curr[0], curr[1:], append(been, curr[0]), n+1
 			if len(c) > 1 {

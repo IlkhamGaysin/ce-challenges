@@ -28,7 +28,7 @@ func main() {
 			for i := len(trans) - 1; i >= 0; i-- {
 				if trans[i].r == false && strings.Contains(trans[i].s, t[0]) {
 					u := strings.Split(trans[i].s, t[0])
-					v := []segment{}
+					var v []segment
 					for jx, j := range u {
 						if len(j) > 0 {
 							v = append(v, segment{j, false})

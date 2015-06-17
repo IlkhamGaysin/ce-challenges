@@ -9,25 +9,26 @@ import (
 )
 
 func main() {
+	var (
+		m, ps     [][]int
+		maxmat, x int
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	m := [][]int{}
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var r []int
 		t := strings.Fields(scanner.Text())
-		r := []int{}
 		for _, i := range t {
-			var x int
 			fmt.Sscan(i, &x)
 			r = append(r, x)
 		}
 		m = append(m, r)
 	}
 	n := len(m)
-	ps := [][]int{}
 	for i := 0; i < n; i++ {
 		r := make([]int, n)
 		ps = append(ps, r)
@@ -40,7 +41,6 @@ func main() {
 			}
 		}
 	}
-	var maxmat int
 	for i := 0; i < n; i++ {
 		for j := i; j < n; j++ {
 			var minmat, submat int

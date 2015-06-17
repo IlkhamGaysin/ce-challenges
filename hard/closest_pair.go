@@ -64,7 +64,7 @@ func divideAndConquerClosestPair(h, v []point) (float64, int, int) {
 	hl, hr := make([]point, m), make([]point, len(h)-m)
 	copy(hl, h[:m+1])
 	copy(hr, h[m:])
-	vl, vr := []point{}, []point{}
+	var vl, vr []point
 	for _, i := range v {
 		found := false
 		for _, j := range hl {
@@ -83,7 +83,7 @@ func divideAndConquerClosestPair(h, v []point) (float64, int, int) {
 	if d2, x2, y2 := divideAndConquerClosestPair(hr, vr); d2 < d {
 		d, x, y = d2, x2, y2
 	}
-	s := []point{}
+	var s []point
 	for _, i := range v {
 		if math.Abs(i.x-mid) < d {
 			s = append(s, i)
@@ -100,6 +100,10 @@ func divideAndConquerClosestPair(h, v []point) (float64, int, int) {
 }
 
 func main() {
+	var (
+		n    int
+		x, y float64
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -108,14 +112,12 @@ func main() {
 
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var n int
 		fmt.Sscanf(scanner.Text(), "%d", &n)
 		if n == 0 {
 			break
 		}
 		p := make([]point, n)
 		for i := 0; i < n; i++ {
-			var x, y float64
 			scanner.Scan()
 			fmt.Sscanf(scanner.Text(), "%f %f", &x, &y)
 			p[i] = point{x, y, i}

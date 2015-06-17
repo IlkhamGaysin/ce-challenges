@@ -62,6 +62,10 @@ func boundary(room, value int64, items []item, itl []int64) (t, b int64, tl []in
 }
 
 func main() {
+	var (
+		ks, s0, s2 int64
+		s1         float64
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -73,15 +77,14 @@ func main() {
 			continue
 		}
 		ts := strings.Split(scanner.Text(), "(")
-
-		var ks int64
 		n := len(ts) - 1
 		fmt.Sscanf(ts[0], "%d : ", &ks)
-		items, n0 := []item{}, n
-		var min_weight int64 = math.MaxInt64
+		var (
+			items      []item
+			min_weight int64 = math.MaxInt64
+		)
+		n0 := n
 		for i := 1; i <= n0; i++ {
-			var s0, s2 int64
-			var s1 float64
 			fmt.Sscanf(ts[i], "%d,%f,$%d)", &s0, &s1, &s2)
 
 			if s1 > float64(ks) {
@@ -101,8 +104,8 @@ func main() {
 		ks *= 100
 
 		t, bound, tl := boundary(ks, int64(0), items[1:], []int64{})
-		todo, best, bestl := []task{}, t, make([]int64, len(tl))
-		todo = append(todo, task{bound: bound, room: ks})
+		best, bestl := t, make([]int64, len(tl))
+		todo := []task{task{bound: bound, room: ks}}
 		copy(bestl, tl)
 
 		t, bound, tl = boundary(ks, int64(0), items, []int64{})
@@ -149,7 +152,7 @@ func main() {
 				}
 			}
 		}
-		st := []string{}
+		var st []string
 		sort.Sort(Best(bestl))
 		for i := int64(1); i <= int64(n0); i++ {
 			if len(bestl) > 0 && i == bestl[0] {

@@ -24,8 +24,7 @@ func contains(a []seg, b int) bool {
 	return false
 }
 
-func maketo(p, n int) []int {
-	var to []int
+func maketo(p, n int) (to []int) {
 	p2 := p % (n * n)
 	if p2/n < n-1 && floor[p+n] {
 		to = append(to, p+n)
@@ -49,6 +48,7 @@ func maketo(p, n int) []int {
 }
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -57,11 +57,13 @@ func main() {
 
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var (
+			downside, upside []seg
+			r                int
+		)
 		s := strings.Split(scanner.Text(), ";")
-		var n int
 		fmt.Sscan(s[0], &n)
 		floor, holes = make(map[int]bool, n*n*n), make(map[int]bool, n*n*n)
-		downside, upside := []seg{}, []seg{}
 
 		for i := 0; i < n; i++ {
 			for j := 0; j < n; j++ {
@@ -92,13 +94,12 @@ func main() {
 			upside[ix].to = maketo(i.pos, n)
 			floor[i.pos] = false
 		}
-		r := 0
 		for x := 2; true; x += 2 {
 			if len(downside) == 0 {
 				r = 0
 				break
 			}
-			newdown := []seg{}
+			var newdown []seg
 			for _, i := range downside {
 				for _, j := range i.to {
 					if contains(upside, j) {
@@ -123,7 +124,7 @@ func main() {
 				r = 0
 				break
 			}
-			newup := []seg{}
+			var newup []seg
 			for _, i := range upside {
 				for _, j := range i.to {
 					if contains(downside, j) {

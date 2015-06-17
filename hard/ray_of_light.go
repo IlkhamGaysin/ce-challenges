@@ -71,10 +71,10 @@ func main() {
 	}
 	defer data.Close()
 	s := make([]int, 100)
-	been := make(map[int][]ray)
-	todo := []ray{}
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var todo []ray
+		been := make(map[int][]ray)
 		for ix, i := range scanner.Text() {
 			if i == '\\' || i == '/' || i == 'X' {
 				x, y := ix%10, ix/10
@@ -169,6 +169,5 @@ func main() {
 			}
 		}
 		fmt.Println()
-		been, todo = make(map[int][]ray), []ray{}
 	}
 }

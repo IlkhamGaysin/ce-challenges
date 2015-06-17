@@ -10,7 +10,7 @@ import (
 var h map[int]int
 
 func init() {
-	h = map[int]int{}
+	h = make(map[int]int)
 }
 
 func floors(e, s int) int {
@@ -32,6 +32,7 @@ func floors(e, s int) int {
 }
 
 func main() {
+	var e, s int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +40,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var e, s, n int
+		var n int
 		fmt.Sscanf(scanner.Text(), "%d %d", &e, &s)
 		for floors(e, n) < s {
 			n++

@@ -9,6 +9,10 @@ import (
 )
 
 func main() {
+	var (
+		n int
+		f bool
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,13 +20,15 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var (
+			minc, offset int
+			m            [][]int
+		)
 		s := strings.Split(scanner.Text(), "|")
-		var n int
 		fmt.Sscan(strings.TrimSpace(s[0]), &n)
 		c := strings.TrimSpace(s[1])[0]
 		t := strings.Fields(strings.TrimSpace(s[2]))
 		u := make([]int, len(t))
-		var minc int
 		for ix, i := range t {
 			fmt.Sscan(i, &u[ix])
 			if ix == 0 {
@@ -31,10 +37,9 @@ func main() {
 				minc = u[ix]
 			}
 		}
-		m := [][]int{}
 		for i := 0; i < len(t)-2*n-1; i++ {
 			for j := i + n + 1; j < len(t)-n; j++ {
-				f := true
+				f = true
 				for k := 0; k < n; k++ {
 					if u[i+k] != u[j+k] {
 						f = false
@@ -46,7 +51,7 @@ func main() {
 				}
 			}
 		}
-		f := true
+		f = true
 		for len(m) > 1 && f {
 			f = false
 			for i := len(m) - 1; i >= 0; i-- {
@@ -59,7 +64,6 @@ func main() {
 				}
 			}
 		}
-		var offset int
 		if len(m) == 0 {
 			offset = 32 - minc
 		} else {

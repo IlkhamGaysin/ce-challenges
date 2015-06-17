@@ -11,7 +11,7 @@ func isContained(pos []int, bee []string, st0 string) bool {
 	if st0 == "" {
 		return true
 	}
-	neigh := [][]int{}
+	var neigh [][]int
 	if pos[0] > 0 && bee[pos[0]-1][pos[1]] == st0[0] {
 		neigh = append(neigh, []int{pos[0] - 1, pos[1]})
 	}
@@ -51,7 +51,10 @@ func main() {
 	for scanner.Scan() {
 		s := scanner.Text()
 
-		start := [][]int{}
+		var (
+			start [][]int
+			f     bool
+		)
 		for ix, i := range board {
 			for jx, j := range i {
 				if rune(s[0]) == j {
@@ -60,7 +63,6 @@ func main() {
 			}
 		}
 
-		f := false
 		for _, i := range start {
 			if isContained(i, board, s[1:]) {
 				f = true

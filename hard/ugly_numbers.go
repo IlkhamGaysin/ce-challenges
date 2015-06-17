@@ -16,9 +16,13 @@ func pow3(a int) int {
 }
 
 func ugly(j int, n []int) bool {
-	var k int
-	var s int64
-	c, cj, p := int64(n[0]), j, true
+	var (
+		k  int
+		s  int64
+		c  int64 = int64(n[0])
+		cj int   = j
+		p  bool  = true
+	)
 	for k < len(n)-1 {
 		ops := cj % 3
 		cj /= 3
@@ -60,8 +64,10 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var u int
-		t := []int{}
+		var (
+			u int
+			t []int
+		)
 		for _, i := range scanner.Text() {
 			t = append(t, int(i-'0'))
 		}

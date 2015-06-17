@@ -28,7 +28,7 @@ func tour(nodes []place, di []int) (ret float64) {
 }
 
 func find_path(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) {
-	var o2, p2 []int
+	var o2, p2, route []int
 	if len(p) == 0 {
 		p2 = []int{o[0]}
 	} else {
@@ -37,7 +37,6 @@ func find_path(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64)
 	}
 	o2 = make([]int, len(o))
 	copy(o2, o)
-	route := []int{}
 	for i := 0; i < len(o2); i++ {
 		found := false
 		for j := 0; j < len(p2); j++ {
@@ -107,8 +106,11 @@ func main() {
 	}
 	defer data.Close()
 
-	var n int
-	places, path := []place{}, []int{}
+	var (
+		n      int
+		places []place
+		path   []int
+	)
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Fields(scanner.Text())

@@ -69,8 +69,10 @@ func main() {
 	}
 	defer data.Close()
 
-	var n int
-	hosts := []host{}
+	var (
+		n, a1, a2, a3, a4, a5, src, dst int
+		hosts                           []host
+	)
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanWords)
 	for l := ""; l != "]}"; {
@@ -79,7 +81,6 @@ func main() {
 		scanner.Scan()
 		fmt.Sscanf(strings.TrimLeft(scanner.Text(), "{"), "%d:", &h.id)
 		for l != "]," && l != "]}" {
-			var a1, a2, a3, a4, a5 int
 			scanner.Scan()
 			s := strings.TrimLeft(scanner.Text(), "[")
 			fmt.Sscanf(s, "'%d.%d.%d.%d/%d'", &a1, &a2, &a3, &a4, &a5)
@@ -112,14 +113,13 @@ func main() {
 	scanner.Split(bufio.ScanLines)
 	for scanner.Scan() {
 		for i := 0; i < n; i++ {
-			hosts[i].sub = []int{}
+			hosts[i].sub = hosts[i].sub[0:0]
 		}
-		var src, dst int
 		var fin bool
 		fmt.Sscanf(scanner.Text(), "%d %d", &src, &dst)
 		q := []int{src}
 		for len(q) > 0 {
-			r := []int{}
+			var r []int
 			for _, i := range q {
 				for _, j := range hosts[id2h[i]].conn {
 					if j == dst {

@@ -46,6 +46,7 @@ func sliceq(a, b []string) bool {
 }
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -59,12 +60,11 @@ func main() {
 
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var tnl, r [][]string
 		t := strings.Split(scanner.Text(), ",")
 		x := strings.Fields(strings.TrimSpace(t[1]))
-		var n int
 		fmt.Sscanf(t[0], "%d", &n)
 
-		tnl := [][]string{}
 		for i := 0; i <= len(words)-n; i++ {
 			temp := make([]string, n)
 			for j := 0; j < n; j++ {
@@ -73,7 +73,6 @@ func main() {
 			tnl = append(tnl, temp)
 		}
 
-		r := [][]string{}
 		for _, i := range tnl {
 			f := true
 			for j := 0; j < len(x); j++ {
@@ -87,7 +86,7 @@ func main() {
 			}
 		}
 
-		freq = map[string]int{}
+		freq = make(map[string]int)
 		for _, i := range r {
 			rs := strings.Join(i, ",")
 			if _, f := freq[rs]; f {

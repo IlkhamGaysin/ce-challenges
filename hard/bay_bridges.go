@@ -45,7 +45,7 @@ func bay(a []bridge, b []int, c int) []int {
 		return b
 	}
 
-	res1 := []int{}
+	var res1 []int
 	if maxlen < len(b)+len(a)-c {
 		res1 = bay(a, b, c+1)
 		for i := 0; i < len(a[c].inter); i++ {
@@ -67,7 +67,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	bridges := []bridge{}
+	var bridges []bridge
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		var nb bridge

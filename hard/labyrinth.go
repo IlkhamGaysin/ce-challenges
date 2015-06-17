@@ -27,13 +27,17 @@ func kill(a seg, b int) {
 }
 
 func main() {
+	var (
+		m            map[int]bool
+		n            int
+		north, south []seg
+		path         []int
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	var m map[int]bool
-	var n int
 	scanner := bufio.NewScanner(data)
 	for i := 0; scanner.Scan(); i++ {
 		if n == 0 {
@@ -46,7 +50,6 @@ func main() {
 			}
 		}
 	}
-	north, south := []seg{}, []seg{}
 	for i := 0; i < n; i++ {
 		if m[i] && m[i+n] {
 			start := seg{i, nil, []int{i + n}}
@@ -57,7 +60,6 @@ func main() {
 			south = append(south, seg{pos: (n-2)*n + i, from: &start})
 		}
 	}
-	path := []int{}
 	for {
 		nr := len(north)
 		for i := 0; i < nr; i++ {

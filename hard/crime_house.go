@@ -22,8 +22,7 @@ func kernighan(a uint16) (r int8) {
 	return r
 }
 
-func all(a uint16) []uint {
-	r := []uint{}
+func all(a uint16) (r []uint) {
 	for i := uint(0); a > 0; a, i = a>>1, i+1 {
 		if a&1 > 0 {
 			r = append(r, i)
@@ -32,8 +31,7 @@ func all(a uint16) []uint {
 	return r
 }
 
-func removeIn(ss []state, x uint) []state { // ex
-	r := []state{}
+func removeIn(ss []state, x uint) (r []state) { // ex
 	for ix, i := range ss {
 		if i.knownIn&(1<<x) == 0 {
 			if i.knownOut&(1<<x) > 0 {
@@ -46,8 +44,7 @@ func removeIn(ss []state, x uint) []state { // ex
 	}
 	return r
 }
-func removeOut(ss []state, x uint) []state { // lx
-	r := []state{}
+func removeOut(ss []state, x uint) (r []state) { // lx
 	for ix, i := range ss {
 		if i.knownOut&(1<<x) == 0 {
 			if i.knownIn&(1<<x) > 0 {
@@ -60,8 +57,7 @@ func removeOut(ss []state, x uint) []state { // lx
 	}
 	return r
 }
-func createIn(ss []state) []state { // e0
-	r := []state{}
+func createIn(ss []state) (r []state) { // e0
 	for _, i := range ss {
 		kno := all(i.knownOut)
 		for _, j := range kno {
@@ -74,8 +70,7 @@ func createIn(ss []state) []state { // e0
 	}
 	return r
 }
-func createOut(ss []state) []state { // l0
-	r := []state{}
+func createOut(ss []state) (r []state) { // l0
 	for _, i := range ss {
 		kno := all(i.knownIn)
 		for _, j := range kno {
@@ -90,6 +85,7 @@ func createOut(ss []state) []state { // l0
 }
 
 func main() {
+	var ix uint
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -105,7 +101,6 @@ func main() {
 		states := []state{state{0, 0, 0, 0}}
 		for _, i := range t {
 			e := i[0] == 'E'
-			var ix uint
 			fmt.Sscanf(i[2:], "%d", &ix)
 			var cx int8
 			if ix > 0 {

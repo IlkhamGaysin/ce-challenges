@@ -57,6 +57,7 @@ func maxremain(h houseHeap, y int) (ret int) {
 }
 
 func main() {
+	var x, h, y int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -68,12 +69,11 @@ func main() {
 
 		t := make([]house, len(s))
 		for ix, i := range s {
-			var x, h, y int
 			fmt.Sscanf(i, "(%d,%d,%d)", &x, &h, &y)
 			t[ix] = house{x, h, y}
 		}
 		sort.Sort(houses(t))
-		res := []string{}
+		var res []string
 		ch, cx, curr, ly := 0, 0, &houseHeap{}, 0
 		heap.Init(curr)
 		for _, i := range t {

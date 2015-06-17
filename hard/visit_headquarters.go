@@ -83,6 +83,7 @@ func (pq *prioEventQueue) update(a *agent, time, curr int, path []visit) {
 }
 
 func main() {
+	var room, dura int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -91,13 +92,17 @@ func main() {
 
 	// room -1: outside building
 	// room  xx00: hallway xth floor
-	staff, n, hq := []agent{}, 0, map[int]int{} // map occupied until
+	var (
+		staff []agent
+		n     int
+	)
+	hq := make(map[int]int) // map occupied until
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
+		var path []visit
 		s := strings.Fields(scanner.Text())
-		id, time, path := s[0][0], d2ts(s[1]), []visit{}
+		id, time := s[0][0], d2ts(s[1])
 		for i := 2; i < len(s); i += 2 {
-			var room, dura int
 			fmt.Sscanf(s[i], "%d", &room)
 			hq[room] = 0
 			fmt.Sscan(s[i+1], &dura)
