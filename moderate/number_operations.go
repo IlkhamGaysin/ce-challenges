@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func next_permu(s string) (string, bool) {
+func nextPermu(s string) (string, bool) {
 	k, l := -1, 0
 	for i := len(s) - 2; i >= 0; i-- {
 		if s[i] < s[i+1] {
@@ -103,7 +103,7 @@ func main() {
 					}
 				}
 			}
-			v, f = next_permu(v)
+			v, f = nextPermu(v)
 		}
 		if g {
 			fmt.Println("YES")

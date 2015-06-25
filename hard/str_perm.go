@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func next_permu(s string) (string, bool) {
+func nextPermu(s string) (string, bool) {
 	k, l := -1, 0
 	for i := len(s) - 2; i >= 0; i-- {
 		if s[i] < s[i+1] {
@@ -47,7 +47,7 @@ func main() {
 		c := strings.Join(s, "")
 		fmt.Print(c)
 		var done bool
-		for c, done = next_permu(c); !done; c, done = next_permu(c) {
+		for c, done = nextPermu(c); !done; c, done = nextPermu(c) {
 			fmt.Printf(",%s", c)
 		}
 		fmt.Println()

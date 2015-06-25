@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-const num_cards = 5
+const numCards = 5
 
 var (
 	v  map[byte]int
@@ -19,7 +19,7 @@ var (
 func init() {
 	v = map[byte]int{'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
 		'8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-	ra = make([]int, num_cards)
+	ra = make([]int, numCards)
 }
 
 func sliceq(a, b []int) bool {
@@ -31,7 +31,7 @@ func sliceq(a, b []int) bool {
 	return true
 }
 
-func card_ranks(cards []string) int {
+func card_ranks(cards []string) (rank int) {
 	for ix, i := range cards {
 		ra[ix] = v[i[0]]
 	}
@@ -39,7 +39,6 @@ func card_ranks(cards []string) int {
 	if sliceq(ra, []int{2, 3, 4, 5, 14}) {
 		ra = []int{1, 2, 3, 4, 5}
 	}
-	var rank int
 	for ix, i := range ra {
 		rank += i << uint(4*ix)
 	}

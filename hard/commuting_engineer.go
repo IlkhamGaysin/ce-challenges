@@ -27,7 +27,7 @@ func tour(nodes []place, di []int) (ret float64) {
 	return ret
 }
 
-func find_path(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) {
+func findPath(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) {
 	var o2, p2, route []int
 	if len(p) == 0 {
 		p2 = []int{o[0]}
@@ -89,7 +89,7 @@ func find_path(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64)
 
 		d2 := d + dist(&nodes[p2[len(p2)-1]], &nodes[route[i]])
 		if d2+mindi < m2 {
-			di, du := find_path(o2, append(p2, route[i]), d2, m2, n, nodes)
+			di, du := findPath(o2, append(p2, route[i]), d2, m2, n, nodes)
 			if du < m2 {
 				m2 = du
 				mp = di
@@ -107,17 +107,14 @@ func main() {
 	defer data.Close()
 
 	var (
-		n      int
+		n, id  int
+		x, y   float64
 		places []place
 		path   []int
 	)
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Fields(scanner.Text())
-		var (
-			id   int
-			x, y float64
-		)
 		fmt.Sscan(t[0], &id)
 		fmt.Sscanf(t[len(t)-2], "(%f,", &x)
 		fmt.Sscanf(t[len(t)-1], "%f)", &y)
@@ -125,8 +122,8 @@ func main() {
 		path = append(path, n)
 		n++
 	}
-	shortest_path, _ := find_path(path, []int{}, 0, tour(places, path), len(path), places)
-	for _, i := range shortest_path {
+	shortestPath, _ := findPath(path, []int{}, 0, tour(places, path), len(path), places)
+	for _, i := range shortestPath {
 		fmt.Println(places[i].id)
 	}
 }

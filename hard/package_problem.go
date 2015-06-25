@@ -38,10 +38,10 @@ type task struct {
 }
 
 func boundary(room, value int64, items []item, itl []int64) (t, b int64, tl []int64) {
-	total_room, f := room, false
+	totalRoom, f := room, false
 	t, b = value, value
 	for _, i := range items {
-		if i.weight > total_room {
+		if i.weight > totalRoom {
 			continue
 		} else if i.weight > room {
 			if !f {
@@ -80,8 +80,8 @@ func main() {
 		n := len(ts) - 1
 		fmt.Sscanf(ts[0], "%d : ", &ks)
 		var (
-			items      []item
-			min_weight int64 = math.MaxInt64
+			items     []item
+			minWeight int64 = math.MaxInt64
 		)
 		n0 := n
 		for i := 1; i <= n0; i++ {
@@ -92,8 +92,8 @@ func main() {
 			} else {
 				items = append(items, item{s0, s2, int64(s1 * 100)})
 			}
-			if s2 < min_weight {
-				min_weight = s2
+			if s2 < minWeight {
+				minWeight = s2
 			}
 		}
 		if n == 0 {
@@ -143,11 +143,11 @@ func main() {
 					best, bestl = t, make([]int64, len(tl))
 					copy(bestl, tl)
 				}
-				if bound > best && curr.room > min_weight {
+				if bound > best && curr.room > minWeight {
 					todo = append(todo, task{curr.level + 1, bound, curr.value, curr.room, curr.items})
 				}
 
-				if curr.room >= items[curr.level+1].weight+min_weight {
+				if curr.room >= items[curr.level+1].weight+minWeight {
 					todo = append(todo, task{curr.level + 1, curr.bound, curr.value + items[curr.level+1].value, curr.room - items[curr.level+1].weight, append(curr.items, items[curr.level+1].id)})
 				}
 			}

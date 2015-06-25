@@ -30,10 +30,10 @@ func main() {
 lines:
 	for {
 		var (
-			s          []byte
-			isPrefix   bool
-			curr       Json
-			sum_labels int
+			s         []byte
+			isPrefix  bool
+			curr      Json
+			sumLabels int
 		)
 		for {
 			var sc []byte
@@ -53,10 +53,10 @@ lines:
 			print("Warning deserializing: ", fmt.Sprint(err))
 		}
 		for i := 0; i < len(curr.Menu.Items); i++ {
-			var curr_label int
-			fmt.Sscanf(curr.Menu.Items[i].Label, "Label %d", &curr_label)
-			sum_labels += curr_label
+			var currLabel int
+			fmt.Sscanf(curr.Menu.Items[i].Label, "Label %d", &currLabel)
+			sumLabels += currLabel
 		}
-		fmt.Println(sum_labels)
+		fmt.Println(sumLabels)
 	}
 }

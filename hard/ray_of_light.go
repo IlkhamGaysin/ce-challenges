@@ -24,7 +24,7 @@ type ray struct {
 	ttl int
 }
 
-func next_tile(s []int, a ray) (int, int, int) {
+func nextTile(s []int, a ray) (int, int, int) {
 	switch a.dir {
 	case 0:
 		if a.x == 9 || a.y == 0 {
@@ -50,7 +50,7 @@ func next_tile(s []int, a ray) (int, int, int) {
 	return -1, 0, 0
 }
 
-func lr_tile(s []int, a ray) (int, int, int, int, int, int) {
+func lrTile(s []int, a ray) (int, int, int, int, int, int) {
 	switch a.dir {
 	case 0:
 		return s[a.x+(a.y-1)*10], a.x, a.y - 1, s[a.x+1+a.y*10], a.x + 1, a.y
@@ -94,7 +94,7 @@ func main() {
 			b := todo[0]
 			todo = todo[1:]
 
-			nt, x, y := next_tile(s, b)
+			nt, x, y := nextTile(s, b)
 			if b.ttl > 1 {
 				if nt == 0 || nt == 1 {
 					if nb, f := been[x+10*y]; f {
@@ -112,7 +112,7 @@ func main() {
 						todo = append(todo, ray{x, y, (b.dir + 3) % 4, b.ttl})
 					}
 				} else if nt == 2 {
-					lt, lx, ly, rt, rx, ry := lr_tile(s, b)
+					lt, lx, ly, rt, rx, ry := lrTile(s, b)
 					if lt == 0 {
 						todo = append(todo, ray{lx, ly, (b.dir + 3) % 4, b.ttl - 1})
 					} else if lt == 1 {
