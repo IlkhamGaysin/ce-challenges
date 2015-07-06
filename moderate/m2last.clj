@@ -6,5 +6,5 @@
         (nth % (- (count %) (inc l)))
         nil))
 (str/split st #" ")))]
-  (#(if (not (empty? item))
-      (println item))))
+  (if (not (empty? item))
+    (println item)))

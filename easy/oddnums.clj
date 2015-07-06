@@ -1,1 +1,1 @@
-(dotimes [i 50] (println (+ 1 (* 2 i))))
+(dotimes [i 50] (prn (inc (* 2 i))))
