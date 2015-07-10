@@ -25,9 +25,8 @@ func (h *IntHeap) Pop() interface{} {
 	return x
 }
 
-func notyet(s *IntHeap, x int) bool {
-	t := *s
-	for _, i := range t {
+func (s IntHeap) notyet(x int) bool {
+	for _, i := range s {
 		if i == x {
 			return false
 		}
@@ -78,7 +77,7 @@ func main() {
 		}
 		for len(m)+1 < n {
 			p := heap.Pop(h).(int)
-			if notyet(h, m[len(m)-k]) && notagain(m[len(m)-k+1:len(m)], m[len(m)-k]) {
+			if h.notyet(m[len(m)-k]) && notagain(m[len(m)-k+1:len(m)], m[len(m)-k]) {
 				heap.Push(h, m[len(m)-k])
 			}
 			m = append(m, p)

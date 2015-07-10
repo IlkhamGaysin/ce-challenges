@@ -47,7 +47,7 @@ func (h *houseHeap) Pop() interface{} {
 	return x
 }
 
-func maxremain(h houseHeap, y int) (ret int) {
+func (h houseHeap) maxremain(y int) (ret int) {
 	for _, i := range h {
 		if i.y > y && i.h > ret {
 			ret = i.h
@@ -80,7 +80,7 @@ func main() {
 			for curr.Len() > 0 && (*curr)[0].y < i.x {
 				if ly < (*curr)[0].y {
 					p := heap.Pop(curr).(house)
-					nh := maxremain(*curr, p.y)
+					nh := curr.maxremain(p.y)
 					if ch > nh {
 						ly = p.y
 						ch = nh
@@ -103,7 +103,7 @@ func main() {
 		for curr.Len() > 0 {
 			if ly < (*curr)[0].y {
 				p := heap.Pop(curr).(house)
-				nh := maxremain(*curr, p.y)
+				nh := curr.maxremain(p.y)
 				if ch > nh {
 					ly = p.y
 					ch = nh
