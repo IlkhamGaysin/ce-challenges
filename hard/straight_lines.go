@@ -18,20 +18,16 @@ func inLine(a, b, c point) bool {
 	return dx1*dy2 == dx2*dy1
 }
 
-func line(a, b int, t []point) (l []int) {
+func line(a, b int, t []point) bool {
 	for i := 0; i < len(t); i++ {
-		if i == a || i == b {
-			l = append(l, i)
-			continue
-		}
-		if inLine(t[i], t[a], t[b]) {
+		if i != a && i != b && inLine(t[i], t[a], t[b]) {
 			if i < b {
-				return l
+				return false
 			}
-			l = append(l, i)
+			return true
 		}
 	}
-	return l
+	return false
 }
 
 func main() {
@@ -49,14 +45,14 @@ func main() {
 			fmt.Sscanf(i, "%d %d", &x, &y)
 			t = append(t, point{x, y})
 		}
-		var r [][]int
+		var r int
 		for i := 0; i < len(t)-2; i++ {
 			for j := i + 1; j < len(t)-1; j++ {
-				if l := line(i, j, t); len(l) > 2 {
-					r = append(r, l)
+				if line(i, j, t) {
+					r++
 				}
 			}
 		}
-		fmt.Println(len(r))
+		fmt.Println(r)
 	}
 }
