@@ -6,8 +6,8 @@ while read line || [ -n "$line" ]; do
       ((dx=${a[$i*2]}-${a[$j*2]}))
       ((dy=${a[$i*2+1]}-${a[$j*2+1]}))
       for ((k=0; k<${#a[*]}/2; k++)); do
-        if [ $k -ne $i ] && [ $k -ne $j ] && [ $(($dx*(${a[$i*2+1]}-${a[$k*2+1]}))) -eq $(((${a[$i*2]}-${a[$k*2]})*$dy)) ]; then
-          if [ $k -gt $j ]; then
+        if [[ $k != $i ]] && [[ $k != $j ]] && [[ $(($dx*(${a[$i*2+1]}-${a[$k*2+1]}))) = $(((${a[$i*2]}-${a[$k*2]})*$dy)) ]]; then
+          if [[ $k -gt $j ]]; then
             ((c++))
           fi
           break
@@ -15,5 +15,5 @@ while read line || [ -n "$line" ]; do
       done
     done
   done
-  echo $c
+  echo "$c"
 done <$1
