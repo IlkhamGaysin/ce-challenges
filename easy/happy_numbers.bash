@@ -20,8 +20,8 @@ while read line || [ -n "$line" ]; do
         b+=( $line )
     done
     if [ $line -eq 1 ]; then
-        echo 1
+        echo "1"
     else
-        echo 0
+        echo "0"
     fi
-done < $1
+done <$1

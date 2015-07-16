@@ -6,5 +6,5 @@ sed -e "s/[^,]*\(X\.*Y\)[^,]*/\1/g" $1 | while read line || [ -n "$line" ]; do
       r=${#i}
     fi
   done
-  echo $(($r-2))
+  echo "$(($r-2))"
 done

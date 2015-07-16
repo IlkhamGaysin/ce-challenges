@@ -4,5 +4,5 @@ sed -e "/^$/d; s/^{/0/; s/{\"id\": [^,}]\+},\? \?//g; s/{\"id\": \([^,]\+\),[^}]
   for i in ${a[*]}; do
     ((s+=$i))
   done
-  echo $s
+  echo "$s"
 done

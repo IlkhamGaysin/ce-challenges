@@ -17,5 +17,5 @@ tr ",;" " \n" <$1 | while read line || [ -n "$line" ]; do
       ((j++))
     fi
   done
-  echo $r
+  echo "$r"
 done

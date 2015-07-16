@@ -4,5 +4,5 @@ while read line || [ -n "$line" ]; do
   while [ $((${a[1]}*$i)) -lt ${a[0]} ]; do
     ((i++))
   done
-  echo $((${a[1]}*$i))
+  echo "$((${a[1]}*$i))"
 done <$1

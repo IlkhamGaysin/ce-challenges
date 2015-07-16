@@ -15,6 +15,6 @@ tr -cd "[:alpha:]\n" <$1|tr "[:upper:]" "[:lower:]"|while read line || [ -n "$li
     ((r+=$n*$i))
     ((n--))
   done
-  echo $r
+  echo "$r"
   unset ch
 done

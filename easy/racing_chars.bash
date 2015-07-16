@@ -32,6 +32,6 @@ while read line || [ -n "$line" ]; do
     fi
   fi
   line=${line:0:$c}$x${line:$(($c+1))}
-  echo $line
+  echo "$line"
   p=$c
 done <$1

@@ -13,7 +13,7 @@ while read line || [ -n "$line" ]; do
     else
       b[0]=$((${b[0]}+${s[0]}))
       for ((j=1; j<$n; j++)); do
-        if [ ${b[$j]} -lt ${b[$(($j-1))]} ]; then
+        if [ ${b[$j]} -lt ${b[$j-1]} ]; then
           b[$j]=$((${b[$j]}+${s[$j]}))
         else
           b[$j]=$((${b[$j-1]}+${s[$j]}))
@@ -22,7 +22,7 @@ while read line || [ -n "$line" ]; do
     fi
     ((i--))
     if [ $i -eq 0 ]; then
-      echo ${b[$(($n-1))]}
+      echo "${b[$n-1]}"
       n=
       unset b
     fi

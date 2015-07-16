@@ -9,8 +9,8 @@ while read line || [ -n "$line" ]; do
         line=${line:0:40}
       fi
     done
-    echo $line"... <Read More>"
+    echo "$line... <Read More>"
   else
-    echo $line
+    echo "$line"
   fi
 done <$1

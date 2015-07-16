@@ -24,6 +24,6 @@ while read line || [ -n "$line" ]; do
       self=0
     fi
   fi
-  echo $self
+  echo "$self"
   unset a
 done <$1

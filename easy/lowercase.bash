@@ -1,3 +1,3 @@
 while read -r line || [ -n "$line" ]; do
-    echo ${line,,}
-done < $1
+    echo "${line,,}"
+done <$1

@@ -21,6 +21,6 @@ while read line || [ -n "$line" ]; do
         v=0
       fi
     done
-    echo $((r+v*o))
+    echo "$((r+v*o))"
   fi
 done <$1

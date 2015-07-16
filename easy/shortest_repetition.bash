@@ -5,5 +5,5 @@ while read line || [ -n "$line" ]; do
       p=$(( $i+1 ))
     fi
   done
-  echo $p
+  echo "$p"
 done <$1

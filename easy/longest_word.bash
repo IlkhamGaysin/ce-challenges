@@ -5,5 +5,5 @@ while read line || [ -n "$line" ]; do
             l=$i
         fi
     done
-    echo $l
-done < $1
+    echo "$l"
+done <$1

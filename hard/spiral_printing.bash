@@ -11,7 +11,7 @@ while read line || [ -n "$line" ]; do
   printf ${b[2]}
   while [ $j -le $te ]; do
     while [ $j -le $te ]; do
-      printf " ${a[$(($i*${b[1]}+$j))]}"
+      printf " ${a[$i*${b[1]}+$j]}"
       ((j++))
     done
     ((j--))
@@ -21,7 +21,7 @@ while read line || [ -n "$line" ]; do
       break
     fi
     while [ $i -le $ts ]; do
-      printf " ${a[$(($i*${b[1]}+$j))]}"
+      printf " ${a[$i*${b[1]}+$j]}"
       ((i++))
     done
     ((i--))
@@ -31,7 +31,7 @@ while read line || [ -n "$line" ]; do
       break
     fi
     while [ $j -ge $tw ]; do
-      printf " ${a[$(($i*${b[1]}+$j))]}"
+      printf " ${a[$i*${b[1]}+$j]}"
       ((j--))
     done
     ((j++))
@@ -41,7 +41,7 @@ while read line || [ -n "$line" ]; do
       break
     fi
     while [ $i -ge $tn ]; do
-      printf " ${a[$(($i*${b[1]}+$j))]}"
+      printf " ${a[$i*${b[1]}+$j]}"
       ((i--))
     done
     ((j++))

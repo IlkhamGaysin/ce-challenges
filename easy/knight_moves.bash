@@ -46,6 +46,6 @@ while read line || [ -n "$line" ]; do
     chr $((97+$l+2)) $((49+$r+1))
     m+=($v)
   fi
-  echo ${m[*]}
+  echo "${m[*]}"
   unset m
 done <$1

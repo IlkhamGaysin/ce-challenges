@@ -18,13 +18,13 @@ while read line || [ -n "$line" ]; do
     ((i++))
   done
   if [ $u -eq 0 ]; then
-    echo 0
+    echo "0"
   else
     r=0
     while [ ${a[$r]} -ne $i ]; do
       ((r++))
     done
     ((r++))
-    echo $r
+    echo "$r"
   fi
 done <$1

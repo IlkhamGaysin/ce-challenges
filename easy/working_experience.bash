@@ -39,6 +39,6 @@ tr ";-" " " <$1 | while read line || [ -n "$line" ]; do
     done
     ((c+=2))
   done
-  echo $(( ${#work[*]}/12 ))
+  echo "$(( ${#work[*]}/12 ))"
   unset work
 done

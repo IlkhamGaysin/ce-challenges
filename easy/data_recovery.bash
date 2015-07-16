@@ -10,6 +10,6 @@ while read line || [ -n "$line" ]; do
       r[$i]=${a[$(( $h-1 ))]}
     fi
   done
-  echo ${r[*]}
+  echo "${r[*]}"
   unset a r
 done <$1

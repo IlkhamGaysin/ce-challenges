@@ -6,5 +6,5 @@ while read line || [ -n "$line" ]; do
     while [ $m -lt 9 ] && [ $line -ge ${age[$m]} ]; do
         ((m++))
     done
-    echo ${category[$m%9]}
-done < $1
+    echo "${category[$m%9]}"
+done <$1

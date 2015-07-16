@@ -10,7 +10,7 @@ while read line || [ -n "$line" ]; do
       if [ $t -eq ${a[2]} ]; then
         tx=$((${a[0]}-6+${a[1]}))
       else
-        tx=${a[$(($t+3))]}
+        tx=${a[$t+3]}
         ((t++))
       fi
     else
@@ -18,5 +18,5 @@ while read line || [ -n "$line" ]; do
     fi
     ((i+=${a[1]}))
   done
-  echo $c
+  echo "$c"
 done <$1

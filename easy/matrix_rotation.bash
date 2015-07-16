@@ -6,7 +6,7 @@ while read line || [ -n "$line" ]; do
   done
   for ((i=0; i<l; i++)); do
     for ((j=l-1; j>=0; j--)); do
-      printf ${a[$((j*l+i))]}
+      printf ${a[j*l+i]}
       if [ $i -lt $(($l-1)) ] || [ $j -gt 0 ]; then
         printf " "
       else

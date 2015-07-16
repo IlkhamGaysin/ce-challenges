@@ -12,5 +12,5 @@ while read line || [ -n "$line" ]; do
       m=$cm
     fi
   done
-  echo $m
+  echo "$m"
 done <$1

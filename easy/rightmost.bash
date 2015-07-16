@@ -9,6 +9,6 @@ while read line || [ -n "$line" ]; do
         break
       fi
     done
-    echo $(( $p-1 ))
+    echo "$(( $p-1 ))"
   fi
 done <$1

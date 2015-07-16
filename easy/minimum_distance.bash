@@ -12,5 +12,5 @@ while read line || [ -n "$line" ]; do
       ((n+=$u-$a))
     fi
   done
-  echo $n
+  echo "$n"
 done <$1
