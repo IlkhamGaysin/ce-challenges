@@ -29,9 +29,7 @@ def wfit(wx, w, f, alpha):
                 if wfit(ix, i, j, alpha):
                     wfound = True
                     break
-    if wfound:
-        return True
-    return False
+    return wfound
 
 def wstruct(word):
     ret = []
