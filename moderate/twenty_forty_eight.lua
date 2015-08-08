@@ -67,11 +67,7 @@ for line in io.lines(arg[1]) do
 
   local r = {}
   for i = 1, n do
-    local s = {}
-    for j = 1, n do
-      s[j] = tostring(b[i][j])
-    end
-    r[i] = table.concat(s, " ")
+    r[i] = table.concat(b[i], " ")
   end
   print(table.concat(r, "|"))
 end
