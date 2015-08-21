@@ -8,18 +8,6 @@ import (
 	"os"
 )
 
-type Item struct {
-	Id    int
-	Label string
-}
-type Menu struct {
-	Header string
-	Items  []Item
-}
-type Json struct {
-	Menu Menu
-}
-
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -30,9 +18,17 @@ func main() {
 lines:
 	for {
 		var (
-			s         []byte
-			isPrefix  bool
-			curr      Json
+			s        []byte
+			isPrefix bool
+			curr     struct {
+				Menu struct {
+					Header string
+					Items  []struct {
+						Id    int
+						Label string
+					}
+				}
+			}
 			sumLabels int
 		)
 		for {
