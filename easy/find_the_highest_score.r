@@ -3,8 +3,8 @@ cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " | ", fixed=TRUE), fun
   for (i in 2:length(s)) {
     d <- sapply(strsplit(s[i], " ")[[1]], as.integer)
     for (j in 1:length(d)) {
-      if (d[[j]] > c[[j]]) {
-        c[[j]] <- d[[j]]
+      if (d[j] > c[j]) {
+        c[j] <- d[j]
       }
     }
   }

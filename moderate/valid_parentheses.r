@@ -14,7 +14,7 @@ paren <- function(xs, ys) {
 }
 
 cat(sapply(readLines(tail(commandArgs(), n=1)), function(s) {
-  if (paren(list(), strsplit(s, "")[[1]])) {
+  if (paren(vector(), strsplit(s, "")[[1]])) {
     "True"
   } else {
     "False"

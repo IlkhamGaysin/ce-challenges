@@ -11,9 +11,9 @@ cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), function(s) {
       if (s[1] == i) {
         return(i)
       }
-      i <- p[[i]]
+      i <- p[i]
     }
-    s[1] <- p[[s[1]]]
+    s[1] <- p[s[1]]
   }
   s[1]
 }), sep="\n")
