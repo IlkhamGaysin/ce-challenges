@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
-		int i, t0, t1, m = month(c, fp) - 1;
+		unsigned i, t0, t1, m = month(c, fp) - 1;
 		fscanf(fp, "%d", &t0);
 		t0 = 12 * (t0 - 1990) + m;
 		skip(1, fp);
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 		if (c == ';') {
 			skip(1, fp);
 		} else {
-			int j, w = 0;
+			unsigned j, w = 0;
 			for (i = 0; i < 12; i++) {
 				for (j = 0; j < 30; j++)
 					if (work[i] & (1 << j))
