@@ -1,0 +1,9 @@
+import fileinput
+
+for line in fileinput.input():
+    s = [int(i) for i in line.split()][1:]
+    s.sort()
+    u, r = s[len(s)//2], 0
+    for i in s:
+        r += abs(i - u)
+    print r
