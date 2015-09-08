@@ -52,9 +52,9 @@ int main(int argc, char *argv[])
 	while (fgets(line, 31, fp) != 0) {
 		int strl = strlen(line);
 		strl -= line[strl - 1] == '\n';
-		char *c, *w = malloc(strl * sizeof(char));
+		char *c, *w = malloc(strl);
 		c = strncpy(w, line, strl);
-		qsort(c, strl, sizeof(char), ccmp);
+		qsort(c, strl, 1, ccmp);
 		printf("%s", c);
 		while (next_permu(c, strl))
 			printf(",%s", c);

@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 	while (fgets(line, 31, fp) != 0) {
 		int strl = strlen(line)-1;
 		struct node *temp = malloc(sizeof(struct node));
-		char *w = (char *) malloc(strl*sizeof(char));
+		char *w = (char *) malloc(strl);
 
 		temp->data = strncpy(w, line, strl);
 		temp->length = strl;
