@@ -1,0 +1,5 @@
+import fileinput
+
+for line in fileinput.input():
+    s = [int(i) for i in line.split()]
+    print (s[0] == s[2]) and ((s[1] == s[3]) and "here" or (s[1] < s[3]) and "N" or "S") or (s[1] == s[3]) and ((s[0] < s[2]) and "E" or "W") or ((s[0] < s[2]) and ((s[1] < s[3]) and "NE" or "SE") or ((s[1] < s[3]) and "NW" or "SW"))
