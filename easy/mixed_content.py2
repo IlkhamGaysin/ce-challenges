@@ -1,0 +1,17 @@
+import fileinput
+
+for line in fileinput.input():
+    st = line.rstrip('\n').split(',')
+    n, s, r = [], [], ""
+    for i in st:
+        if i.isdigit():
+            n.append(i)
+        else:
+            s.append(i)
+    if len(s) > 0:
+        r = ','.join(s)
+        if len(n) > 0:
+            r += "|"
+    if len(n) > 0:
+        r += ','.join(n)
+    print r
