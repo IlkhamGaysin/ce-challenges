@@ -1,4 +1,5 @@
 import System.Environment (getArgs)
+import Data.Bits (bit)
 
 toTuple       :: [Int] -> (Int, Int)
 toTuple [x, y] = (x, y)
@@ -11,8 +12,8 @@ haszero x y | mod y 2 == 1 = haszero x (div y 2)
             | otherwise    = haszero (pred x) (div y 2)
 
 onezero       :: (Int, Int) -> Int
-onezero (_, 0) = 0
-onezero (x, y) | haszero x y = succ $ onezero (x, pred y)
+onezero (x, y) | y < bit x   = 0
+               | haszero x y = succ $ onezero (x, pred y)
                | otherwise   = onezero (x, pred y)
 
 main :: IO ()

@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d", &nz, &x) != EOF) {
 		unsigned r = 0;
-		for (i = 1; i <= x; i++)
+		for (i = 1 << nz; i <= x; i++)
 			if (xz(nz, i))
 				r++;
 		printf("%d\n", r);
