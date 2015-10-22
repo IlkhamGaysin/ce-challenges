@@ -2,9 +2,9 @@
 import fileinput
 
 for line in fileinput.input():
-    st = line.split(';')
-    s = st[2].split(' ')
-    m = [x.strip() for x in s]
+    st = line.rstrip('\n').split(';')
+    m = st[2].split(' ')
+    r = []
 
     a = int(st[0])
     b = int(st[1])
@@ -16,38 +16,33 @@ for line in fileinput.input():
 
     while True:
         while c % b < hb:
-            if c > 0:
-                print(" ", end = '')
-            print(m[c], end = '')
+            r.append(m[c])
             m[c] = -1
             c += 1
         if (c + b >= a * b) or (m[c + b] == -1):
             break
         la += 1
         while int(c / b) < ha:
-            if c > 0:
-                print(" ", end = '')
-            print(m[c], end = '')
+            r.append(m[c])
             m[c] = -1
             c += b
         if (c % b == 0) or (m[c - 1] == -1):
             break
         hb -= 1
         while c % b > lb:
-            print('', m[c], end = '')
+            r.append(m[c])
             m[c] = -1
             c -= 1
         if m[c - b] == -1:
             break
         ha -= 1
         while int(c / b) > la:
-            print('', m[c], end = '')
+            r.append(m[c])
             m[c] = -1
             c -= b
         if m[c + 1] == -1:
             break
         lb += 1
 
-    if c > 0:
-        print(" ", end = '')
-    print(m[c])
+    r.append(m[c])
+    print(' '.join(r))
