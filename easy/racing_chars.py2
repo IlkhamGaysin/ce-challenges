@@ -1,6 +1,6 @@
 import fileinput
 
-p, q = -1, -1
+p = q = -1
 for line in fileinput.input():
     s = list(line.rstrip('\n'))
     if p < 0:

@@ -1,6 +1,6 @@
 import fileinput
 
-n, i = 0, 0
+n = i = 0
 for line in fileinput.input():
     if n == 0:
         n = int(line)
