@@ -9,4 +9,4 @@ for line in fileinput.input():
             r += "|"
     if len(n) > 0:
         r += ','.join(n)
-    print r
+    print(r)
