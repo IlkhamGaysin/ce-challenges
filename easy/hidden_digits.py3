@@ -7,4 +7,4 @@ def clean(a):
 
 for line in fileinput.input():
     st = ''.join(clean(c) for c in line if c in "0123456789abcdefghij")
-    print "NONE" if len(st) == 0 else st
+    print("NONE" if len(st) == 0 else st)
