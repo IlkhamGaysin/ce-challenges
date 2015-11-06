@@ -18,20 +18,15 @@ int main(int argc, char *argv[])
 			m = 10;
 			dots = 0;
 			break;
+		case '.':
+			if (p != 'Y')
+				dots++;
+			break;
 		case ',':
 			if (dots < m)
 				m = dots;
 			dots = 0;
-			p = c;
-			break;
-		case '.':
-			dots++;
-		case 'X':
-			p = c;
-			break;
-		case 'Y':
-			if (p == 'X')
-				m = 0;
+		default:
 			p = c;
 		}
 	}
