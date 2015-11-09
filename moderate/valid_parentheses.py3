@@ -25,4 +25,4 @@ for line in fileinput.input():
                 break
     if len(stack) > 0:
         f = False
-    print f
+    print(f)
