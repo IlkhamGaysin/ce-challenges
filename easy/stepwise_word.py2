@@ -1,7 +1,7 @@
 import fileinput
 
 for line in fileinput.input():
-    st, l, r = line.rstrip('\n').split(), "", []
+    st, l, r = line.split(), "", []
     for i in st:
         if len(i) > len(l):
             l = i
