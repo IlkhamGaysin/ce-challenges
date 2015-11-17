@@ -7,8 +7,8 @@ for line in fileinput.input():
         if i.isalpha():
             a[ord(i.lower())-97] += 1
     a.sort()
-    for i in xrange(25, -1, -1):
+    for i in range(25, -1, -1):
         if a[i] == 0:
             break
         r += (i+1) * a[i]
-    print r
+    print(r)
