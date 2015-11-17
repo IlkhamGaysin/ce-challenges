@@ -14,4 +14,4 @@ for line in fileinput.input():
     st = line.rstrip('\n').split(" | ")
     s, t = st[0].split(), sorted(st[1])
     r = [i for i in s if contains(sorted(i), t)]
-    print "False" if len(r) == 0 else ' '.join(r)
+    print("False" if len(r) == 0 else ' '.join(r))
