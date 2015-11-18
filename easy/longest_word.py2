@@ -1,8 +1,4 @@
 import fileinput
 
 for line in fileinput.input():
-    st, r = line.split(), ""
-    for i in st:
-        if len(i) > len(r):
-            r = i
-    print r
+    print reduce(lambda a, b: b if len(b) > len(a) else a, line.rstrip('\n').split())
