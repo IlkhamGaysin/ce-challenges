@@ -21,10 +21,7 @@ func inLine(a, b, c point) bool {
 func line(a, b int, t []point) bool {
 	for i := 0; i < len(t); i++ {
 		if i != a && i != b && inLine(t[i], t[a], t[b]) {
-			if i < b {
-				return false
-			}
-			return true
+			return i >= b
 		}
 	}
 	return false
