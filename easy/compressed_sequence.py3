@@ -1,9 +1,8 @@
 import fileinput
 
 for line in fileinput.input():
-    st = line.split()
     prev, count, r = "", 0, []
-    for i in st:
+    for i in line.split():
         if i == prev:
             count += 1
         else:
@@ -11,4 +10,4 @@ for line in fileinput.input():
                 r.extend([str(count), prev])
             count, prev = 1, i
     r.extend([str(count), prev])
-    print(*r, sep=" ")
+    print(*r)

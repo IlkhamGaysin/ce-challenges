@@ -2,7 +2,7 @@ import fileinput
 
 for line in fileinput.input():
     st, r = line.rstrip('\n'), 0
-    a = [0 for i in range(26)]
+    a = [0] * 26
     for i in st:
         if i.isalpha():
             a[ord(i.lower())-97] += 1

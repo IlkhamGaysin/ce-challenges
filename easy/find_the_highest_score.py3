@@ -10,4 +10,4 @@ for line in fileinput.input():
             for jx, j in enumerate(t):
                 if j > r[jx]:
                     r[jx] = j
-    print(*r, sep=' ')
+    print(*r)
