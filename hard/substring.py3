@@ -6,7 +6,7 @@ def subcheck(q, r):
     while q < len(st[0]) and r < len(st[1]):
         if st[1][r] == '*':
             m = False
-            for i in xrange(q, len(st[0])):
+            for i in range(q, len(st[0])):
                 if subcheck(i, r+1):
                     m = True
                     break
@@ -30,8 +30,8 @@ for line in fileinput.input():
         st[1] = st[1][:-2]
 
     match = False
-    for i in xrange(len(st[0])):
+    for i in range(len(st[0])):
         if subcheck(i, 0):
             match = True
             break
-    print "true" if match else "false"
+    print("true" if match else "false")
