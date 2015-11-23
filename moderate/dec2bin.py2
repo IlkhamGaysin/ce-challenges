@@ -1,5 +1,4 @@
 import fileinput
 
-for line in fileinput.input():
-    if line != "\n":
-        print "{0:b}".format(int(line))
+for line in filter(lambda x: x != '\n', fileinput.input()):
+    print "{0:b}".format(int(line))

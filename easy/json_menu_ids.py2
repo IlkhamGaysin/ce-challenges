@@ -1,6 +1,5 @@
 import fileinput, re
 
 json = re.compile('"id": (\d+),')
-for line in fileinput.input():
-    if line != "\n":
-        print sum(int(i) for i in json.findall(line))
+for line in filter(lambda x: x != '\n', fileinput.input()):
+    print sum(int(i) for i in json.findall(line))
