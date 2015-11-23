@@ -1,10 +1,5 @@
 import fileinput
 
 for line in fileinput.input():
-    st, l, r = line.split(), "", []
-    for i in st:
-        if len(i) > len(l):
-            l = i
-    for ix, i in enumerate(l):
-        r.append(ix * '*' + i)
-    print ' '.join(r)
+    l = reduce(lambda a, b: b if len(b) > len(a) else a, line.split())
+    print ' '.join(ix * '*' + i for ix, i in enumerate(l))
