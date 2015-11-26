@@ -25,7 +25,7 @@ object Main extends App {
   }
 
   for (l <- lines) {
-    val fbn = l.split(" ")
-    println(fzbz(fbn(0).toInt, fbn(1).toInt, fbn(2).toInt))
+    val fbn = l.split(" ").map(_.toInt)
+    println(fzbz(fbn(0), fbn(1), fbn(2)))
   }
 }

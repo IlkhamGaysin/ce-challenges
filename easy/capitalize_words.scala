@@ -4,10 +4,7 @@ object Main extends App {
 
   for (l <- lines) {
     val s = l.split(" ")
-    var r = new Array[String](s.length)
-    for (i <- 0 to (s.length - 1)) {
-      r(i) = s(i)(0).toUpper + s(i).substring(1, s(i).length)
-    }
+    val r = for (i <- 0 to (s.length - 1)) yield s(i)(0).toUpper + s(i).substring(1, s(i).length)
     println(r.mkString(" "))
   }
 }

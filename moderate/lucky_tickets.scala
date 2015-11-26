@@ -7,9 +7,8 @@ object Main extends App {
       (BigInt(n - k + 1) to n).product / (BigInt(1) to k).product
     val m = l.toInt
     var r = BigInt(0)
-    for (i <- 0 to m/2) {
+    for (i <- 0 to m/2)
       r += binomial(m, i) * binomial(11*m/2-1-10*i, m-1) * (scala.math.pow(-1, i)).toInt
-    }
     println(r)
   }
 }

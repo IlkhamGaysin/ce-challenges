@@ -5,7 +5,6 @@ object Main extends App {
   val lines = source.getLines.filter(_.length > 0)
   val pattern = new Regex("X[.]*Y")
 
-  for (l <- lines) {
+  for (l <- lines)
     println((pattern findAllIn l).map(_.length).min - 2)
-  }
 }

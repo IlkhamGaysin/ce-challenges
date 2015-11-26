@@ -4,10 +4,7 @@ object Main extends App {
 
   for (l <- lines) {
     val m = l.split(" ").foldLeft("")((x: String, y: String) => if (y.length > x.length) y else x)
-    var r = new Array[String](m.length)
-    for (i <- 0 to (m.length - 1)) {
-      r(i) = "*" * i + m(i)
-    }
+    val r = for (i <- 0 to (m.length - 1)) yield "*" * i + m(i)
     println(r.mkString(" "))
   }
 }
