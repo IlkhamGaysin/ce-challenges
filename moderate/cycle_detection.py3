@@ -15,4 +15,4 @@ for line in fileinput.input():
             if i in f:
                 break
             f.append(i)
-    print ' '.join(f)
+    print(*f)
