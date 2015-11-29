@@ -36,4 +36,4 @@ for line in filter(None, (i.rstrip('\n') for i in fileinput.input())):
         if fpath(i, list(BOARD), line[1:]):
             f = True
             break
-    print "True" if f else "False"
+    print("True" if f else "False")
