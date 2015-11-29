@@ -12,4 +12,4 @@ for line in (i.rstrip('\n') for i in fileinput.input()):
             c.insert(ix, line)
             del c[-1]
             break
-print '\n'.join(c)
+print(*c, sep='\n')
