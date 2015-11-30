@@ -22,4 +22,4 @@ for test in filter(None, (i.rstrip('\n') for i in fileinput.input())):
                 c[ix+1][jx+1] = c[ix][jx] + 1
             else:
                 c[ix+1][jx+1] = max(c[ix+1][jx], c[ix][jx+1])
-    print btr(c, x, y, len(x), len(y))
+    print(btr(c, x, y, len(x), len(y)))
