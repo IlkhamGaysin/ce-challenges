@@ -23,7 +23,7 @@ for line in fileinput.input():
     while PRIMES[i] < m:
         i += 1
         if i == len(PRIMES) or PRIMES[i] > n:
-            print 0
+            print(0)
             f = True
             break
     if f:
@@ -33,4 +33,4 @@ for line in fileinput.input():
     while i < len(PRIMES) and PRIMES[i] <= n:
         i += 1
         c += 1
-    print c
+    print(c)
