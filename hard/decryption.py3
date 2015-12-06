@@ -47,7 +47,7 @@ def wstruct(word):
 mess = mess.split()
 for ix, i in enumerate(mess):
     wrd = []
-    for j in range(len(i)/2):
+    for j in range(len(i)//2):
         wrd.append(int(i[2*j:2*j+2]))
     mess[ix] = wrd
 words = []
@@ -73,4 +73,4 @@ while True:
         break
     random.shuffle(fwords)
 
-print ' '.join(''.join(alpha[j] if j in alpha else '?' for j in i) for i in words)
+print(*[''.join(alpha[j] if j in alpha else '?' for j in i) for i in words])
