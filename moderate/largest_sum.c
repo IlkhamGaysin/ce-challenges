@@ -10,8 +10,6 @@ int main(int argc, char *argv[])
 	while (fscanf(fp, "%d", &a) != EOF || m > INT_MIN) {
 		char c = getc(fp);
 
-		if (a > m)
-			m = a;
 		if (a + l > m)
 			m = a + l;
 		if (a + l > 0)

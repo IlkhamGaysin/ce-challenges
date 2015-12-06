@@ -3,9 +3,6 @@ cat(sapply(strsplit(readLines(tail(commandArgs(), n=1)), ","), function(s) {
   l <- 0
   for (i in 1:length(s)) {
     a <- as.integer(s[i])
-    if (a > m) {
-      m <- a
-    }
     if (a + l > m) {
       m <- a + l
     }

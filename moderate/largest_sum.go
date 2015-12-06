@@ -22,9 +22,6 @@ func main() {
 		for _, i := range s {
 			var v int
 			fmt.Sscanf(strings.TrimSpace(i), "%d", &v)
-			if v > m {
-				m = v
-			}
 			if v+l > m {
 				m = v + l
 			}

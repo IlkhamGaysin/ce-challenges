@@ -4,7 +4,7 @@ import Data.List.Split (splitOn)
 largest           :: Int -> Int -> [Int] -> String
 largest i _ []     = show i
 largest i j (x:xs) = largest k l xs
-               where k = maximum [x, x + j, i]
+               where k = max (x + j) i
                      l = max (x + j) 0
 
 main :: IO ()

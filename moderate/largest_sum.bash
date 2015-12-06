@@ -3,9 +3,6 @@ while read line || [ -n "$line" ]; do
     l=0
     m=$a
     for i in ${a[*]}; do
-        if [ $i -gt $m ]; then
-            m=$i
-        fi
         if [ $(($i+$l)) -gt $m ]; then
             m=$(($i+$l))
         fi
