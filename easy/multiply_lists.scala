@@ -4,8 +4,7 @@ object Main extends App {
 
   for (l <- lines) {
     val lists = l.split(""" \| """).toList
-    val la = lists(0).split(" ").map(_.toInt)
-    val lb = lists(1).split(" ").map(_.toInt)
+    val (la, lb) = (lists(0).split(" ").map(_.toInt), lists(1).split(" ").map(_.toInt))
     val r = for (i <- 0 to (la.length - 1)) yield (la(i) * lb(i)).toString
     println(r.mkString(" "))
   }
