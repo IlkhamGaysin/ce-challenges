@@ -1,11 +1,5 @@
 #include <stdio.h>
 
-void skip(int a, FILE *fp) {
-	int i;
-	for (i = 0; i < a; i++)
-		fgetc(fp);
-}
-
 int main(int argc, char *argv[])
 {
 	FILE *fp;
@@ -16,49 +10,47 @@ int main(int argc, char *argv[])
 		switch (c) {
 		case 'z':
 			printf("0");
-			skip(3, fp);
+			fseek(fp, 3, SEEK_CUR);
 			break;
 		case 'o':
 			printf("1");
-			skip(2, fp);
+			fseek(fp, 2, SEEK_CUR);
 			break;
 		case 't':
 			fscanf(fp, "%c", &c);
 			if (c == 'w') {
 				printf("2");
-				skip(1, fp);
+				fseek(fp, 1, SEEK_CUR);
 			} else {
 				printf("3");
-				skip(3, fp);
+				fseek(fp, 3, SEEK_CUR);
 			}
 			break;
 		case 'f':
 			fscanf(fp, "%c", &c);
-			if (c == 'o') {
+			if (c == 'o')
 				printf("4");
-				skip(2, fp);
-			} else {
+			else
 				printf("5");
-				skip(2, fp);
-			}
+			fseek(fp, 2, SEEK_CUR);
 			break;
 		case 's':
 			fscanf(fp, "%c", &c);
 			if (c == 'i') {
 				printf("6");
-				skip(1, fp);
+				fseek(fp, 1, SEEK_CUR);
 			} else {
 				printf("7");
-				skip(3, fp);
+				fseek(fp, 3, SEEK_CUR);
 			}
 			break;
 		case 'e':
 			printf("8");
-			skip(4, fp);
+			fseek(fp, 4, SEEK_CUR);
 			break;
 		case 'n':
 			printf("9");
-			skip(3, fp);
+			fseek(fp, 3, SEEK_CUR);
 			break;
 		}
 		if (fscanf(fp, "%c", &c) == EOF || c == '\n')
