@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			}
 
 skip:
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			n--;
 		}
 		if (head) {

@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			s = 0;
 			n = 0;
 			nb[0] = 0;
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			break;
 		case ' ':
 			if (s == sbs - 1) {

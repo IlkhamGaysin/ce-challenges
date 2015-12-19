@@ -4,15 +4,13 @@ void slide(int *p, int n) {
 	int i, j, c = 0, l = 0;
 	for (i = 0; i < n; i++) {
 		if (p[c] == 0) {
-			for (j = c; j < n - 1; j++) {
+			for (j = c; j < n - 1; j++)
 				p[j] = p[j + 1];
-			}
 			p[n - 1] = 0;
 		} else if (p[c] == l) {
 			p[c - 1] <<= 1;
-			for (j = c; j < n - 1; j++) {
+			for (j = c; j < n - 1; j++)
 				p[j] = p[j + 1];
-			}
 			p[n - 1] = 0;
 			l = 0;
 		} else {
@@ -31,15 +29,14 @@ int main(int argc, char *argv[])
 	while ((d = getc(fp)) != EOF) {
 		switch (d) {
 		case 'R':
-			fgetc(fp);
+			fseek(fp, 6, SEEK_CUR);
+			break;
 		case 'L':
 		case 'D':
-			fgetc(fp);
-			fgetc(fp);
+			fseek(fp, 5, SEEK_CUR);
+			break;
 		case 'U':
-			fgetc(fp);
-			fgetc(fp);
-			fgetc(fp);
+			fseek(fp, 3, SEEK_CUR);
 		}
 		fscanf(fp, "%d; ", &n);
 		for (i = 0; i < n * n; i++)
@@ -47,40 +44,32 @@ int main(int argc, char *argv[])
 		for (i = 0; i < n; i++) {
 			switch (d) {
 			case 'L':
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					q[j] = m[i * n + j];
-				}
 				slide(q, n);
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					m[i * n + j] = q[j];
-				}
 				break;
 			case 'R':
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					q[n - 1 - j] = m[i * n + j];
-				}
 				slide(q, n);
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					m[i * n + j] = q[n - 1 - j];
-				}
 				break;
 			case 'U':
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					q[j] = m[j * n + i];
-				}
 				slide(q, n);
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					m[j * n + i] = q[j];
-				}
 				break;
 			case 'D':
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					q[n - 1 - j] = m[j * n + i];
-				}
 				slide(q, n);
-				for (j = 0; j < n; j++) {
+				for (j = 0; j < n; j++)
 					m[j * n + i] = q[n - 1 - j];
-				}
 			}
 		}
 		for (i = 0; i < n; i++) {

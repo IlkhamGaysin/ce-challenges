@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 					printf(",");
 			}
 			printf("\n");
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			i = 0;
 		}
 	}

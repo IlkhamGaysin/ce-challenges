@@ -1,11 +1,5 @@
 #include <stdio.h>
 
-void skip(int a, FILE *fp) {
-	int i;
-	for (i = 0; i < a; i++)
-		fgetc(fp);
-}
-
 int main(int argc, char *argv[])
 {
 	FILE *fp;
@@ -20,13 +14,13 @@ int main(int argc, char *argv[])
 			fscanf(fp, "%c", &c);
 			if (c == 'L') {
 				h = (l + h) / 2 + cr - 1;
-				skip(5, fp);
+				fseek(fp, 5, SEEK_CUR);
 			} else if (c == 'H') {
 				l = (l + h) / 2 + cr + 1;
-				skip(6, fp);
+				fseek(fp, 6, SEEK_CUR);
 			} else {
 				printf("%d\n", (l + h) / 2 + cr);
-				skip(4, fp);
+				fseek(fp, 4, SEEK_CUR);
 				break;
 			}
 		}

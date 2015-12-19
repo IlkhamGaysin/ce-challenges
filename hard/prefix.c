@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
 				sb = realloc(sb, sbs);
 			}
 			sb[s++] = c;
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			c = getc(fp);
 		}
-		ungetc(c, fp);
+		fseek(fp, -1, SEEK_CUR);
 		fscanf(fp, "%f ", &f);
 		for (i = s - 1; i >= 0; i--) {
 			fscanf(fp, "%f ", &g);

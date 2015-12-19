@@ -11,11 +11,11 @@ int main(int argc, char *argv[])
 	while (fscanf(fp, "%d ", &r[0]) != EOF) {
 		int n = 1;
 		while ((c = getc(fp)) != '|') {
-			ungetc(c, fp);
+			fseek(fp, -1, SEEK_CUR);
 			fscanf(fp, "%d ", &r[n++]);
 		}
 		do {
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			for (i = 0; i < n; i++) {
 				fscanf(fp, " %d", &a);
 				if (a > r[i])
@@ -23,9 +23,8 @@ int main(int argc, char *argv[])
 			}
 		} while (getc(fp) == ' ');
 		printf("%d", r[0]);
-		for (i = 1; i < n; i++) {
+		for (i = 1; i < n; i++)
 			printf(" %d", r[i]);
-		}
 		putchar('\n');
 	}
 	return 0;

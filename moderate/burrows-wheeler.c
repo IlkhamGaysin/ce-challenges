@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 			}
 			putchar('\n');
 			k = 0;
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			continue;
 		}
 		if (i == ibs) {

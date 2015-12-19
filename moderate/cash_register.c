@@ -21,15 +21,11 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &p1) != EOF) {
 		int p2 = 0, c2 = 0;
-		if (getc(fp) == '.') {
-			fscanf(fp, "%d", &p2);
-			getc(fp);
-		}
+		if (getc(fp) == '.')
+			fscanf(fp, "%d%*c", &p2);
 		fscanf(fp, "%d", &c1);
-		if (getc(fp) == '.') {
-			fscanf(fp, "%d", &c2);
-			getc(fp);
-		}
+		if (getc(fp) == '.')
+			fscanf(fp, "%d%*c", &c2);
 		p = p1 * 100 + p2;
 		c = c1 * 100 + c2;
 		if (p > c) {

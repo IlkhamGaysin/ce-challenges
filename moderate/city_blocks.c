@@ -11,12 +11,11 @@ int main(int argc, char *argv[])
 		do {
 			fscanf(fp, "%f", &st[nst++]);
 		} while (getc(fp) != ')');
-		getc(fp);
-		getc(fp);
+		fseek(fp, 2, SEEK_CUR);
 		do {
 			fscanf(fp, "%f", &av[nav++]);
 		} while (getc(fp) != ')');
-		getc(fp);
+		fseek(fp, 1, SEEK_CUR);
 		if (nst < 2 || nav < 2) {
 			puts("0");
 		} else {

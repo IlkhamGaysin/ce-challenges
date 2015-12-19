@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 				break;
 			}
 		printf("%d\n", j);
-		getc(fp);
+		fseek(fp, 1, SEEK_CUR);
 		i = 0;
 		j = -1;
 	}

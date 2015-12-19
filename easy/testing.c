@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 				d[i++] = c;
 				s = 0;
 			} else {
-				getc(fp);
+				fseek(fp, 1, SEEK_CUR);
 				s = 2;
 				i = 0;
 			}

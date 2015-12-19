@@ -29,10 +29,8 @@ int main(int argc, char *argv[])
 			l = sprintf(srtd[n], "%s", wine[n]);
 			qsort(&srtd[n], l, 1, ccmp);
 		}
-		if (n == 10) {
-			getc(fp);
-			getc(fp);
-		}
+		if (n == 10)
+			fseek(fp, 2, SEEK_CUR);
 		fscanf(fp, "%s", &w);
 		while (w[m] != '\0')
 			m++;

@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	while ((c = getc(fp)) != EOF) {
 		if (c == ',') {
 			int j;
-			getc(fp);
+			fseek(fp, 1, SEEK_CUR);
 			while ((c = getc(fp)) != '\n' && c != EOF)
 				for (j = 0; j < i; j++)
 					if (sb[j] == c)
