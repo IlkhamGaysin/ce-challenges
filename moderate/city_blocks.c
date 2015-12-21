@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	float st[100], av[100];
 	int nst = 0, nav = 0, i, j;

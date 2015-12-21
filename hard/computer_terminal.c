@@ -20,8 +20,7 @@ int prn(char c[10][10], int x, int y, char d, bool insr) {
 	return y;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	bool ctrl = false, insr = false, move = false;
 	char curr, scrn[10][10];

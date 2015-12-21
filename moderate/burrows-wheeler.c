@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int cmpint(const void *p1, const void *p2)
-{
-	return *(int*)p1 - *(int*)p2;
+static int cmpint(const void *p1, const void *p2) {
+	return *(int *)p1 - *(int *)p2;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int ibs = 59, i = 0, k = 0;
 	int *ib = malloc(ibs * sizeof(int));

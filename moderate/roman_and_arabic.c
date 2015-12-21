@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	int num = 0, ar = 0, rr = 0;

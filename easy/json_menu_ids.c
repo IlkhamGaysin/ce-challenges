@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c, *id = "\"id\":";
 	int i = 0, s = -1, n;

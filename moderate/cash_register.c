@@ -13,8 +13,7 @@ int sorted[] = {
 	2, 10, 7, 4, 1, 5, 11, 0, 3, 8, 9, 6
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int p, p1, c, c1, i;
 

@@ -6,8 +6,7 @@ struct node {
 	int		data;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, b;
 	/*
@@ -25,7 +24,7 @@ int main(int argc, char *argv[])
 		      8, 0, 0, 0, 0, 0, 0, 0, 0,20,
 		      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		      0, 0,30};
+		      0, 0,30 };
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d", &a, &b) != EOF) {

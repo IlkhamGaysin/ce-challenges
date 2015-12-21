@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int happy(int a)
-{
+int happy(int a) {
 	int i, ret = 0, t;
 	for (i = a; i > 0; i /= 10) {
 		t = i % 10;
@@ -10,8 +9,7 @@ int happy(int a)
 	return ret;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a = 0;
 	char c;

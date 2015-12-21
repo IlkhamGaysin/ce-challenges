@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-const int m[5] = {50, 25, 10, 5, 1};
+const int m[5] = { 50, 25, 10, 5, 1 };
 
 int alter(int n, int p) {
 	if (n == 0)
@@ -12,8 +12,7 @@ int alter(int n, int p) {
 	return alter(n - m[p], p) + alter(n, p + 1);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n;
 

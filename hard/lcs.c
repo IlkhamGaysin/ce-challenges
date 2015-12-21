@@ -17,8 +17,7 @@ char *bt(int *ib, char *sb, int s, int t, int i, int j, int p) {
 	return bt(ib, sb, s, t, i - 1, j, p);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int s = 0, t = -1, sbs = 45, i, j, ibs = 514;
 	int *ib = malloc(ibs * sizeof(int));

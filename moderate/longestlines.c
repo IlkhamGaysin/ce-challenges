@@ -6,8 +6,7 @@ struct lbuffer {
 	char *buffer;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n, i, s = 0, sbs = 32, t;
 	char c;

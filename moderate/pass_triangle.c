@@ -11,8 +11,7 @@ int nrow(int a) {
 	return p;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n = 0, m[5050] = {}, p;
 

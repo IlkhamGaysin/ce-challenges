@@ -17,8 +17,7 @@ int to(struct link *p, int n, int a) {
 	return -1;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	struct link chain[500];
 	char c, s[6];

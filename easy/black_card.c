@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
-	int sbs = 64, w[11] = {0}, i = 0, j, k, m = 0, n;
+	int sbs = 64, w[11] = { 0 }, i = 0, j, k, m = 0, n;
 	char c, *sb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");

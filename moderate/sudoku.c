@@ -15,8 +15,7 @@ int sq(int a) {
 	return ret;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a;
 

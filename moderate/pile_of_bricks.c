@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int cmpint(const void *p1, const void *p2)
-{
-	return *(int*)p1 - *(int*)p2;
+static int cmpint(const void *p1, const void *p2) {
+	return *(int *)p1 - *(int *)p2;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int s1, s2, s3, s4, s5, s6, h[2], b[3], r[15], i, j;
 	char c;

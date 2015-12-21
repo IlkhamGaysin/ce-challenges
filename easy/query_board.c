@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-	int m[256][256] = {{}};
+int main(int argc, char *argv[]) {
+	int m[256][256] = { {} };
 	FILE *fp;
 	char b[16];
 

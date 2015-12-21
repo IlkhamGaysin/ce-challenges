@@ -41,8 +41,7 @@ bool is_balanced(char *p, int c) {
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int s = 0, sbs = 32;
 	char c;

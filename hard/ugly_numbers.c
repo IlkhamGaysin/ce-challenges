@@ -2,8 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-int powi(int a, int b)
-{
+int powi(int a, int b) {
 	int i, ret = 1;
 	for (i = 0; i < b; i++) {
 		ret *= a;
@@ -11,8 +10,7 @@ int powi(int a, int b)
 	return ret;
 }
 
-bool ugly(int j, int i, int *n)
-{
+bool ugly(int j, int i, int *n) {
 	int k = 0, cj = j;
 	int64_t s = 0, c = n[0];
 	bool p = true;
@@ -46,8 +44,7 @@ bool ugly(int j, int i, int *n)
 	return false;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 

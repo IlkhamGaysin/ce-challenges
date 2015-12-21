@@ -1,8 +1,7 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
-	FILE *fp;;
+int main(int argc, char *argv[]) {
+	FILE *fp;
 	float angle;
 
 	fp = fopen(*++argv, "r");

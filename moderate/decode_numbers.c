@@ -12,8 +12,7 @@ int decode(char *sb) {
 	return decode(sb + 2) + decode(sb + 1);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i = 0, sbs = 32;
 	char c;

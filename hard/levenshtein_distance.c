@@ -9,8 +9,7 @@ struct node {
 	struct node	*next;
 };
 
-bool leveno(char *a, char *b)
-{
+bool leveno(char *a, char *b) {
 	bool d = false;
 	while (*b != '\0') {
 		if (*a != *b) {
@@ -25,8 +24,7 @@ bool leveno(char *a, char *b)
 	return true;
 }
 
-bool levene(char *a, char *b)
-{
+bool levene(char *a, char *b) {
 	bool d = false;
 	while (*a != '\0') {
 		if (*a != *b) {
@@ -40,8 +38,7 @@ bool levene(char *a, char *b)
 	return true;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char line[32];
 	char root[6] = "hello";
@@ -50,9 +47,9 @@ int main(int argc, char *argv[])
 	struct node *look = NULL, *found = NULL, *curl = NULL, *curf = NULL;
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
-		int strl = strlen(line)-1;
+		int strl = strlen(line) - 1;
 		struct node *temp = malloc(sizeof(struct node));
-		char *w = (char *) malloc(strl);
+		char *w = (char *)malloc(strl);
 
 		temp->data = strncpy(w, line, strl);
 		temp->length = strl;

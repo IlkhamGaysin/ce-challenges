@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int p = -1, cp = -1, rd = 0, i;
 	char c, d = '|', sb[13];

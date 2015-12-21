@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char line[72];
 	unsigned i, n, r;
@@ -12,11 +11,11 @@ int main(int argc, char *argv[])
 		r = 1;
 		n = strlen(line) / 2;
 		for (i = 0; i < n; i++) {
-			if ((line[i] == 'A' && line[i+n] == 'B') ||
-			    (line[i] == 'B' && line[i+n] == 'A')) {
+			if ((line[i] == 'A' && line[i + n] == 'B') ||
+			    (line[i] == 'B' && line[i + n] == 'A')) {
 				r = 0;
 				break;
-			} else if (line[i] == '*' && line[i+n] == '*') {
+			} else if (line[i] == '*' && line[i + n] == '*') {
 				r *= 2;
 			}
 		}

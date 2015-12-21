@@ -11,8 +11,7 @@ int subs(char *p, char *q) {
 	return subs(p + 1, q);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i = 0, sbs = 32;
 	char c;

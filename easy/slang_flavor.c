@@ -1,12 +1,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-const char *phrases[] = {", yeah!", ", this is crazy, I tell ya.",
-			 ", can U believe this?", ", eh?", ", aw yea.",
-			 ", yo.", "? No way!", ". Awesome!"};
+const char *phrases[] = { ", yeah!", ", this is crazy, I tell ya.",
+			  ", can U believe this?", ", eh?", ", aw yea.",
+			  ", yo.", "? No way!", ". Awesome!" };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	bool p = true, l = false;

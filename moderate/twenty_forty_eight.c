@@ -19,8 +19,7 @@ void slide(int *p, int n) {
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char d;
 	int m[100], q[10], n, i, j;

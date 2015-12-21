@@ -2,16 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ccmp(const void *b1, const void *b2)
-{
+int ccmp(const void *b1, const void *b2) {
 	char *c1 = (char *)b1, *c2 = (char *)b2;
 	if (*c1 < *c2)
 		return -1;
 	return *c1 > *c2;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned i, l, n;
 	char c, wine[10][16], srtd[10][16], w[6];

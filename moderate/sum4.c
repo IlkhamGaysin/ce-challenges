@@ -13,8 +13,7 @@ int numzero(int *ib, int i, int c, int z) {
 	return numzero(ib + 1, i - 1, c - 1, z + ib[0]) + numzero(ib + 1, i - 1, c, z);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, i = 0, ibs = 32;
 	int *ib = malloc(ibs * sizeof(int));

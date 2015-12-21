@@ -11,15 +11,13 @@ struct car {
 	float	time;
 };
 
-static int cmpcar(const void *p1, const void *p2)
-{
+static int cmpcar(const void *p1, const void *p2) {
 	struct car *c1 = (struct car *)p1;
 	struct car *c2 = (struct car *)p2;
 	return (int)(100 * c1->time - 100 * c2->time);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i, s = 0, sbs = 16, n = 0;
 	char c;

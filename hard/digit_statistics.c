@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
-	const int stats[32] = {2, 4, 8, 6, 3, 9, 7, 1, 4, 6, 4, 6, 5, 5, 5, 5,
-			       6, 6, 6, 6, 7, 9, 3, 1, 8, 4, 2, 6, 9, 1, 9, 1};
+	const int stats[32] = { 2, 4, 8, 6, 3, 9, 7, 1, 4, 6, 4, 6, 5, 5, 5, 5,
+				6, 6, 6, 6, 7, 9, 3, 1, 8, 4, 2, 6, 9, 1, 9, 1 };
 	int a;
 	long long int n;
 
@@ -12,7 +11,7 @@ int main(int argc, char *argv[])
 	while (fscanf(fp, "%d %lld", &a, &n) != EOF) {
 		int i;
 		long long int m = n / 4;
-		long long int res[10] = {0};
+		long long int res[10] = { 0 };
 		a -= 2;
 		for (i = 0; i < 4; i++) {
 			res[stats[a * 4 + i]] += m;

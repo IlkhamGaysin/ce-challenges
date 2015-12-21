@@ -22,8 +22,7 @@ int pop(struct stack *st) {
 	return st->ib[--st->length];
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a;
 	char c;

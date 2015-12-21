@@ -26,8 +26,7 @@ bool isNum(int *m, int n, int x, int y, int nc) {
 	return r == nc;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int r[25];
 	char c;

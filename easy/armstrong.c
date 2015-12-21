@@ -1,15 +1,13 @@
 #include <stdio.h>
 
-int powi(int a, int b)
-{
+int powi(int a, int b) {
 	int i, ret = 1;
 	for (i = 0; i < b; i++)
 		ret *= a;
 	return ret;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n;
 

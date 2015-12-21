@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int next_permu(char *c, int strl)
-{
+int next_permu(char *c, int strl) {
 	char t;
 	int i, k = -1, l = 0;
 
@@ -35,16 +34,14 @@ int next_permu(char *c, int strl)
 	return l;
 }
 
-int ccmp(const void *b1, const void *b2)
-{
+int ccmp(const void *b1, const void *b2) {
 	char *c1 = (char *)b1, *c2 = (char *)b2;
 	if (*c1 < *c2)
 		return -1;
 	return *c1 > *c2;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char line[32];
 

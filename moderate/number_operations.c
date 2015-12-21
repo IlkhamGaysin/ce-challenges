@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int next_permu(char *c)
-{
+int next_permu(char *c) {
 	char t;
 	int i, k = -1, l = 0;
 
@@ -35,8 +34,7 @@ int next_permu(char *c)
 	return l;
 }
 
-int ccmp(const void *b1, const void *b2)
-{
+int ccmp(const void *b1, const void *b2) {
 	char *c1 = (char *)b1, *c2 = (char *)b2;
 	if (*c1 < *c2)
 		return -1;
@@ -49,21 +47,20 @@ bool gives42(char *s) {
 		r1 = (o1 == 0) ? s[0] + s[1] : (o1 == 1) ? s[0] - s[1] : s[0] * s[1];
 		for (o2 = 0; o2 < 3; o2++) {
 			r2 = (o2 == 0) ? r1 + s[2] : (o2 == 1) ? r1 - s[2] : r1 * s[2];
-				for (o3 = 0; o3 < 3; o3++) {
-					r3 = (o3 == 0) ? r2 + s[3] : (o3 == 1) ? r2 - s[3] : r2 * s[3];
-						for (o4 = 0; o4 < 3; o4++) {
-							r4 = (o4 == 0) ? r3 + s[4] : (o4 == 1) ? r3 - s[4] : r3 * s[4];
-							if (r4 == 42)
-								return true;
-						}
+			for (o3 = 0; o3 < 3; o3++) {
+				r3 = (o3 == 0) ? r2 + s[3] : (o3 == 1) ? r2 - s[3] : r2 * s[3];
+				for (o4 = 0; o4 < 3; o4++) {
+					r4 = (o4 == 0) ? r3 + s[4] : (o4 == 1) ? r3 - s[4] : r3 * s[4];
+					if (r4 == 42)
+						return true;
 				}
+			}
 		}
 	}
 	return false;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char s[5];
 

@@ -22,8 +22,7 @@ bool isMagic(int a) {
 	return r == 0;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int t = 1, a, b, i, ibs = 89;
 

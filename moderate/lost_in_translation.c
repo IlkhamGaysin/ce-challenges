@@ -11,8 +11,7 @@ const char *decol = "bjv"
 	"we think that our language is impossible to understand"
 	"so it is okay if you decided to quit";
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	bool p = true;
 	char c;

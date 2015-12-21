@@ -8,8 +8,7 @@ const char *digits = "-**----*--***--***---*---****--**--****--**---**--"
 		     "--------------------------------------------------";
 const int w = 5, h = 6;
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i, j, k;
 	char line[18];
@@ -20,8 +19,8 @@ int main(int argc, char *argv[])
 			for (j = 0; line[j] != '\n' && line[j] != '\0'; j++)
 				for (k = 0; k < w; k++)
 					if (line[j] >= '0' && line[j] <= '9')
-						printf("%c", digits[i*10*w + (line[j]-'0')*w + k]);
-			printf("\n");
+						putchar(digits[i * 10 * w + (line[j] - '0') * w + k]);
+			putchar('\n');
 		}
 	return 0;
 }

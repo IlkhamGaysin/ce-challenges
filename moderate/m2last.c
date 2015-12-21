@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int s = 0, sbs = 32, p = 0, pbs = 16;
 	char **pb = malloc(pbs * sizeof(char *));

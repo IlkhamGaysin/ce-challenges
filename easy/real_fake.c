@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-const char *m[] = {"Fake", "Real"};
+const char *m[] = { "Fake", "Real" };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i = 0, e = 0;
 	char c;

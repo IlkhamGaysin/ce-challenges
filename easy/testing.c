@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-const char *m[] = {"Done", "Low", "Medium", "High", "Critical"};
+const char *m[] = { "Done", "Low", "Medium", "High", "Critical" };
 
 int prio(int a) {
 	switch (a) {
@@ -20,8 +20,7 @@ int prio(int a) {
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c, d[40];
 	int s = 0, i = 0, r = 0;

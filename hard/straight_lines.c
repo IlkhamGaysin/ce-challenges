@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	int ps = 32, *p = malloc(ps * 2 * sizeof(int)), dx, dy;
@@ -24,8 +23,7 @@ int main(int argc, char *argv[])
 				dy = p[i * 2 + 1] - p[j * 2 + 1];
 				for (k = 0; k < ip; k++)
 					if (k != i && k != j &&
-					    dx * (p[i * 2 + 1] - p[k * 2 + 1])
-					      == (p[i * 2] - p[k * 2]) * dy) {
+					    dx * (p[i * 2 + 1] - p[k * 2 + 1]) == (p[i * 2] - p[k * 2]) * dy) {
 						if (k > j)
 							count++;
 						break;

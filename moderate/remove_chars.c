@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i = 0, sbs = 32;
 	char c;
@@ -23,8 +22,8 @@ int main(int argc, char *argv[])
 			printf("\n");
 			i = 0;
 		} else {
-			if (i == sbs-1) {
-				sbs += sbs/2;
+			if (i == sbs - 1) {
+				sbs += sbs / 2;
 				sb = realloc(sb, sbs);
 			}
 			sb[i++] = c;

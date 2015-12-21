@@ -7,8 +7,7 @@ struct node {
 	int		data;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n;
 

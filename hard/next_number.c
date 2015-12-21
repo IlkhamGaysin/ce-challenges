@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-int dsig(int b)
-{
+int dsig(int b) {
 	int d = 0, r;
 	while (b) {
-		r = b%10;
+		r = b % 10;
 		if (r)
 			d += 1 << (3 * r);
 		b /= 10;
@@ -12,8 +11,7 @@ int dsig(int b)
 	return d;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a;
 

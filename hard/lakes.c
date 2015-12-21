@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	unsigned i, j, k, r, t, ll[32], cl[32];
@@ -25,21 +24,21 @@ int main(int argc, char *argv[])
 				i++;
 				j = 0;
 			} else if (c == 'o') {
-				if (ll[j-1] > 0)
-					cl[j] = ll[j-1];
+				if (ll[j - 1] > 0)
+					cl[j] = ll[j - 1];
 				else if (ll[j] > 0)
 					cl[j] = ll[j];
-				else if (cl[j-1] > 0)
-					cl[j] = cl[j-1];
-				if (ll[j+1] > 0) {
+				else if (cl[j - 1] > 0)
+					cl[j] = cl[j - 1];
+				if (ll[j + 1] > 0) {
 					if (cl[j] == 0) {
-						cl[j] = ll[j+1];
-					} else if (cl[j] != ll[j+1]) {
-						t = ll[j+1];
-						for (k = j+1; k < 31; k++)
+						cl[j] = ll[j + 1];
+					} else if (cl[j] != ll[j + 1]) {
+						t = ll[j + 1];
+						for (k = j + 1; k < 31; k++)
 							if (ll[k] == t)
 								ll[k] = cl[j];
-						for (k = 1; k < j-1; k++)
+						for (k = 1; k < j - 1; k++)
 							if (cl[k] == t)
 								cl[k] = cl[j];
 						r--;

@@ -7,8 +7,7 @@ int rev(int a) {
 	return r;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, i, r;
 

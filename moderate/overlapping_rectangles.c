@@ -6,8 +6,7 @@ bool within(int *a, int r, int p, int q) {
 	       a[q] >= a[r + 3] && a[q] <= a[r + 1];
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a[8];
 

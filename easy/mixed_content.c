@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i, p = 0, pbs = 16, s = 0, sbs = 64;
 	char c;
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 			if (d) {
 				if (s + dig + p >= sbs) {
 					do {
-						sbs += sbs/2;
+						sbs += sbs / 2;
 					} while (s + dig + p >= sbs);
 					sb = realloc(sb, sbs);
 				}
@@ -54,7 +53,7 @@ int main(int argc, char *argv[])
 			if (c < '0' || c > '9')
 				d = false;
 			if (p == pbs) {
-				pbs += pbs/2;
+				pbs += pbs / 2;
 				pb = realloc(pb, pbs);
 			}
 			pb[p++] = c;

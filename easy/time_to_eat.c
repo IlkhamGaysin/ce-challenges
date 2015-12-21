@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int cmpint(const void *p1, const void *p2)
-{
+static int cmpint(const void *p1, const void *p2) {
 	return *(int *)p2 - *(int *)p1;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned time[20], n, h, m, s, i;
 

@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	struct stat st;
 	int ret = stat(*++argv, &st);
 	if (ret == 0)

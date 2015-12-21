@@ -49,8 +49,7 @@ int month(char c, FILE *fp) {
 	return m;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	int work[12] = { 0 };

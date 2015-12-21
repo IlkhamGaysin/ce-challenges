@@ -5,8 +5,7 @@ bool incircle(float a, float b, float c) {
 	return a * a + b * b <= c * c;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	float cx, cy, r, px, py;
 

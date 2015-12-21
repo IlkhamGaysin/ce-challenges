@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-	FILE *fp;;
+int main(int argc, char *argv[]) {
+	FILE *fp;
 	char c;
 	int b[10] = { 0 };
 

@@ -6,8 +6,7 @@ struct node {
 	struct node	*next;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	struct node *head = NULL, *temp = NULL;

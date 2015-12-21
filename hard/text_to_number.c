@@ -93,8 +93,7 @@ int d2(char *s) {
 	return -1;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char s[10], c;
 	int i = 0, n = 1, h = 0, q = 0, r = 0, d;

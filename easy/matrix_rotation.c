@@ -1,14 +1,12 @@
 #include <stdio.h>
 
-int sq(int a)
-{
+int sq(int a) {
 	int i;
 	for (i = 1; i * i < a; i++) ;
 	return i;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c, m[100];
 	int n = 0, l, i, j;

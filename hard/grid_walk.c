@@ -8,8 +8,7 @@ struct node {
 	struct node	*next;
 };
 
-int zsum(int a, int b)
-{
+int zsum(int a, int b) {
 	int z = 0;
 	while (a) {
 		z += a % 10;
@@ -22,8 +21,7 @@ int zsum(int a, int b)
 	return z;
 }
 
-bool unlisted(int x, int y, struct node *h1, struct node *h2)
-{
+bool unlisted(int x, int y, struct node *h1, struct node *h2) {
 	struct node *temp = h1;
 	if (temp) {
 		while (temp->x != x || temp->y != y) {
@@ -47,9 +45,8 @@ bool unlisted(int x, int y, struct node *h1, struct node *h2)
 	return true;
 }
 
-int main()
-{
-	int k = 0, s= 19;
+int main() {
+	int k = 0, s = 19;
 	struct node *h1 = malloc(sizeof(struct node));
 	struct node *h2 = NULL;
 	h1->x = 0;
@@ -88,6 +85,6 @@ int main()
 		free(temp);
 	}
 
-	printf("%d\n", k*4+1);
+	printf("%d\n", k * 4 + 1);
 	return 0;
 }

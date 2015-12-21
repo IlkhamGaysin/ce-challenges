@@ -2,8 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	bool first = true, nl = true;

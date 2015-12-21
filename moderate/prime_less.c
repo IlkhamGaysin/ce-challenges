@@ -11,8 +11,7 @@ bool prime(int a, int *p) {
 	return true;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i, n, last = 3, np = 2, ps = 8;
 	int *primes = malloc(ps * sizeof(int));

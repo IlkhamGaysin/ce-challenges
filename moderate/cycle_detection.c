@@ -10,8 +10,7 @@ bool uniq(int *ib, int s, int i) {
 	return true;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, s = 0, i = 0, ibs = 32;
 	int *ib = malloc(ibs * sizeof(int));

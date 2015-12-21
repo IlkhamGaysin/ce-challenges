@@ -3,12 +3,11 @@
 #include <stdlib.h>
 
 struct item {
-	int		num;
-	int		pos;
+	int	num;
+	int	pos;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, i = 0, j = 1, ibs = 32;
 	struct item *ib = malloc(ibs * sizeof(struct item));
@@ -31,7 +30,7 @@ int main(int argc, char *argv[])
 				if (m < a)
 					m = a;
 				if (i == ibs) {
-					ibs += ibs/2;
+					ibs += ibs / 2;
 					ib = realloc(ib, ibs * sizeof(struct item));
 				}
 				ib[i].num = a;

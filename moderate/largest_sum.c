@@ -1,8 +1,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, l = 0, m = INT_MIN;
 

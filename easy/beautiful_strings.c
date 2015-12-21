@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int cmpint(const void *p1, const void *p2)
-{
-	return *(int*)p1 - *(int*)p2;
+static int cmpint(const void *p1, const void *p2) {
+	return *(int *)p1 - *(int *)p2;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
-	int ch[26] = {0}, i, s = -1;
+	int ch[26] = { 0 }, i, s = -1;
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || s >= 0) {

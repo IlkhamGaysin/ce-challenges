@@ -8,8 +8,7 @@ int indx(char *a, char c) {
 	return i;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int sbs = 8, s = 0, i = 0;
 	char c;

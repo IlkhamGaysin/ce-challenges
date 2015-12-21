@@ -1,8 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool pali(int a)
-{
+bool pali(int a) {
 	int l[16], c = a, x = 0, y = 0;
 	while (c) {
 		l[y++] = c % 10;
@@ -18,8 +17,7 @@ bool pali(int a)
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int l, r;
 

@@ -12,8 +12,7 @@ int floors(int e, int s) {
 	return floors(e - 1, s - 1) + floors(e, s - 1) + 1;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int e, s, n;
 

@@ -35,8 +35,7 @@ bool wrd(int a1, int a2, int a3) {
 	return true;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int b;
 

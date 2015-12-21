@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	int m = 1;
@@ -16,7 +15,7 @@ int main(int argc, char *argv[])
 			putchar(' ');
 		} else {
 			if (m < 64)
-				putchar(morse[m-2]);
+				putchar(morse[m - 2]);
 			if (c == '\n' || c == EOF)
 				putchar('\n');
 			m = 1;

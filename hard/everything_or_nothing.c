@@ -9,8 +9,7 @@ char d(char s) {
 	return s - 49;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	char u, f, a;
 
@@ -48,7 +47,6 @@ int main(int argc, char *argv[])
 					fscanf(fp, "rant=>user_%c", &u);
 					uperm[d(u) * 3 + d(f)] |= GRANT;
 				}
-				
 			}
 		} while (getc(fp) == ' ' &&
 			 fscanf(fp, "user_%c=>file_%c=>%c", &u, &f, &a) != EOF);

@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int ix = 0, ibs = 16, num = 0;
 	char c;
@@ -13,8 +12,16 @@ int main(int argc, char *argv[])
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		switch (c) {
-		case '0': case '1': case '2': case '3': case '4':
-		case '5': case '6': case '7': case '8': case '9':
+		case '0':
+		case '1':
+		case '2':
+		case '3':
+		case '4':
+		case '5':
+		case '6':
+		case '7':
+		case '8':
+		case '9':
 			num = 10 * num + (c - '0');
 			break;
 		case ' ':

@@ -25,8 +25,7 @@ bool subcheck(char *sb, int n1, int n2, int i, int j) {
 	return true;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	bool a = true, b = false;
 	int sbs = 32, s = 0, n1 = -1, n2 = -1, i;

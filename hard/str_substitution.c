@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	FILE *fp;
 	int ss = 0, sbs = 192, cs1 = 0, cs2 = 0, cb1s = 32, cb2s = 32, i, j;
 	char *sb = malloc(sbs), *cb1 = malloc(cb1s), *cb2 = malloc(cb2s);
