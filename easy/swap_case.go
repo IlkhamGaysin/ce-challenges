@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func main() {
-	c := '\n'
+	var c byte = '\n'
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -18,15 +17,14 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		c = rune(scanner.Text()[0])
+		c = scanner.Text()[0]
 		switch {
 		case c >= 'a' && c <= 'z':
-			fmt.Print(strings.ToUpper(scanner.Text()))
+			c &= 223
 		case c >= 'A' && c <= 'Z':
-			fmt.Print(strings.ToLower(scanner.Text()))
-		default:
-			fmt.Printf("%c", c)
+			c |= 32
 		}
+		fmt.Printf("%c", c)
 	}
 	if c != '\n' {
 		fmt.Println()

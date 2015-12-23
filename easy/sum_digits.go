@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	var r int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -15,9 +16,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
-	var r int
 	for scanner.Scan() {
-		c := rune(scanner.Text()[0])
+		c := scanner.Text()[0]
 		if c >= '0' && c <= '9' {
 			r += int(c - '0')
 		} else {

@@ -14,7 +14,7 @@ func main() {
 			", yo.", "? No way!", ". Awesome!"}
 		c int
 		l bool
-		t = '\n'
+		t byte = '\n'
 	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -23,7 +23,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		t = rune(scanner.Text()[0])
+		t = scanner.Text()[0]
 		if t == '.' || t == '!' || t == '?' {
 			if l {
 				fmt.Print(phrases[c])

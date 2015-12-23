@@ -5,12 +5,13 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func main() {
-	var u bool
-	c := '\n'
+	var (
+		u bool
+		c byte = '\n'
+	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -19,20 +20,20 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		c = rune(scanner.Text()[0])
+		c = scanner.Text()[0]
 		if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') {
 			u = !u
 			if u {
-				fmt.Print(strings.ToUpper(string(c)))
+				c &= 223
 			} else {
-				fmt.Print(strings.ToLower(string(c)))
+				c |= 32
 			}
 		} else {
 			if c == '\n' {
 				u = false
 			}
-			fmt.Print(string(c))
 		}
+		fmt.Print(string(c))
 	}
 	if c != '\n' {
 		fmt.Println()

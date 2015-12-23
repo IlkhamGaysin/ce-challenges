@@ -19,7 +19,7 @@ func main() {
 	scanner.Split(bufio.ScanBytes)
 	m := 1
 	for scanner.Scan() {
-		c := rune(scanner.Text()[0])
+		c := scanner.Text()[0]
 		switch {
 		case c == '.':
 			m <<= 1

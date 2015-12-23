@@ -19,8 +19,8 @@ func main() {
 	for scanner.Scan() {
 		var r int
 		s := strings.Split(scanner.Text(), " | ")
-		for ix, i := range s[0] {
-			if i != rune(s[1][ix]) {
+		for i := 0; i < len(s[0]); i++ {
+			if s[0][i] != s[1][i] {
 				r++
 				if r > 6 {
 					break
