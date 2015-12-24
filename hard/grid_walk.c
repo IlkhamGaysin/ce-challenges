@@ -45,7 +45,7 @@ bool unlisted(int x, int y, struct node *h1, struct node *h2) {
 	return true;
 }
 
-int main() {
+int main(void) {
 	int k = 0, s = 19;
 	struct node *h1 = malloc(sizeof(struct node));
 	struct node *h2 = NULL;

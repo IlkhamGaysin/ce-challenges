@@ -15,7 +15,7 @@ int robot(int f, int x, int y) {
 	return ret;
 }
 
-int main() {
+int main(void) {
 	printf("%d\n", robot(1, 0, 0));
 	return 0;
 }

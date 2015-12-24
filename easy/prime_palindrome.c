@@ -19,9 +19,9 @@ bool pali(int x) {
 	return false;
 }
 
-int main(int argc, char *argv[]) {
+int main(void) {
 	int primes[256] = { 2, 3 };
-	int i, m, c = 2;
+	int i, m = 3, c = 2;
 	for (i = 5; i < 1000; i += 2) {
 		if (prime(i, primes)) {
 			primes[c++] = i;
