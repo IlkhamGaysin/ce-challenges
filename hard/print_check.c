@@ -2,22 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 
-char *str0[] = {
+const char *str0[] = {
 	"", "One", "Two", "Three", "Four", "Five",
 	"Six", "Seven", "Eight", "Nine"
 };
 
-char *str1[] = {
+const char *str1[] = {
 	"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
 	"Sixteen", "Seventeen", "Eighteen", "Nineteen"
 };
 
-char *str2[] = {
+const char *str2[] = {
 	"Twenty", "Thirty", "Forty", "Fifty",
 	"Sixty", "Seventy", "Eighty", "Ninety"
 };
 
-char *str3[] = {
+const char *str3[] = {
 	"Hundred", "Thousand", "Million"
 };
 
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 				printf("%s", str3[1]);
 			wrd(c[6], c[7], c[8]);
 		}
-		printf("Dollars\n");
+		puts("Dollars");
 	}
 	return 0;
 }

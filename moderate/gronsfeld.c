@@ -11,10 +11,10 @@ int indx(char *a, char c) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	int sbs = 8, s = 0, i = 0;
-	char c;
-	char *alpha = " !\"#$%&'()*+,-./0123456789:<=>?@"
-		      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char *sb = malloc(sbs);
+	char c, *sb = malloc(sbs);
+	const char *alpha = " !\"#$%&'()*+,-./0123456789:<=>?@"
+			    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			    "abcdefghijklmnopqrstuvwxyz";
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {

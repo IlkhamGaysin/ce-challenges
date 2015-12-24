@@ -2,7 +2,8 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	char c, *id = "\"id\":";
+	const char *id = "\"id\":";
+	char c;
 	int i = 0, s = -1, n;
 
 	fp = fopen(*++argv, "r");

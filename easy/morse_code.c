@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
 	int m = 1;
-	char *morse = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90";
+	const char *morse = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90";
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || m > 1) {
 		if (c == '.') {
