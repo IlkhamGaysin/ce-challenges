@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	int i = 0, sbs = 32;
 	char c;
-	char *sb = malloc(sbs), *q;
+	char *sb = malloc(sbs), *q = NULL;
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || i > 0) {

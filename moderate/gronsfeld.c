@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int indx(char *a, char c) {
+int indx(const char *a, char c) {
 	int i = 0;
 	while (a[i] != c && i < 84)
 		i++;

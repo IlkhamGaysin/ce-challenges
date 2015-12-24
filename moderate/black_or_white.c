@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
-		int n = 1, i = 1, j, rm, rn;
+		int n = 1, i = 1, j, rm, rn = 0;
 		r[0] = c - '0';
 		while ((c = getc(fp)) == '0' || c == '1') {
 			n++;

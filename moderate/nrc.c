@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 			temp->uniq = true;
 			temp->next = NULL;
 			if (head) {
-				struct node *curr = head, *oldr;
+				struct node *curr = head, *oldr = NULL;
 				while (curr) {
 					if (curr->data == temp->data) {
 						curr->uniq = false;

@@ -12,7 +12,7 @@ int ccmp(const void *b1, const void *b2) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned i, l, n;
-	char c, wine[10][16], srtd[10][16], w[6];
+	char wine[10][16], srtd[10][16], w[6];
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%s", &wine) != EOF) {
