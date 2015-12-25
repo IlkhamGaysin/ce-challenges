@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d%*c", &a) != EOF) {
 		int i, j, d;
-		int *b = malloc(sizeof(int) * a);
+		int *b = malloc(a * sizeof(int));
 		fscanf(fp, "%d%*c", &d);
 		b[0] = d;
 		for (i = 1; i < a; i++) {

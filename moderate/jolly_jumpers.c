@@ -10,9 +10,9 @@ int main(int argc, char *argv[]) {
 	while (fscanf(fp, "%d", &n) != EOF) {
 		int xo, i;
 		bool jolly = true, done = false;
-		int *diff = (int *)calloc(n, sizeof(int));
+		int *diff = calloc(n, sizeof(int));
 		if (diff == NULL) {
-			printf("Out of memory\n");
+			puts("Out of memory");
 			exit(-1);
 		}
 		if (n == 1)
@@ -32,10 +32,7 @@ int main(int argc, char *argv[]) {
 				xo = xc;
 			}
 		}
-		if (jolly)
-			printf("Jolly\n");
-		else
-			printf("Not jolly\n");
+		puts(jolly ? "Jolly" : "Not jolly");
 		free(diff);
 	}
 	return 0;
