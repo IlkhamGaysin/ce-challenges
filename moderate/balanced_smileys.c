@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void trim_right(char *p) {
+static void trim_right(char *p) {
 	int i = 0;
 	while (p[i] != '\0')
 		i++;
@@ -11,7 +11,7 @@ void trim_right(char *p) {
 	p[i] = '\0';
 }
 
-bool is_balanced(char *p, int c) {
+static bool is_balanced(char *p, int c) {
 	if (*p == '\0') {
 		return c == 0;
 	} else if (c < 0) {
@@ -51,10 +51,7 @@ int main(int argc, char *argv[]) {
 	while ((c = getc(fp)) != EOF || s > 0) {
 		if (c == '\n' || c == EOF) {
 			sb[s] = '\0';
-			if (is_balanced(sb, 0))
-				puts("YES");
-			else
-				puts("NO");
+			puts(is_balanced(sb, 0) ? "YES" : "NO");
 			s = 0;
 		} else {
 			if (s == sbs - 1) {

@@ -1,15 +1,15 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-const char *units[] = {
+static const char *units[] = {
 	"PENNY", "NICKEL", "DIME", "QUARTER", "HALF DOLLAR", "ONE",
 	"TWO", "FIVE", "TEN", "TWENTY", "FIFTY", "ONE HUNDRED"
 };
-const int value[] = {
+static const int value[] = {
 	1, 5, 10, 25, 50, 100,
 	200, 500, 1000, 2000, 5000, 10000
 };
-const int sorted[] = {
+static const int sorted[] = {
 	2, 10, 7, 4, 1, 5, 11, 0, 3, 8, 9, 6
 };
 

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool uniq(int *ib, int s, int i) {
+static bool uniq(int *ib, int s, int i) {
 	int j;
 	for (j = s + 1; j < i; j++)
 		if (ib[s] == ib[j])

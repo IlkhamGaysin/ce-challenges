@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool prime(int a, int *p) {
+static bool prime(int a, int *p) {
 	while (*p * *p <= a) {
 		if (a % *p == 0)
 			return false;

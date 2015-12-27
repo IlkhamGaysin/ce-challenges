@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ccmp(const void *b1, const void *b2) {
+static int ccmp(const void *b1, const void *b2) {
 	char *c1 = (char *)b1, *c2 = (char *)b2;
 	if (*c1 < *c2)
 		return -1;
@@ -49,11 +49,10 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			if (g && *q == '\0') {
-				if (f) {
+				if (f)
 					putchar(' ');
-				} else {
+				else
 					f = true;
-				}
 				printf("%s", wine[i]);
 			}
 		}

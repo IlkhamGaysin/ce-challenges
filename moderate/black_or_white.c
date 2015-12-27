@@ -2,21 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int kernighan(int a) {
+static int kernighan(int a) {
 	int r = 0;
 	for (; a > 0; a &= a - 1)
 		r++;
 	return r;
 }
 
-int numCar(int *m, int n) {
+static int numCar(int *m, int n) {
 	int i, r = 0;
 	for (i = 0; i < n; i++)
 		r += kernighan(m[i] & ((1 << n) - 1));
 	return r;
 }
 
-bool isNum(int *m, int n, int x, int y, int nc) {
+static bool isNum(int *m, int n, int x, int y, int nc) {
 	int r = 0, i;
 	for (i = x; i < x + n; i++) {
 		r += kernighan(m[i] & (((1 << n) - 1) << y));

@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-const char *m[] = { "Done", "Low", "Medium", "High", "Critical" };
+static const char *m[] = { "Done", "Low", "Medium", "High", "Critical" };
 
-int prio(int a) {
+static int prio(int a) {
 	switch (a) {
 	case 0:
 		return 0;

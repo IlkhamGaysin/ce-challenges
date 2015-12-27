@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int decode(char *sb) {
+static int decode(char *sb) {
 	if (sb[0] == '\0' || sb[1] == '\0') {
 		return 1;
 	} else if (sb[0] != '1' && sb[0] != '2') {

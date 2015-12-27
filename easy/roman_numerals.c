@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-const int ronum[13] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-const char *rostr[13] = { "M", "CM", "D", "CD", "C", "XC",
-			  "L", "XL", "X", "IX", "V", "IV", "I" };
+static const int ronum[13] = { 1000, 900, 500, 400, 100, 90,
+			       50, 40, 10, 9, 5, 4, 1 };
+static const char *rostr[13] = { "M", "CM", "D", "CD", "C", "XC",
+				 "L", "XL", "X", "IX", "V", "IV", "I" };
 
 int main(int argc, char *argv[]) {
 	FILE *fp;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int happy(int a) {
+static int happy(int a) {
 	int i, ret = 0, t;
 	for (i = a; i > 0; i /= 10) {
 		t = i % 10;

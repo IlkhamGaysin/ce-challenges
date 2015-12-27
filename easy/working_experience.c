@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int month(char c, FILE *fp) {
-	int m = 0;
+static unsigned month(char c, FILE *fp) {
+	unsigned m = 0;
 	switch (c) {
 	case 'J':
 		fscanf(fp, "%c", &c);
@@ -44,7 +44,6 @@ int month(char c, FILE *fp) {
 	case 'D':
 		m = 12;
 		fseek(fp, 3, SEEK_CUR);
-		break;
 	}
 	return m;
 }

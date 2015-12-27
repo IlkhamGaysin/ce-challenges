@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool prime(int a, int *p) {
+static bool prime(int a, int *p) {
 	while (*p * *p <= a) {
 		if (a % *p == 0)
 			return false;
@@ -10,7 +10,7 @@ bool prime(int a, int *p) {
 	return true;
 }
 
-bool pali(int x) {
+static bool pali(int x) {
 	if ((x < 10) ||
 	    (x < 100 && (x / 10 == x % 10)) ||
 	    (x > 100 && (x / 100 == x % 10))) {

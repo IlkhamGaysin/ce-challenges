@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-const int m[5] = { 50, 25, 10, 5, 1 };
+static const int m[5] = { 50, 25, 10, 5, 1 };
 
-int alter(int n, int p) {
+static int alter(int n, int p) {
 	if (n == 0)
 		return 1;
 	while (m[p] > n)

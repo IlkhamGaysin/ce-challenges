@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int sq(int a) {
+static int sq(int a) {
 	int i;
 	for (i = 1; i * i < a; i++) ;
 	return i;

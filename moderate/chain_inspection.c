@@ -7,7 +7,7 @@ struct link {
 	short to;
 };
 
-int to(struct link *p, int n, int a) {
+static int to(struct link *p, int n, int a) {
 	int i;
 	for (i = 0; i < n; i++) {
 		if (p[i].from == p[a].to) {
@@ -79,11 +79,7 @@ int main(int argc, char *argv[]) {
 			if (b == -1 || (chain[b].to == 1 && i < n - 2))
 				good = false;
 		}
-		if (good && chain[b].to == 1) {
-			puts("GOOD");
-		} else {
-			puts("BAD");
-		}
+		puts(good && chain[b].to == 1 ? "GOOD" : "BAD");
 		n = 0;
 		b = -1;
 	}

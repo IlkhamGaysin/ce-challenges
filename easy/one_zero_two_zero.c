@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool xz(unsigned n, unsigned a) {
+static bool xz(unsigned n, unsigned a) {
 	while (a) {
 		if (a % 2 == 0) {
 			if (n)

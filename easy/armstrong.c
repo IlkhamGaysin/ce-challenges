@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int powi(int a, int b) {
+static int powi(int a, int b) {
 	int i, ret = 1;
 	for (i = 0; i < b; i++)
 		ret *= a;
@@ -18,10 +18,7 @@ int main(int argc, char *argv[]) {
 			e++;
 		for (a = n; a; a /= 10)
 			s += powi(a % 10, e);
-		if (n == s)
-			puts("True");
-		else
-			puts("False");
+		puts(n == s ? "True" : "False");
 	}
 	return 0;
 }

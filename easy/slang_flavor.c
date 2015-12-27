@@ -1,9 +1,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-const char *phrases[] = { ", yeah!", ", this is crazy, I tell ya.",
-			  ", can U believe this?", ", eh?", ", aw yea.",
-			  ", yo.", "? No way!", ". Awesome!" };
+static const char *phrases[] = { ", yeah!", ", this is crazy, I tell ya.",
+				 ", can U believe this?", ", eh?", ", aw yea.",
+				 ", yo.", "? No way!", ". Awesome!" };
 
 int main(int argc, char *argv[]) {
 	FILE *fp;

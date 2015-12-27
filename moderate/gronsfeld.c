@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int indx(const char *a, char c) {
+static const char *alpha = " !\"#$%&'()*+,-./0123456789:<=>?@"
+			   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			   "abcdefghijklmnopqrstuvwxyz";
+
+static int indx(char c) {
 	int i = 0;
-	while (a[i] != c && i < 84)
+	while (alpha[i] != c && i < 84)
 		i++;
 	return i;
 }
@@ -12,9 +16,6 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	int sbs = 8, s = 0, i = 0;
 	char c, *sb = malloc(sbs);
-	const char *alpha = " !\"#$%&'()*+,-./0123456789:<=>?@"
-			    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			    "abcdefghijklmnopqrstuvwxyz";
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
@@ -27,7 +28,7 @@ int main(int argc, char *argv[]) {
 			c = getc(fp);
 		}
 		while ((c = getc(fp)) != '\n' && c != EOF)
-			printf("%c", alpha[(indx(alpha, c) - sb[i++ % s] + 84) % 84]);
+			printf("%c", alpha[(indx(c) - sb[i++ % s] + 84) % 84]);
 		printf("\n");
 		s = 0;
 		i = 0;
