@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -9,8 +8,8 @@ int main(int argc, char *argv[]) {
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		int n = 0, i;
-		while isdigit(c) {
-			z[n] = c - 48;
+		while (c >= '0' && c <= '9') {
+			z[n] = c - '0';
 			n++;
 			c = getc(fp);
 		}
@@ -18,7 +17,7 @@ int main(int argc, char *argv[]) {
 		int num = 0, op = 0;
 		bool sg = true;
 		for (i = 0; i < n;) {
-			if isalpha(c) {
+			if (c >= 'a' && c <= 'z') {
 				op = 10 * op + z[i];
 				i++;
 			} else {

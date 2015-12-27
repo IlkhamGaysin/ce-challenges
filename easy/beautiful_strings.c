@@ -23,9 +23,9 @@ int main(int argc, char *argv[]) {
 			printf("%d\n", s);
 			s = -1;
 		} else {
-			i = c & 223;
-			if (i >= 65 && i <= 90)
-				ch[i - 65]++;
+			c &= 223;
+			if (c >= 'A' && c <= 'Z')
+				ch[c - 'A']++;
 		}
 	}
 	return 0;

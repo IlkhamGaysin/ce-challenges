@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,9 +12,9 @@ int main(int argc, char *argv[]) {
 		do {
 			int num = 0;
 			n++;
-			while isdigit(c) {
+			while (c >= '0' && c <= '9') {
 				num *= 10;
-				num += c - 48;
+				num += c - '0';
 				c = getc(fp);
 			}
 			z[num]++;
@@ -25,7 +24,7 @@ int main(int argc, char *argv[]) {
 			}
 			if (c == ',')
 				c = getc(fp);
-		} while isdigit(c);
+		} while (c >= '0' && c <= '9');
 		free(z);
 		if (mc > n / 2)
 			printf("%d\n", mn);

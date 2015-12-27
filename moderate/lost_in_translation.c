@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -19,7 +18,7 @@ int main(int argc, char *argv[]) {
 	int i = 0, j;
 
 	while (codel[i] != '\0') {
-		if islower(codel[i]) {
+		if (codel[i] >= 'a' && codel[i] <= 'z') {
 			m[codel[i] - 'a'] = decol[i];
 			n[decol[i] - 'a'] = codel[i];
 		}
@@ -39,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
-		if islower(c)
+		if (c >= 'a' && c <= 'z')
 			putchar(m[c - 'a']);
 		else
 			putchar(c);

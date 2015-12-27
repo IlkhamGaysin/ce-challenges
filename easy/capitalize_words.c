@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -10,12 +9,12 @@ int main(int argc, char *argv[]) {
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		nl = c == '\n';
-		if (first && islower(c)) {
-			putchar(toupper(c));
+		if (first && c >= 'a' && c <= 'z') {
+			putchar(c & 223);
 			first = false;
 		} else {
 			putchar(c);
-			first = isspace(c);
+			first = c == ' ' || c == '\t' || c == '\n';
 		}
 	}
 	if (!nl)

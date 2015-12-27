@@ -81,14 +81,14 @@ int main(int argc, char *argv[]) {
 				ctrl = false;
 				break;
 			default:
-				if (curr < 48 || curr > 57)
+				if (curr < '0' || curr > '9')
 					break;
 				if (!move) {
 					move = true;
-					x = curr - 48;
+					x = curr - '0';
 				} else {
 					move = false;
-					y = curr - 48;
+					y = curr - '0';
 					ctrl = false;
 				}
 			}

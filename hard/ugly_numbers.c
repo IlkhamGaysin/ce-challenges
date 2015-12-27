@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 	while ((c = getc(fp)) != EOF) {
 		int i = 0, j, u = 0, n[13];
 		while (c != '\n' && c != EOF) {
-			n[i++] = c - 48;
+			n[i++] = c - '0';
 			c = getc(fp);
 		}
 		for (j = 0; j < powi(3, i - 1); j++) {

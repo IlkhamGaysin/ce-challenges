@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,16 +9,18 @@ int main(int argc, char *argv[]) {
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
-		if isdigit(c) {
+		if (c >= '0' && c <= '9') {
 			sb[s++] = c;
-			while isalpha(c = getc(fp)) {
+			c = getc(fp);
+			while ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
 				if (s == sbs - 2) {
 					sbs += sbs / 2;
 					sb = realloc(sb, sbs);
 				}
 				sb[s++] = c;
+				c = getc(fp);
 			}
-			if isdigit(c) {
+			if (c >= '0' && c <= '9') {
 				sb[s] = sb[0];
 				sb[0] = c;
 			} else {

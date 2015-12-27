@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,7 +12,7 @@ int main(int argc, char *argv[]) {
 		if (c == '\n')
 			continue;
 		while (c != '\n' && c != EOF) {
-			if isblank(c) {
+			if (c == ' ' || c == '\t') {
 				while (r + s > rbs - 1) {
 					rbs += rbs / 2;
 					rb = realloc(rb, rbs);

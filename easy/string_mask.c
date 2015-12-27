@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -19,7 +18,7 @@ int main(int argc, char *argv[]) {
 			}
 		} else {
 			if (c == '1') {
-				putchar(toupper(s[i++]));
+				putchar(s[i++] & 223);
 			} else if (c == '0') {
 				putchar(s[i++]);
 			} else {

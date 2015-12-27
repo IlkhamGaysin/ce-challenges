@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 			rr = 0;
 			continue;
 		}
-		a = c - 48;
+		a = c - '0';
 		switch (getc(fp)) {
 		case 'M':
 			r = 1000;
