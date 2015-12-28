@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int sbs = 16, s = 0, rbs = 32, r = 0;
+	unsigned sbs = 16, s = 0, rbs = 32, r = 0;
 	char c;
 	char *sb = malloc(sbs), *rb = malloc(rbs);
 
@@ -21,7 +21,6 @@ int main(int argc, char *argv[]) {
 					rb[r++] = sb[--s];
 				}
 				rb[r++] = ' ';
-				s = 0;
 			} else {
 				if (s == sbs - 1) {
 					sbs += sbs / 2;
@@ -36,7 +35,6 @@ int main(int argc, char *argv[]) {
 		while (r > 0)
 			printf("%c", rb[--r]);
 		printf("\n");
-		r = 0;
 		s = 0;
 	}
 	free(rb);

@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int p = 1, i = 0, sbs = 32;
+	unsigned p = 1, i = 0, sbs = 32;
 	char c;
 	char *sb = malloc(sbs);
 

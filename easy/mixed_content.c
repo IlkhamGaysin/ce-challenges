@@ -4,10 +4,9 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i, p = 0, pbs = 16, s = 0, sbs = 64;
+	unsigned i, p = 0, pbs = 16, s = 0, sbs = 64;
 	char c;
-	char *pb = malloc(pbs);
-	char *sb = malloc(sbs);
+	char *pb = malloc(pbs), *sb = malloc(sbs);
 	bool str = false, dig = false, d = true;
 
 	fp = fopen(*++argv, "r");
