@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool within(int *a, int r, int p, int q) {
+static bool within(int *a, int r, int p, int q) {
 	return a[p] >= a[r] && a[p] <= a[r + 2] &&
 	       a[q] >= a[r + 3] && a[q] <= a[r + 1];
 }

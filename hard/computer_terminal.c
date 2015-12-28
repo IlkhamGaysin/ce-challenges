@@ -1,14 +1,14 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void cls(char c[10][10]) {
+static void cls(char c[10][10]) {
 	int i, j;
 	for (i = 0; i < 10; i++)
 		for (j = 0; j < 10; j++)
 			c[i][j] = ' ';
 }
 
-int prn(char c[10][10], int x, int y, char d, bool insr) {
+static int prn(char c[10][10], int x, int y, char d, bool insr) {
 	if (insr) {
 		int i;
 		for (i = 8; i >= y; i--)

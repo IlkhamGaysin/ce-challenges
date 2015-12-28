@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool subcheck(char *sb, int n1, int n2, int i, int j) {
+static bool subcheck(char *sb, int n1, int n2, int i, int j) {
 	while (i < n1 && j < n2) {
 		if (sb[n1 + j] == '*') {
 			bool a = false;
@@ -50,10 +50,7 @@ int main(int argc, char *argv[]) {
 					break;
 				}
 			}
-			if (b)
-				puts("true");
-			else
-				puts("false");
+			puts(b ? "true" : "false");
 			s = 0;
 			n1 = -1;
 			n2 = -1;

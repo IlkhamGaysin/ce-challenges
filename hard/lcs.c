@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max(int a, int b) {
-	return (a > b) ? a : b;
+static int max(int a, int b) {
+	return a > b ? a : b;
 }
 
-char *bt(int *ib, char *sb, int s, int t, int i, int j, int p) {
+static char *bt(int *ib, char *sb, int s, int t, int i, int j, int p) {
 	if (i < 1 || j < 1)
 		return sb + p;
 	if (sb[i - 1] == sb[s + j - 1]) {

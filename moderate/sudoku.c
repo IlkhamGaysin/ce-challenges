@@ -2,17 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sq(int a) {
-	int ret = -1;
-	switch (a) {
-	case 4:
-		ret = 2;
-		break;
-	case 9:
-		ret = 3;
-		break;
-	}
-	return ret;
+static int sq(int a) {
+	int i;
+	for (i = 1; i * i < a; i++) ;
+	return i;
 }
 
 int main(int argc, char *argv[]) {
@@ -54,10 +47,7 @@ int main(int argc, char *argv[]) {
 				valid = false;
 			}
 		}
-		if (valid)
-			printf("True\n");
-		else
-			printf("False\n");
+		puts (valid ? "True" : "False");
 		free(col);
 		free(csqu);
 	}

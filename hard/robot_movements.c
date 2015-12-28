@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int robot(int f, int x, int y) {
+static int robot(int f, int x, int y) {
 	int ret = 0;
 	if (x == 3 && y == 3)
 		return 1;

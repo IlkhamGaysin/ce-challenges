@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int nsep(char *p) {
+static int nsep(char *p) {
 	int i = 0, r = 0;
 	while (p[i] != '\0')
 		if (p[i++] == ' ')

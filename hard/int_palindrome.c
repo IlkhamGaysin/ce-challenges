@@ -1,20 +1,19 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool pali(int a) {
+static bool pali(int a) {
 	int l[16], c = a, x = 0, y = 0;
 	while (c) {
 		l[y++] = c % 10;
 		c /= 10;
 	}
-	while (true) {
-		if (l[x] != l[y - 1])
-			return false;
+	while (l[x] == l[y - 1]) {
 		if (y - x < 3)
 			return true;
 		x++;
 		y--;
 	}
+	return false;
 }
 
 int main(int argc, char *argv[]) {

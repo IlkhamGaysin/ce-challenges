@@ -5,8 +5,8 @@
 #define WRITE 2
 #define GRANT 1
 
-char d(char s) {
-	return s - 49;
+static char d(char s) {
+	return s - '1';
 }
 
 int main(int argc, char *argv[]) {

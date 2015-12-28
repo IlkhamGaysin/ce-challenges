@@ -1,11 +1,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-const char *codel = "nug"
+static const char *codel = "nug"
 	"rbc vjnmkf kd yxyqci na rbc zjkfoscdd ew rbc ujllmcp"
 	"tc rbkso rbyr ejp mysljylc kd kxveddknmc re jsicpdrysi"
 	"de kr kd eoya kw aej icfkici re zjkr";
-const char *decol = "bjv"
+static const char *decol = "bjv"
 	"the public is amazed by the quickness of the juggler"
 	"we think that our language is impossible to understand"
 	"so it is okay if you decided to quit";

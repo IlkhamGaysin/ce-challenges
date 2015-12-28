@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int next_permu(char *c) {
+static int next_permu(char *c) {
 	char t;
 	int i, k = -1, l = 0;
 
@@ -34,14 +34,14 @@ int next_permu(char *c) {
 	return l;
 }
 
-int ccmp(const void *b1, const void *b2) {
+static int ccmp(const void *b1, const void *b2) {
 	char *c1 = (char *)b1, *c2 = (char *)b2;
 	if (*c1 < *c2)
 		return -1;
 	return *c1 > *c2;
 }
 
-bool gives42(char *s) {
+static bool gives42(char *s) {
 	int o1, o2, o3, o4, r1, r2, r3, r4;
 	for (o1 = 0; o1 < 3; o1++) {
 		r1 = (o1 == 0) ? s[0] + s[1] : (o1 == 1) ? s[0] - s[1] : s[0] * s[1];

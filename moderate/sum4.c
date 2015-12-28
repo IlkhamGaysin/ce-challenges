@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int numzero(int *ib, int i, int c, int z) {
+static int numzero(int *ib, int i, int c, int z) {
 	if (c == 0) {
 		if (z == 0)
 			return 1;

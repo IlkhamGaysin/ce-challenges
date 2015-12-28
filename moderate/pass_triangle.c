@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int max(int a, int b) {
-	return (a > b) ? a : b;
+static int max(int a, int b) {
+	return a > b ? a : b;
 }
 
-int nrow(int a) {
+static int nrow(int a) {
 	int p = 0, c = 0;
 	while (a > c)
 		c += ++p + 1;

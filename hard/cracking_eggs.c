@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int floors(int e, int s) {
+static int floors(int e, int s) {
 	if (s == 1)
 		return 1;
 	else if (e == 1)

@@ -9,7 +9,7 @@ struct node {
 	struct node	*next;
 };
 
-bool leveno(char *a, char *b) {
+static bool leveno(char *a, char *b) {
 	bool d = false;
 	while (*b != '\0') {
 		if (*a != *b) {
@@ -24,7 +24,7 @@ bool leveno(char *a, char *b) {
 	return true;
 }
 
-bool levene(char *a, char *b) {
+static bool levene(char *a, char *b) {
 	bool d = false;
 	while (*a != '\0') {
 		if (*a != *b) {

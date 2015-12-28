@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void slide(int *p, int n) {
+static void slide(int *p, int n) {
 	int i, j, c = 0, l = 0;
 	for (i = 0; i < n; i++) {
 		if (p[c] == 0) {

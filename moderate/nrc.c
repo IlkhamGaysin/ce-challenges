@@ -8,7 +8,20 @@ struct node {
 	bool		uniq;
 };
 
-void firstnrc(struct node *head);
+static void firstnrc(struct node *head) {
+	struct node *curr = head;
+
+	if (head) {
+		while (curr) {
+			if (curr->uniq) {
+				printf("%c\n", curr->data);
+				return;
+			}
+			curr = curr->next;
+		}
+	}
+	printf("\n");
+}
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
@@ -52,19 +65,4 @@ skip:
 		}
 	}
 	return 0;
-}
-
-void firstnrc(struct node *head) {
-	struct node *curr = head;
-
-	if (head) {
-		while (curr) {
-			if (curr->uniq) {
-				printf("%c\n", curr->data);
-				return;
-			}
-			curr = curr->next;
-		}
-	}
-	printf("\n");
 }

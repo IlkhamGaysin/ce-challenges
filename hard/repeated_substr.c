@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool allspace(char *p, int n) {
+static bool allspace(char *p, int n) {
 	int i;
 	for (i = 0; i < n; i++)
 		if (p[i] != ' ')
@@ -10,7 +10,7 @@ bool allspace(char *p, int n) {
 	return true;
 }
 
-bool contains(char *p, char *q, int n, int m) {
+static bool contains(char *p, char *q, int n, int m) {
 	int i, j;
 	for (i = 0; i < m; i++) {
 		for (j = 0; j < n; j++)

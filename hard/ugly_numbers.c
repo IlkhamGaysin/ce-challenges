@@ -2,15 +2,14 @@
 #include <stdint.h>
 #include <stdio.h>
 
-int powi(int a, int b) {
+static int powi(int a, int b) {
 	int i, ret = 1;
-	for (i = 0; i < b; i++) {
+	for (i = 0; i < b; i++)
 		ret *= a;
-	}
 	return ret;
 }
 
-bool ugly(int j, int i, int *n) {
+static bool ugly(int j, int i, int *n) {
 	int k = 0, cj = j;
 	int64_t s = 0, c = n[0];
 	bool p = true;
@@ -47,10 +46,11 @@ bool ugly(int j, int i, int *n) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
+	int j, n[13];
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
-		int i = 0, j, u = 0, n[13];
+		int i = 0, u = 0;
 		while (c != '\n' && c != EOF) {
 			n[i++] = c - '0';
 			c = getc(fp);

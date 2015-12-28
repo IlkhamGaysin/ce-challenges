@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int dsig(int b) {
+static int dsig(int b) {
 	int d = 0, r;
 	while (b) {
 		r = b % 10;

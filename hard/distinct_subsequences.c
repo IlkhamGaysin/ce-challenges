@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int subs(char *p, char *q) {
+static int subs(char *p, char *q) {
 	if (*q == '\0')
 		return 1;
 	if (*p == ',')

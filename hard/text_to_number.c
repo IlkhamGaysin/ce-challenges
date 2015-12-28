@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int d0(char *s) {
+static int d0(char *s) {
 	switch (s[0]) {
 	case 'o':
 		return 1;
@@ -34,7 +34,7 @@ int d0(char *s) {
 	return -1;
 }
 
-int d1(char *s) {
+static int d1(char *s) {
 	switch (s[0]) {
 	case 't':
 		if (s[3] == '\0')
@@ -69,7 +69,7 @@ int d1(char *s) {
 	return -1;
 }
 
-int d2(char *s) {
+static int d2(char *s) {
 	switch (s[0]) {
 	case 't':
 		if (s[2] == 'i')

@@ -2,26 +2,26 @@
 #include <stdio.h>
 #include <string.h>
 
-const char *str0[] = {
+static const char *str0[] = {
 	"", "One", "Two", "Three", "Four", "Five",
 	"Six", "Seven", "Eight", "Nine"
 };
 
-const char *str1[] = {
+static const char *str1[] = {
 	"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
 	"Sixteen", "Seventeen", "Eighteen", "Nineteen"
 };
 
-const char *str2[] = {
+static const char *str2[] = {
 	"Twenty", "Thirty", "Forty", "Fifty",
 	"Sixty", "Seventy", "Eighty", "Ninety"
 };
 
-const char *str3[] = {
+static const char *str3[] = {
 	"Hundred", "Thousand", "Million"
 };
 
-bool wrd(int a1, int a2, int a3) {
+static bool wrd(int a1, int a2, int a3) {
 	if (a1 + a2 + a3 == 0)
 		return false;
 	if (a1)

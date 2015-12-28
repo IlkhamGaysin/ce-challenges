@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool isMagic(int a) {
+static bool isMagic(int a) {
 	int d = 0, i, r, l = 0, ns[4];
 	while (a) {
 		r = a % 10;

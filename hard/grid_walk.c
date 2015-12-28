@@ -8,7 +8,7 @@ struct node {
 	struct node	*next;
 };
 
-int zsum(int a, int b) {
+static int zsum(int a, int b) {
 	int z = 0;
 	while (a) {
 		z += a % 10;
@@ -21,7 +21,7 @@ int zsum(int a, int b) {
 	return z;
 }
 
-bool unlisted(int x, int y, struct node *h1, struct node *h2) {
+static bool unlisted(int x, int y, struct node *h1, struct node *h2) {
 	struct node *temp = h1;
 	if (temp) {
 		while (temp->x != x || temp->y != y) {
