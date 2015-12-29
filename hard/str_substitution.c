@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int ss = 0, sbs = 192, cs1 = 0, cs2 = 0, cb1s = 32, cb2s = 32, i, j;
+	unsigned ss = 0, sbs = 192, cs1 = 0, cs2 = 0, cb1s = 32, cb2s = 32, i, j, d;
 	char *sb = malloc(sbs), *cb1 = malloc(cb1s), *cb2 = malloc(cb2s);
 	char c;
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				if (cs1 < cs2) {
-					int d = cs2 - cs1;
+					d = cs2 - cs1;
 					while (ss + d >= sbs - 1) {
 						sbs += sbs / 2;
 						sb = realloc(sb, sbs);
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 						sb[j] = sb[j - d];
 					}
 				} else if (cs1 > cs2) {
-					int d = cs1 - cs2;
+					d = cs1 - cs2;
 					for (j = i + cs2; j < ss - d; j++) {
 						sb[j] = sb[j + d];
 					}
@@ -75,16 +75,16 @@ int main(int argc, char *argv[]) {
 			cs2 = 0;
 		} while (c == ',');
 		sb[ss] = '\0';
-		for (i = ss - 1; i >= 0; i--) {
-			switch (sb[i]) {
+		for (i = ss; i > 0; i--) {
+			switch (sb[i - 1]) {
 			case 'a':
-				sb[i] = '0';
+				sb[i - 1] = '0';
 				break;
 			case 'b':
-				sb[i] = '1';
+				sb[i - 1] = '1';
 				break;
 			case 'x':
-				for (j = i; j < ss; j++) {
+				for (j = i - 1; j < ss; j++) {
 					sb[j] = sb[j + 1];
 				}
 				ss--;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int numzero(int *ib, int i, int c, int z) {
+static unsigned numzero(int *ib, unsigned i, unsigned c, int z) {
 	if (c == 0) {
 		if (z == 0)
 			return 1;
@@ -15,7 +15,8 @@ static int numzero(int *ib, int i, int c, int z) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, i = 0, ibs = 32;
+	unsigned i = 0, ibs = 32;
+	int a;
 	int *ib = malloc(ibs * sizeof(int));
 	char c;
 

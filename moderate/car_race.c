@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 struct segment {
-	float	length;
-	float	angle;
+	float length;
+	float angle;
 };
 
 struct car {
-	int	id;
-	float	time;
+	unsigned id;
+	float    time;
 };
 
 static int cmpcar(const void *p1, const void *p2) {
@@ -19,7 +19,8 @@ static int cmpcar(const void *p1, const void *p2) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i, s = 0, sbs = 16, n = 0;
+	unsigned i, s = 0, sbs = 16, n = 0, id;
+	float vmax, accel, brake;
 	char c;
 	struct segment *sb = malloc(sbs * sizeof(struct segment));
 	struct car cars[40];
@@ -33,8 +34,7 @@ int main(int argc, char *argv[]) {
 		fscanf(fp, "%f %f", &sb[s].length, &sb[s].angle);
 		s++;
 	} while ((c = getc(fp)) == ' ');
-	int id;
-	float vmax, accel, brake;
+
 	while (fscanf(fp, "%d %f %f %f", &id, &vmax, &accel, &brake) != EOF) {
 		float laptime = 0, vinit = 0;
 		for (i = 0; i < s; i++) {
