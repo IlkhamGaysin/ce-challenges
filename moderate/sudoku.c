@@ -2,22 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int sq(int a) {
-	int i;
-	for (i = 1; i * i < a; i++) ;
+static unsigned sq(unsigned a) {
+	unsigned i = 2;
+	while (i * i < a)
+		i++;
 	return i;
 }
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a;
+	unsigned a;
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d%*c", &a) != EOF) {
 		bool valid = true;
-		int d, i, j, crow;
-		int *csqu = calloc(sq(a), sizeof(int));
-		int *col = calloc(a, sizeof(int));
+		unsigned d, i, j, crow;
+		unsigned *csqu = calloc(sq(a), sizeof(unsigned));
+		unsigned *col = calloc(a, sizeof(unsigned));
 
 		for (i = 0; i < a; i++) {
 			crow = 0;

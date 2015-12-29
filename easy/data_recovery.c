@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int s = 0, sbs = 32, n = 0, nbs = 16, t, i;
+	unsigned s = 0, sbs = 32, n = 0, nbs = 16, t, i;
 	char c;
 	char *sb = malloc(sbs);
 	int *nb = malloc(nbs * sizeof(int));
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 				nb = realloc(nb, nbs * sizeof(int));
 				pb = realloc(pb, nbs * sizeof(int));
 			}
-			nb[++n] = s;
+			nb[++n] = (int)s;
 			break;
 		default:
 			if (s == sbs - 1) {

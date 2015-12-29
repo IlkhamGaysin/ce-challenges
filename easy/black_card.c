@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int sbs = 64, w[11] = { 0 }, i = 0, j, k, m = 0, n;
+	unsigned sbs = 64, w[11] = { 0 }, i = 0, j, k, m = 0, n;
 	char c, *sb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");
@@ -11,11 +11,10 @@ int main(int argc, char *argv[]) {
 		if (c == '|') {
 			fscanf(fp, " %d\n", &n);
 			while (m > 1) {
-				k = n % m - 1;
-				if (k >= 0) {
-					for (j = k; j < m - 1; j++)
+				k = n % m;
+				if (k > 0)
+					for (j = k - 1; j < m - 1; j++)
 						w[j] = w[j + 1];
-				}
 				m--;
 			}
 			puts(sb + w[0]);

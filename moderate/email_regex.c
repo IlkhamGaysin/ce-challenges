@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	regex_t email_regex;
-	int sbs = 48, n = 0;
+	unsigned sbs = 48, n = 0;
 	char c;
 	char *sb = malloc(sbs);
 
@@ -17,11 +17,8 @@ int main(int argc, char *argv[]) {
 	while ((c = getc(fp)) != EOF || n > 0) {
 		if (c == '\n' || c == EOF) {
 			sb[n] = '\0';
-			if (!regexec(&email_regex, sb, 0, NULL, 0)) {
-				puts("true");
-			} else {
-				puts("false");
-			}
+			puts(regexec(&email_regex, sb, 0, NULL, 0) ?
+			     "false" : "true");
 			n = 0;
 		} else {
 			if (n == sbs - 1) {
