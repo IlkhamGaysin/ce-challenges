@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int ix = 0, ibs = 16, num = 0;
+	unsigned ix = 0, ibs = 16, num = 0;
 	char c;
 	bool swi = false;
-	int *ib = malloc(ibs * sizeof(int));
+	unsigned *ib = malloc(ibs * sizeof(unsigned));
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
@@ -22,12 +22,12 @@ int main(int argc, char *argv[]) {
 		case '7':
 		case '8':
 		case '9':
-			num = 10 * num + (c - '0');
+			num = 10 * num + ((unsigned)c - '0');
 			break;
 		case ' ':
 			if (ix == ibs) {
 				ibs += ibs / 2;
-				ib = realloc(ib, ibs * sizeof(int));
+				ib = realloc(ib, ibs * sizeof(unsigned));
 			}
 			ib[ix++] = num;
 			num = 0;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 			ix = 0;
 		}
 		if (swi) {
-			int a, b, i, temp;
+			unsigned a, b, i, temp;
 			do {
 				fscanf(fp, " %d-%d", &a, &b);
 				temp = ib[a];

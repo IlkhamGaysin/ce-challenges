@@ -3,18 +3,18 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int sbs = 32, s = 0, ibs = 32, i = 0, j, n, m;
+	unsigned sbs = 32, s = 0, ibs = 32, i = 0, j, n, m;
 	char c;
 	char *sb = malloc(sbs);
-	int *ib = malloc(ibs * sizeof(int));
+	unsigned *ib = malloc(ibs * sizeof(unsigned));
 	ib[0] = 0;
 
 	fp = fopen(*++argv, "r");
 	while ((fscanf(fp, "%d;%d;", &n, &m)) != EOF) {
-		int tn = 0, te, ts, tw = 0;
+		unsigned tn = 0, te, ts, tw = 0;
 		if (n * m > ibs) {
 			ibs = n * m;
-			ib = realloc(ib, ibs * sizeof(int));
+			ib = realloc(ib, ibs * sizeof(unsigned));
 		}
 		while (i < n * m) {
 			if (s == sbs) {
@@ -34,31 +34,47 @@ int main(int argc, char *argv[]) {
 		ts = n - 1;
 		printf("%s", sb);
 		do {
-			while (j <= te)
-				printf(" %s", sb + ib[i * m + j++]);
-			j--;
+			while (j <= te) {
+				printf(" %s", sb + ib[i * m + j]);
+				if (j < te)
+					j++;
+				else
+					break;
+			}
 			i++;
 			tn++;
 			if (i > ts)
 				break;
-			while (i <= ts)
-				printf(" %s", sb + ib[i++ * m + j]);
-			i--;
+			while (i <= ts) {
+				printf(" %s", sb + ib[i * m + j]);
+				if (i < ts)
+					i++;
+				else
+					break;
+			}
 			j--;
 			te--;
 			if (j < tw)
 				break;
-			while (j >= tw)
-				printf(" %s", sb + ib[i * m + j--]);
-			j++;
+			while (j >= tw) {
+				printf(" %s", sb + ib[i * m + j]);
+				if (j > tw)
+					j--;
+				else
+					break;
+			}
 			i--;
 			ts--;
 			if (i < tn)
 				break;
-			while (i >= tn)
-				printf(" %s", sb + ib[i-- * m + j]);
+			while (i >= tn) {
+				printf(" %s", sb + ib[i * m + j]);
+				if (i > tn)
+					i--;
+				else
+					break;
+			}
 			j++;
-			i++;
 			tw++;
 		} while (j <= te);
 		printf("\n");
