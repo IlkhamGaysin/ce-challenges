@@ -11,28 +11,29 @@ static void trim_right(char *p) {
 	p[i] = '\0';
 }
 
-static bool is_balanced(char *p, int c) {
-	if (*p == '\0') {
-		return c == 0;
-	} else if (c < 0) {
-		return false;
-	}
-	while (p[0] != ':' && p[0] != '(' && p[0] != ')')
+static bool is_balanced(char *p, unsigned c) {
+	if (*p == '\0')
+		return !c;
+	if (p[0] != ':' && p[0] != '(' && p[0] != ')')
 		return is_balanced(p + 1, c);
 	trim_right(p);
 	switch (p[0]) {
 	case '(':
 		return is_balanced(p + 1, c + 1);
 	case ')':
-		return is_balanced(p + 1, c - 1);
+		if (c)
+			return is_balanced(p + 1, c - 1);
+		return false;
 	case ':':
 		switch (p[1]) {
 		case '(':
 			return is_balanced(p + 2, c) ||
 			       is_balanced(p + 2, c + 1);
 		case ')':
-			return is_balanced(p + 2, c) ||
-			       is_balanced(p + 2, c - 1);
+			if (c)
+				return is_balanced(p + 2, c) ||
+				       is_balanced(p + 2, c - 1);
+			return is_balanced(p + 2, c);
 		default:
 			return is_balanced(p + 1, c);
 		}
@@ -43,7 +44,7 @@ static bool is_balanced(char *p, int c) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int s = 0, sbs = 32;
+	unsigned s = 0, sbs = 32;
 	char c;
 	char *sb = malloc(sbs);
 

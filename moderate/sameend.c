@@ -4,14 +4,13 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i = 0, j = 0, sbs = 32;
+	unsigned i = 0, j = 0, sbs = 32, k;
 	char c;
 	char *sb = malloc(sbs), *tb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		if (c == ',') {
-			int k;
 			bool f = true;
 			while ((c = getc(fp)) != '\n' && c != EOF) {
 				if (j > i)
@@ -27,11 +26,7 @@ int main(int argc, char *argv[]) {
 					}
 				}
 			}
-			if (f) {
-				puts("1");
-			} else {
-				puts("0");
-			}
+			puts(f ? "1" : "0");
 			i = 0;
 			j = 0;
 		} else if (c != '\n') {

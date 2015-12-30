@@ -14,7 +14,7 @@ static int decode(char *sb) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i = 0, sbs = 32;
+	unsigned i = 0, sbs = 32;
 	char c;
 	char *sb = malloc(sbs);
 

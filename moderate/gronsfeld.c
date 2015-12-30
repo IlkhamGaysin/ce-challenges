@@ -14,7 +14,7 @@ static int indx(char c) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int sbs = 8, s = 0, i = 0;
+	unsigned sbs = 8, s = 0, i = 0;
 	char c, *sb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");

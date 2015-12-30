@@ -3,20 +3,20 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, i = 0, ibs = 32;
-	int *ib = malloc(ibs * sizeof(int));
+	unsigned a, i = 0, ibs = 32, j, k, n;
+	unsigned *ib = malloc(ibs * sizeof(unsigned));
 	char c;
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		if (i == ibs) {
 			ibs += ibs / 2;
-			ib = realloc(ib, ibs * sizeof(int));
+			ib = realloc(ib, ibs * sizeof(unsigned));
 		}
 		ib[i++] = a;
 		if ((c = getc(fp)) == ';') {
 			fscanf(fp, "%d", &a);
-			int n = 0, j, k;
+			n = 0;
 			for (j = 0; j < i - 1 && 2 * ib[j] < a; j++)
 				for (k = i - 1; k > j && ib[j] + ib[k] >= a; k--) {
 					i--;
