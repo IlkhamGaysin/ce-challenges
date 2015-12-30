@@ -3,7 +3,8 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, n, i = 0, ibs = 16;
+	int a;
+	unsigned n, i = 0, ibs = 16, j, k, l;
 	int *ib = malloc(ibs * sizeof(int));
 
 	fp = fopen(*++argv, "r");
@@ -14,11 +15,11 @@ int main(int argc, char *argv[]) {
 		}
 		ib[i++] = a;
 		if (getc(fp) == ';') {
-			int j = 0, k = 0, l = 0;
-			fscanf(fp, "%d", &n);
+			j = 0, k = 0, l = 0;
+			fscanf(fp, "%u", &n);
 			while (j + n <= i) {
-				for (k = j + n - 1; k >= j; k--) {
-					printf("%d", ib[k]);
+				for (k = j + n; k > j; k--) {
+					printf("%d", ib[k - 1]);
 					if (++l < i)
 						printf(",");
 				}

@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int s = 0, t = 0, sbs = 32, i, j;
+	unsigned s = 0, t = 0, sbs = 32, i, j;
 	char c;
 	char *sb = malloc(sbs), *tb = malloc(sbs);
 
@@ -33,10 +33,7 @@ int main(int argc, char *argv[]) {
 						break;
 				}
 			}
-			if (rot)
-				puts("True");
-			else
-				puts("False");
+			puts(rot ? "True" : "False");
 			s = 0;
 			t = 0;
 		} else {

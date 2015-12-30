@@ -3,23 +3,23 @@
 #include <stdlib.h>
 
 struct item {
-	int	num;
-	int	pos;
+	unsigned num;
+	unsigned pos;
 };
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, i = 0, j = 1, ibs = 32;
+	unsigned a, i = 0, j = 1, ibs = 32, k, m;
 	struct item *ib = malloc(ibs * sizeof(struct item));
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d", &a) != EOF) {
+	while (fscanf(fp, "%u", &a) != EOF) {
 		bool f = false;
-		int k, m = a;
+		m = a;
 		ib[i].num = a;
 		ib[i++].pos = j++;
 		while (getc(fp) == ' ') {
-			fscanf(fp, "%d", &a);
+			fscanf(fp, "%u", &a);
 			for (k = 0; k < i; k++) {
 				if (ib[k].num == a) {
 					ib[k].pos = 0;
@@ -45,11 +45,9 @@ int main(int argc, char *argv[]) {
 				f = true;
 			}
 		}
-		if (f) {
-			printf("%d\n", j);
-		} else {
-			puts("0");
-		}
+		if (!f)
+			j = 0;
+		printf("%u\n", j);
 		i = 0;
 		j = 1;
 	}

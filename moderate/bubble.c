@@ -3,33 +3,34 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, c, i = 0, ibs = 32, j, k;
-	int *ib = malloc(ibs * sizeof(int));
+	int c;
+	unsigned a, i = 0, ibs = 32, j, k, x;
+	unsigned *ib = malloc(ibs * sizeof(unsigned));
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d ", &a) != EOF) {
+	while (fscanf(fp, "%u ", &a) != EOF) {
 		ib[i++] = a;
-		while ((c = fscanf(fp, "%d ", &a)) > 0) {
+		while ((c = fscanf(fp, "%u ", &a)) > 0) {
 			if (i == ibs) {
 				ibs += ibs / 2;
-				ib = realloc(ib, ibs * sizeof(int));
+				ib = realloc(ib, ibs * sizeof(unsigned));
 			}
 			ib[i++] = a;
 		}
-		fscanf(fp, "| %d", &a);
+		fscanf(fp, "| %u", &a);
 		for (j = 0; j < i - 1 && j < a; j++) {
 			for (k = 1; k < i; k++) {
 				if (ib[k - 1] > ib[k]) {
-					int x = ib[k - 1];
+					x = ib[k - 1];
 					ib[k - 1] = ib[k];
 					ib[k] = x;
 				}
 			}
 		}
 		for (j = 0; j < i; j++) {
-			if (j > 0)
+			if (j)
 				putchar(' ');
-			printf("%d", ib[j]);
+			printf("%u", ib[j]);
 		}
 		putchar('\n');
 		i = 0;

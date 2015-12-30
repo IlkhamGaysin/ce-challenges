@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static bool prime(int a, int *p) {
+static bool prime(unsigned a, unsigned *p) {
 	while (*p * *p <= a) {
 		if (a % *p == 0)
 			return false;
@@ -13,19 +13,19 @@ static bool prime(int a, int *p) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i, n, last = 3, np = 2, ps = 8;
-	int *primes = malloc(ps * sizeof(int));
+	unsigned i, n, last = 3, np = 2, ps = 8;
+	unsigned *primes = malloc(ps * sizeof(unsigned));
 	primes[0] = 2;
 	primes[1] = 3;
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d", &n) != EOF) {
+	while (fscanf(fp, "%u", &n) != EOF) {
 		while (last + 2 < n) {
 			last += 2;
 			if (prime(last, primes)) {
 				if (ps == np) {
 					ps += ps / 2;
-					primes = realloc(primes, ps * sizeof(int));
+					primes = realloc(primes, ps * sizeof(unsigned));
 				}
 				primes[np++] = last;
 			}
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 		if (n >= 2) {
 			putchar('2');
 			for (i = 1; i < np && primes[i] < n; i++)
-				printf(",%d", primes[i]);
+				printf(",%u", primes[i]);
 		}
 		putchar('\n');
 	}
