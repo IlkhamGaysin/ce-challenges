@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int s = 0, sbs = 32, p = 0, pbs = 16;
+	unsigned s = 0, sbs = 32, p = 0, pbs = 16, m;
 	char **pb = malloc(pbs * sizeof(char *));
 	char c;
 	char *sb = malloc(sbs);
@@ -12,9 +12,8 @@ int main(int argc, char *argv[]) {
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || s > 0) {
 		if (c == '\n' || c == EOF) {
-			int m;
 			sb[s] = '\0';
-			sscanf(pb[p], "%d", &m);
+			sscanf(pb[p], "%u", &m);
 			if (p >= m)
 				puts(pb[p - m]);
 			s = 0;

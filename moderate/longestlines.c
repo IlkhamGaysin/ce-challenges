@@ -2,18 +2,18 @@
 #include <stdlib.h>
 
 struct lbuffer {
-	int length;
+	unsigned length;
 	char *buffer;
 };
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int n, i, s = 0, sbs = 32, t;
+	unsigned n, i, s = 0, sbs = 32, t;
 	char c;
 	char *sb = malloc(sbs), *tmp;
 
 	fp = fopen(*++argv, "r");
-	fscanf(fp, "%d\n", &n);
+	fscanf(fp, "%u\n", &n);
 	struct lbuffer *lb = malloc(n * sizeof(struct lbuffer));
 	for (i = 0; i < n; i++) {
 		lb[i].length = 0;

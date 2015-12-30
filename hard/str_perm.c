@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-static int next_permu(char *c, int strl) {
+static unsigned long next_permu(char *c, unsigned long strl) {
 	char t;
-	int i, k = -1, l = 0;
+	unsigned long i, k = strl, l = 0;
 
-	for (i = strl - 2; i >= 0; i--) {
-		if (c[i] < c[i + 1]) {
-			k = i;
+	for (i = strl - 1; i > 0; i--) {
+		if (c[i - 1] < c[i]) {
+			k = i - 1;
 			break;
 		}
 	}
-	if (k == -1)
+	if (k == strl)
 		return 0;
 	for (i = strl - 1; i > 0; i--) {
 		if (c[i] > c[k]) {
@@ -43,11 +43,12 @@ static int ccmp(const void *b1, const void *b2) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
+	unsigned long strl;
 	char line[32];
 
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
-		int strl = strlen(line);
+		strl = strlen(line);
 		strl -= line[strl - 1] == '\n';
 		char *c, *w = malloc(strl);
 		c = strncpy(w, line, strl);

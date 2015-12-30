@@ -3,14 +3,13 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i = 0, sbs = 32;
+	unsigned i = 0, j, sbs = 32;
 	char c;
 	char *sb = malloc(sbs);
 
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		if (c == ',') {
-			int j;
 			fseek(fp, 1, SEEK_CUR);
 			while ((c = getc(fp)) != '\n' && c != EOF)
 				for (j = 0; j < i; j++)

@@ -2,10 +2,13 @@
 #include <stdlib.h>
 
 struct stack {
-	int length;
-	int size;
-	int *ib;
+	unsigned length;
+	unsigned size;
+	int      *ib;
 };
+
+void push(struct stack *, int);
+int pop(struct stack *);
 
 void push(struct stack *st, int i) {
 	if (st->length == st->size) {

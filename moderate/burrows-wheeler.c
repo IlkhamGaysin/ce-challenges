@@ -7,7 +7,7 @@ static int cmpint(const void *p1, const void *p2) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int ibs = 59, i = 0, k = 0;
+	unsigned ibs = 59, i = 0, k = 0;
 	int *ib = malloc(ibs * sizeof(int));
 	char c;
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 		}
 		if (c == '$')
 			k = i;
-		ib[i] = (c << 16) + i;
+		ib[i] = (c << 16) + (int)i;
 		i++;
 	}
 	free(ib);
