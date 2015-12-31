@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
 		if (nst < 2 || nav < 2) {
 			puts("0");
 		} else {
-			int its = 0, stl, avl;
+			int its = 0;
+			float stl, avl;
 			if (st[0])
 				for (i = nst - 1; i >= 0; i--)
 					st[i] -= st[0];

@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,21 +7,21 @@ static int cmpint(const void *p1, const void *p2) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i, n, f[99];
+	unsigned i, n, f[99], r, s;
 
 	if (argc != 2) {
 		printf("Usage: %s [FILE]\n", argv[0]);
 		return 1;
 	}
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d ", &n) != EOF) {
-		int r = 0, s;
+	while (fscanf(fp, "%u ", &n) != EOF) {
+		r = 0;
 		for (i = 0; i < n; i++)
-			fscanf(fp, "%d ", &f[i]);
-		qsort(&f, n, sizeof(int), cmpint);
+			fscanf(fp, "%u ", &f[i]);
+		qsort(&f, n, sizeof(unsigned), cmpint);
 		s = f[n / 2];
 		for (i = 0; i < n; i++)
-			r += abs(f[i] - s);
+			r += f[i] > s ? f[i] - s : s - f[i];
 		printf("%d\n", r);
 	}
 	return 0;

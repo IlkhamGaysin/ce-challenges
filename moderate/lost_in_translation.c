@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 	bool p = true;
 	char c;
 	char m[26] = { 0 }, n[26] = { 0 };
-	int i = 0, j;
+	unsigned i = 0, j;
 
 	while (codel[i] != '\0') {
 		if (codel[i] >= 'a' && codel[i] <= 'z') {
@@ -28,8 +28,8 @@ int main(int argc, char *argv[]) {
 		if (m[i] == 0) {
 			for (j = 0; j < 26; j++) {
 				if (n[j] == 0) {
-					m[i] = j + 'a';
-					n[j] = i + 'a';
+					m[i] = (char)j + 'a';
+					n[j] = (char)i + 'a';
 					break;
 				}
 			}

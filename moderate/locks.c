@@ -4,14 +4,14 @@
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned n, m, ls = 100, i, j, c;
-	char *l = malloc(ls);
+	unsigned char *l = malloc(ls);
 
 	if (argc != 2) {
 		printf("Usage: %s [FILE]\n", argv[0]);
 		return 1;
 	}
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d %d\n", &n, &m) != EOF) {
+	while (fscanf(fp, "%u %u\n", &n, &m) != EOF) {
 		c = n;
 		if (m == 1) {
 			c = n - 1;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 			for (i = 0; i < n; i++)
 				c -= l[i];
 		}
-		printf("%d\n", c);
+		printf("%u\n", c);
 	}
 	free(l);
 	return 0;
