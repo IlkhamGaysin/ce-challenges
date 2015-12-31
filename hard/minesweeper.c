@@ -3,11 +3,11 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int m, n;
+	unsigned m, n;
 
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d,%d;", &m, &n) != EOF) {
-		int d, i, j;
+	while (fscanf(fp, "%u,%u;", &m, &n) != EOF) {
+		unsigned d, i, j;
 		int *prev = calloc(n, sizeof(int));
 		int *curr = calloc(n, sizeof(int));
 
@@ -29,15 +29,15 @@ int main(int argc, char *argv[]) {
 				if (prev[j - 1] == -1) {
 					printf("*");
 				} else {
-					d = prev[j - 1] + (j > 1 && curr[j - 2] == -1) + (curr[j - 1] == -1) + (curr[j] == -1) + (prev[j] == -1);
-					printf("%d", d);
+					d = (unsigned)prev[j - 1] + (j > 1 && curr[j - 2] == -1) + (curr[j - 1] == -1) + (curr[j] == -1) + (prev[j] == -1);
+					printf("%u", d);
 				}
 			}
 			if (prev[j - 1] == -1) {
 				printf("*");
 			} else {
-				d = prev[j - 1] + (j > 1 && curr[j - 2] == -1) + (curr[j - 1] == -1);
-				printf("%d", d);
+				d = (unsigned)prev[j - 1] + (j > 1 && curr[j - 2] == -1) + (curr[j - 1] == -1);
+				printf("%u", d);
 			}
 			for (j = 0; j < n; j++)
 				prev[j] = curr[j];
@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
 			if (prev[j] == -1) {
 				printf("*");
 			} else {
-				d = prev[j] + (j < n - 1 && prev[j + 1] == -1);
-				printf("%d", d);
+				d = (unsigned)prev[j] + (j < n - 1 && prev[j + 1] == -1);
+				printf("%u", d);
 			}
 		}
 		printf("\n");

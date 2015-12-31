@@ -4,11 +4,12 @@
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
-	int ps = 32, *p = malloc(ps * 2 * sizeof(int)), dx, dy;
+	unsigned ps = 32;
+	int *p = malloc(ps * 2 * sizeof(int)), dx, dy;
 
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d", &p[0], &p[1]) != EOF) {
-		int ip = 1, count = 0, i, j, k;
+		unsigned ip = 1, count = 0, i, j, k;
 		while ((c = getc(fp)) == ' ') {
 			if (ip == ps) {
 				ps += ps / 2;

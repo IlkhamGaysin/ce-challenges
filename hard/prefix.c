@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i, s = 0, sbs = 16;
+	unsigned i, s = 0, sbs = 16;
 	char c;
 	float f, g;
 	char *sb = malloc(sbs);
@@ -21,9 +21,9 @@ int main(int argc, char *argv[]) {
 		}
 		fseek(fp, -1, SEEK_CUR);
 		fscanf(fp, "%f ", &f);
-		for (i = s - 1; i >= 0; i--) {
+		for (i = s; i > 0; i--) {
 			fscanf(fp, "%f ", &g);
-			switch (sb[i]) {
+			switch (sb[i - 1]) {
 			case '*':
 				f *= g;
 				break;

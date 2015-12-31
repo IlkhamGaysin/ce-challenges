@@ -7,7 +7,8 @@ static int cmpint(const void *p1, const void *p2) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a, b[600], i, n;
+	int a, b[600];
+	unsigned i, n;
 	char c;
 
 	fp = fopen(*++argv, "r");

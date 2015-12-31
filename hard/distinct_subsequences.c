@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int subs(char *p, char *q) {
+static unsigned subs(char *p, char *q) {
 	if (*q == '\0')
 		return 1;
 	if (*p == ',')
@@ -13,7 +13,7 @@ static int subs(char *p, char *q) {
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int i = 0, sbs = 32;
+	unsigned i = 0, sbs = 32;
 	char c;
 	char *sb = malloc(sbs), *q = NULL;
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	while ((c = getc(fp)) != EOF || i > 0) {
 		if (c == '\n' || c == EOF) {
 			sb[i] = '\0';
-			printf("%d\n", subs(sb, q));
+			printf("%u\n", subs(sb, q));
 			i = 0;
 		} else {
 			if (i == sbs - 1) {

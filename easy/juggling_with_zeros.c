@@ -1,9 +1,11 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	char c, r;
+	bool r;
+	char c;
 	unsigned long long int res = 0;
 
 	fp = fopen(*++argv, "r");
@@ -13,9 +15,9 @@ int main(int argc, char *argv[]) {
 		if (fscanf(fp, "%c", &c) == EOF)
 			goto fail_eof;
 		if (c == ' ') {
-			r = 0;
+			r = false;
 		} else if (c == '0') {
-			r = 1;
+			r = true;
 			if (fscanf(fp, "%c", &c) == EOF)
 				goto fail_eof;
 			if (c != ' ')
@@ -32,7 +34,7 @@ int main(int argc, char *argv[]) {
 			if ((res << 1) < res) {
 				goto fail_overflow;
 			}
-			res = (res << 1) + r;
+			res = (res << 1) + !!r;
 		}
 		if (c == '\n') {
 			printf("%llu\n", res);
