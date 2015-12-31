@@ -7,6 +7,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	int count = 0, arrow = 0;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || !p) {
 		if (c == '\n' || c == EOF) {

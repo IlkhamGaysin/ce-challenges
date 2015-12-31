@@ -5,6 +5,10 @@ int main(int argc, char *argv[]) {
 	float st[100], av[100];
 	int nst = 0, nav = 0, i, j;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (getc(fp) != EOF) {
 		do {

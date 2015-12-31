@@ -24,6 +24,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	char *sb = malloc(sbs + 1);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || s > 0) {
 		if (c == '\n' || c == EOF) {

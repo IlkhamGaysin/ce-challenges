@@ -33,6 +33,10 @@ int main(int argc, char *argv[]) {
 	st->size = 46;
 	st->ib = malloc(st->size * sizeof(int));
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		st->length = 0;

@@ -14,6 +14,10 @@ int main(int argc, char *argv[]) {
 	unsigned i, l, n;
 	char wine[10][16], srtd[10][16], w[6];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%s", &wine) != EOF) {
 		bool f = false;

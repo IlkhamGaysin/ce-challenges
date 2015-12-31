@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	unsigned sbs = 64, w[11] = { 0 }, i = 0, j, k, m = 0, n;
 	char c, *sb = malloc(sbs);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		if (c == '|') {

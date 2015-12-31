@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	int b[10] = { 0 };
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
 		int a = 0, n = 0, i;

@@ -10,6 +10,10 @@ int main(int argc, char *argv[]) {
 	int s1, s2, s3, s4, s5, s6, h[2], b[3], r[15], i, j;
 	char c;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "[%d,%d] [%d,%d]|", &s1, &s2, &s3, &s4) != EOF) {
 		j = 0;

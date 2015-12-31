@@ -64,6 +64,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char s[5];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%hhd %hhd %hhd %hhd %hhd", &s[0], &s[1], &s[2], &s[3], &s[4]) != EOF) {
 		bool f = false;

@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a, i, r;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		for (i = 0; i < 100; i++) {

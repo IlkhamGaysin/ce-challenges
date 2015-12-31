@@ -46,6 +46,10 @@ int main(int argc, char *argv[]) {
 	unsigned long strl;
 	char line[32];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
 		strl = strlen(line);

@@ -4,6 +4,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned a, b, x, y;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%dx%d | %d %d", &a, &b, &x, &y) != EOF) {
 		unsigned r = 0, t;

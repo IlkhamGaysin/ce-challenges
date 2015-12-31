@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	unsigned i, j, k, r, t, ll[32], cl[32];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		r = 0;

@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
 	float a;
 	struct node *head = NULL, *temp, *curr;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%f", &a) != EOF) {
 		temp = malloc(sizeof(struct node));

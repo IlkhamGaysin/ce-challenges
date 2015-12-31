@@ -9,6 +9,10 @@ int main(int argc, char *argv[]) {
 	char *pb = malloc(pbs), *sb = malloc(sbs);
 	bool str = false, dig = false, d = true;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || p > 0) {
 		if (c == '\n' || c == ',' || c == EOF) {

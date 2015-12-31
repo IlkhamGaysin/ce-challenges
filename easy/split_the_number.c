@@ -5,6 +5,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c, z[10];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		int n = 0, i;

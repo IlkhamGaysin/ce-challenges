@@ -17,6 +17,10 @@ int main(int argc, char *argv[]) {
 	unsigned sbs = 8, s = 0, i = 0;
 	char c, *sb = malloc(sbs);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		while (c != ';') {

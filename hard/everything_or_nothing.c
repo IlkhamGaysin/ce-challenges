@@ -13,6 +13,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char u, f, a;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "user_%c=>file_%c=>%c", &u, &f, &a) != EOF) {
 		char uperm[18] = { 7, 3, 0, 6, 2, 4, 5, 1, 5,

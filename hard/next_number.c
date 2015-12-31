@@ -15,6 +15,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	int a;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &a) != EOF) {
 		int b = a + 9, d = dsig(a);

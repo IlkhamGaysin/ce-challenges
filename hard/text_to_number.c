@@ -98,6 +98,10 @@ int main(int argc, char *argv[]) {
 	char s[10], c;
 	int i = 0, n = 1, h = 0, q = 0, r = 0, d;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || i > 0) {
 		if (c == ' ' || c == '\n' || c == EOF) {

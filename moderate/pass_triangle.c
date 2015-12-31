@@ -15,6 +15,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	int n = 0, m[5050] = {}, p;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d", &m[n]) != EOF)
 		n++;

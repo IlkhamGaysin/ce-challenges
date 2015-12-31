@@ -12,6 +12,10 @@ int main(int argc, char *argv[]) {
 	unsigned a, i = 0, j = 1, ibs = 32, k, m;
 	struct item *ib = malloc(ibs * sizeof(struct item));
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%u", &a) != EOF) {
 		bool f = false;

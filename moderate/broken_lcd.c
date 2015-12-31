@@ -8,6 +8,10 @@ int main(int argc, char *argv[]) {
 	const int digits[] = { 252,  96, 218, 242, 102,
 			       182, 190, 224, 254, 246 };
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		int i, j;

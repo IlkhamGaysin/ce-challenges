@@ -5,6 +5,11 @@ int main(int argc, char *argv[]) {
 	char c;
 	int m = 1;
 	const char *morse = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90";
+
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || m > 1) {
 		if (c == '.') {

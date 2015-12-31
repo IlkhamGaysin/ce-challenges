@@ -13,6 +13,10 @@ int main(int argc, char *argv[]) {
 	int i, j, k;
 	char line[18];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 18, fp) != 0)
 		for (i = 0; i < h; i++) {

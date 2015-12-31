@@ -53,6 +53,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	int work[12] = { 0 };
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
 		unsigned i, t0, t1, m = month(c, fp) - 1;

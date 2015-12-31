@@ -24,6 +24,10 @@ int main(int argc, char *argv[]) {
 	char d;
 	int m[100], q[10], n, i, j;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((d = getc(fp)) != EOF) {
 		switch (d) {

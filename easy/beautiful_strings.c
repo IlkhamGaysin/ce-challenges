@@ -10,6 +10,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	int ch[26] = { 0 }, i, s = -1;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || s >= 0) {
 		if (s == -1)

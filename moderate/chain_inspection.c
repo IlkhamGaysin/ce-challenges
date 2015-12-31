@@ -22,6 +22,10 @@ int main(int argc, char *argv[]) {
 	struct link chain[500];
 	char c, s[6];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = fgetc(fp)) != EOF) {
 		bool good = true;

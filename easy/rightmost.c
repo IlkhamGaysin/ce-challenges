@@ -8,6 +8,10 @@ int main(int argc, char *argv[]) {
 	char c, d;
 	char *sb = malloc(sbs);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		while (c != ',') {

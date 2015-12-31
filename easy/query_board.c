@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char b[16];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(b, 16, fp) != 0) {
 		if (b[0] == 'Q') {	/* parameter starts from 9 */

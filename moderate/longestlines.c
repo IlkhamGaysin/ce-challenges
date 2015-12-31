@@ -12,6 +12,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	char *sb = malloc(sbs), *tmp;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	fscanf(fp, "%u\n", &n);
 	struct lbuffer *lb = malloc(n * sizeof(struct lbuffer));

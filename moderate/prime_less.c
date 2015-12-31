@@ -18,6 +18,10 @@ int main(int argc, char *argv[]) {
 	primes[0] = 2;
 	primes[1] = 3;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%u", &n) != EOF) {
 		while (last + 2 < n) {

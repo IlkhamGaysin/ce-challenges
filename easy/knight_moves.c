@@ -5,6 +5,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char a, b;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c%c\n", &a, &b) != EOF) {
 		int l = a - 'a', r = b - '1';

@@ -43,8 +43,12 @@ int main(int argc, char *argv[]) {
 	char line[32];
 	char root[6] = "hello";
 	int netw = 0, strr = strlen(root);
-
 	struct node *look = NULL, *found = NULL, *curl = NULL, *curf = NULL;
+
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
 		int strl = strlen(line) - 1;

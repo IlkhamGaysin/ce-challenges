@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	unsigned n, m, ls = 100, i, j, c;
 	char *l = malloc(ls);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d\n", &n, &m) != EOF) {
 		c = n;

@@ -8,6 +8,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	unsigned long long int res = 0;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
 		if (c != '0')

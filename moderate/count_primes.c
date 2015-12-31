@@ -22,6 +22,10 @@ int main(int argc, char *argv[]) {
 			primes[++plast] = i;
 	pmax = i - 2;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d,%d", &x, &y) != EOF) {
 		while (y > pmax) {

@@ -13,6 +13,10 @@ int main(int argc, char *argv[]) {
 			      "@\\w*(\\w+\\.)+\\w{2,4}$",
 		REG_EXTENDED | REG_NOSUB);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || n > 0) {
 		if (c == '\n' || c == EOF) {

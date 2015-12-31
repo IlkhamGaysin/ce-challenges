@@ -7,6 +7,10 @@ int main(int argc, char *argv[]) {
 	unsigned ps = 32;
 	int *p = malloc(ps * 2 * sizeof(int)), dx, dy;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d", &p[0], &p[1]) != EOF) {
 		unsigned ip = 1, count = 0, i, j, k;

@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	char line[72];
 	unsigned i, n, r;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 72, fp) != 0) {
 		r = 1;

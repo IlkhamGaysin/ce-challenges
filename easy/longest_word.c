@@ -7,6 +7,10 @@ int main(int argc, char *argv[]) {
 	char c;
 	char *sb = malloc(sbs), *cb = malloc(sbs);
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF || i > 0) {
 		if (c == ' ' || c == '\n' || c == EOF) {

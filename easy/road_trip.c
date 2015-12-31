@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
 	unsigned i, n;
 	char c;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	do {
 		c = getc(fp);

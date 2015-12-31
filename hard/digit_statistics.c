@@ -7,6 +7,10 @@ int main(int argc, char *argv[]) {
 	int a;
 	long long int n;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %lld", &a, &n) != EOF) {
 		int i;

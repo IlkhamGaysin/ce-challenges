@@ -18,6 +18,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned nz, x, i;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d %d", &nz, &x) != EOF) {
 		unsigned r = 0;

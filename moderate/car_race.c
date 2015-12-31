@@ -25,6 +25,10 @@ int main(int argc, char *argv[]) {
 	struct segment *sb = malloc(sbs * sizeof(struct segment));
 	struct car cars[40];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	do {
 		if (s == sbs) {

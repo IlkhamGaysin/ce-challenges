@@ -6,6 +6,10 @@ int main(int argc, char *argv[]) {
 	int a[4];
 	char line[27];
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 27, fp) != 0) {
 		sscanf(line, "(%d, %d) (%d, %d)", &a[0], &a[1], &a[2], &a[3]);

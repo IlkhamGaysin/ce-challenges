@@ -9,6 +9,10 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned time[20], n, h, m, s, i;
 
+	if (argc != 2) {
+		printf("Usage: %s [FILE]\n", argv[0]);
+		return 1;
+	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%d:%d:%d", &h, &m, &s) != EOF) {
 		n = 1;
