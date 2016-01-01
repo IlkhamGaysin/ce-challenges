@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static bool allspace(char *p, int n) {
-	int i;
+static bool allspace(char *p, unsigned n) {
+	unsigned i;
 	for (i = 0; i < n; i++)
 		if (p[i] != ' ')
 			return false;
 	return true;
 }
 
-static bool contains(char *p, char *q, int n, int m) {
-	int i, j;
+static bool contains(char *p, char *q, unsigned n, unsigned m) {
+	unsigned i, j;
 	for (i = 0; i < m; i++) {
 		for (j = 0; j < n; j++)
 			if (*(p + i + j) != *(q + j))
@@ -25,7 +25,7 @@ static bool contains(char *p, char *q, int n, int m) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	bool f;
-	int sbs = 32, s = 0, n, rs, i, m = 0;
+	unsigned sbs = 32, s = 0, n, rs, i, m = 0;
 	char c;
 	char *sb = malloc(sbs);
 

@@ -4,7 +4,7 @@
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	char line[72];
-	unsigned i, n, r;
+	unsigned long i, n, r;
 
 	if (argc != 2) {
 		printf("Usage: %s [FILE]\n", argv[0]);
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 				r *= 2;
 			}
 		}
-		printf("%d\n", r);
+		printf("%lu\n", r);
 	}
 	return 0;
 }

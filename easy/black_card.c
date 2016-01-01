@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 	fp = fopen(*++argv, "r");
 	while ((c = getc(fp)) != EOF) {
 		if (c == '|') {
-			fscanf(fp, " %d\n", &n);
+			fscanf(fp, " %u\n", &n);
 			while (m > 1) {
 				k = n % m;
 				if (k > 0)

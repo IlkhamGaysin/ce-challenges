@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 	while ((c = getc(fp)) != EOF) {
 		if (c == '|') {
 			while ((c = getc(fp)) == ' ') {
-				fscanf(fp, "%d", &a);
+				fscanf(fp, "%u", &a);
 				putchar(sb[a - 1]);
 			}
 			putchar('\n');

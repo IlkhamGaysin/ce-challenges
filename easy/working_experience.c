@@ -51,7 +51,8 @@ static unsigned month(char c, FILE *fp) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	char c;
-	int work[12] = { 0 };
+	unsigned i, t0, t1, m, j, w;
+	unsigned work[12] = { 0 };
 
 	if (argc != 2) {
 		printf("Usage: %s [FILE]\n", argv[0]);
@@ -59,13 +60,13 @@ int main(int argc, char *argv[]) {
 	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%c", &c) != EOF) {
-		unsigned i, t0, t1, m = month(c, fp) - 1;
-		fscanf(fp, "%d", &t0);
+		m = month(c, fp) - 1;
+		fscanf(fp, "%u", &t0);
 		t0 = 12 * (t0 - 1990) + m;
 		fseek(fp, 1, SEEK_CUR);
 		fscanf(fp, "%c", &c);
 		m = month(c, fp) - 1;
-		fscanf(fp, "%d", &t1);
+		fscanf(fp, "%u", &t1);
 		t1 = 12 * (t1 - 1990) + m;
 		for (i = t0; i <= t1; i++)
 			work[i / 30] |= (1 << (i % 30));
@@ -73,14 +74,14 @@ int main(int argc, char *argv[]) {
 		if (c == ';') {
 			fseek(fp, 1, SEEK_CUR);
 		} else {
-			unsigned j, w = 0;
+			w = 0;
 			for (i = 0; i < 12; i++) {
 				for (j = 0; j < 30; j++)
 					if (work[i] & (1 << j))
 						w++;
 				work[i] = 0;
 			}
-			printf("%d\n", w / 12);
+			printf("%u\n", w / 12);
 		}
 	}
 	return 0;

@@ -5,7 +5,7 @@
 
 struct node {
 	char		*data;
-	int		length;
+	unsigned long	length;
 	struct node	*next;
 };
 
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 	char line[32];
 	char root[6] = "hello";
-	int netw = 0, strr = strlen(root);
+	unsigned long netw = 0, strr = strlen(root), strl;
 	struct node *look = NULL, *found = NULL, *curl = NULL, *curf = NULL;
 
 	if (argc != 2) {
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 	}
 	fp = fopen(*++argv, "r");
 	while (fgets(line, 31, fp) != 0) {
-		int strl = strlen(line) - 1;
+		strl = strlen(line) - 1;
 		struct node *temp = malloc(sizeof(struct node));
 		char *w = malloc(strl);
 
@@ -59,10 +59,9 @@ int main(int argc, char *argv[]) {
 		temp->length = strl;
 		temp->next = NULL;
 
-		if ((abs(strr - strl) < 2) &&
-		    ((strr == strl && levene(root, temp->data)) ||
-		     (strr > strl && leveno(root, temp->data)) ||
-		     (strr < strl && leveno(temp->data, root)))) {
+		if ((strr == strl && levene(root, temp->data)) ||
+		    (strr > strl && strr - strl < 2 && leveno(root, temp->data)) ||
+		    (strr < strl && strl - strr < 2 && leveno(temp->data, root))) {
 			if (curf)
 				curf->next = temp;
 			else
@@ -82,10 +81,9 @@ int main(int argc, char *argv[]) {
 		curl = look;
 		prev = NULL;
 		while (curl) {
-			if ((abs(curf->length - curl->length) < 2) &&
-			    ((curf->length == curl->length && levene(curf->data, curl->data)) ||
-			     (curf->length > curl->length && leveno(curf->data, curl->data)) ||
-			     (curf->length < curl->length && leveno(curl->data, curf->data)))) {
+			if ((curf->length == curl->length && levene(curf->data, curl->data)) ||
+			    (curf->length > curl->length && curf->length - curl->length < 2 && leveno(curf->data, curl->data)) ||
+			    (curf->length < curl->length && curl->length - curf->length < 2 && leveno(curl->data, curf->data))) {
 				if (prev) {
 					prev->next = curl->next;
 				} else {
@@ -106,6 +104,6 @@ int main(int argc, char *argv[]) {
 		free(done->data);
 		free(done);
 	}
-	printf("%d\n", netw);
+	printf("%lu\n", netw);
 	return 0;
 }
