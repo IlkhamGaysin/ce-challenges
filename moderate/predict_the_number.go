@@ -15,16 +15,10 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var (
-			n uint64
-			i int
-		)
+		var n, i uint
 		fmt.Sscan(scanner.Text(), &n)
-		for n > 0 {
-			if n%2 > 0 {
-				i++
-			}
-			n >>= 1
+		for ; n > 0; n &= n - 1 {
+			i++
 		}
 		fmt.Println(i % 3)
 	}
