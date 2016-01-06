@@ -1,3 +1,4 @@
+use strict;
 use integer;
 my @b = ( 0, 1, 2, 1, 2 );
 open( INFILE, "<", $ARGV[0] )

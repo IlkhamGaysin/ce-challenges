@@ -1,4 +1,5 @@
-$sum = 0;
+use strict;
+my $sum = 0;
 open( INFILE, "<", $ARGV[0] )
   or die("Cannot open file $ARGV[0] for reading: $!");
 while ( my $line = <INFILE> ) {
