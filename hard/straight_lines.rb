@@ -6,7 +6,7 @@ end
 
 def line(ax, bx, t)
   t.each_with_index do |i, ix|
-    return ix >= bx if ix != ax and ix != bx and in_line(i, t[ax], t[bx])
+    return ix >= bx if ix != ax && ix != bx && in_line(i, t[ax], t[bx])
   end
   false
 end

@@ -12,8 +12,8 @@ def straight(ranks)
 end
 
 def flush(hand)
-  hand[0][1] == hand[1][1] and hand[0][1] == hand[2][1] and
-  hand[0][1] == hand[3][1] and hand[0][1] == hand[4][1]
+  hand[0][1] == hand[1][1] && hand[0][1] == hand[2][1] &&
+  hand[0][1] == hand[3][1] && hand[0][1] == hand[4][1]
 end
 
 def kind(n, ranks)
@@ -27,7 +27,7 @@ def two_pair(ranks)
   h = kind(2, ranks)
   return nil unless h
   for i in ranks
-    return [h, i] if ranks.count(i) == 2 and i != h
+    return [h, i] if ranks.count(i) == 2 && i != h
   end
   nil
 end
@@ -55,9 +55,9 @@ end
 
 def hand_rank(hand)
   ranks = card_ranks(hand)
-  return [8, ranks.max] if straight(ranks) and flush(hand)                        # straight flush
+  return [8, ranks.max] if straight(ranks) && flush(hand)                        # straight flush
   return [7, kind(4, ranks), kind(1, ranks)] if kind(4, ranks)                    # 4 of a kind
-  return [6, kind(3, ranks), kind(2, ranks)] if kind(3, ranks) and kind(2, ranks) # full house
+  return [6, kind(3, ranks), kind(2, ranks)] if kind(3, ranks) && kind(2, ranks) # full house
   return [5, ranks] if flush(hand)                                                # flush
   return [4, ranks.max] if straight(ranks)                                        # straight
   return [3, kind(3, ranks), ranks] if kind(3, ranks)                             # 3 of a kind

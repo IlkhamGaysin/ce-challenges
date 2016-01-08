@@ -44,7 +44,7 @@ class Heap
     while (offset < @nodes.count / 2)
       child1 = offset * 2 + 1
       child2 = child1 + 1
-      if @nodes[child2] and @nodes[child1] > @nodes[child2]
+      if @nodes[child2] && @nodes[child1] > @nodes[child2]
         min = child2
       else
         min = child1
@@ -73,7 +73,7 @@ File.open(ARGV[0]).each_line do |line|
 
   while m.length+1 < s[0]
     n = h.pop_min
-    unless h.has(m[-k]) or m[-k+1..-1].include? m[-k]
+    unless h.has(m[-k]) || (m[-k+1..-1].include? m[-k])
       h.push(m[-k])
     end
     m << n

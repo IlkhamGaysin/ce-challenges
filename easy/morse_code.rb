@@ -16,6 +16,6 @@ File.open(ARGV[0]).each_line do |line|
       end
     end
   end
-  print morse[m-2] if m > 1 and m < 64
+  print morse[m-2] if m > 1 && m < 64
   puts
 end

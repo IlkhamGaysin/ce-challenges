@@ -1,8 +1,6 @@
 File.open(ARGV[0]).each_line do |line|
   s = line.chomp.split
-  while s.length > 1 and s.count(s[0]) == 1
-    s.delete_at(0)
-  end
+  s.delete_at(0) while s.length > 1 && s.count(s[0]) == 1
   if s.length == 1
     puts
   else

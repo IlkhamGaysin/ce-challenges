@@ -32,10 +32,10 @@ def parse(s)
         s = s[1..-1]
       else
         n = s[/^[-]?[0-9]+([.][0-9]+)?/]
-        if s[0] == '-' and s[1] == '('
+        if s[0] == '-' && s[1] == '('
           r << '['
           s = s[2..-1]
-        elsif not n
+        elsif !n
           print "Input error: expected number, opening bracket, or unary -, got " + s
           return $error
         else
@@ -49,7 +49,7 @@ def parse(s)
         r << s[0]
         s = s[1..-1]
         state = 0
-        if r.length > 3 and r[-2] != ')' and r[-3] != '(' and r[-3] != '[' and r[-4] != ')'
+        if r.length > 3 && r[-2] != ')' && r[-3] != '(' && r[-3] != '[' && r[-4] != ')'
           unless '^*/+-'.include? r[-3]
             print "Expected operator, got " + r[-3]
             return $error
@@ -63,18 +63,18 @@ def parse(s)
       elsif s[0] == ')'
         r << ')'
         s = s[1..-1]
-        while r.length > 3 and r[-2] != ')' and r[-3] != '(' and r[-3] != '[' and r[-4] != ')'
+        while r.length > 3 && r[-2] != ')' && r[-3] != '(' && r[-3] != '[' && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
           return $error if r[-4] == $error
           r = r[0..-4] << r[-1]
         end
-        if r.length > 3 and r[-3] == '('
+        if r.length > 3 && r[-3] == '('
           r = r[0...-3] << r[-2]
-        elsif r.length > 3 and r[-3] == '['
+        elsif r.length > 3 && r[-3] == '['
           r = r[0...-3] << -r[-2]
-        elsif r.length == 3  and r[0] == '('
+        elsif r.length == 3  && r[0] == '('
           r = [r[1]]
-        elsif r.length == 3  and r[0] == '['
+        elsif r.length == 3  && r[0] == '['
           r = [-r[1]]
         end
       else
@@ -96,7 +96,7 @@ File.open(ARGV[0]).each_line do |line|
   p = parse(s)
   if p == $error
     puts " on input " + s
-  elsif p[0] and p[0].class == Float
+  elsif p[0] && p[0].class == Float
     t = "%.5f" % p[0]
     puts t.sub(/[.]?0+$/, "")
   end

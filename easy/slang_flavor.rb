@@ -8,8 +8,8 @@ phrases = [", yeah!",
 	   ". Awesome!"]
 i, l = 0, false
 File.open(ARGV[0]).each_line do |line|
-  s = line.split("").each {|x|
-    if x == "." or x == "!" or x == "?"
+  s = line.split("").each { |x|
+    if x == "." || x == "!" || x == "?"
       if l
         print phrases[i]
         i, l = (i+1) % 8, false

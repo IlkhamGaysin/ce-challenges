@@ -10,9 +10,7 @@ cat = ["This program is for humans",
 age = [0, 3, 5, 12, 15, 19, 23, 66, 101]
 
 File.open(ARGV[0]).each_line do |line|
-  c = 0
-  while c < 9 and line.to_i >= age[c]
-    c += 1
-  end
-  puts cat[c%9]
+  a, c = line.to_i, 0
+  c += 1 while c < 9 && a >= age[c]
+  puts cat[c % 9]
 end

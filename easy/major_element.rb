@@ -8,5 +8,5 @@ File.open(ARGV[0]).each_line do |line|
       break
     end
   end
-  puts "None" if not found
+  puts "None" if !found
 end

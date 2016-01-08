@@ -29,7 +29,7 @@ while u.length > 0
   # each contest available only for the best f jugglers
   cha[4] << [cur, fit]
   cha[4].sort! { |x,y| y[1] <=> x[1] }
-  while cha[4].length > f and cha[4][-1][1] < cha[4][f-1][1]
+  while cha[4].length > f && cha[4][-1][1] < cha[4][f-1][1]
     u << (cha[4].pop)[0]
   end
 end

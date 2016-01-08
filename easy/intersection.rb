@@ -3,8 +3,8 @@ File.open(ARGV[0]).each_line do |line|
   a, b = s[0].split(",").map(&:to_i), s[1].split(",").map(&:to_i)
   j, r = 0, Array.new
   a.each do |x|
-    while j < b.length and x > b[j] do j += 1 end
-    if j < b.length and x == b[j] then
+    j += 1 while j < b.length && x > b[j]
+    if j < b.length && x == b[j] then
       r << x.to_s
       j += 1
     end

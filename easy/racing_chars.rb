@@ -9,7 +9,7 @@ File.open(ARGV[0]).each_line do |line|
   else
     loop do
       q = line.index('C')
-      break if q == nil or (p-q).abs < 2
+      break if q == nil || (p-q).abs < 2
     end
     if q == nil
       loop do
