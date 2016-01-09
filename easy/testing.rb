@@ -1,4 +1,4 @@
-m = ["Done", "Low", "Medium", "High", "Critical"]
+m = %w(Done Low Medium High Critical)
 
 def prio(a)
   case a
@@ -16,10 +16,10 @@ def prio(a)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.chomp.split(" | ")
+  s = line.chomp.split(' | ')
   r = 0
-  for ix in (0...s[0].length)
-    r += 1 if s[0][ix] != s[1][ix]
+  (0...s[0].length).each do |i|
+    r += 1 if s[0][i] != s[1][i]
   end
   puts m[prio(r)]
 end

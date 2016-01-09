@@ -1,1 +1,1 @@
-puts File.open(ARGV[0]).each_line.map(&:to_i).inject{|sum,x| sum + x}
+puts File.open(ARGV[0]).each_line.map(&:to_i).inject { |a, e| a + e }
