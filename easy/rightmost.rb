@@ -1,9 +1,12 @@
 File.open(ARGV[0]).each_line do |line|
-  s, m, n = line.chomp, -1, -1
-  if s.length > 0
-    begin
-      m, n = n, s.index(s[-1], n+1)
-    end until n == s.length-1
-    puts m
+  s = line.chomp
+  next if s.empty?
+  m = -1
+  n = -1
+  loop do
+    m = n
+    n = s.index(s[-1], n + 1)
+    break if n == s.length - 1
   end
+  puts m
 end

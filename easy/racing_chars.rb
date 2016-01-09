@@ -1,28 +1,27 @@
-p, q = nil, nil
+p = nil
+q = nil
 File.open(ARGV[0]).each_line do |line|
-  if p == nil
+  if p.nil?
     p = line.index('C')
-    if p == nil
-      p = line.index('_')
-    end
-    line[p] = "|"
+    p = line.index('_') if p.nil?
+    line[p] = '|'
   else
     loop do
       q = line.index('C')
-      break if q == nil || (p-q).abs < 2
+      break if q.nil? || (p - q).abs < 2
     end
-    if q == nil
+    if q.nil?
       loop do
         q = line.index('_')
-        break if (p-q).abs < 2
+        break if (p - q).abs < 2
       end
     end
     if q < p
-      sym = "/"
+      sym = '/'
     elsif q == p
-      sym = "|"
+      sym = '|'
     else
-      sym = "\\"
+      sym = '\\'
     end
     line[q] = sym
     p = q

@@ -3,5 +3,5 @@ File.open(ARGV[0]).each_line do |line|
   (s.length - 2).step(0, -2) do |i|
     s[i] *= 2
   end
-  puts s.inject(:+) % 10 == 0 ? "Real" : "Fake"
+  puts s.inject(:+) % 10 == 0 ? 'Real' : 'Fake'
 end

@@ -1,2 +1,2 @@
 require 'prime'
-puts Prime.each(1000).find_all{|x| x.to_s == x.to_s.reverse}.last
+puts 999.downto(3).find { |i| i.to_s == i.to_s.reverse && Prime.prime?(i) }
