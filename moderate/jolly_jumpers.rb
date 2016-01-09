@@ -1,17 +1,17 @@
 File.open(ARGV[0]).each_line do |line|
-  s = line.chomp.split.map(&:to_i)
-  jolly, n = true, s[0]
-  if n > 1 then
-    u = Array.new(n-1, false)
-    (2..n).each do |i|
-      x = (s[i] - s[i-1]).abs
-      if x >= n || x == 0 || u[x-1] then
+  n, *s = line.chomp.split.map(&:to_i)
+  jolly = true
+  if n > 1
+    u = Array.new(n - 1, false)
+    (1...n).each do |i|
+      x = (s[i] - s[i - 1]).abs
+      if x >= n || x == 0 || u[x - 1]
         jolly = false
         break
       else
-        u[x-1] = true
+        u[x - 1] = true
       end
     end
   end
-  puts jolly ? "Jolly" : "Not jolly"
+  puts jolly ? 'Jolly' : 'Not jolly'
 end

@@ -1,11 +1,10 @@
 Node = Struct.new(:value, :next)
 def list_push(value, node)
-  return Node.new(value, node)
+  Node.new(value, node)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.split(',').map(&:to_i)
-  n, m = s[0], s[1]
+  n, m = line.split(',').map(&:to_i)
 
   tail = Node.new(n - 1, nil)
   list = tail
@@ -14,10 +13,10 @@ File.open(ARGV[0]).each_line do |line|
   list = tail
 
   s = []
-  n.times {
-    (m-1).times { list = list.next }
+  n.times do
+    (m - 1).times { list = list.next }
     s << list.next.value
     list.next = list.next.next
-  }
-  puts s.join(" ")
+  end
+  puts s.join(' ')
 end

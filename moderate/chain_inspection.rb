@@ -1,16 +1,19 @@
 File.open(ARGV[0]).each_line do |line|
-  b, s, m, been = "BEGIN", line.chomp.split(";"), Hash.new, Hash.new
+  b = 'BEGIN'
+  s = line.chomp.split(';')
+  m = {}
+  been = {}
   s.each do |x|
-    t = x.split("-")
+    t = x.split('-')
     m[t[0]] = t[1]
   end
   s.length.times do
-    if !(m.has_key?(b)) || (been.has_key?(m[b]))
+    if !(m.key?(b)) || (been.key?(m[b]))
       b = nil
       break
     end
     b = m[b]
     been[b] = true
   end
-  puts b == "END" ? "GOOD" : "BAD"
+  puts b == 'END' ? 'GOOD' : 'BAD'
 end
