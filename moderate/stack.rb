@@ -9,14 +9,13 @@ def pop(stack)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  stack = Array.new
-  line.split.map(&:to_i).each do |i|
-    push(stack, i)
-  end
-  out = Array.new
-  while stack.length > 0 do
+  stack = []
+  line.split.map(&:to_i).each { |i| push(stack, i) }
+
+  out = []
+  while stack.length > 0
     out << pop(stack)
     pop(stack)
   end
-  puts out.join(" ")
+  puts out.join(' ')
 end

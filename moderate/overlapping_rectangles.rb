@@ -1,9 +1,9 @@
 def within_rect(rect, pt)
-  return pt[0] >= rect[0] && pt[0] <= rect[2] && pt[1] >= rect[3] && pt[1] <= rect[1]
+  pt[0] >= rect[0] && pt[0] <= rect[2] && pt[1] >= rect[3] && pt[1] <= rect[1]
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.split(",").map(&:to_i)
+  s = line.split(',').map(&:to_i)
   r1 = s.first(4)
   r2 = s.last(4)
   p1 = [[r1[0], r1[1]], [r1[0], r1[3]], [r1[2], r1[1]], [r1[2], r1[3]]]
@@ -16,7 +16,7 @@ File.open(ARGV[0]).each_line do |line|
       break
     end
   end
-  if !f
+  unless f
     p2.each do |x|
       if within_rect(r1, x)
         f = true
@@ -24,5 +24,5 @@ File.open(ARGV[0]).each_line do |line|
       end
     end
   end
-  puts f ? "True" : "False"
+  puts f ? 'True' : 'False'
 end

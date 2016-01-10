@@ -7,7 +7,8 @@ def floors(e, s)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s, n = line.split.map(&:to_i), 0
-  while floors(s[0], n) < s[1] do n += 1 end
+  s = line.split.map(&:to_i)
+  n = 0
+  n += 1 while floors(s[0], n) < s[1]
   puts n
 end

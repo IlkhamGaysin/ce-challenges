@@ -1,5 +1,5 @@
 File.open(ARGV[0]).each_line do |line|
-  a, num, ar, rr = 0, 0, 0, 0
+  a = num = ar = rr = 0
   line.chomp.each_char do |x|
     if x =~ /\d/
       a = x.to_i
@@ -25,7 +25,8 @@ File.open(ARGV[0]).each_line do |line|
       else
         num += ar * rr
       end
-      ar, rr = a, r
+      ar = a
+      rr = r
     end
   end
   puts num + ar * rr

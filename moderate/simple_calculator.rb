@@ -1,11 +1,11 @@
-$p = { "^" => 3, "*" => 2, "/" => 2, "+" => 1, "-" => 1 }
-$error = -999999
+P = { '^' => 3, '*' => 2, '/' => 2, '+' => 1, '-' => 1 }
+Error = -999_999
 
 def operate(a, b, c)
   r = 0
   case b
   when '^'
-    r = a ** c
+    r = a**c
   when '*'
     r = a * c
   when '/'
@@ -15,8 +15,8 @@ def operate(a, b, c)
   when '-'
     r = a - c
   else
-    print "Unexpected operator: " + b
-    return $error
+    print 'Unexpected operator: ' + b
+    return Error
   end
   r
 end
@@ -36,8 +36,8 @@ def parse(s)
           r << '['
           s = s[2..-1]
         elsif !n
-          print "Input error: expected number, opening bracket, or unary -, got " + s
-          return $error
+          print 'Input error: expected number, opening bracket, or unary -, got ' + s
+          return Error
         else
           r << n.to_f
           s = s[n.length..-1]
@@ -51,12 +51,12 @@ def parse(s)
         state = 0
         if r.length > 3 && r[-2] != ')' && r[-3] != '(' && r[-3] != '[' && r[-4] != ')'
           unless '^*/+-'.include? r[-3]
-            print "Expected operator, got " + r[-3]
-            return $error
+            print 'Expected operator, got ' + r[-3]
+            return Error
           end
-          if $p[r[-3]] >= $p[r[-1]]
+          if P[r[-3]] >= P[r[-1]]
             r[-4] = operate(r[-4], r[-3], r[-2])
-            return $error if r[-4] == $error
+            return Error if r[-4] == Error
             r = r[0..-4] << r[-1]
           end
         end
@@ -65,7 +65,7 @@ def parse(s)
         s = s[1..-1]
         while r.length > 3 && r[-2] != ')' && r[-3] != '(' && r[-3] != '[' && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
-          return $error if r[-4] == $error
+          return Error if r[-4] == Error
           r = r[0..-4] << r[-1]
         end
         if r.length > 3 && r[-3] == '('
@@ -78,26 +78,26 @@ def parse(s)
           r = [-r[1]]
         end
       else
-        print "Input error: expected operator or closing bracket, got " + s
-        return $error
+        print 'Input error: expected operator or closing bracket, got ' + s
+        return Error
       end
     end
   end
   while r.length > 1
     r[-3] = operate(r[-3], r[-2], r[-1])
-    return $error if r[-3] == $error
+    return Error if r[-3] == Error
     r = r[0..-3]
   end
   r
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.gsub(/\s+/, "")
+  s = line.gsub(/\s+/, '')
   p = parse(s)
-  if p == $error
-    puts " on input " + s
+  if p == Error
+    puts ' on input ' + s
   elsif p[0] && p[0].class == Float
-    t = "%.5f" % p[0]
-    puts t.sub(/[.]?0+$/, "")
+    t = format '%.5f', p[0]
+    puts t.sub(/[.]?0+$/, '')
   end
 end
