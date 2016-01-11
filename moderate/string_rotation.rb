@@ -1,3 +1,4 @@
+# rotate!
 class String
   def rotate!
     self << self[0]

@@ -1,11 +1,11 @@
-$p = { "^" => 4, "%" => 3, "*" => 2, "/" => 2, "+" => 1, "-" => 1 }
-$error = -999999
-$o = ["(", "-(", "|", "-|", "sqrt(", "cos(", "sin(", "tan(", "lg(", "ln("]
+P = { '^' => 4, '%' => 3, '*' => 2, '/' => 2, '+' => 1, '-' => 1 }
+ERROR = -999_999
+O = ['(', '-(', '|', '-|', 'sqrt(', 'cos(', 'sin(', 'tan(', 'lg(', 'ln(']
 
 def factorial(a)
   if a < 0
-    print "Negative factorial: " + a.to_s
-    return $error
+    print 'Negative factorial: ' + a.to_s
+    return ERROR
   end
   r = 1
   while a > 1
@@ -16,25 +16,23 @@ def factorial(a)
 end
 
 def operate(a, b, c)
-  r = 0
   case b
   when '^'
-    r = a ** c
+    return a**c
   when '%'
-    r = a % c
+    return a % c
   when '*'
-    r = a * c
+    return a * c
   when '/'
-    r = a / c
+    return a / c
   when '+'
-    r = a + c
+    return a + c
   when '-'
-    r = a - c
+    return a - c
   else
-    print "Unexpected operator: " + b
-    return $error
+    print 'Unexpected operator: ' + b
+    return ERROR
   end
-  r
 end
 
 def parse(s)
@@ -54,15 +52,15 @@ def parse(s)
         elsif s[0] == '-' && s[1] == '|'
           r << '-|'
           s = s[2..-1]
-        elsif s[0] == "e"
+        elsif s[0] == 'e'
           r << Math::E
           s = s[1..-1]
           state = 1
-        elsif s[0] == "P" && s[1] == "i"
+        elsif s[0] == 'P' && s[1] == 'i'
           r << Math::PI
           s = s[2..-1]
           state = 1
-        elsif s[0] == "|"
+        elsif s[0] == '|'
           r << '|'
           s = s[1..-1]
         elsif s[0..4] == 'sqrt('
@@ -84,8 +82,8 @@ def parse(s)
           r << 'ln('
           s = s[3..-1]
         elsif !n
-          print "Input error: expected number, opening bracket, or unary -, got " + s
-          return $error
+          print 'Input error: expected number, opening bracket, or unary -, got ' + s
+          return ERROR
         else
           r << n.to_f
           s = s[n.length..-1]
@@ -97,14 +95,14 @@ def parse(s)
         r << s[0]
         s = s[1..-1]
         state = 0
-        if r.length > 3 && r[-2] != ')' && !($o.include? r[-3]) && r[-4] != ')'
+        if r.length > 3 && r[-2] != ')' && !(O.include? r[-3]) && r[-4] != ')'
           unless '^%*/+-'.include? r[-3]
-            print "Expected operator, got " + r[-3]
-            return $error
+            print 'Expected operator, got ' + r[-3]
+            return ERROR
           end
-          if $p[r[-3]] >= $p[r[-1]]
+          if P[r[-3]] >= P[r[-1]]
             r[-4] = operate(r[-4], r[-3], r[-2])
-            return $error if r[-4] == $error
+            return ERROR if r[-4] == ERROR
             r = r[0..-4] << r[-1]
           end
         end
@@ -112,41 +110,41 @@ def parse(s)
         r << '%'
         s = s[3..-1]
         state = 0
-        if r.length > 3 && r[-2] != ')' && !($o.include? r[-3]) && r[-4] != ')'
+        if r.length > 3 && r[-2] != ')' && !(O.include? r[-3]) && r[-4] != ')'
           unless '^%*/+-'.include? r[-3]
-            print "Expected operator, got " + r[-3]
-            return $error
+            print 'Expected operator, got ' + r[-3]
+            return ERROR
           end
-          if $p[r[-3]] >= $p[r[-1]]
+          if P[r[-3]] >= P[r[-1]]
             r[-4] = operate(r[-4], r[-3], r[-2])
-            return $error if r[-4] == $error
+            return ERROR if r[-4] == ERROR
             r = r[0..-4] << r[-1]
           end
         end
       elsif s[0] == '!'
         r[-1] = factorial(r[-1])
-        return $error if r[-1] == $error
+        return ERROR if r[-1] == ERROR
         s = s[1..-1]
       elsif s[0] == ')'
         r << ')'
         s = s[1..-1]
-        while r.length > 3 && r[-2] != ')' && !($o.include? r[-3]) && r[-4] != ')'
+        while r.length > 3 && r[-2] != ')' && !(O.include? r[-3]) && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
-          return $error if r[-4] == $error
+          return ERROR if r[-4] == ERROR
           r = r[0..-4] << r[-1]
         end
         if r.length > 3 && r[-3] == '('
           if s[0] == '!'
             s = s[1..-1]
             r[-2] = factorial(r[2])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = r[0...-3] << r[-2]
         elsif r.length > 3 && r[-3] == '-('
           if s[0] == '!'
             s = s[1..-1]
             r[-2] = factorial(r[2])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = r[0...-3] << -r[-2]
         elsif r.length > 3 && r[-3] == 'sqrt('
@@ -161,18 +159,18 @@ def parse(s)
           r = r[0...-3] << Math.log(r[-2])
         elsif r.length > 3 && r[-3] == 'lg('
           r = r[0...-3] << Math.log10(r[-2])
-        elsif r.length == 3  && r[0] == '('
+        elsif r.length == 3 && r[0] == '('
           if s[0] == '!'
             s = s[1..-1]
             r[1] = factorial(r[1])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = [r[1]]
-        elsif r.length == 3  && r[0] == '-('
+        elsif r.length == 3 && r[0] == '-('
           if s[0] == '!'
             s = s[1..-1]
             r[1] = factorial(r[1])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = [-r[1]]
         elsif r.length == 3 && r[0] == 'sqrt('
@@ -193,21 +191,21 @@ def parse(s)
         s = s[1..-1]
         while r.length > 3 && r[-2] != ')' && !(['|', '-|'].include? r[-3]) && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
-          return $error if r[-4] == $error
+          return ERROR if r[-4] == ERROR
           r = r[0..-4] << r[-1]
         end
         if r.length > 3 && r[-3] == '|'
           if s[0] == '!'
             s = s[1..-1]
             r[-2] = factorial(r[2])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = r[0...-3] << r[-2].abs
         elsif r.length > 3 && r[-3] == '-|'
           if s[0] == '!'
             s = s[1..-1]
             r[-2] = factorial(r[2])
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = r[0...-3] << -(r[-2].abs)
         elsif r.length == 3 && r[0] == '|'
@@ -216,31 +214,31 @@ def parse(s)
           if s[0] == '!'
             s = s[1..-1]
             r[1] = factorial(r[1].abs)
-            return $error if r[-1] == $error
+            return ERROR if r[-1] == ERROR
           end
           r = [-(r[1].abs)]
         end
       else
-        print "Input error: expected operator or closing bracket, got " + s
-        return $error
+        print 'Input error: expected operator or closing bracket, got ' + s
+        return ERROR
       end
     end
   end
   while r.length > 1
     r[-3] = operate(r[-3], r[-2], r[-1])
-    return $error if r[-3] == $error
+    return ERROR if r[-3] == ERROR
     r = r[0..-3]
   end
   r
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.gsub(/\s+/, "")
+  s = line.gsub(/\s+/, '')
   p = parse(s)
-  if p == $error
-    puts " on input " + s
+  if p == ERROR
+    puts ' on input ' + s
   elsif p[0] && p[0].class == Float
-    t = "%.5f" % p[0]
-    puts t.sub(/[.]?0+$/, "")
+    t = format '%.5f', p[0]
+    puts t.sub(/[.]?0+$/, '')
   end
 end

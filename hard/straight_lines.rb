@@ -1,7 +1,7 @@
 Point = Struct.new(:x, :y)
 
 def in_line(a, b, c)
-  return (a.x - b.x) * (a.y - c.y) == (a.x - c.x) * (a.y - b.y)
+  (a.x - b.x) * (a.y - c.y) == (a.x - c.x) * (a.y - b.y)
 end
 
 def line(ax, bx, t)
@@ -12,14 +12,14 @@ def line(ax, bx, t)
 end
 
 File.open(ARGV[0]).each_line do |line|
-  s = line.split(" | ").map { |i|
-    t = i.split().map(&:to_i)
+  s = line.split(' | ').map do |i|
+    t = i.split.map(&:to_i)
     Point.new(t[0], t[1])
-  }
+  end
   r = 0
-  for ix in (0..s.length-2)
-    for jx in (ix+1..s.length-1)
-      r += 1 if line(ix, jx, s)
+  (0..s.length - 2).each do |i|
+    (i + 1...s.length).each do |j|
+      r += 1 if line(i, j, s)
     end
   end
   puts r

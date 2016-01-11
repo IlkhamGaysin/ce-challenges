@@ -1,6 +1,7 @@
+# permutation
 class String
   def permutation
-    self.chars.to_a.permutation.map(&:join)
+    chars.to_a.permutation.map(&:join)
   end
 end
 

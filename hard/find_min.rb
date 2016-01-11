@@ -23,14 +23,12 @@ class Heap
   end
 
   def del_node(node)
-    if @nodes.include? node
-      max = @nodes.pop
-      if node != max
-        offset = @nodes.index(node)
-        @nodes[offset] = max
-        bubble_down max, offset
-      end
-    end
+    return false unless @nodes.include? node
+    max = @nodes.pop
+    return if node == max
+    offset = @nodes.index(node)
+    @nodes[offset] = max
+    bubble_down max, offset
   end
 
   def push(node)
