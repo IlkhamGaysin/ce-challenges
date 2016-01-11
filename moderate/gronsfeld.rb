@@ -1,5 +1,5 @@
-k = %q{ !"#$%&'()*+,-./0123456789:<=>?@
-       ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}
+k = %q{ !"#$%&'()*+,-./0123456789:<=>?@} +
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 File.open(ARGV[0]).each_line do |line|
   s = line.chomp.split(';')
   ix = 0
