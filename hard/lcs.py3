@@ -7,11 +7,10 @@ def btr(c, x, y, i, j):
         return ""
     elif x[i-1] == y[j-1]:
         return btr(c, x, y, i-1, j-1) + x[i-1]
+    elif c[i][j-1] > c[i-1][j]:
+        return btr(c, x, y, i, j-1)
     else:
-        if c[i][j-1] > c[i-1][j]:
-            return btr(c, x, y, i, j-1)
-        else:
-            return btr(c, x, y, i-1, j)
+        return btr(c, x, y, i-1, j)
 
 for test in filter(None, (i.rstrip('\n') for i in fileinput.input())):
     x, y = test.split(';')
