@@ -9,13 +9,13 @@ for line in (i.rstrip('\n') for i in fileinput.input()):
     m = ''
     n = 1
     start = 0
-    while n <= ((l - start) / 2):
+    while n <= (l - start) / 2:
         f = False
         for i in xrange(start, l - n):
-            subst = line[i : (i + n)]
+            subst = line[i : i + n]
             if not subst.strip():
                 continue
-            if subst in line[(i + n) : l]:
+            if subst in line[i + n : l]:
                 m = subst
                 start = i
                 f = True
