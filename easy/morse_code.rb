@@ -3,10 +3,8 @@ File.open(ARGV[0]).each_line do |line|
   m = 1
   line.each_char do |i|
     case i
-    when '.'
-      m *= 2
-    when '-'
-      m = m * 2 + 1
+    when '.' then m *= 2
+    when '-' then m = m * 2 + 1
     else
       if m == 1
         print ' '

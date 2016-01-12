@@ -17,22 +17,15 @@ end
 
 def operate(a, b, c)
   case b
-  when '^'
-    return a**c
-  when '%'
-    return a % c
-  when '*'
-    return a * c
-  when '/'
-    return a / c
-  when '+'
-    return a + c
-  when '-'
-    return a - c
-  else
-    print 'Unexpected operator: ' + b
-    return ERROR
+  when '^' then return a**c
+  when '%' then return a % c
+  when '*' then return a * c
+  when '/' then return a / c
+  when '+' then return a + c
+  when '-' then return a - c
   end
+  print 'Unexpected operator: ' + b
+  ERROR
 end
 
 def parse(s)
@@ -82,7 +75,8 @@ def parse(s)
           r << 'ln('
           s = s[3..-1]
         elsif !n
-          print 'Input error: expected number, opening bracket, or unary -, got ' + s
+          print 'Input error: expected number, opening bracket,'\
+                'or unary -, got ' + s
           return ERROR
         else
           r << n.to_f
@@ -128,7 +122,8 @@ def parse(s)
       elsif s[0] == ')'
         r << ')'
         s = s[1..-1]
-        while r.length > 3 && r[-2] != ')' && !(O.include? r[-3]) && r[-4] != ')'
+        while r.length > 3 && r[-2] != ')' &&
+              !(O.include? r[-3]) && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
           return ERROR if r[-4] == ERROR
           r = r[0..-4] << r[-1]
@@ -189,7 +184,8 @@ def parse(s)
       elsif s[0] == '|'
         r << '|'
         s = s[1..-1]
-        while r.length > 3 && r[-2] != ')' && !(['|', '-|'].include? r[-3]) && r[-4] != ')'
+        while r.length > 3 && r[-2] != ')' &&
+              !(['|', '-|'].include? r[-3]) && r[-4] != ')'
           r[-4] = operate(r[-4], r[-3], r[-2])
           return ERROR if r[-4] == ERROR
           r = r[0..-4] << r[-1]
@@ -235,8 +231,7 @@ end
 File.open(ARGV[0]).each_line do |line|
   s = line.gsub(/\s+/, '')
   p = parse(s)
-  if p == ERROR
-    puts ' on input ' + s
+  if p == ERROR then puts ' on input ' + s
   elsif p[0] && p[0].class == Float
     t = format '%.5f', p[0]
     puts t.sub(/[.]?0+$/, '')

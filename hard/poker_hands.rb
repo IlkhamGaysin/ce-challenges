@@ -34,12 +34,9 @@ end
 
 def poker(h0, h1)
   case h0 <=> h1
-  when -1
-    'right'
-  when 1
-    'left'
-  else
-    'none'
+  when -1 then 'right'
+  when 1 then 'left'
+  else 'none'
   end
 end
 

@@ -2,10 +2,8 @@ def balanced(s, c)
   loop do
     return false if c < 0
     return c == 0 if s.empty?
-    if s[0].match(/[a-z ]/)
-      s = s[1..-1]
-    elsif s[-1].match(/[a-z :]/)
-      s = s[0..-2]
+    if s[0].match(/[a-z ]/) then s = s[1..-1]
+    elsif s[-1].match(/[a-z :]/) then s = s[0..-2]
     elsif s[0] == '('
       c += 1
       s = s[1..-1]

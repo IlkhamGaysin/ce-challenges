@@ -6,12 +6,9 @@ File.open(ARGV[0]).each_line do |line|
     m = lo + hi
     c = m % 2
     case s[x]
-    when 'Lower'
-      hi = m / 2 + c - 1
-    when 'Higher'
-      lo = m / 2 + c + 1
-    else
-      puts m / 2 + c
+    when 'Lower' then hi = m / 2 + c - 1
+    when 'Higher' then lo = m / 2 + c + 1
+    else puts m / 2 + c
     end
   end
 end

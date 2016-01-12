@@ -2,16 +2,11 @@ m = %w(Done Low Medium High Critical)
 
 def prio(a)
   case a
-  when 0
-    0
-  when 1..2
-    1
-  when 3..4
-    2
-  when 5..6
-    3
-  else
-    4
+  when 0 then 0
+  when 1..2 then 1
+  when 3..4 then 2
+  when 5..6 then 3
+  else 4
   end
 end
 

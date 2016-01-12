@@ -1,12 +1,10 @@
 def contains(s, p)
   until s.empty? || p.empty?
-    if s[0] < p[0]
-      s = s[1..-1]
+    if s[0] < p[0] then s = s[1..-1]
     elsif s[0] == p[0]
       s = s[1..-1]
       p = p[1..-1]
-    else
-      return false
+    else return false
     end
   end
   p.empty?
