@@ -17,9 +17,8 @@ func decode(s string) (ret int) {
 		default:
 			if len(s) == 2 {
 				return 2
-			} else {
-				return decode(s[1:len(s)]) + decode(s[2:len(s)])
 			}
+			return decode(s[1:len(s)]) + decode(s[2:len(s)])
 		}
 	}
 	return 1

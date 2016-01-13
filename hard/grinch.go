@@ -38,7 +38,7 @@ func (h *vertexHeap) Pop() interface{} {
 	return x
 }
 
-func (h vertexHeap) FindId(a uint) int {
+func (h vertexHeap) FindID(a uint) int {
 	for ix, i := range h {
 		if i.id == a {
 			return ix
@@ -91,7 +91,7 @@ func main() {
 			}
 			for _, i := range neigh[u.id] {
 				dis := u.dist + i.dist
-				ix := q.FindId(i.to)
+				ix := q.FindID(i.to)
 				if ix >= 0 && dis < (*q)[ix].dist {
 					(*q)[ix].dist = dis
 					heap.Fix(q, ix)

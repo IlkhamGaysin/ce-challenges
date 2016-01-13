@@ -19,9 +19,9 @@ func ugly(j int, n []int) bool {
 	var (
 		k  int
 		s  int64
-		c  int64 = int64(n[0])
-		cj int   = j
-		p  bool  = true
+		c  = int64(n[0])
+		cj = j
+		p  = true
 	)
 	for k < len(n)-1 {
 		ops := cj % 3

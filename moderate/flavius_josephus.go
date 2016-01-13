@@ -9,9 +9,9 @@ import (
 	"strings"
 )
 
-type Node struct {
+type node struct {
 	value int
-	next  *Node
+	next  *node
 }
 
 func main() {
@@ -26,10 +26,10 @@ func main() {
 		var t []string
 		fmt.Sscanf(scanner.Text(), "%d,%d", &n, &m)
 
-		tail := Node{value: n - 1}
+		tail := node{value: n - 1}
 		list := &tail
 		for i := n - 2; i >= 0; i-- {
-			list = &Node{i, list}
+			list = &node{i, list}
 		}
 		tail.next, list = list, &tail
 

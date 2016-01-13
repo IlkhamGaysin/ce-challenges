@@ -1,6 +1,6 @@
 # Formatting:
 #   C:		clang-format -style='{ColumnLimit: 0, IndentWidth: 8, TabWidth: 8, UseTab: "Always"}'	is a good start
-#   Go:		go fmt
+#   Go:		go fmt, golint
 #   Perl:	perltidy
 #   Ruby:	rubocop	is a good start
 

@@ -15,32 +15,32 @@ type item struct {
 	value  int64
 	weight int64
 }
-type Items []item
+type items []item
 
-func (slice Items) Len() int { return len(slice) }
-func (slice Items) Less(i, j int) bool {
+func (slice items) Len() int { return len(slice) }
+func (slice items) Less(i, j int) bool {
 	return (float64(slice[i].value) / float64(slice[i].weight)) > (float64(slice[j].value) / float64(slice[j].weight))
 }
-func (slice Items) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
+func (slice items) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
 
-type Best []int64
+type bäst []int64
 
-func (slice Best) Len() int           { return len(slice) }
-func (slice Best) Less(i, j int) bool { return slice[i] < slice[j] }
-func (slice Best) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
+func (slice bäst) Len() int           { return len(slice) }
+func (slice bäst) Less(i, j int) bool { return slice[i] < slice[j] }
+func (slice bäst) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
 
 type task struct {
 	level int64
 	bound int64
 	value int64
 	room  int64
-	items []int64
+	stuff []int64
 }
 
-func boundary(room, value int64, items []item, itl []int64) (t, b int64, tl []int64) {
+func boundary(room, value int64, stuff []item, itl []int64) (t, b int64, tl []int64) {
 	totalRoom, f := room, false
 	t, b = value, value
-	for _, i := range items {
+	for _, i := range stuff {
 		if i.weight > totalRoom {
 			continue
 		} else if i.weight > room {
@@ -80,7 +80,7 @@ func main() {
 		n := len(ts) - 1
 		fmt.Sscanf(ts[0], "%d : ", &ks)
 		var (
-			items     []item
+			stuff     []item
 			minWeight int64 = math.MaxInt64
 		)
 		n0 := n
@@ -90,7 +90,7 @@ func main() {
 			if s1 > float64(ks) {
 				n--
 			} else {
-				items = append(items, item{s0, s2, int64(s1 * 100)})
+				stuff = append(stuff, item{s0, s2, int64(s1 * 100)})
 			}
 			if s2 < minWeight {
 				minWeight = s2
@@ -100,21 +100,21 @@ func main() {
 			fmt.Println("-")
 			continue
 		}
-		sort.Sort(Items(items))
+		sort.Sort(items(stuff))
 		ks *= 100
 
-		t, bound, tl := boundary(ks, int64(0), items[1:], []int64{})
+		t, bound, tl := boundary(ks, int64(0), stuff[1:], []int64{})
 		best, bestl := t, make([]int64, len(tl))
 		todo := []task{task{bound: bound, room: ks}}
 		copy(bestl, tl)
 
-		t, bound, tl = boundary(ks, int64(0), items, []int64{})
+		t, bound, tl = boundary(ks, int64(0), stuff, []int64{})
 		if t > best {
 			best, bestl = t, make([]int64, len(tl))
 			copy(bestl, tl)
 		}
-		if items[0].weight <= ks {
-			todo = append(todo, task{int64(0), bound, items[0].value, ks - items[0].weight, []int64{items[0].id}})
+		if stuff[0].weight <= ks {
+			todo = append(todo, task{int64(0), bound, stuff[0].value, ks - stuff[0].weight, []int64{stuff[0].id}})
 		}
 
 		for len(todo) > 0 {
@@ -125,35 +125,35 @@ func main() {
 			}
 
 			if curr.level == int64(n-2) {
-				if curr.room >= items[n-1].weight {
-					t = items[n-1].value + curr.value
+				if curr.room >= stuff[n-1].weight {
+					t = stuff[n-1].value + curr.value
 					if t > best {
-						best, bestl = t, make([]int64, len(curr.items)+1)
-						copy(bestl, append(curr.items, items[n-1].id))
+						best, bestl = t, make([]int64, len(curr.stuff)+1)
+						copy(bestl, append(curr.stuff, stuff[n-1].id))
 					}
 				}
 				if curr.value > best {
-					best, bestl = curr.value, make([]int64, len(curr.items))
-					copy(bestl, curr.items)
+					best, bestl = curr.value, make([]int64, len(curr.stuff))
+					copy(bestl, curr.stuff)
 				}
 			} else {
-				t, bound, tl = boundary(curr.room, curr.value, items[curr.level+1:], curr.items)
+				t, bound, tl = boundary(curr.room, curr.value, stuff[curr.level+1:], curr.stuff)
 				if t > best {
-					tl = append(curr.items, tl...)
+					tl = append(curr.stuff, tl...)
 					best, bestl = t, make([]int64, len(tl))
 					copy(bestl, tl)
 				}
 				if bound > best && curr.room > minWeight {
-					todo = append(todo, task{curr.level + 1, bound, curr.value, curr.room, curr.items})
+					todo = append(todo, task{curr.level + 1, bound, curr.value, curr.room, curr.stuff})
 				}
 
-				if curr.room >= items[curr.level+1].weight+minWeight {
-					todo = append(todo, task{curr.level + 1, curr.bound, curr.value + items[curr.level+1].value, curr.room - items[curr.level+1].weight, append(curr.items, items[curr.level+1].id)})
+				if curr.room >= stuff[curr.level+1].weight+minWeight {
+					todo = append(todo, task{curr.level + 1, curr.bound, curr.value + stuff[curr.level+1].value, curr.room - stuff[curr.level+1].weight, append(curr.stuff, stuff[curr.level+1].id)})
 				}
 			}
 		}
 		var st []string
-		sort.Sort(Best(bestl))
+		sort.Sort(bäst(bestl))
 		for i := int64(1); i <= int64(n0); i++ {
 			if len(bestl) > 0 && i == bestl[0] {
 				st = append(st, fmt.Sprint(i))

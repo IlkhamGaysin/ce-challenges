@@ -14,11 +14,11 @@ type team struct {
 	cs string
 }
 
-type Teams []team
+type teams []team
 
-func (slice Teams) Len() int           { return len(slice) }
-func (slice Teams) Less(i, j int) bool { return slice[i].id < slice[j].id }
-func (slice Teams) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
+func (slice teams) Len() int           { return len(slice) }
+func (slice teams) Less(i, j int) bool { return slice[i].id < slice[j].id }
+func (slice teams) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
 
 func main() {
 	var a int
@@ -45,7 +45,7 @@ func main() {
 		for k, v := range m {
 			r = append(r, team{k, strings.Join(v, ",") + ";"})
 		}
-		sort.Sort(Teams(r))
+		sort.Sort(teams(r))
 		for _, i := range r {
 			q = append(q, fmt.Sprintf("%d:%s", i.id, i.cs))
 		}

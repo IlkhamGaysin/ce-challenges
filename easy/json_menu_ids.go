@@ -24,7 +24,7 @@ lines:
 				Menu struct {
 					Header string
 					Items  []struct {
-						Id    int
+						ID    int
 						Label string
 					}
 				}

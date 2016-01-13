@@ -9,13 +9,13 @@ import (
 	"strings"
 )
 
-type Uint8s []uint8
+type uint8s []uint8
 
-func (s Uint8s) Len() int { return len(s) }
-func (s Uint8s) Less(i, j int) bool {
+func (s uint8s) Len() int { return len(s) }
+func (s uint8s) Less(i, j int) bool {
 	return s[i] < s[j]
 }
-func (s Uint8s) Swap(i, j int) {
+func (s uint8s) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
@@ -49,10 +49,10 @@ func main() {
 				children = append(children, i[1])
 			}
 		}
-		sort.Sort(Uint8s(parents))
-		sort.Sort(Uint8s(children))
+		sort.Sort(uint8s(parents))
+		sort.Sort(uint8s(children))
 		for k := range m {
-			sort.Sort(Uint8s(m[k]))
+			sort.Sort(uint8s(m[k]))
 		}
 		for _, i := range parents {
 			if !contains(children, i) {

@@ -14,9 +14,8 @@ func numzero(t []int, c, z int) int {
 	case c == 0:
 		if z == 0 {
 			return 1
-		} else {
-			return 0
 		}
+		return 0
 	case len(t) < c || z+c*t[0] > 0 || z+c*t[len(t)-1] < 0:
 		return 0
 	default:

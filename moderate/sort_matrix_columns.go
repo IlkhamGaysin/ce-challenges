@@ -10,17 +10,17 @@ import (
 )
 
 type column []int
-type Columns []column
+type columns []column
 
-func (slice Columns) Len() int { return len(slice) }
-func (slice Columns) Less(i, j int) bool {
+func (slice columns) Len() int { return len(slice) }
+func (slice columns) Less(i, j int) bool {
 	var k int
 	for k < len(slice[i])-1 && slice[i][k] == slice[j][k] {
 		k++
 	}
 	return slice[i][k] < slice[j][k]
 }
-func (slice Columns) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
+func (slice columns) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
 
 func main() {
 	data, err := os.Open(os.Args[1])
@@ -43,7 +43,7 @@ func main() {
 				fmt.Sscanf(t[j], "%d", &m[j][i])
 			}
 		}
-		sort.Sort(Columns(m))
+		sort.Sort(columns(m))
 		r := make([]string, n)
 		for i = 0; i < n; i++ {
 			t := make([]string, n)

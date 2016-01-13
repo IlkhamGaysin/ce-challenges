@@ -31,7 +31,7 @@ func sliceq(a, b []int) bool {
 	return true
 }
 
-func card_ranks(cards []string) (rank int) {
+func cardRanks(cards []string) (rank int) {
 	for ix, i := range cards {
 		ra[ix] = v[i[0]]
 	}
@@ -94,9 +94,8 @@ func twopair(r int) int {
 		if v != h && rankscount(v, r) == 2 {
 			if v > h {
 				return v<<4 + h
-			} else {
-				return h<<4 + v
 			}
+			return h<<4 + v
 		}
 	}
 	return 0
@@ -111,8 +110,8 @@ func poker(a, b int) string {
 	return "none"
 }
 
-func hand_rank(hand []string) int {
-	ranks := card_ranks(hand)
+func handRank(hand []string) int {
+	ranks := cardRanks(hand)
 	switch {
 	case straight(ranks) && flush(hand):
 		return (8 << 24) + ranks
@@ -143,6 +142,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Fields(scanner.Text())
-		fmt.Println(poker(hand_rank(s[0:5]), hand_rank(s[5:10])))
+		fmt.Println(poker(handRank(s[0:5]), handRank(s[5:10])))
 	}
 }

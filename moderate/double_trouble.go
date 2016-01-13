@@ -20,7 +20,7 @@ func main() {
 		n := len(s) / 2
 		for i := 0; i < n; i++ {
 			if ((s[i] == 'A') && (s[i+n] == 'B')) ||
-			   ((s[i] == 'B') && (s[i+n] == 'A')) {
+				((s[i] == 'B') && (s[i+n] == 'A')) {
 				r = 0
 				break
 			} else if (s[i] == '*') && (s[i+n] == '*') {

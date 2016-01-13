@@ -13,11 +13,11 @@ type number struct {
 	f float64
 	s string
 }
-type Numbers []number
+type numbers []number
 
-func (slice Numbers) Len() int           { return len(slice) }
-func (slice Numbers) Less(i, j int) bool { return slice[i].f < slice[j].f }
-func (slice Numbers) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
+func (slice numbers) Len() int           { return len(slice) }
+func (slice numbers) Less(i, j int) bool { return slice[i].f < slice[j].f }
+func (slice numbers) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
 
 func main() {
 	var f float64
@@ -34,7 +34,7 @@ func main() {
 			fmt.Sscan(i, &f)
 			nums = append(nums, number{f, i})
 		}
-		sort.Sort(Numbers(nums))
+		sort.Sort(numbers(nums))
 		for ix, i := range nums {
 			if ix > 0 {
 				fmt.Print(" ")

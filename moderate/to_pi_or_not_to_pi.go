@@ -13,11 +13,11 @@ type pwi struct {
 	n  int
 	nx int
 }
-type Pwis []pwi
+type pwis []pwi
 
-func (slice Pwis) Len() int           { return len(slice) }
-func (slice Pwis) Less(i, j int) bool { return slice[i].n < slice[j].n }
-func (slice Pwis) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
+func (slice pwis) Len() int           { return len(slice) }
+func (slice pwis) Less(i, j int) bool { return slice[i].n < slice[j].n }
+func (slice pwis) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
 
 func main() {
 	n := make([]pwi, 30)
@@ -37,7 +37,7 @@ func main() {
 		}
 		i++
 	}
-	sort.Sort(Pwis(n))
+	sort.Sort(pwis(n))
 	var (
 		l, s    int
 		j, p, m int

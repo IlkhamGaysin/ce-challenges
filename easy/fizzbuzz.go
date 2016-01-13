@@ -7,13 +7,13 @@ import (
 	"os"
 )
 
-type Node struct {
+type node struct {
 	value string
-	next  *Node
+	next  *node
 }
 
-func (node Node) IsEmpty() bool {
-	return len(node.value) == 0
+func (a node) isEmpty() bool {
+	return len(a.value) == 0
 }
 
 func main() {
@@ -27,7 +27,7 @@ func main() {
 		var fizz, buzz, n int
 		fmt.Sscanf(scanner.Text(), "%d %d %d", &fizz, &buzz, &n)
 
-		tail := Node{value: "FB"}
+		tail := node{value: "FB"}
 		list := &tail
 		for a, b := fizz-1, buzz-1; a > 0 || b > 0; a, b = (a+fizz-1)%fizz, (b+buzz-1)%buzz {
 			var value string
@@ -36,12 +36,12 @@ func main() {
 			} else if b == 0 {
 				value = "B"
 			}
-			list = &Node{value, list}
+			list = &node{value, list}
 		}
 		tail.next = list
 
 		for i := 1; i <= n; i++ {
-			if list.IsEmpty() {
+			if list.isEmpty() {
 				fmt.Print(i)
 			} else {
 				fmt.Print(list.value)

@@ -9,7 +9,7 @@ import (
 )
 
 func slide(a []int) []int {
-	lastNum, lastNumId, lastZero := -1, -1, -1
+	lastNum, lastNumID, lastZero := -1, -1, -1
 	for i := 0; i < len(a); i++ {
 		if a[i] == 0 {
 			if lastZero == -1 {
@@ -17,7 +17,7 @@ func slide(a []int) []int {
 			}
 		} else {
 			if lastNum == a[i] {
-				a[lastNumId] = 2 * lastNum
+				a[lastNumID] = 2 * lastNum
 				lastNum = -1
 				a[i] = 0
 				if lastZero == -1 {
@@ -26,9 +26,9 @@ func slide(a []int) []int {
 			} else {
 				lastNum = a[i]
 				if lastZero == -1 {
-					lastNumId = i
+					lastNumID = i
 				} else {
-					lastNumId = lastZero
+					lastNumID = lastZero
 					a[lastZero] = a[i]
 					a[i] = 0
 					lastZero++

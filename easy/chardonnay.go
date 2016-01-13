@@ -10,11 +10,11 @@ import (
 
 func containsAll(a, b string) bool {
 	for _, i := range b {
-		if ix := strings.IndexRune(a, i); ix == -1 {
+		ix := strings.IndexRune(a, i)
+		if ix == -1 {
 			return false
-		} else {
-			a = a[:ix] + a[ix+1:]
 		}
+		a = a[:ix] + a[ix+1:]
 	}
 	return true
 }

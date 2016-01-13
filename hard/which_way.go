@@ -14,16 +14,16 @@ type coor struct {
 	x, y, d int
 	land    bool
 }
-type Coords []coor
+type coords []coor
 
-func (slice Coords) Len() int { return len(slice) }
-func (slice Coords) Less(i, j int) bool {
+func (slice coords) Len() int { return len(slice) }
+func (slice coords) Less(i, j int) bool {
 	if slice[i].d == slice[j].d {
 		return slice[j].land
 	}
 	return slice[i].d < slice[j].d
 }
-func (slice Coords) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
+func (slice coords) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
 
 func contains(a []coor, b coor) bool {
 	for _, i := range a {
@@ -124,7 +124,7 @@ func main() {
 					t = append(t, coor{cc.x, cc.y + 1, cc.d + 1, false})
 				}
 			}
-			sort.Sort(Coords(t))
+			sort.Sort(coords(t))
 		}
 
 		fmt.Println(l)
