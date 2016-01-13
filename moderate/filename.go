@@ -20,10 +20,10 @@ func main() {
 		var r []string
 		f := strings.Fields(scanner.Text())
 		p := regexp.QuoteMeta(f[0])
-		p = strings.Replace(p, "\\?", ".", -1)
-		p = strings.Replace(p, "\\*", ".*", -1)
-		p = strings.Replace(p, "\\[", "[", -1)
-		p = strings.Replace(p, "\\]", "]", -1)
+		p = strings.Replace(p, `\?`, ".", -1)
+		p = strings.Replace(p, `\*`, ".*", -1)
+		p = strings.Replace(p, `\[`, "[", -1)
+		p = strings.Replace(p, `\]`, "]", -1)
 		p = "^" + p + "$"
 		pattern := regexp.MustCompile(p)
 		for i := 1; i < len(f); i++ {

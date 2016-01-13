@@ -25,16 +25,14 @@ func main() {
 	for scanner.Scan() {
 		t = scanner.Text()[0]
 		if t == '.' || t == '!' || t == '?' {
-			if l {
+			l = !l
+			if !l {
 				fmt.Print(phrases[c])
-				l, c = false, (c+1)%len(phrases)
-			} else {
-				fmt.Printf("%c", t)
-				l = true
+				c = (c + 1) % len(phrases)
+				continue
 			}
-		} else {
-			fmt.Printf("%c", t)
 		}
+		fmt.Printf("%c", t)
 	}
 	if t != '\n' {
 		fmt.Println()

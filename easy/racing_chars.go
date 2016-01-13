@@ -48,7 +48,7 @@ func main() {
 		} else if curr == px {
 			s = s[:curr] + "|" + s[curr+1:]
 		} else {
-			s = s[:curr] + "\\" + s[curr+1:]
+			s = s[:curr] + `\` + s[curr+1:]
 		}
 		fmt.Println(s)
 	}

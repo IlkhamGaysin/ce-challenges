@@ -48,14 +48,14 @@ func boundary(room, value int64, stuff []item, itl []int64) (t, b int64, tl []in
 				b += int64(float64(i.value*room) / float64(i.weight))
 				f = true
 			}
-		} else {
-			room, t, tl = room-i.weight, t+i.value, append(tl, i.id)
-			if !f {
-				b += i.value
-			}
-			if room == 0 {
-				break
-			}
+			continue
+		}
+		room, t, tl = room-i.weight, t+i.value, append(tl, i.id)
+		if !f {
+			b += i.value
+		}
+		if room == 0 {
+			break
 		}
 	}
 	return t, b, tl
@@ -136,20 +136,20 @@ func main() {
 					best, bestl = curr.value, make([]int64, len(curr.stuff))
 					copy(bestl, curr.stuff)
 				}
-			} else {
-				t, bound, tl = boundary(curr.room, curr.value, stuff[curr.level+1:], curr.stuff)
-				if t > best {
-					tl = append(curr.stuff, tl...)
-					best, bestl = t, make([]int64, len(tl))
-					copy(bestl, tl)
-				}
-				if bound > best && curr.room > minWeight {
-					todo = append(todo, task{curr.level + 1, bound, curr.value, curr.room, curr.stuff})
-				}
+				continue
+			}
+			t, bound, tl = boundary(curr.room, curr.value, stuff[curr.level+1:], curr.stuff)
+			if t > best {
+				tl = append(curr.stuff, tl...)
+				best, bestl = t, make([]int64, len(tl))
+				copy(bestl, tl)
+			}
+			if bound > best && curr.room > minWeight {
+				todo = append(todo, task{curr.level + 1, bound, curr.value, curr.room, curr.stuff})
+			}
 
-				if curr.room >= stuff[curr.level+1].weight+minWeight {
-					todo = append(todo, task{curr.level + 1, curr.bound, curr.value + stuff[curr.level+1].value, curr.room - stuff[curr.level+1].weight, append(curr.stuff, stuff[curr.level+1].id)})
-				}
+			if curr.room >= stuff[curr.level+1].weight+minWeight {
+				todo = append(todo, task{curr.level + 1, curr.bound, curr.value + stuff[curr.level+1].value, curr.room - stuff[curr.level+1].weight, append(curr.stuff, stuff[curr.level+1].id)})
 			}
 		}
 		var st []string

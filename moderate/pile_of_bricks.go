@@ -49,13 +49,13 @@ func main() {
 		}
 		if len(r) == 0 {
 			fmt.Println("-")
-		} else {
-			sort.Ints(r)
-			var r2 []string
-			for _, i := range r {
-				r2 = append(r2, fmt.Sprint(i))
-			}
-			fmt.Println(strings.Join(r2, ","))
+			continue
 		}
+		sort.Ints(r)
+		var r2 []string
+		for _, i := range r {
+			r2 = append(r2, fmt.Sprint(i))
+		}
+		fmt.Println(strings.Join(r2, ","))
 	}
 }

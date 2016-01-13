@@ -17,8 +17,9 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), ",")
-		if len(s) > 1 {
-			fmt.Println(strings.LastIndex(s[0], s[1]))
+		if len(s) < 2 {
+			continue
 		}
+		fmt.Println(strings.LastIndex(s[0], s[1]))
 	}
 }

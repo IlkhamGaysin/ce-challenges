@@ -143,22 +143,22 @@ func main() {
 		}
 		if !fin {
 			fmt.Println("No connection")
-		} else {
-			paths := [][]int{[]int{dst}}
-			for i := 0; i < len(paths); i++ {
-				for paths[i][0] != src {
-					cur := id2h[paths[i][0]]
-					for j := 1; j < len(hosts[cur].sub); j++ {
-						newpath := make([]int, len(paths[i])+1)
-						copy(newpath[1:], paths[i])
-						newpath[0] = hosts[cur].sub[j]
-						paths = append(paths, newpath)
-					}
-					paths[i] = append([]int{hosts[cur].sub[0]}, paths[i]...)
-				}
-			}
-			sort.Sort(natural(paths))
-			fmt.Println(nice(paths))
+			continue
 		}
+		paths := [][]int{[]int{dst}}
+		for i := 0; i < len(paths); i++ {
+			for paths[i][0] != src {
+				cur := id2h[paths[i][0]]
+				for j := 1; j < len(hosts[cur].sub); j++ {
+					newpath := make([]int, len(paths[i])+1)
+					copy(newpath[1:], paths[i])
+					newpath[0] = hosts[cur].sub[j]
+					paths = append(paths, newpath)
+				}
+				paths[i] = append([]int{hosts[cur].sub[0]}, paths[i]...)
+			}
+		}
+		sort.Sort(natural(paths))
+		fmt.Println(nice(paths))
 	}
 }

@@ -8,12 +8,7 @@ import (
 )
 
 func isBalanced(s string, c int) bool {
-	for {
-		if c < 0 {
-			return false
-		} else if s == "" {
-			return c == 0
-		}
+	for s != "" && c >= 0 {
 		first, last := s[0], s[len(s)-1]
 		switch {
 		case (first >= 'a' && first <= 'z') || first == ' ':
@@ -36,7 +31,7 @@ func isBalanced(s string, c int) bool {
 			return false
 		}
 	}
-	return false
+	return c == 0
 }
 
 func main() {

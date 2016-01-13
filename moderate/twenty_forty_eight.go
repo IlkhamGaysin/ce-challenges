@@ -15,24 +15,22 @@ func slide(a []int) []int {
 			if lastZero == -1 {
 				lastZero = i
 			}
+		} else if lastNum == a[i] {
+			a[lastNumID] = 2 * lastNum
+			lastNum = -1
+			a[i] = 0
+			if lastZero == -1 {
+				lastZero = i
+			}
 		} else {
-			if lastNum == a[i] {
-				a[lastNumID] = 2 * lastNum
-				lastNum = -1
-				a[i] = 0
-				if lastZero == -1 {
-					lastZero = i
-				}
+			lastNum = a[i]
+			if lastZero == -1 {
+				lastNumID = i
 			} else {
-				lastNum = a[i]
-				if lastZero == -1 {
-					lastNumID = i
-				} else {
-					lastNumID = lastZero
-					a[lastZero] = a[i]
-					a[i] = 0
-					lastZero++
-				}
+				lastNumID = lastZero
+				a[lastZero] = a[i]
+				a[i] = 0
+				lastZero++
 			}
 		}
 	}

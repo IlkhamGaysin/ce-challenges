@@ -26,12 +26,11 @@ func main() {
 	for scanner.Scan() {
 		c, w := string(scanner.Text()[0]), true
 		for !isAlpha(c) {
-			if scanner.Scan() {
-				c = string(scanner.Text()[0])
-			} else {
+			if !scanner.Scan() {
 				c = "\n"
 				break
 			}
+			c = string(scanner.Text()[0])
 		}
 		for c != "\n" {
 			if isAlpha(c) {

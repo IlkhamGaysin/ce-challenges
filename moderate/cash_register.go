@@ -37,24 +37,25 @@ func main() {
 		c = c*100 + v
 		if p > c {
 			fmt.Println("ERROR")
+			continue
 		} else if p == c {
 			fmt.Println("ZERO")
-		} else {
-			var res []string
-			change := make([]int, 12)
-			for i := 11; i >= 0; i-- {
-				for c-p >= value[i] {
-					change[i]++
-					c -= value[i]
-				}
-			}
-			for i := 11; i >= 0; i-- {
-				for change[i] > 0 {
-					res = append(res, units[i])
-					change[i]--
-				}
-			}
-			fmt.Println(strings.Join(res, ","))
+			continue
 		}
+		var res []string
+		change := make([]int, 12)
+		for i := 11; i >= 0; i-- {
+			for c-p >= value[i] {
+				change[i]++
+				c -= value[i]
+			}
+		}
+		for i := 11; i >= 0; i-- {
+			for change[i] > 0 {
+				res = append(res, units[i])
+				change[i]--
+			}
+		}
+		fmt.Println(strings.Join(res, ","))
 	}
 }

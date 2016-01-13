@@ -157,7 +157,7 @@ func main() {
 					case 1:
 						fmt.Printf("/")
 					case 2:
-						fmt.Printf("\\")
+						fmt.Printf(`\`)
 					case 3:
 						fmt.Printf("X")
 					}

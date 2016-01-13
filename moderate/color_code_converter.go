@@ -38,41 +38,41 @@ func main() {
 		case line[:3] == "HSL":
 			var h, s, l float32
 			fmt.Sscanf(line, "HSL(%f,%f,%f)", &h, &s, &l)
-			s, l = s/100, l/100
-			c, h2 := (1-abs(2*l-1))*s, h/60
-			x, m := c*(1-abs(float32(mod2(h2)-1))), l-c/2
+			s, l, h = s/100, l/100, h/60
+			c := (1 - abs(2*l-1)) * s
+			x, m := c*(1-abs(float32(mod2(h)-1))), l-c/2
 			switch {
-			case h2 < 1:
+			case h < 1:
 				r, g, b = rint(c+m), rint(x+m), rint(m)
-			case h2 < 2:
+			case h < 2:
 				r, g, b = rint(x+m), rint(c+m), rint(m)
-			case h2 < 3:
+			case h < 3:
 				r, g, b = rint(m), rint(c+m), rint(x+m)
-			case h2 < 4:
+			case h < 4:
 				r, g, b = rint(m), rint(x+m), rint(c+m)
-			case h2 < 5:
+			case h < 5:
 				r, g, b = rint(x+m), rint(m), rint(c+m)
-			case h2 < 6:
+			case h < 6:
 				r, g, b = rint(c+m), rint(m), rint(x+m)
 			}
 		case line[:3] == "HSV":
 			var h, s, v float32
 			fmt.Sscanf(line, "HSV(%f,%f,%f)", &h, &s, &v)
-			s, v = s/100, v/100
-			c, h2 := v*s, h/60
-			x, m := c*(1-abs(float32(mod2(h2)-1))), v-c
+			s, v, h = s/100, v/100, h/60
+			c := v * s
+			x, m := c*(1-abs(float32(mod2(h)-1))), v-c
 			switch {
-			case h2 < 1:
+			case h < 1:
 				r, g, b = rint(c+m), rint(x+m), rint(m)
-			case h2 < 2:
+			case h < 2:
 				r, g, b = rint(x+m), rint(c+m), rint(m)
-			case h2 < 3:
+			case h < 3:
 				r, g, b = rint(m), rint(c+m), rint(x+m)
-			case h2 < 4:
+			case h < 4:
 				r, g, b = rint(m), rint(x+m), rint(c+m)
-			case h2 < 5:
+			case h < 5:
 				r, g, b = rint(x+m), rint(m), rint(c+m)
-			case h2 < 6:
+			case h < 6:
 				r, g, b = rint(c+m), rint(m), rint(x+m)
 			}
 		case line[0] == '(':
