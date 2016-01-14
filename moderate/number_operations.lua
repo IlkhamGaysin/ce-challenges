@@ -44,6 +44,7 @@ for line in io.lines(arg[1]) do
       end
       if f then break end
     end
+    if f then break end
   end
   print(f and "YES" or "NO")
 end
