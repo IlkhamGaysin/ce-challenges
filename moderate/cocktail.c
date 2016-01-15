@@ -26,9 +26,16 @@ int main(int argc, char *argv[]) {
 			ib[i++] = a;
 		}
 		fscanf(fp, "| %u", &a);
-		a = min(a, i - 1);
+		a = min(a, i / 2);
 		for (j = 0; j < a; j++) {
-			for (k = 1; k < i; k++) {
+			for (k = 1 + j; k < i - j; k++) {
+				if (ib[k - 1] > ib[k]) {
+					x = ib[k - 1];
+					ib[k - 1] = ib[k];
+					ib[k] = x;
+				}
+			}
+			for (k = i - j - 1; k > j; k--) {
 				if (ib[k - 1] > ib[k]) {
 					x = ib[k - 1];
 					ib[k - 1] = ib[k];
