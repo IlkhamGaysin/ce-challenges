@@ -16,14 +16,11 @@ File.open(ARGV[0]).each_line do |line|
         break if (p - q).abs < 2
       end
     end
-    if q < p
-      sym = '/'
-    elsif q == p
-      sym = '|'
-    else
-      sym = '\\'
-    end
-    line[q] = sym
+    line[q] = case p <=> q
+              when 0 then '|'
+              when 1 then '/'
+              else '\\'
+              end
     p = q
   end
   puts line

@@ -5,7 +5,7 @@ File.open(ARGV[0]).each_line do |line|
     next
   end
   t = s[1].split(',')
-  (0).step(t.length - 1, 2) do |i|
+  0.step(t.length - 1, 2) do |i|
     if t[i + 1].nil? || t[i + 1].empty?
       t[i + 1] = 'x'
     else

@@ -4,7 +4,7 @@ S = ['', 'One', 'Two', 'Three', 'Four',
      'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen',
      'Twenty', 'Thirty', 'Forty', 'Fifty',
      'Sixty', 'Seventy', 'Eighty', 'Ninety',
-     'Hundred', 'Thousand', 'Million']
+     'Hundred', 'Thousand', 'Million'].freeze
 
 def wrd(a, b, c)
   return false if a + b + c == 0

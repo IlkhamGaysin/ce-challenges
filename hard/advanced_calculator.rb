@@ -1,6 +1,6 @@
-P = { '^' => 4, '%' => 3, '*' => 2, '/' => 2, '+' => 1, '-' => 1 }
+P = { '^' => 4, '%' => 3, '*' => 2, '/' => 2, '+' => 1, '-' => 1 }.freeze
 ERROR = -999_999
-O = ['(', '-(', '|', '-|', 'sqrt(', 'cos(', 'sin(', 'tan(', 'lg(', 'ln(']
+O = ['(', '-(', '|', '-|', 'sqrt(', 'cos(', 'sin(', 'tan(', 'lg(', 'ln('].freeze
 
 def factorial(a)
   if a < 0
@@ -203,7 +203,7 @@ def parse(s)
             r[-2] = factorial(r[2])
             return ERROR if r[-1] == ERROR
           end
-          r = r[0...-3] << -(r[-2].abs)
+          r = r[0...-3] << -r[-2].abs
         elsif r.length == 3 && r[0] == '|'
           r = [r[1].abs]
         elsif r.length == 3 && r[0] == '-|'
@@ -212,7 +212,7 @@ def parse(s)
             r[1] = factorial(r[1].abs)
             return ERROR if r[-1] == ERROR
           end
-          r = [-(r[1].abs)]
+          r = [-r[1].abs]
         end
       else
         print 'Input error: expected operator or closing bracket, got ' + s

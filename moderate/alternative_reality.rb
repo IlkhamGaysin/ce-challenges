@@ -1,4 +1,4 @@
-M = [50, 25, 10, 5, 1]
+M = [50, 25, 10, 5, 1].freeze
 
 def alter(n, p)
   return 1 if n == 0
