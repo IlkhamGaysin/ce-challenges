@@ -16,7 +16,6 @@ static int cmpt(const void *p1, const void *p2) {
 int main(int argc, char *argv[]) {
 	FILE *fp;
 	unsigned a, i, j, c = 0, t = 0, tbs = 16;
-	unsigned *ts = malloc(tbs * sizeof(unsigned));
 	struct team *tb = malloc(tbs * sizeof(struct team));
 	char ch;
 
@@ -29,15 +28,13 @@ int main(int argc, char *argv[]) {
 		while (true) {
 			while (true) {
 				for (i = 0; i < t; i++)
-					if (ts[i] == a)
+					if (tb[i].id == a)
 						break;
 				if (i == t) {
 					if (t == tbs) {
 						tbs += tbs / 2;
-						ts = realloc(ts, tbs * sizeof(unsigned));
 						tb = realloc(tb, tbs * sizeof(struct team));
 					}
-					ts[t] = a;
 					tb[t].id = a;
 					tb[t].countries = 1 << c;
 					t++;
@@ -82,7 +79,6 @@ int main(int argc, char *argv[]) {
 		c = 0;
 		t = 0;
 	}
-	free(ts);
 	free(tb);
 	return 0;
 }
