@@ -1,9 +1,8 @@
 for line in io.lines(arg[1]) do
-  first = true
+  local p = nil
   for i in line:gmatch("%d+") do
-    if first then
+    if p == nil then
       io.write(i)
-      first = false
     elseif p ~= i then
       io.write("," .. i)
     end

@@ -1,8 +1,8 @@
 a = {}
 for line in io.lines(arg[1]) do
-  ix, cm, m, n = 0, 0, 0, 0
+  local ix, cm, m, n = 0, 0, 0, 0
   for i in line:gmatch("%-?%d+") do
-    c = tonumber(i)
+    local c = tonumber(i)
     if ix == 0 then
       n = c
     else
