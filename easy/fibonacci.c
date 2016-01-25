@@ -2,24 +2,24 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	int a;
+	unsigned a, t;
 
 	if (argc != 2) {
 		printf("Usage: %s [FILE]\n", argv[0]);
 		return 1;
 	}
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "%d", &a) != EOF) {
-		if (a == 0 || a == 1) {
+	while (fscanf(fp, "%u", &a) != EOF) {
+		if (a < 2) {
 			printf("%d\n", a);
 		} else {
-			int b[3] = { 1, 1, 0 }, c = 1;
-			while (a > c++) {
-				b[0] = b[1] + b[2];
-				b[2] = b[1];
-				b[1] = b[0];
+			unsigned b = 0, c = 1;
+			for (; a > 1; a--) {
+				t = b + c;
+				b = c;
+				c = t;
 			}
-			printf("%d\n", b[0]);
+			printf("%u\n", c);
 		}
 	}
 	return 0;
