@@ -18,7 +18,7 @@ for line in io.lines(arg[1]) do
   local n, a = line:match("(%d+) (%d+)")
   n, a = tonumber(n), tonumber(a)
   local r = 0
-  for i = 2 ^ (n-1), a do
+  for i = 2 ^ n, a do
     if xz(n, i) then
       r = r + 1
     end
