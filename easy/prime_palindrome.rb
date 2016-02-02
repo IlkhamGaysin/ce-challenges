@@ -1,2 +1,8 @@
 require 'prime'
-puts 999.downto(3).find { |i| i.to_s == i.to_s.reverse && Prime.prime?(i) }
+909.step(101, -202) do |i|
+  90.step(0, -10) do |j|
+    next unless Prime.prime?(i + j)
+    puts i + j
+    exit 0
+  end
+end
