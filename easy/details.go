@@ -21,11 +21,11 @@ func main() {
 		for _, i := range s {
 			if strings.Contains(i, "XY") {
 				m = 0
-			} else {
-				n := strings.Count(i, ".")
-				if n < m {
-					m = n
-				}
+				continue
+			}
+			n := strings.Count(i, ".")
+			if n < m {
+				m = n
 			}
 		}
 		fmt.Println(m)

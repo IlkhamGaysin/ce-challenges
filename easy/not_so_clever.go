@@ -28,15 +28,16 @@ func main() {
 		l := 1
 		for i := 0; i < n; i++ {
 			for j, l = l, 0; j < len(v); j++ {
-				if v[j-1] > v[j] {
-					v[j-1], v[j] = v[j], v[j-1]
-					if j > 1 {
-						l = j - 1
-					} else {
-						l = 2
-					}
-					break
+				if v[j-1] <= v[j] {
+					continue
 				}
+				v[j-1], v[j] = v[j], v[j-1]
+				if j > 1 {
+					l = j - 1
+				} else {
+					l = 2
+				}
+				break
 			}
 			if l == 0 {
 				break
