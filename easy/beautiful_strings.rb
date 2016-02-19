@@ -3,7 +3,7 @@ File.open(ARGV[0]).each_line do |line|
   r = 0
   i = 26
   line.chomp.downcase.each_char do |x|
-    a[x.ord - 97] += 1 if x =~ /[a-zA-Z]/
+    a[x.ord - 97] += 1 if x =~ /[a-z]/
   end
   a.sort!
   while i > 0 && a[i - 1] > 0
