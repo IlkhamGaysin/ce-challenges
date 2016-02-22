@@ -18,7 +18,7 @@ func init() {
 func rank(c string, t byte) int {
 	ret := v[c[0]]
 	if c[len(c)-1] == t {
-		ret <<= 4
+		ret += 13
 	}
 	return ret
 }
