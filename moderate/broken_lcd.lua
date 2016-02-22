@@ -4,7 +4,7 @@ function bin2dec(s)
   b = 0
   for i = 1, #s do
     if s:sub(i, i) == '1' then
-      b = b + 2 ^ (8-i)
+      b = b + 2 ^ (#s-i)
     end
   end
   return b
