@@ -52,6 +52,10 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		fmt.Sscanf(scanner.Text(), "%d", &n)
+		if n&1 > 0 {
+			fmt.Println(0)
+			continue
+		}
 		for maxP < 2*n-1 {
 			maxP += 2
 			if isPrime(maxP) {
