@@ -1,7 +1,5 @@
 def slide(a)
-  last_num = -1
-  last_num_id = -1
-  last_zero = -1
+  last_num = last_num_id = last_zero = -1
   (0...a.length).each do |i|
     if a[i] == 0
       last_zero = i if last_zero == -1

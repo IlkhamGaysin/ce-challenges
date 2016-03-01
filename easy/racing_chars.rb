@@ -1,5 +1,4 @@
-p = nil
-q = nil
+p = q = nil
 File.open(ARGV[0]).each_line do |line|
   if p.nil?
     p = line.index('C')

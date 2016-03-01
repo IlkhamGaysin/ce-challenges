@@ -1,8 +1,7 @@
 File.open(ARGV[0]).each_line do |line|
   s = line.chomp
   next if s.empty?
-  m = -1
-  n = -1
+  m = n = -1
   loop do
     m = n
     n = s.index(s[-1], n + 1)
