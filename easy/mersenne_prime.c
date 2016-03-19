@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 	}
 	fp = fopen(*++argv, "r");
 	while (fscanf(fp, "%"SCNu64, &a) != EOF) {
-		while (primes[plast] < 64 && a > (1 << primes[plast])) {
+		while (primes[plast] < 64 && a > pmax) {
 			psize += psize / 2;
 			primes = realloc(primes, psize * sizeof(unsigned));
 			for (i = primes[plast] + 2; plast < psize - 1; i += 2)
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 					primes[++plast] = i;
 			pmax = i - 2;
 		}
-		for (i = 0; primes[i] < 64 && (1 << primes[i]) - 1 < a; i++) {
+		for (i = 0; primes[i] < 64 && ((uint64_t)1 << primes[i]) - 1 < a; i++) {
 			if (i > 0)
 				printf(", ");
 			printf("%"PRIu64, ((uint64_t)1 << primes[i]) - 1);
