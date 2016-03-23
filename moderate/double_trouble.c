@@ -19,9 +19,9 @@ int main(int argc, char *argv[]) {
 			    (line[i] == 'B' && line[i + n] == 'A')) {
 				r = 0;
 				break;
-			} else if (line[i] == '*' && line[i + n] == '*') {
-				r *= 2;
 			}
+			if (line[i] == '*' && line[i + n] == '*')
+				r *= 2;
 		}
 		printf("%lu\n", r);
 	}

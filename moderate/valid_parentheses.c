@@ -23,9 +23,9 @@ int main(int argc, char *argv[]) {
 				valid = -1;
 			}
 			continue;
-		} else if (valid == -1) {
-			valid = 1;
 		}
+		if (valid == -1)
+			valid = 1;
 		switch (c) {
 		case '\n':
 		case EOF:

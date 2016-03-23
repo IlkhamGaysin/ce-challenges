@@ -66,16 +66,12 @@ int main(int argc, char *argv[]) {
 				if (a) {
 					if (c == '*')
 						break;
-					else
-						a = false;
+					a = false;
 				}
 				if (c == '\\') {
-					if (b) {
-						b = false;
-					} else {
-						b = true;
+					b = !b;
+					if (b)
 						break;
-					}
 				} else if (c == '*') {
 					if (b) {
 						c = '+';
