@@ -16,21 +16,18 @@ File.open(ARGV[0]).each_line do |line|
     if row[ix / n] & 1 << i > 0
       valid = false
       break
-    else
-      row[ix / n] |= 1 << i
     end
+    row[ix / n] |= 1 << i
     if col[ix % n] & 1 << i > 0
       valid = false
       break
-    else
-      col[ix % n] |= 1 << i
     end
+    col[ix % n] |= 1 << i
     if reg[region(ix, n)] & 1 << i > 0
       valid = false
       break
-    else
-      reg[region(ix, n)] |= 1 << i
     end
+    reg[region(ix, n)] |= 1 << i
   end
   puts valid ? 'True' : 'False'
 end
