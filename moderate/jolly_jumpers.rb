@@ -8,9 +8,8 @@ File.open(ARGV[0]).each_line do |line|
       if x >= n || x == 0 || u[x - 1]
         jolly = false
         break
-      else
-        u[x - 1] = true
       end
+      u[x - 1] = true
     end
   end
   puts jolly ? 'Jolly' : 'Not jolly'
