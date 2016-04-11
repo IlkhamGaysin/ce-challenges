@@ -10,9 +10,8 @@ File.open(ARGV[0]).each_line do |line|
     if i == lol.length
       lol[i] = line
       break
-    elsif line.length > lol[i].length
-      lol[i], line = line, lol[i]
     end
+    lol[i], line = line, lol[i] if line.length > lol[i].length
   end
 end
 puts lol.join("\n")

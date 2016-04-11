@@ -6,8 +6,7 @@ File.open(ARGV[0]).each_line do |line|
     if m[i]
       puts i
       break
-    else
-      m[i] = true
     end
+    m[i] = true
   end
 end
