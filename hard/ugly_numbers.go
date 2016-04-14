@@ -7,10 +7,14 @@ import (
 	"os"
 )
 
-func pow3(a int) int {
-	ret := 1
-	for i := 0; i < a; i++ {
-		ret *= 3
+func pow3(x int) int {
+	y, ret := 3, 1
+	for x > 0 {
+		if x&1 > 0 {
+			ret *= y
+		}
+		y *= y
+		x >>= 1
 	}
 	return ret
 }

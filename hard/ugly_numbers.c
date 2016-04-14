@@ -2,11 +2,15 @@
 #include <stdint.h>
 #include <stdio.h>
 
-static int powi(int a, int b) {
-	int i, ret = 1;
-	for (i = 0; i < b; i++)
-		ret *= a;
-	return ret;
+static int pow3(int x) {
+	int y = 3, r = 1;
+	while (x) {
+		if (x & 1)
+			r *= y;
+		y *= y;
+		x >>= 1;
+	}
+	return r;
 }
 
 static bool ugly(int j, int i, int *n) {
@@ -59,10 +63,9 @@ int main(int argc, char *argv[]) {
 			n[i++] = c - '0';
 			c = getc(fp);
 		}
-		for (j = 0; j < powi(3, i - 1); j++) {
-			if (ugly(j, i, n))
+		for (j = pow3(i - 1); j > 0 ; j--)
+			if (ugly(j - 1, i, n))
 				u++;
-		}
 
 		printf("%d\n", u);
 	}

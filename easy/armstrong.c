@@ -1,10 +1,14 @@
 #include <stdio.h>
 
-static int powi(int a, int b) {
-	int i, ret = 1;
-	for (i = 0; i < b; i++)
-		ret *= a;
-	return ret;
+static int powi(int y, int x) {
+	int r = 1;
+	while (x) {
+		if (x & 1)
+			r *= y;
+		y *= y;
+		x >>= 1;
+	}
+	return r;
 }
 
 int main(int argc, char *argv[]) {

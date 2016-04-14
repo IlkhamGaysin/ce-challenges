@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <gmp.h>
 
-static unsigned long power(unsigned long a, unsigned long b) {
-	unsigned long i, r = 1;
-	for (i = 0; i < b; i++)
-		r *= a;
+static unsigned long power(unsigned long y, unsigned long x) {
+	unsigned long r = 1;
+	while (x) {
+		if (x & 1)
+			r *= y;
+		y *= y;
+		x >>= 1;
+	}
 	return r;
 }
 

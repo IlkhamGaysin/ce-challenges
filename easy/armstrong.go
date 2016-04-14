@@ -7,10 +7,14 @@ import (
 	"os"
 )
 
-func powi(a, b int) (ret int) {
-	ret = 1
-	for i := 0; i < b; i++ {
-		ret *= a
+func powi(y, x int) int {
+	ret := 1
+	for x > 0 {
+		if x&1 > 0 {
+			ret *= y
+		}
+		y *= y
+		x >>= 1
 	}
 	return ret
 }
