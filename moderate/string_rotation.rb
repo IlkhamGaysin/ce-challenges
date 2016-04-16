@@ -13,9 +13,8 @@ File.open(ARGV[0]).each_line do |line|
     if s[0] == s[1]
       r = true
       break
-    else
-      s[1].rotate!
     end
+    s[1].rotate!
   end
   puts r ? 'True' : 'False'
 end
