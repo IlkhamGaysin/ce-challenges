@@ -16,16 +16,13 @@ for line in fileinput.input():
         if row[ix // n] & 1 << i:
             valid = False
             break
-        else:
-            row[ix // n] |= 1 << i
+        row[ix // n] |= 1 << i
         if col[ix % n] & 1 << i:
             valid = False
             break
-        else:
-            col[ix % n] |= 1 << i
+        col[ix % n] |= 1 << i
         if reg[region(ix, n)] & 1 << i:
             valid = False
             break
-        else:
-            reg[region(ix, n)] |= 1 << i
+        reg[region(ix, n)] |= 1 << i
     print("True" if valid else "False")

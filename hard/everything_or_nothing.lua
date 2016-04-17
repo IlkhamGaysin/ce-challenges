@@ -32,16 +32,15 @@ for line in io.lines(arg[1]) do
       if check(uperm[x], grant) then
         v = false
         break
-      else
-        a, u = i:match("grant=>(%l)%l+=>user_(%d)")
-        x = (tonumber(u) - 1) * 3 + tonumber(f)
-        if a == 'r' and check(uperm[x], read) then
-          uperm[x] = uperm[x] + read
-        elseif a == 'w' and check(uperm[x], write) then
-          uperm[x] = uperm[x] + write
-        elseif a == 'g' and check(uperm[x], grant) then
-          uperm[x] = uperm[x] + grant
-        end
+      end
+      a, u = i:match("grant=>(%l)%l+=>user_(%d)")
+      x = (tonumber(u) - 1) * 3 + tonumber(f)
+      if a == 'r' and check(uperm[x], read) then
+        uperm[x] = uperm[x] + read
+      elseif a == 'w' and check(uperm[x], write) then
+        uperm[x] = uperm[x] + write
+      elseif a == 'g' and check(uperm[x], grant) then
+        uperm[x] = uperm[x] + grant
       end
     end
   end

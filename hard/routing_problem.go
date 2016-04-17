@@ -137,9 +137,8 @@ func main() {
 			}
 			if fin {
 				break
-			} else {
-				q = r
 			}
+			q = r
 		}
 		if !fin {
 			fmt.Println("No connection")

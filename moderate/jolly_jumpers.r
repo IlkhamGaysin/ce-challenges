@@ -7,9 +7,8 @@ cat(sapply(lapply(strsplit(readLines(tail(commandArgs(), n=1)), " "), as.integer
       if (x >= s[1] || x == 0 || (x-1) %in% u) {
         j <- FALSE
         break
-      } else {
-        u <- append(u, x-1)
       }
+      u <- append(u, x-1)
     }
   }
   if (j == TRUE) {

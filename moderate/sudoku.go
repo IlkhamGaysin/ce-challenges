@@ -51,9 +51,8 @@ func main() {
 					if csqu[j] != d {
 						valid = false
 						break
-					} else {
-						csqu[j] = 0
 					}
+					csqu[j] = 0
 				}
 			}
 		}

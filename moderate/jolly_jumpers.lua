@@ -11,9 +11,8 @@ for line in io.lines(arg[1]) do
       if x >= n or x == 0 or u[x-1] == true then
         jolly = false
         break
-      else
-        u[x-1] = true
       end
+      u[x-1] = true
     end
   end
   print(jolly and "Jolly" or "Not jolly")

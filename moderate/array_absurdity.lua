@@ -5,9 +5,8 @@ for line in io.lines(arg[1]) do
       if m[i] then
         print(i)
         break
-      else
-        m[i] = true
       end
+      m[i] = true
     end
   end
 end
