@@ -8,9 +8,7 @@ for line in fileinput.input():
 
     a = int(st[0])
     b = int(st[1])
-    c = 0
-    la = 0
-    lb = 0
+    c = la = lb = 0
     ha = a - 1
     hb = b - 1
 
