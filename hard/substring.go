@@ -20,12 +20,10 @@ func subcheck(s0, s1 string, q, r int) bool {
 			}
 			return m
 		} else if s1[r] == '\\' && r < len(s1)+1 && s1[r+1] == '*' {
-			if s0[q] == '*' {
-				q, r = q+1, r+2
-				continue
-			} else {
+			if s0[q] != '*' {
 				return false
 			}
+			q, r = q+1, r+2
 		}
 		if s0[q] != s1[r] {
 			return false
