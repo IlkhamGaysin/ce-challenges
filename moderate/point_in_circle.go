@@ -22,10 +22,6 @@ func main() {
 		f := make([]float64, 5)
 		fmt.Sscanf(scanner.Text(), "Center: (%f, %f); Radius: %f; Point: (%f, %f)",
 			&f[0], &f[1], &f[2], &f[3], &f[4])
-		if inCircle(f[0]-f[3], f[1]-f[4], f[2]) {
-			fmt.Println("true")
-		} else {
-			fmt.Println("false")
-		}
+		fmt.Println(inCircle(f[0]-f[3], f[1]-f[4], f[2]))
 	}
 }

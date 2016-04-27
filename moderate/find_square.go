@@ -36,11 +36,7 @@ func main() {
 			}
 		}
 		sort.Ints(d)
-		if d[0] == d[1] && d[0] == d[2] && d[0] == d[3] &&
-			d[4] == d[5] && 2*d[0] == d[4] {
-			fmt.Println("true")
-		} else {
-			fmt.Println("false")
-		}
+		fmt.Println(d[0] == d[1] && d[0] == d[2] && d[0] == d[3] &&
+			d[4] == d[5] && 2*d[0] == d[4])
 	}
 }

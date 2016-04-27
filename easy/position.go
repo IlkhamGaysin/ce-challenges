@@ -17,10 +17,6 @@ func main() {
 	for scanner.Scan() {
 		var n, p, q uint
 		fmt.Sscanf(scanner.Text(), "%d,%d,%d", &n, &p, &q)
-		if ((n & (1 << (p - 1))) == 0) == ((n & (1 << (q - 1))) == 0) {
-			fmt.Println("true")
-		} else {
-			fmt.Println("false")
-		}
+		fmt.Println(((n & (1 << (p - 1))) == 0) == ((n & (1 << (q - 1))) == 0))
 	}
 }

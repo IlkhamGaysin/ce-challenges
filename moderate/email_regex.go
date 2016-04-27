@@ -17,10 +17,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		if emailRegex.MatchString(scanner.Text()) {
-			fmt.Println("true")
-		} else {
-			fmt.Println("false")
-		}
+		fmt.Println(emailRegex.MatchString(scanner.Text()))
 	}
 }
