@@ -1,9 +1,7 @@
 import fileinput
 
 def isBalanced(s, c):
-    while True:
-        if c < 0:
-            return False
+    while c >= 0:
         while s != "" and s[0] not in "():":
             s = s[1:]
         while s != "" and s[-1] not in "()":
@@ -23,6 +21,7 @@ def isBalanced(s, c):
                 s = s[1:]
         else:
             return False
+    return False
 
 for line in fileinput.input():
     print("YES" if isBalanced(line, 0) else "NO")
