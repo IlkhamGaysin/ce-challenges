@@ -11,9 +11,8 @@ import (
 )
 
 type point struct {
-	x  float64
-	y  float64
-	id int
+	x, y float64
+	id   int
 }
 
 func dist(a, b point) float64 {
@@ -22,9 +21,8 @@ func dist(a, b point) float64 {
 }
 
 type pair struct {
-	d float64
-	a int
-	b int
+	d    float64
+	a, b int
 }
 
 type ascend []pair

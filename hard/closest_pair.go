@@ -10,9 +10,8 @@ import (
 )
 
 type point struct {
-	x  float64
-	y  float64
-	id int
+	x, y float64
+	id   int
 }
 
 type horizontal []point

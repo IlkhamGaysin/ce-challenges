@@ -11,9 +11,7 @@ import (
 )
 
 type house struct {
-	x int
-	h int
-	y int
+	x, h, y int
 }
 type houses []house
 

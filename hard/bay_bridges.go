@@ -9,12 +9,9 @@ import (
 )
 
 type bridge struct {
-	id    int
-	x1    float64
-	y1    float64
-	x2    float64
-	y2    float64
-	inter []int
+	id             int
+	x1, y1, x2, y2 float64
+	inter          []int
 }
 
 type ascend []bridge

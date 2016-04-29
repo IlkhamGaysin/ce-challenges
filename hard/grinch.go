@@ -13,13 +13,11 @@ import (
 const inf = math.MaxInt32
 
 type vertex struct {
-	id   uint
-	dist uint
+	id, dist uint
 }
 
 type edge struct {
-	to   uint
-	dist uint
+	to, dist uint
 }
 
 type vertexHeap []vertex

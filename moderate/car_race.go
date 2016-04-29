@@ -10,8 +10,7 @@ import (
 )
 
 type segment struct {
-	length float64
-	angle  float64
+	length, angle float64
 }
 
 type car struct {

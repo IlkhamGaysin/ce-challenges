@@ -10,8 +10,7 @@ import (
 )
 
 type pwi struct {
-	n  int
-	nx int
+	n, nx int
 }
 type pwis []pwi
 

@@ -11,9 +11,7 @@ import (
 )
 
 type item struct {
-	id     int64
-	value  int64
-	weight int64
+	id, value, weight int64
 }
 type items []item
 
@@ -30,11 +28,8 @@ func (slice bäst) Less(i, j int) bool { return slice[i] < slice[j] }
 func (slice bäst) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
 
 type task struct {
-	level int64
-	bound int64
-	value int64
-	room  int64
-	stuff []int64
+	level, bound, value, room int64
+	stuff                     []int64
 }
 
 func boundary(room, value int64, stuff []item, itl []int64) (t, b int64, tl []int64) {

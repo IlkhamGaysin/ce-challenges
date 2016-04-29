@@ -9,10 +9,8 @@ import (
 )
 
 type state struct {
-	knownOut   uint16
-	knownIn    uint16
-	unknownOut int8
-	unknownIn  int8
+	knownOut, knownIn     uint16
+	unknownOut, unknownIn int8
 }
 
 func kernighan(a uint16) (r int8) {

@@ -10,9 +10,8 @@ import (
 )
 
 type place struct {
-	id int
-	x  float64
-	y  float64
+	id   int
+	x, y float64
 }
 
 func dist(a, b *place) float64 {

@@ -9,8 +9,7 @@ import (
 )
 
 type point struct {
-	x int
-	y int
+	x, y int
 }
 
 func within(a []int, b point) bool {
