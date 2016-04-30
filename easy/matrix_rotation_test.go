@@ -1,14 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestSq(t *testing.T) {
 	for i := 1; i <= 10; i++ {
-		if sq(i*i) != i {
-			t.Error("failed: sq " + fmt.Sprint(i*i))
+		if res := sq(i * i); res != i {
+			t.Errorf("failed: sq %d = %d, got %d", i*i, i, res)
 		}
 	}
 }

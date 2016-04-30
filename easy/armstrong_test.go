@@ -3,14 +3,14 @@ package main
 import "testing"
 
 func TestPowi(t *testing.T) {
-	if powi(9, 19) != 1350851717672992089 {
-		t.Error("failed: 9^19")
+	if res := powi(9, 19); res != 1350851717672992089 {
+		t.Errorf("failed: 9^19 = 1350851717672992089, got %d", res)
 	}
-	if powi(0, 8) != 0 {
-		t.Error("failed: 0^8")
+	if res := powi(0, 8); res != 0 {
+		t.Errorf("failed: 0^8 = 0, got %d", res)
 	}
-	if powi(0, 0) != 1 {
-		t.Error("failed: 0^0")
+	if res := powi(0, 0); res != 1 {
+		t.Errorf("failed: 0^0 = 1, got %d", res)
 	}
 }
 

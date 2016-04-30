@@ -7,16 +7,16 @@ import (
 
 func TestContainsAll(t *testing.T) {
 	if !containsAll("ddccbbaa", "abcd") {
-		t.Error("failed: ddccbbaa, abcd")
+		t.Error("failed: ddccbbaa contains abcd, got false")
 	}
 	if !containsAll("Chardonnay", "ann") {
-		t.Error("failed: Chardonnay, ann")
+		t.Error("failed: Chardonnay contains ann, got false")
 	}
 	if containsAll("qwer", "ee") {
-		t.Error("failed: qwer, ee")
+		t.Error("failed: qwer doesn't contain ee, got true")
 	}
 	if containsAll("Cabernet", "ot") {
-		t.Error("failed: Cabernet, ot")
+		t.Error("failed: Cabernet doesn't contain ot, got true")
 	}
 }
 
