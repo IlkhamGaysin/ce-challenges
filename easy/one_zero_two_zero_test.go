@@ -16,7 +16,7 @@ func TestXz(t *testing.T) {
 
 func BenchmarkXz(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		xz(i, 7)
+		xz(i%11, (i/11)%995+5)
 	}
 }
 
