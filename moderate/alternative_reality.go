@@ -7,20 +7,20 @@ import (
 	"os"
 )
 
-var m map[int]int
+var m []int
 
 func init() {
-	m = map[int]int{50: 25, 25: 10, 10: 5, 5: 1}
+	m = []int{1, 5, 10, 25, 50}
 }
 
 func alter(n, c int) int {
-	if n == 0 || c == 1 {
+	if n < m[1] || c == 0 {
 		return 1
 	}
-	if c > n {
-		return alter(n, m[c])
+	if m[c] > n {
+		return alter(n, c-1)
 	}
-	return alter(n-c, c) + alter(n, m[c])
+	return alter(n-m[c], c) + alter(n, c-1)
 }
 
 func main() {
@@ -33,6 +33,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		fmt.Sscanf(scanner.Text(), "%d", &n)
-		fmt.Println(alter(n, 50))
+		fmt.Println(alter(n, 4))
 	}
 }
