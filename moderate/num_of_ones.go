@@ -7,7 +7,15 @@ import (
 	"os"
 )
 
+func kernighan(a int) (r int) {
+	for ; a > 0; a &= a - 1 {
+		r++
+	}
+	return r
+}
+
 func main() {
+	var a int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -15,11 +23,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var a, c int
 		fmt.Sscan(scanner.Text(), &a)
-		for ; a > 0; a &= a - 1 {
-			c++
-		}
-		fmt.Println(c)
+		fmt.Println(kernighan(a))
 	}
 }
