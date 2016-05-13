@@ -7,26 +7,18 @@ import (
 	"os"
 )
 
-var t []int
-
-func init() {
-	t = make([]int, 10)
-}
-
-func pali(a int) bool {
-	y := 0
-	for c := a; c > 0; c /= 10 {
-		t[y] = c % 10
-		y++
+func isPalindrome(a int) bool {
+	if a%10 == 0 {
+		return a == 0
 	}
-	for x := 0; ; x, y = x+1, y-1 {
-		if t[x] != t[y-1] {
-			return false
-		}
-		if y-x < 3 {
+	var rev int
+	for ; a > rev; a /= 10 {
+		rev = 10*rev + a%10
+		if a == rev {
 			return true
 		}
 	}
+	return rev == a
 }
 
 func main() {
@@ -46,13 +38,13 @@ func main() {
 				var p int
 				if prev > -1 {
 					p = prev
-					if pali(j) {
+					if isPalindrome(j) {
 						p++
 					}
 				} else {
 					p = 0
 					for k := i; k <= j; k++ {
-						if pali(k) {
+						if isPalindrome(k) {
 							p++
 						}
 					}

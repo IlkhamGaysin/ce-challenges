@@ -32,10 +32,7 @@ func primeSeq() func() int {
 
 func isPalindrome(a int) bool {
 	if a%10 == 0 {
-		if a > 0 {
-			return false
-		}
-		return true
+		return a == 0
 	}
 	var rev int
 	for ; a > rev; a /= 10 {
