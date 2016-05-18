@@ -8,30 +8,37 @@ import (
 )
 
 func isBalanced(s string, c int) bool {
-	for s != "" && c >= 0 {
-		first, last := s[0], s[len(s)-1]
-		switch {
-		case (first >= 'a' && first <= 'z') || first == ' ':
-			s = s[1:]
-		case (last >= 'a' && last <= 'z') || last == ' ' || last == ':':
-			s = s[:len(s)-1]
-		case first == '(':
-			c, s = c+1, s[1:]
-		case first == ')':
-			c, s = c-1, s[1:]
-		case first == ':':
+	for ; s != "" && c >= 0; s = s[1:] {
+		switch s[0] {
+		case '(':
+			c++
+		case ')':
+			c--
+		case ':':
 			if s[1] == '(' {
 				return isBalanced(s[2:], c) || isBalanced(s[2:], c+1)
 			} else if s[1] == ')' {
 				return isBalanced(s[2:], c) || isBalanced(s[2:], c-1)
-			} else {
-				s = s[1:]
 			}
-		default:
-			return false
 		}
 	}
 	return c == 0
+}
+
+func trimRight(s string) string {
+	r := len(s)
+	for ; r > 0 && s[r-1] != '(' && s[r-1] != ')'; r-- {
+	}
+	return s[:r]
+}
+
+func checkChars(s string) bool {
+	for _, i := range s {
+		if i != ' ' && i != '(' && i != ')' && i != ':' && (i < 'a' || i > 'z') {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
@@ -42,7 +49,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		if isBalanced(scanner.Text(), 0) {
+		if s := scanner.Text(); checkChars(s) && isBalanced(trimRight(s), 0) {
 			fmt.Println("YES")
 		} else {
 			fmt.Println("NO")
