@@ -9,7 +9,7 @@ import (
 )
 
 func pos(l, r uint8) string {
-	return string('a'+l) + string('1'+r)
+	return string([]byte{'a' + l, '1' + r})
 }
 
 func main() {
