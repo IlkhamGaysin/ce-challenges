@@ -8,6 +8,26 @@ import (
 	"strings"
 )
 
+func compress(s string) string {
+	var (
+		r []string
+		n string
+		c int
+	)
+	for _, i := range strings.Fields(s) {
+		if i == n {
+			c++
+			continue
+		}
+		if c > 0 {
+			r = append(append(r, fmt.Sprint(c)), n)
+		}
+		c, n = 1, i
+	}
+	r = append(append(r, fmt.Sprint(c)), n)
+	return strings.Join(r, " ")
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,19 +36,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var num, count, k int
-		sequ := strings.Fields(strings.TrimSpace(scanner.Text()))
-		for _, i := range sequ {
-			fmt.Sscanf(i, "%d", &k)
-			if k == num {
-				count++
-				continue
-			}
-			if count > 0 {
-				fmt.Print(count, num, " ")
-			}
-			count, num = 1, k
-		}
-		fmt.Println(count, num)
+		fmt.Println(compress(scanner.Text()))
 	}
 }
