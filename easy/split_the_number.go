@@ -8,6 +8,23 @@ import (
 	"strings"
 )
 
+func split(s, t string) int {
+	var n, m, p int
+	var neg bool
+	if strings.Contains(t, "+") {
+		p = strings.Index(t, "+")
+	} else {
+		p = strings.Index(t, "-")
+		neg = true
+	}
+	fmt.Sscanf(s[0:p], "%d", &n)
+	fmt.Sscanf(s[p:len(s)], "%d", &m)
+	if neg {
+		return n - m
+	}
+	return n + m
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,20 +33,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t := strings.Fields(scanner.Text())
-		var n, m, p int
-		var neg bool
-		if strings.Contains(t[1], "+") {
-			p = strings.Index(t[1], "+")
-		} else {
-			p = strings.Index(t[1], "-")
-			neg = true
-		}
-		fmt.Sscanf(t[0][0:p], "%d", &n)
-		fmt.Sscanf(t[0][p:len(t[0])], "%d", &m)
-		if neg {
-			m = -m
-		}
-		fmt.Println(n + m)
+		s := strings.Fields(scanner.Text())
+		fmt.Println(split(s[0], s[1]))
 	}
 }
