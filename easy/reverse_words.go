@@ -8,6 +8,22 @@ import (
 	"strings"
 )
 
+func reverse(s string) string {
+	var (
+		c []byte
+		t []string
+	)
+	for _, i := range s {
+		if i == ' ' {
+			t, c = append([]string{string(c)}, t...), []byte{}
+		} else {
+			c = append(c, byte(i))
+		}
+	}
+	t = append([]string{string(c)}, t...)
+	return strings.Join(t, " ")
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -19,18 +35,6 @@ func main() {
 		if len(scanner.Text()) == 0 {
 			continue
 		}
-		var (
-			c string
-			t []string
-		)
-		for _, i := range scanner.Text() {
-			if i == ' ' {
-				t, c = append([]string{c}, t...), ""
-			} else {
-				c += string(i)
-			}
-		}
-		t = append([]string{c}, t...)
-		fmt.Println(strings.Join(t, " "))
+		fmt.Println(reverse(scanner.Text()))
 	}
 }
