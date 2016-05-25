@@ -7,6 +7,23 @@ import (
 	"os"
 )
 
+func lcase(s string) (float64, float64) {
+	var c, l float64
+	for _, i := range s {
+		if i >= 'a' && i <= 'z' {
+			l++
+			c++
+		} else if i >= 'A' && i <= 'Z' {
+			c++
+		}
+	}
+	if c == 0 {
+		return 0, 0
+	}
+	r := 100 * l / c
+	return r, 100 - r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,20 +32,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var count, lower, ratio float64
-		for _, i := range scanner.Text() {
-			if i >= 'a' && i <= 'z' {
-				lower++
-				count++
-			} else if i >= 'A' && i <= 'Z' {
-				count++
-			}
-		}
-		if count > 0 {
-			ratio = 100 * lower / count
-			fmt.Printf("lowercase: %.2f uppercase: %.2f\n", ratio, 100-ratio)
-		} else {
-			fmt.Println("lowercase: 0.00 uppercase: 0.00")
-		}
+		l, u := lcase(scanner.Text())
+		fmt.Printf("lowercase: %.2f uppercase: %.2f\n", l, u)
 	}
 }
