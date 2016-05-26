@@ -5,9 +5,25 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 )
+
+func recovery(s, t string) string {
+	var k int
+	words, sequ := strings.Fields(s), strings.Fields(t)
+	r := make([]string, len(words))
+	for ix, i := range sequ {
+		fmt.Sscan(i, &k)
+		r[k-1] = words[ix]
+	}
+	for ix := 0; ix < len(r); ix++ {
+		if r[ix] == "" {
+			r[ix] = words[len(words)-1]
+			break
+		}
+	}
+	return strings.Join(r, " ")
+}
 
 func main() {
 	data, err := os.Open(os.Args[1])
@@ -18,24 +34,8 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), ";")
-		if len(t) < 2 {
-			continue
+		if len(t) == 2 {
+			fmt.Println(recovery(t[0], t[1]))
 		}
-		words, sequ := strings.Fields(t[0]), strings.Fields(t[1])
-		reco := make([]string, len(words))
-		for ix, i := range sequ {
-			k, err := strconv.Atoi(i)
-			if err != nil {
-				log.Fatal(err)
-			}
-			reco[k-1] = words[ix]
-		}
-		for ix := 0; ix < len(reco); ix++ {
-			if reco[ix] == "" {
-				reco[ix] = words[len(words)-1]
-				break
-			}
-		}
-		fmt.Println(strings.Join(reco, " "))
 	}
 }
