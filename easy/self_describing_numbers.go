@@ -7,6 +7,23 @@ import (
 	"os"
 )
 
+func self(s string) bool {
+	var n, r int64
+	fmt.Sscan(s, &n)
+	p := make([]int, len(s))
+	for m := n; m > 0; m /= 10 {
+		if v := int(m % 10); v < len(p) {
+			p[v]++
+		} else {
+			return false
+		}
+	}
+	for _, i := range p {
+		r = r*10 + int64(i)
+	}
+	return n == r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,24 +32,10 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var n, r int
-		fmt.Sscanf(scanner.Text(), "%d", &n)
-		p := make([]int, len(scanner.Text()))
-		for m := n; m > 0; m /= 10 {
-			if v := m % 10; v < len(p) {
-				p[v]++
-			} else {
-				goto out
-			}
-		}
-		for _, i := range p {
-			r = r*10 + i
-		}
-		if n == r {
+		if self(scanner.Text()) {
 			fmt.Println(1)
-			continue
+		} else {
+			fmt.Println(0)
 		}
-	out:
-		fmt.Println(0)
 	}
 }
