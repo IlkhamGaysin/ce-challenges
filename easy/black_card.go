@@ -8,6 +8,18 @@ import (
 	"strings"
 )
 
+func blackCard(s []string, m int) string {
+	for len(s) > 1 {
+		n := m%len(s) - 1
+		if n == -1 {
+			s = s[:len(s)-1]
+		} else {
+			s = append(s[:n], s[n+1:]...)
+		}
+	}
+	return s[0]
+}
+
 func main() {
 	var m int
 	data, err := os.Open(os.Args[1])
@@ -19,15 +31,6 @@ func main() {
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), " | ")
 		fmt.Sscanf(t[1], "%d", &m)
-		u := strings.Fields(t[0])
-		for len(u) > 1 {
-			n := m%len(u) - 1
-			if n == -1 {
-				u = u[:len(u)-1]
-			} else {
-				u = append(u[:n], u[n+1:]...)
-			}
-		}
-		fmt.Println(u[0])
+		fmt.Println(blackCard(strings.Fields(t[0]), m))
 	}
 }
