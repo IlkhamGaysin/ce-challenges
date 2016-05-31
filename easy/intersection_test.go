@@ -1,12 +1,24 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestMultiples(t *testing.T) {
+	h := map[string]string{
+		"1,2,3,4;4,5,6":               "4",
+		"7,8,9;8,9,10,11,12":          "8,9",
+		"3,4,7;2,6,12":                "",
+		"1,3,5,7,9,11,13;2,3,5,6,8,9": "3,5,9"}
+	for k, v := range h {
+		s := strings.Split(k, ";")
+		if res := intersect(s[0], s[1]); res != v {
+			t.Errorf("failed: intersect %s is %s, got %s", k, v, res)
+		}
+	}
+}
 
 func intersect(s, t string) string {
 	var (
@@ -35,17 +47,4 @@ func intersect(s, t string) string {
 		}
 	}
 	return strings.Join(r, ",")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Println(intersect(s[0], s[1]))
-	}
 }
