@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestMultiples(t *testing.T) {
+func TestIntersect(t *testing.T) {
 	h := map[string]string{
 		"1,2,3,4;4,5,6":               "4",
 		"7,8,9;8,9,10,11,12":          "8,9",
@@ -17,6 +17,21 @@ func TestMultiples(t *testing.T) {
 		if res := intersect(s[0], s[1]); res != v {
 			t.Errorf("failed: intersect %s is %s, got %s", k, v, res)
 		}
+	}
+}
+
+func BenchmarkIntersect(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var (
+			s, t []string
+			c    uint
+		)
+		for j := i + 3; j > 0; j /= 4 {
+			s = append(s, fmt.Sprint((j&1)<<c))
+			t = append(s, fmt.Sprint((j&2)<<c))
+			c++
+		}
+		intersect(strings.Join(s, ","), strings.Join(t, ","))
 	}
 }
 
