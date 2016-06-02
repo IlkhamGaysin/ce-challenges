@@ -8,6 +8,17 @@ import (
 	"strings"
 )
 
+func findWriter(s, t string) string {
+	var f int
+	u := strings.Fields(t)
+	r := make([]byte, len(u))
+	for ix, i := range u {
+		fmt.Sscan(i, &f)
+		r[ix] = byte(s[f-1])
+	}
+	return string(r)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -20,12 +31,6 @@ func main() {
 			continue
 		}
 		t := strings.Split(scanner.Text(), "|")
-		u := strings.Fields(strings.TrimSpace(t[1]))
-		for _, i := range u {
-			var f int
-			fmt.Sscan(i, &f)
-			fmt.Printf("%c", t[0][f-1])
-		}
-		fmt.Println()
+		fmt.Println(findWriter(t[0], t[1]))
 	}
 }
