@@ -4,10 +4,28 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strings"
 )
+
+func lowestUnique(s string) uint {
+	var k uint
+	m := make([]int, 9)
+	for ix, i := range strings.Fields(s) {
+		fmt.Sscan(i, &k)
+		if m[k-1] == 0 {
+			m[k-1] = ix + 1
+		} else {
+			m[k-1] = -1
+		}
+	}
+	for i := uint(0); i < 9; i++ {
+		if m[i] > 0 {
+			return i
+		}
+	}
+	return 0
+}
 
 func main() {
 	data, err := os.Open(os.Args[1])
@@ -17,25 +35,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		m, mink, minv := make(map[int]int), math.MaxInt32, 0
-		for ix, i := range strings.Fields(strings.TrimSpace(scanner.Text())) {
-			var k int
-			fmt.Sscanf(i, "%d", &k)
-			if m[k] == 0 {
-				m[k] = ix + 1
-			} else {
-				m[k] = math.MaxInt32
-			}
-		}
-		for k, v := range m {
-			if v < math.MaxInt32 && k < mink {
-				mink, minv = k, v
-			}
-		}
-		if mink == math.MaxInt32 {
-			fmt.Println(0)
-		} else {
-			fmt.Println(minv)
-		}
+		fmt.Println(lowestUnique(scanner.Text()))
 	}
 }
