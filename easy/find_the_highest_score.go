@@ -15,8 +15,29 @@ func max(a, b int) int {
 	return a
 }
 
+func highestScore(s string) string {
+	var (
+		a int
+		r []int
+		u []string
+	)
+	for ix, i := range strings.Split(s, "|") {
+		for jx, j := range strings.Fields(i) {
+			fmt.Sscan(j, &a)
+			if ix == 0 {
+				r = append(r, a)
+			} else {
+				r[jx] = max(r[jx], a)
+			}
+		}
+	}
+	for _, i := range r {
+		u = append(u, fmt.Sprint(i))
+	}
+	return strings.Join(u, " ")
+}
+
 func main() {
-	var a int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -24,25 +45,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var (
-			r []int
-			u []string
-		)
-		s := strings.Split(scanner.Text(), "|")
-		for ix, i := range s {
-			t := strings.Fields(strings.TrimSpace(i))
-			for jx, j := range t {
-				fmt.Sscanf(j, "%d", &a)
-				if ix == 0 {
-					r = append(r, a)
-				} else {
-					r[jx] = max(r[jx], a)
-				}
-			}
-		}
-		for _, i := range r {
-			u = append(u, fmt.Sprint(i))
-		}
-		fmt.Println(strings.Join(u, " "))
+		fmt.Println(highestScore(scanner.Text()))
 	}
 }
