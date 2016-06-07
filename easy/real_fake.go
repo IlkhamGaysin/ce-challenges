@@ -8,6 +8,22 @@ import (
 	"strings"
 )
 
+func realFake(q string) bool {
+	s := strings.Split(q, "")
+	t := make([]int, len(s))
+	for i := 0; i < len(s); i++ {
+		fmt.Sscan(s[i], &t[i])
+	}
+	for i := len(t) - 2; i >= 0; i -= 2 {
+		t[i] *= 2
+	}
+	var su int
+	for i := 0; i < len(t); i++ {
+		su += t[i]
+	}
+	return su%10 == 0
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -22,19 +38,7 @@ func main() {
 		return -1
 	}
 	for scanner.Scan() {
-		s := strings.Split(strings.Map(mapf, scanner.Text()), "")
-		t := make([]int, len(s))
-		for i := 0; i < len(s); i++ {
-			fmt.Sscan(s[i], &t[i])
-		}
-		for i := len(t) - 2; i >= 0; i -= 2 {
-			t[i] *= 2
-		}
-		var su int
-		for i := 0; i < len(t); i++ {
-			su += t[i]
-		}
-		if su%10 == 0 {
+		if realFake(strings.Map(mapf, scanner.Text())) {
 			fmt.Println("Real")
 		} else {
 			fmt.Println("Fake")
