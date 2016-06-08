@@ -17,6 +17,12 @@ func TestRealFake(t *testing.T) {
 	}
 }
 
+func BenchmarkRealFake(b *testing.B) {
+	for i := 1; i < b.N; i++ {
+		realFake(fmt.Sprint(uint64(i) + 1000000000000000))
+	}
+}
+
 func realFake(q string) bool {
 	s := strings.Split(q, "")
 	t := make([]int, len(s))
