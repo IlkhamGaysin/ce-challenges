@@ -1,13 +1,22 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestCodeCombinations(t *testing.T) {
+	h := map[string]uint{
+		"**** | *co* | *de* | ****": 1,
+		"codx | decx":               2,
+		"co | dx":                   0}
+	for k, v := range h {
+		if res := codeCombinations(k); res != v {
+			t.Errorf("failed: codeCombinations %s is %d, got %d", k, v, res)
+		}
+	}
+}
 
 func codeCombinations(q string) (r uint) {
 	s := strings.Split(q, " | ")
@@ -21,16 +30,4 @@ func codeCombinations(q string) (r uint) {
 		}
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(codeCombinations(scanner.Text()))
-	}
 }
