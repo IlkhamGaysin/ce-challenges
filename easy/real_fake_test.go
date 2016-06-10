@@ -26,14 +26,14 @@ func BenchmarkRealFake(b *testing.B) {
 func realFake(q string) bool {
 	s := strings.Split(q, "")
 	t := make([]int, len(s))
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		fmt.Sscan(s[i], &t[i])
 	}
 	for i := len(t) - 2; i >= 0; i -= 2 {
 		t[i] *= 2
 	}
 	var su int
-	for i := 0; i < len(t); i++ {
+	for i := range t {
 		su += t[i]
 	}
 	return su%10 == 0

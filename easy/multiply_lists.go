@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var sx, tx int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -19,10 +20,9 @@ func main() {
 		s := strings.Split(scanner.Text(), "|")
 		s2, t2 := strings.Fields(strings.TrimSpace(s[0])), strings.Fields(strings.TrimSpace(s[1]))
 		var r []string
-		for i := 0; i < len(t2); i++ {
-			var sx, tx int
-			fmt.Sscanf(s2[i], "%d", &sx)
-			fmt.Sscanf(t2[i], "%d", &tx)
+		for i := range t2 {
+			fmt.Sscan(s2[i], &sx)
+			fmt.Sscan(t2[i], &tx)
 			r = append(r, fmt.Sprint(sx*tx))
 		}
 		fmt.Println(strings.Join(r, " "))

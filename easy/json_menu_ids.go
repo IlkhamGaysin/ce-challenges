@@ -48,10 +48,10 @@ lines:
 		if err := json.Unmarshal(s, &curr); err != nil {
 			print("Warning deserializing: ", fmt.Sprint(err))
 		}
-		for i := 0; i < len(curr.Menu.Items); i++ {
-			var currLabel int
-			fmt.Sscanf(curr.Menu.Items[i].Label, "Label %d", &currLabel)
-			sumLabels += currLabel
+		for i := range curr.Menu.Items {
+			var c int
+			fmt.Sscanf(curr.Menu.Items[i].Label, "Label %d", &c)
+			sumLabels += c
 		}
 		fmt.Println(sumLabels)
 	}

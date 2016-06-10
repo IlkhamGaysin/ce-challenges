@@ -27,7 +27,7 @@ func recovery(s, t string) string {
 		fmt.Sscan(i, &k)
 		r[k-1] = words[ix]
 	}
-	for ix := 0; ix < len(r); ix++ {
+	for ix := range r {
 		if r[ix] == "" {
 			r[ix] = words[len(words)-1]
 			break

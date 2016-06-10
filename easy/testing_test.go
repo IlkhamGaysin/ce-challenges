@@ -20,7 +20,7 @@ func TestTest(t *testing.T) {
 
 func test(s, t string) string {
 	var r int
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if s[i] != t[i] {
 			r++
 			if r > 6 {
