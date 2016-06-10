@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestReverseGroups(t *testing.T) {
+	h := map[string]string{
+		"1,2,3,4,5;2":                  "2,1,4,3,5",
+		"1,2,3,4,5;3":                  "3,2,1,4,5",
+		"22,23,24,25,26,27,28,29,30;3": "24,23,22,27,26,25,30,29,28"}
+	for k, v := range h {
+		if res := reverseGroups(k); res != v {
+			t.Errorf("failed: reverseGroups %s is %s, got %s", k, v, res)
+		}
+	}
+}
 
 func reverseGroups(q string) string {
 	var (
@@ -29,16 +39,4 @@ func reverseGroups(q string) string {
 		r = append(r, u[ix+o])
 	}
 	return strings.Join(r, ",")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(reverseGroups(scanner.Text()))
-	}
 }
