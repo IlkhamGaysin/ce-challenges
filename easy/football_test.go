@@ -1,12 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
 
 type team struct {
@@ -19,6 +17,17 @@ type teams []team
 func (slice teams) Len() int           { return len(slice) }
 func (slice teams) Less(i, j int) bool { return slice[i].id < slice[j].id }
 func (slice teams) Swap(i, j int)      { slice[i], slice[j] = slice[j], slice[i] }
+
+func TestFootball(t *testing.T) {
+	h := map[string]string{
+		"1 2 3 4 | 3 1 | 4 1":         "1:1,2,3; 2:1; 3:1,2; 4:1,3;",
+		"19 11 | 19 21 23 | 31 39 29": "11:1; 19:1,2; 21:2; 23:2; 29:3; 31:3; 39:3;"}
+	for k, v := range h {
+		if res := football(k); res != v {
+			t.Errorf("failed: football %s is %s, got %s", k, v, res)
+		}
+	}
+}
 
 func football(p string) string {
 	var (
@@ -43,16 +52,4 @@ func football(p string) string {
 		q = append(q, fmt.Sprintf("%d:%s;", i.id, i.cs))
 	}
 	return strings.Join(q, " ")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(football(scanner.Text()))
-	}
 }
