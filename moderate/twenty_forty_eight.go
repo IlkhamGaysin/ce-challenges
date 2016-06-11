@@ -10,7 +10,7 @@ import (
 
 func slide(a []int) []int {
 	lastNum, lastNumID, lastZero := -1, -1, -1
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		if a[i] == 0 {
 			if lastZero == -1 {
 				lastZero = i

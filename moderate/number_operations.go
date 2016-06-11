@@ -45,11 +45,11 @@ func main() {
 		s := strings.Fields(scanner.Text())
 		t := make([]int, len(s))
 		var u string
-		for i := 0; i < len(s); i++ {
-			fmt.Sscanf(s[i], "%d", &t[i])
+		for i := range s {
+			fmt.Sscan(s[i], &t[i])
 		}
 		sort.Ints(t)
-		for i := 0; i < len(s); i++ {
+		for i := range s {
 			u += fmt.Sprintf("%c", t[i])
 		}
 		v := u

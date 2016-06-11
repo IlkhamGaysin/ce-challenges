@@ -72,7 +72,7 @@ func main() {
 	sort.Sort(byid(userlist))
 	for _, i := range userlist {
 		var suggest []string
-		for j := 0; j < len(gnames); j++ {
+		for j := range gnames {
 			if !contains(i.groups, j) {
 				var ing int
 				for _, k := range i.friends {

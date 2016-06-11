@@ -31,7 +31,7 @@ func main() {
 		)
 		s := strings.Split(scanner.Text(), ";")
 		t, u := strings.Fields(s[0]), strings.Fields(s[1])
-		for i := 0; i < len(t); i++ {
+		for i := range t {
 			var r string
 			if c < len(u) {
 				var f bool

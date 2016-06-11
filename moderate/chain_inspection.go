@@ -27,7 +27,7 @@ func main() {
 			}
 			m[t[0]] = t[1]
 		}
-		for i := 0; i < len(s); i++ {
+		for _ = range s {
 			if b, found = m[b]; !found {
 				goto invalid
 			}
