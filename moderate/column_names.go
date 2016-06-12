@@ -7,22 +7,25 @@ import (
 	"os"
 )
 
+func columnNames(c int) (r string) {
+	for c > 0 {
+		c--
+		r = string('A'+c%26) + r
+		c /= 26
+	}
+	return r
+}
+
 func main() {
+	var c int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
-	var col int
 	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &col)
-		r := ""
-		for col > 0 {
-			col--
-			r = string('A'+col%26) + r
-			col /= 26
-		}
-		fmt.Println(r)
+		fmt.Sscan(scanner.Text(), &c)
+		fmt.Println(columnNames(c))
 	}
 }
