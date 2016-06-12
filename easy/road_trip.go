@@ -9,8 +9,23 @@ import (
 	"strings"
 )
 
+func roadTrip(s string) string {
+	var v, c int
+	t := strings.Split(s, ";")
+	l, m := make([]int, len(t)-1), make([]string, len(t)-1)
+	for i := range l {
+		u := strings.Split(t[i], ",")
+		fmt.Sscan(u[1], &v)
+		l[i] = v
+	}
+	sort.Ints(l)
+	for i := range l {
+		m[i], c = fmt.Sprint(l[i]-c), l[i]
+	}
+	return strings.Join(m, ",")
+}
+
 func main() {
-	var v int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -18,26 +33,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var (
-			c int
-			l []int
-			m []string
-		)
-		t := strings.Split(scanner.Text(), ";")
-		for _, i := range t {
-			if u := strings.Split(i, ","); len(u) > 1 {
-				_, err := fmt.Sscan(u[1], &v)
-				if err != nil {
-					log.Fatal(err)
-				}
-				l = append(l, v)
-			}
-		}
-		sort.Ints(l)
-		for _, i := range l {
-			m = append(m, fmt.Sprint(i-c))
-			c = i
-		}
-		fmt.Println(strings.Join(m, ","))
+		fmt.Println(roadTrip(scanner.Text()))
 	}
 }
