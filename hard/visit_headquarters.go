@@ -113,7 +113,7 @@ func main() {
 		n++
 	}
 	q := make(prioEventQueue, len(staff))
-	for i := 0; i < len(staff); i++ {
+	for i := range staff {
 		q[i] = &staff[i]
 	}
 	heap.Init(&q)

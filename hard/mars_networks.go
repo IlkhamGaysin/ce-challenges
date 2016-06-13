@@ -50,7 +50,7 @@ func main() {
 	for scanner.Scan() {
 		s := strings.Fields(scanner.Text())
 		p, seg := make([]point, len(s)), make([]*[]int, len(s))
-		for i := 0; i < len(s); i++ {
+		for i := range s {
 			var x, y float64
 			fmt.Sscanf(s[i], "%f,%f", &x, &y)
 			p[i], seg[i] = point{x, y, i}, &[]int{i}

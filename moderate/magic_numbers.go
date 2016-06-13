@@ -23,7 +23,7 @@ func isMagic(a int) bool {
 		a /= 10
 	}
 	dig, r = 0, 0
-	for i := 0; i < len(ns); i++ {
+	for _ = range ns {
 		r = (r + ns[(uint(len(ns))-1-r)]) % uint(len(ns))
 		if dig&(1<<r) > 0 {
 			return false

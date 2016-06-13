@@ -36,9 +36,9 @@ func findPath(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) 
 	}
 	o2 = make([]int, len(o))
 	copy(o2, o)
-	for i := 0; i < len(o2); i++ {
+	for i := range o2 {
 		found := false
-		for j := 0; j < len(p2); j++ {
+		for j := range p2 {
 			if p2[j] == o2[i] {
 				found = true
 				break
@@ -52,9 +52,9 @@ func findPath(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) 
 		return append(p2, route[0]), d + dist(&nodes[p2[len(p2)-1]], &nodes[route[0]])
 	}
 	m2, mp := mx, o
-	for i := 0; i < len(route); i++ {
+	for i := range route {
 		var mindi, maxdi float64
-		for j := 0; j < len(route); j++ {
+		for j := range route {
 			var mindis1 float64
 			if j == i {
 				mindis1 = math.MaxFloat64
@@ -62,7 +62,7 @@ func findPath(o, p []int, d, mx float64, n int, nodes []place) ([]int, float64) 
 				mindis1 = dist(&nodes[route[i]], &nodes[route[j]])
 			}
 			mindis2 := math.MaxFloat64
-			for k := 0; k < len(route); k++ {
+			for k := range route {
 				if j == k {
 					continue
 				}

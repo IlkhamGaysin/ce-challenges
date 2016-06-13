@@ -25,7 +25,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), " | ")
-		for i := 0; i < len(s); i++ {
+		for i := range s {
 			fmt.Sscanf(s[i], "%b", &v)
 			s[i] = fmt.Sprint(g2d(v))
 		}

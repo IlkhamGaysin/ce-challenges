@@ -75,7 +75,7 @@ func main() {
 
 		for _, i := range tnl {
 			f := true
-			for j := 0; j < len(x); j++ {
+			for j := range x {
 				if i[j] != x[j] {
 					f = false
 					break
