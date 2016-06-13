@@ -1,11 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
 
 var (
@@ -18,6 +16,21 @@ func init() {
 		"ONE", "TWO", "FIVE", "TEN", "TWENTY", "FIFTY", "ONE HUNDRED"}
 	value = []int{1, 5, 10, 25, 50, 100,
 		200, 500, 1000, 2000, 5000, 10000}
+}
+
+func TestCash(t *testing.T) {
+	h := map[string]string{
+		"15.94;16.00": "NICKEL,PENNY",
+		"17;16":       "ERROR",
+		"35;35":       "ZERO",
+		"12.12;13.25": "ONE,DIME,PENNY,PENNY,PENNY",
+		"45;50":       "FIVE",
+		"311.09;500":  "ONE HUNDRED,FIFTY,TWENTY,TEN,FIVE,TWO,ONE,HALF DOLLAR,QUARTER,DIME,NICKEL,PENNY"}
+	for k, v := range h {
+		if res := cash(k); res != v {
+			t.Errorf("failed: cash %s is %s, got %s", k, v, res)
+		}
+	}
 }
 
 func cash(q string) string {
@@ -55,16 +68,4 @@ func cash(q string) string {
 		}
 	}
 	return strings.Join(r, ",")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(cash(scanner.Text()))
-	}
 }
