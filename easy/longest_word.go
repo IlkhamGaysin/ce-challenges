@@ -8,6 +8,15 @@ import (
 	"strings"
 )
 
+func longest(q string) (r string) {
+	for _, i := range strings.Fields(q) {
+		if len(i) > len(r) {
+			r = i
+		}
+	}
+	return r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,13 +25,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t := strings.Fields(strings.TrimSpace(scanner.Text()))
-		maxw, maxl := "", 0
-		for _, i := range t {
-			if len(i) > maxl {
-				maxw, maxl = i, len(i)
-			}
-		}
-		fmt.Println(maxw)
+		fmt.Println(longest(scanner.Text()))
 	}
 }
