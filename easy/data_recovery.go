@@ -10,15 +10,15 @@ import (
 
 func recovery(s, t string) string {
 	var k int
-	words, sequ := strings.Fields(s), strings.Fields(t)
-	r := make([]string, len(words))
-	for ix, i := range sequ {
+	w := strings.Fields(s)
+	r := make([]string, len(w))
+	for ix, i := range strings.Fields(t) {
 		fmt.Sscan(i, &k)
-		r[k-1] = words[ix]
+		r[k-1] = w[ix]
 	}
 	for ix := range r {
 		if r[ix] == "" {
-			r[ix] = words[len(words)-1]
+			r[ix] = w[len(w)-1]
 			break
 		}
 	}

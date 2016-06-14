@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestMultiples(t *testing.T) {
+func TestRecovery(t *testing.T) {
 	h := map[string]string{
 		"2000 and was not However, implemented 1998 it until;9 8 3 4 1 5 7 2":                   "However, it was not implemented until 1998 and 2000",
 		"programming first The language;3 2 1":                                                  "The first programming language",
@@ -21,15 +21,15 @@ func TestMultiples(t *testing.T) {
 
 func recovery(s, t string) string {
 	var k int
-	words, sequ := strings.Fields(s), strings.Fields(t)
-	r := make([]string, len(words))
-	for ix, i := range sequ {
+	w := strings.Fields(s)
+	r := make([]string, len(w))
+	for ix, i := range strings.Fields(t) {
 		fmt.Sscan(i, &k)
-		r[k-1] = words[ix]
+		r[k-1] = w[ix]
 	}
 	for ix := range r {
 		if r[ix] == "" {
-			r[ix] = words[len(words)-1]
+			r[ix] = w[len(w)-1]
 			break
 		}
 	}
