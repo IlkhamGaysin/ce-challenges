@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestMaxRangeSum(t *testing.T) {
+	h := map[string]int{
+		"5;7 -3 -10 4 2 8 -2 4 -5 -2": 16,
+		"6;-4 3 -10 5 3 -7 -3 7 -6 3": 0,
+		"3;-7 0 -45 34 -24 7":         17}
+	for k, v := range h {
+		if r := maxRangeSum(k); r != v {
+			t.Errorf("failed: maxRangeSum %s is %d, got %d", k, v, r)
+		}
+	}
+}
 
 func maxRangeSum(q string) (r int) {
 	s := strings.Split(q, ";")
@@ -31,16 +41,4 @@ func maxRangeSum(q string) (r int) {
 		u = u[1:]
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(maxRangeSum(scanner.Text()))
-	}
 }
