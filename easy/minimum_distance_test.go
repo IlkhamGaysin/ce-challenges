@@ -1,13 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestMinDist(t *testing.T) {
+	h := map[string]int{
+		"4 3 3 5 7":  6,
+		"3 20 30 40": 20}
+	for k, v := range h {
+		if r := minDist(k); r != v {
+			t.Errorf("failed: minDist %s is %d, got %d", k, v, r)
+		}
+	}
+}
 
 func abs(a int) int {
 	if a < 0 {
@@ -29,16 +38,4 @@ func minDist(q string) (r int) {
 		r += abs(t[i] - u)
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(minDist(scanner.Text()))
-	}
 }
