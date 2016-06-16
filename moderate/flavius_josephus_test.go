@@ -1,12 +1,25 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	n, m int
+}
+
+func TestFlavius(t *testing.T) {
+	h := map[tuple]string{
+		tuple{10, 3}: "2 5 8 1 6 0 7 4 9 3",
+		tuple{5, 2}:  "1 3 0 4 2"}
+	for k, v := range h {
+		if r := flavius(k.n, k.m); r != v {
+			t.Errorf("failed: flavius %d %d is %s, got %s", k.n, k.m, v, r)
+		}
+	}
+}
 
 type node struct {
 	value int
@@ -30,18 +43,4 @@ func flavius(n, m int) string {
 		list.next = list.next.next
 	}
 	return strings.Join(t, " ")
-}
-
-func main() {
-	var n, m int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscanf(scanner.Text(), "%d,%d", &n, &m)
-		fmt.Println(flavius(n, m))
-	}
 }
