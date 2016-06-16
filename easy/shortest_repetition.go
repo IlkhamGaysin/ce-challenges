@@ -7,6 +7,16 @@ import (
 	"os"
 )
 
+func shortestRep(q string) int {
+	r := 1
+	for i := 1; i < len(q); i++ {
+		if q[i] != q[i-r] {
+			r = i + 1
+		}
+	}
+	return r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,12 +25,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t, p := scanner.Text(), 1
-		for ix := 1; ix < len(t); ix++ {
-			if t[ix] != t[ix-p] {
-				p = ix + 1
-			}
-		}
-		fmt.Println(p)
+		fmt.Println(shortestRep(scanner.Text()))
 	}
 }
