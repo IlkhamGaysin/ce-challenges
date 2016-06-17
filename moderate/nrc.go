@@ -7,6 +7,19 @@ import (
 	"os"
 )
 
+func nrc(q string) string {
+	s := make(map[rune]int)
+	for _, i := range q {
+		s[i]++
+	}
+	for _, i := range q {
+		if s[i] == 1 {
+			return string(i)
+		}
+	}
+	return ""
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,16 +28,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s, seen := scanner.Text(), make(map[rune]int)
-		for _, i := range s {
-			seen[i]++
-		}
-		for _, i := range s {
-			if seen[i] == 1 {
-				fmt.Printf("%c", i)
-				break
-			}
-		}
-		fmt.Println()
+		fmt.Println(nrc(scanner.Text()))
 	}
 }
