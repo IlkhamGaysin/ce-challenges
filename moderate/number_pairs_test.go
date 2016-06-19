@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestNumberPairs(t *testing.T) {
+	h := map[string]string{
+		"1,2,3,4,6;5":        "1,4;2,3",
+		"2,4,5,6,9,11,15;20": "5,15;9,11",
+		"1,2,3,4;50":         "NULL"}
+	for k, v := range h {
+		if r := numberPairs(k); r != v {
+			t.Errorf("failed: numberPairs %s is %s, got %s", k, v, r)
+		}
+	}
+}
 
 func numberPairs(q string) string {
 	var (
@@ -30,16 +40,4 @@ func numberPairs(q string) string {
 		return "NULL"
 	}
 	return strings.Join(r, ";")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(numberPairs(scanner.Text()))
-	}
 }
