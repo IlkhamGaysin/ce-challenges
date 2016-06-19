@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func decode(s string) (ret int) {
+func decode(s string) uint {
 	for len(s) > 1 {
 		switch {
 		case s[0] != '1' && s[0] != '2':
@@ -33,8 +33,5 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		fmt.Println(decode(scanner.Text()))
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 }
