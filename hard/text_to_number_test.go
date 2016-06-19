@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestTextToNumber(t *testing.T) {
+	h := map[string]int{
+		"fifteen":                           15,
+		"negative six hundred thirty eight": -638,
+		"zero": 0,
+		"two million one hundred seven": 2000107}
+	for k, v := range h {
+		if r := textToNumber(k); r != v {
+			t.Errorf("failed: textToNumber %s is %d, got %d", k, v, r)
+		}
+	}
+}
 
 const dn, dz = "negative", "zero"
 
@@ -56,17 +66,4 @@ func textToNumber(s string) int {
 		t = t[1:]
 	}
 	return n * (r + q + h)
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(textToNumber(scanner.Text()))
-	}
 }
