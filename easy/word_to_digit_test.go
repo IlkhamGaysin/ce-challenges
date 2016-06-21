@@ -1,12 +1,19 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestWordToDigit(t *testing.T) {
+	for k, v := range map[string]string{
+		"zero;two;five;seven;eight;four": "025784",
+		"three;seven;eight;nine;two":     "37892"} {
+		if r := wordToDigit(k); r != v {
+			t.Errorf("failed: wordToDigit %s is %s, got %s", k, v, r)
+		}
+	}
+}
 
 var digits map[string]string
 
@@ -23,17 +30,4 @@ func wordToDigit(q string) string {
 		r[ix] = digits[i]
 	}
 	return strings.Join(r, "")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(wordToDigit(scanner.Text()))
-	}
 }
