@@ -9,8 +9,10 @@
              (w (string->number (list-ref s 1)))
              (z (string->number (list-ref s 2)))
              (h (string->number (list-ref s 3))))
-        (display (quotient (* (+ (* v 3) (* w 4) (* z 5)) h)
-                           (+ v w z))))
+        (display (if (= 0 (+ v w z))
+                   0
+                   (quotient (* (+ (* v 3) (* w 4) (* z 5)) h)
+                             (+ v w z)))))
     (newline)
     (loop (read-line input))))))
 (close input)

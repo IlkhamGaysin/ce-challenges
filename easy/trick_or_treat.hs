@@ -2,7 +2,8 @@ import System.Environment (getArgs)
 import Data.List.Split (splitOn)
 
 trick             :: [Int] -> Int
-trick [v, z, w, h] = div ((v * 3 + z * 4 + w * 5) * h) (v + z + w)
+trick [v, z, w, h] | v + z + w == 0 = 0
+                   | otherwise      = div ((v * 3 + z * 4 + w * 5) * h) (v + z + w)
 
 main :: IO ()
 main = do

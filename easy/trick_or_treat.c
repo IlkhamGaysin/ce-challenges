@@ -9,8 +9,9 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 	fp = fopen(*++argv, "r");
-	while (fscanf(fp, "Vampires: %d, Zombies: %d, Witches: %d, Houses: %d\n",
+	while (fscanf(fp,
+		      "Vampires: %d, Zombies: %d, Witches: %d, Houses: %d\n",
 		      &v, &z, &w, &h) != EOF)
-		printf("%d\n", (v * 3 + z * 4 + w * 5) * h / (v + z + w));
+		printf("%d\n", v + z + w == 0 ? 0 : (v * 3 + z * 4 + w * 5) * h / (v + z + w));
 	return 0;
 }

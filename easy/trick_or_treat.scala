@@ -4,6 +4,6 @@ object Main extends App {
 
   for (l <- lines) {
     val s = l.split(", ").map(_.filter(_.isDigit).toInt)
-    println((s(0) * 3 + s(1) * 4 + s(2) * 5) * s(3) / (s(0) + s(1) + s(2)))
+    println(if (s(0) + s(1) + s(2) == 0) 0 else (s(0) * 3 + s(1) * 4 + s(2) * 5) * s(3) / (s(0) + s(1) + s(2)))
   }
 }
