@@ -7,6 +7,15 @@ import (
 	"os"
 )
 
+func stringsAndArrows(s string) (r uint) {
+	for i := 0; i < len(s)-4; i++ {
+		if s[i:i+5] == ">>-->" || s[i:i+5] == "<--<<" {
+			r++
+		}
+	}
+	return r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,12 +24,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var c int
-		for i, s := 0, scanner.Text(); i < len(s)-4; i++ {
-			if s[i:i+5] == ">>-->" || s[i:i+5] == "<--<<" {
-				c++
-			}
-		}
-		fmt.Println(c)
+		fmt.Println(stringsAndArrows(scanner.Text()))
 	}
 }
