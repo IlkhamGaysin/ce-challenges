@@ -7,7 +7,14 @@ import (
 	"os"
 )
 
+func niceAngles(a float64) string {
+	return fmt.Sprintf("%d.%02d'%02d\"", int(a),
+		int((a-float64(int(a)))*60),
+		int((a*60-float64(int(a*60)))*60))
+}
+
 func main() {
+	var a float64
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -15,12 +22,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var a float64
-		fmt.Sscanf(scanner.Text(), "%f", &a)
-		fmt.Printf("%d.", int(a))
-		a = (a - float64(int(a))) * 60
-		fmt.Printf("%02d'", int(a))
-		a = (a - float64(int(a))) * 60
-		fmt.Printf("%02d\"\n", int(a))
+		fmt.Sscan(scanner.Text(), &a)
+		fmt.Println(niceAngles(a))
 	}
 }
