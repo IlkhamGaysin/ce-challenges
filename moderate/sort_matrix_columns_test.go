@@ -1,12 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
 
 type column []int
@@ -21,6 +19,17 @@ func (slice columns) Less(i, j int) bool {
 	return slice[i][k] < slice[j][k]
 }
 func (slice columns) Swap(i, j int) { slice[i], slice[j] = slice[j], slice[i] }
+
+func TestSortMatrix(t *testing.T) {
+	for k, v := range map[string]string{
+		"-3 29 -3 | -17 69 -17 | 44 3 8":                               "-3 -3 29 | -17 -17 69 | 8 44 3",
+		"25 39 -26 -21 | -81 -98 -91 27 | 32 -87 67 98 | -90 -79 18 9": "-26 -21 25 39 | -91 27 -81 -98 | 67 98 32 -87 | 18 9 -90 -79",
+		"26 -10 39 | -62 66 97 | 22 85 36":                             "-10 26 39 | 66 -62 97 | 85 22 36"} {
+		if r := sortMatrix(k); r != v {
+			t.Errorf("failed: sortMatrix %s is %s, got %s", k, v, r)
+		}
+	}
+}
 
 func sortMatrix(q string) string {
 	var i, j int
@@ -45,16 +54,4 @@ func sortMatrix(q string) string {
 		r[i] = strings.Join(t, " ")
 	}
 	return strings.Join(r, " | ")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(sortMatrix(scanner.Text()))
-	}
 }
