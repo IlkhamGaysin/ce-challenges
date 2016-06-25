@@ -3,11 +3,11 @@ package main
 import "testing"
 
 func TestBlackCard(t *testing.T) {
-	if res := blackCard([]string{"John", "Sara", "Tom", "Susan"}, 3); res != "Sara" {
-		t.Errorf("failed: blackCard John Sara Tom Susan | 3 is Sara, got %s", res)
+	if r := blackCard([]string{"John", "Sara", "Tom", "Susan"}, 3); r != "Sara" {
+		t.Errorf("failed: blackCard John Sara Tom Susan | 3 is Sara, got %s", r)
 	}
-	if res := blackCard([]string{"John", "Tom", "Mary"}, 5); res != "Mary" {
-		t.Errorf("failed: blackCard John Tom Mary | 5 is Mary, got %s", res)
+	if r := blackCard([]string{"John", "Tom", "Mary"}, 5); r != "Mary" {
+		t.Errorf("failed: blackCard John Tom Mary | 5 is Mary, got %s", r)
 	}
 }
 

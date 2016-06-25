@@ -7,11 +7,11 @@ import (
 
 func TestSq(t *testing.T) {
 	for i := 0; i <= 80000; i++ {
-		if res := int(math.Sqrt(float64(i * i))); res != i {
-			t.Errorf("failed: math.Sqrt %d = %d, got %d", i*i, i, res)
+		if r := int(math.Sqrt(float64(i * i))); r != i {
+			t.Errorf("failed: math.Sqrt %d = %d, got %d", i*i, i, r)
 		}
-		if res := sqInt(i * i); res != i {
-			t.Errorf("failed: sqInt %d = %d, got %d", i*i, i, res)
+		if r := sqInt(i * i); r != i {
+			t.Errorf("failed: sqInt %d = %d, got %d", i*i, i, r)
 		}
 	}
 }

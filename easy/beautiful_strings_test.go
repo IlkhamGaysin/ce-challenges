@@ -7,15 +7,14 @@ import (
 )
 
 func TestBeauty(t *testing.T) {
-	r := map[string]int{"ABbCcc": 152, "<3": 0,
+	for k, v := range map[string]int{"ABbCcc": 152, "<3": 0,
 		"The quick brown fox jumps over the lazy dog":     569,
 		"Good luck in the Facebook Hacker Cup this year!": 754,
 		"Ignore punctuation, please :)":                   491,
 		"Sometimes test cases are hard to make up.":       729,
-		"So I just go consult Professor Dalves":           646}
-	for k, v := range r {
-		if res := beauty(k); res != v {
-			t.Errorf("failed:\n%s\n should give %d, got %d", k, v, res)
+		"So I just go consult Professor Dalves":           646} {
+		if r := beauty(k); r != v {
+			t.Errorf("failed: beauty %s is %d, got %d", k, v, r)
 		}
 	}
 }

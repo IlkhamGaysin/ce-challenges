@@ -5,7 +5,7 @@ import (
 )
 
 func TestAgeDistribution(t *testing.T) {
-	h := map[int]string{
+	for k, v := range map[int]string{
 		-2:  "This program is for humans",
 		0:   "Still in Mama's arms",
 		3:   "Preschool Maniac",
@@ -15,8 +15,7 @@ func TestAgeDistribution(t *testing.T) {
 		19:  "College",
 		23:  "Working for the man",
 		66:  "The Golden Years",
-		101: "This program is for humans"}
-	for k, v := range h {
+		101: "This program is for humans"} {
 		if r := ageDistribution(k); r != v {
 			t.Errorf("failed: ageDistribution %d is %s, got %s", k, v, r)
 		}

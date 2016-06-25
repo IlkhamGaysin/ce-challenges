@@ -2,18 +2,19 @@ package main
 
 import "testing"
 
+type tuple struct {
+	x1, y1, x2, y2 int
+}
+
 func TestComparePoints(t *testing.T) {
-	if res := comparePoints(0, 0, 1, 5); res != "NE" {
-		t.Errorf("failed: comparePoints(0, 0, 1, 5) is NE, got %s", res)
-	}
-	if res := comparePoints(12, 13, 12, 13); res != "here" {
-		t.Errorf("failed: comparePoints(12, 13, 12, 13) is here, got %s", res)
-	}
-	if res := comparePoints(0, 1, 0, 5); res != "N" {
-		t.Errorf("failed: comparePoints(0, 1, 0, 5) is N, got %s", res)
-	}
-	if res := comparePoints(0, 0, 1, -5); res != "SE" {
-		t.Errorf("failed: comparePoints(0, 0, 1, -5) is SE, got %s", res)
+	for k, v := range map[tuple]string{
+		tuple{0, 0, 1, 5}:     "NE",
+		tuple{12, 13, 12, 13}: "here",
+		tuple{0, 1, 0, 5}:     "N",
+		tuple{0, 0, 1, -5}:    "SE"} {
+		if r := comparePoints(k.x1, k.y1, k.x2, k.y2); r != v {
+			t.Errorf("failed: comparePoints %d %d %d %d is %s, got %s", k.x1, k.y1, k.x2, k.y2, v, r)
+		}
 	}
 }
 
@@ -23,7 +24,7 @@ func BenchmarkComparePoints(b *testing.B) {
 		y1 := (i/21)%21 - 10
 		x2 := (i/441)%21 - 10
 		y2 := (i/9261)%21 - 10
-		_ = comparePoints(x1, y1, x2, y2)
+		comparePoints(x1, y1, x2, y2)
 	}
 }
 

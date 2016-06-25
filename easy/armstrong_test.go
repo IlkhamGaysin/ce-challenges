@@ -2,15 +2,18 @@ package main
 
 import "testing"
 
+type tuple struct {
+	y, x int
+}
+
 func TestPowi(t *testing.T) {
-	if res := powi(9, 19); res != 1350851717672992089 {
-		t.Errorf("failed: 9^19 = 1350851717672992089, got %d", res)
-	}
-	if res := powi(0, 8); res != 0 {
-		t.Errorf("failed: 0^8 = 0, got %d", res)
-	}
-	if res := powi(0, 0); res != 1 {
-		t.Errorf("failed: 0^0 = 1, got %d", res)
+	for k, v := range map[tuple]int{
+		tuple{9, 19}: 1350851717672992089,
+		tuple{0, 8}:  0,
+		tuple{0, 0}:  1} {
+		if r := powi(k.y, k.x); r != v {
+			t.Errorf("failed: %d^%d = %d, got %d", k.y, k.x, v, r)
+		}
 	}
 }
 
