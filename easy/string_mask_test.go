@@ -2,15 +2,18 @@ package main
 
 import "testing"
 
+type tuple struct {
+	s, t string
+}
+
 func TestMask(t *testing.T) {
-	if res := mask("hello", "11001"); res != "HEllO" {
-		t.Errorf("failed: mask hello 11001 is HEllO, got %s", res)
-	}
-	if res := mask("world", "10000"); res != "World" {
-		t.Errorf("failed: mask world 10000 is World, got %s", res)
-	}
-	if res := mask("cba", "111"); res != "CBA" {
-		t.Errorf("failed: mask cba 111 is CBA, got %s", res)
+	for k, v := range map[tuple]string{
+		tuple{"hello", "11001"}: "HEllO",
+		tuple{"world", "10000"}: "World",
+		tuple{"cba", "111"}:     "CBA"} {
+		if r := mask(k.s, k.t); r != v {
+			t.Errorf("failed: mask %s %s is %s, got %s", k.s, k.t, v, r)
+		}
 	}
 }
 

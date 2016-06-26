@@ -6,14 +6,13 @@ import (
 )
 
 func TestTest(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"Heelo Codevval | Hello Codeeval": "Low",
 		"hELLO cODEEVAL | Hello Codeeval": "Critical",
-		"Hello Codeeval | Hello Codeeval": "Done"}
-	for k, v := range h {
+		"Hello Codeeval | Hello Codeeval": "Done"} {
 		s := strings.Split(k, " | ")
-		if res := test(s[0], s[1]); res != v {
-			t.Errorf("failed: test %s is %s, got %s", k, v, res)
+		if r := test(s[0], s[1]); r != v {
+			t.Errorf("failed: test %s is %s, got %s", k, v, r)
 		}
 	}
 }

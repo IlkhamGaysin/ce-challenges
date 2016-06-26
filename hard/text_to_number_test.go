@@ -6,12 +6,11 @@ import (
 )
 
 func TestTextToNumber(t *testing.T) {
-	h := map[string]int{
+	for k, v := range map[string]int{
 		"fifteen":                           15,
 		"negative six hundred thirty eight": -638,
 		"zero": 0,
-		"two million one hundred seven": 2000107}
-	for k, v := range h {
+		"two million one hundred seven": 2000107} {
 		if r := textToNumber(k); r != v {
 			t.Errorf("failed: textToNumber %s is %d, got %d", k, v, r)
 		}

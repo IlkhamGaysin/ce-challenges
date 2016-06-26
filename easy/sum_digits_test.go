@@ -6,11 +6,10 @@ import (
 )
 
 func TestSumDigits(t *testing.T) {
-	h := map[string]uint{
-		"23": 5, "496": 19, "120345": 15}
-	for k, v := range h {
-		if res := sumDigits(k); res != v {
-			t.Errorf("failed: sumDigits %s is %d, got %d", k, v, res)
+	for k, v := range map[string]uint{
+		"23": 5, "496": 19, "120345": 15} {
+		if r := sumDigits(k); r != v {
+			t.Errorf("failed: sumDigits %s is %d, got %d", k, v, r)
 		}
 	}
 }

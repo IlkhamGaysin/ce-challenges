@@ -6,15 +6,14 @@ import (
 )
 
 func TestStepwise(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"cat dog hello":        "h *e **l ***l ****o",
 		"stop football play":   "f *o **o ***t ****b *****a ******l *******l",
 		"music is my life":     "m *u **s ***i ****c",
 		"asdf 0123456789 qwer": "0 *1 **2 ***3 ****4 *****5 ******6 *******7 ********8 *********9",
-		"a b c d e f":          "a"}
-	for k, v := range h {
-		if res := stepwise(k); res != v {
-			t.Errorf("failed: stepwise %s is %s, got %s", k, v, res)
+		"a b c d e f":          "a"} {
+		if r := stepwise(k); r != v {
+			t.Errorf("failed: stepwise %s is %s, got %s", k, v, r)
 		}
 	}
 }

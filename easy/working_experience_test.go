@@ -6,14 +6,13 @@ import (
 )
 
 func TestMonth(t *testing.T) {
-	r := map[string]int{
+	for k, v := range map[string]int{
 		"Feb 2004": 169,
 		"Jul 2008": 222,
 		"Aug 2011": 259,
-		"Sep 2013": 284}
-	for k, v := range r {
-		if res := month(k); res != v {
-			t.Errorf("failed: month %s is %d, got %d", k, v, res)
+		"Sep 2013": 284} {
+		if r := month(k); r != v {
+			t.Errorf("failed: month %s is %d, got %d", k, v, r)
 		}
 	}
 }

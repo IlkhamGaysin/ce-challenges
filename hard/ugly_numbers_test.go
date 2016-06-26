@@ -3,14 +3,11 @@ package main
 import "testing"
 
 func TestPow3(t *testing.T) {
-	if res := pow3(39); res != 4052555153018976267 {
-		t.Errorf("failed: 3^39 = 4052555153018976267, got %d", res)
-	}
-	if res := pow3(1); res != 3 {
-		t.Errorf("failed: 3^1 = 3, got %d", res)
-	}
-	if res := pow3(0); res != 1 {
-		t.Errorf("failed: 3^0 = 1, got %d", res)
+	for k, v := range map[int]int{
+		0: 1, 1: 3, 39: 4052555153018976267} {
+		if r := pow3(k); r != v {
+			t.Errorf("failed: 3^%d = %d, got %d", k, v, r)
+		}
 	}
 }
 

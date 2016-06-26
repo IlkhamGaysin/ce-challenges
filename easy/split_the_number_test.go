@@ -6,21 +6,20 @@ import (
 	"testing"
 )
 
+type tuple struct {
+	s, t string
+}
+
 func TestMask(t *testing.T) {
-	if res := split("3413289830", "a-bcdefghij"); res != -413289827 {
-		t.Errorf("failed: split 3413289830 a-bcdefghij is -413289827, got %d", res)
-	}
-	if res := split("776", "a+bc"); res != 83 {
-		t.Errorf("failed: split 776 a+bc is 83, got %d", res)
-	}
-	if res := split("12345", "a+bcde"); res != 2346 {
-		t.Errorf("failed: split 12345 a+bcde is 2346, got %d", res)
-	}
-	if res := split("1232", "ab+cd"); res != 44 {
-		t.Errorf("failed: split 1232 ab+cd is 44, got %d", res)
-	}
-	if res := split("90602", "a+bcde"); res != 611 {
-		t.Errorf("failed: split 90602 a+bcde is 611, got %d", res)
+	for k, v := range map[tuple]int{
+		tuple{"3413289830", "a-bcdefghij"}: -413289827,
+		tuple{"776", "a+bc"}:               83,
+		tuple{"12345", "a+bcde"}:           2346,
+		tuple{"1232", "ab+cd"}:             44,
+		tuple{"90602", "a+bcde"}:           611} {
+		if r := split(k.s, k.t); r != v {
+			t.Errorf("failed: split %s %s is %d, got %d", k.s, k.t, v, r)
+		}
 	}
 }
 
