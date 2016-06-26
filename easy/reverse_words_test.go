@@ -6,25 +6,23 @@ import (
 )
 
 func TestReverse(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"Hello World":              "World Hello",
 		"Hello CodeEval":           "CodeEval Hello",
-		"can you talk like Yoda ?": "? Yoda like talk you can"}
-	for k, v := range h {
-		if res := reverse(k); res != v {
-			t.Errorf("failed: reverse %s is %s, got %s", k, v, res)
+		"can you talk like Yoda ?": "? Yoda like talk you can"} {
+		if r := reverse(k); r != v {
+			t.Errorf("failed: reverse %s is %s, got %s", k, v, r)
 		}
 	}
 }
 
 func TestReverseS(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"Hello World":              "World Hello",
 		"Hello CodeEval":           "CodeEval Hello",
-		"can you talk like Yoda ?": "? Yoda like talk you can"}
-	for k, v := range h {
-		if res := reverseS(k); res != v {
-			t.Errorf("failed: reverseS %s is %s, got %s", k, v, res)
+		"can you talk like Yoda ?": "? Yoda like talk you can"} {
+		if r := reverseS(k); r != v {
+			t.Errorf("failed: reverseS %s is %s, got %s", k, v, r)
 		}
 	}
 }

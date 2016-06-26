@@ -8,14 +8,13 @@ import (
 )
 
 func TestRoadTrip(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"Rkbs,5453; Wdqiz,1245; Rwds,3890; Ujma,5589; Tbzmo,1303;":      "1245,58,2587,1563,136",
 		"Vgdfz,70; Mgknxpi,3958; Nsptghk,2626; Wuzp,2559; Jcdwi,3761;":  "70,2489,67,1135,197",
 		"Yvnzjwk,5363; Pkabj,5999; Xznvb,3584; Jfksvx,1240; Inwm,5720;": "1240,2344,1779,357,279",
-		"Ramytdb,2683; Voclqmb,5236;":                                   "2683,2553"}
-	for k, v := range h {
-		if res := roadTrip(k); res != v {
-			t.Errorf("failed: roadTrip %s is %s, got %s", k, v, res)
+		"Ramytdb,2683; Voclqmb,5236;":                                   "2683,2553"} {
+		if r := roadTrip(k); r != v {
+			t.Errorf("failed: roadTrip %s is %s, got %s", k, v, r)
 		}
 	}
 }

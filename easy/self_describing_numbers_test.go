@@ -6,7 +6,7 @@ import (
 )
 
 func TestSelf(t *testing.T) {
-	h := map[string]bool{
+	for k, v := range map[string]bool{
 		"2020":          true,
 		"22":            false,
 		"1210":          true,
@@ -15,10 +15,9 @@ func TestSelf(t *testing.T) {
 		"6210001000":    true,
 		"72100001000":   true,
 		"821000001000":  true,
-		"9210000001000": true}
-	for k, v := range h {
-		if res := self(k); res != v {
-			t.Errorf("failed: self %s is %t, got %t", k, v, res)
+		"9210000001000": true} {
+		if r := self(k); r != v {
+			t.Errorf("failed: self %s is %t, got %t", k, v, r)
 		}
 	}
 }

@@ -7,11 +7,10 @@ import (
 )
 
 func TestMaxRangeSum(t *testing.T) {
-	h := map[string]int{
+	for k, v := range map[string]int{
 		"5;7 -3 -10 4 2 8 -2 4 -5 -2": 16,
 		"6;-4 3 -10 5 3 -7 -3 7 -6 3": 0,
-		"3;-7 0 -45 34 -24 7":         17}
-	for k, v := range h {
+		"3;-7 0 -45 34 -24 7":         17} {
 		if r := maxRangeSum(k); r != v {
 			t.Errorf("failed: maxRangeSum %s is %d, got %d", k, v, r)
 		}

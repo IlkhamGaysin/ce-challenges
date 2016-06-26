@@ -3,14 +3,13 @@ package main
 import "testing"
 
 func TestShortestRep(t *testing.T) {
-	h := map[string]int{
+	for k, v := range map[string]int{
 		"abcabcabcabc":                 3,
 		"bcbcbcbcbcbcbcbcbcbcbcbcbcbc": 2,
 		"dddddddddddddddddddd":         1,
 		"abcdefg":                      7,
 		"b":                            1,
-		"ll":                           1}
-	for k, v := range h {
+		"ll":                           1} {
 		if r := shortestRep(k); r != v {
 			t.Errorf("failed: shortestRep %s is %d, got %d", k, v, r)
 		}

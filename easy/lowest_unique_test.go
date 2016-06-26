@@ -7,12 +7,11 @@ import (
 )
 
 func TestLowestUnique(t *testing.T) {
-	h := map[string]uint{
+	for k, v := range map[string]uint{
 		"3 3 9 1 6 5 8 1 5 3":   5,
-		"9 2 9 9 1 8 8 8 2 1 1": 0}
-	for k, v := range h {
-		if res := lowestUnique(k); res != v {
-			t.Errorf("failed: lowestUnique %s is %d, got %d", k, v, res)
+		"9 2 9 9 1 8 8 8 2 1 1": 0} {
+		if r := lowestUnique(k); r != v {
+			t.Errorf("failed: lowestUnique %s is %d, got %d", k, v, r)
 		}
 	}
 }

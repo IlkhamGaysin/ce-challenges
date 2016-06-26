@@ -7,13 +7,12 @@ import (
 )
 
 func TestHighestScore(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"72 64 150 | 100 18 33 | 13 250 -6":                "100 250 150",
 		"10 25 -30 44 | 5 16 70 8 | 13 1 31 12":            "13 25 70 44",
-		"100 6 300 20 10 | 5 200 6 9 500 | 1 10 3 400 143": "100 200 300 400 500"}
-	for k, v := range h {
-		if res := highestScore(k); res != v {
-			t.Errorf("failed: highestScore %s is %s, got %s", k, v, res)
+		"100 6 300 20 10 | 5 200 6 9 500 | 1 10 3 400 143": "100 200 300 400 500"} {
+		if r := highestScore(k); r != v {
+			t.Errorf("failed: highestScore %s is %s, got %s", k, v, r)
 		}
 	}
 }

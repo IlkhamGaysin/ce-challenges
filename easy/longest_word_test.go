@@ -6,10 +6,9 @@ import (
 )
 
 func TestLongest(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"some line with text": "some",
-		"another line":        "another"}
-	for k, v := range h {
+		"another line":        "another"} {
 		if r := longest(k); r != v {
 			t.Errorf("failed: longest %s is %s, got %s", k, v, r)
 		}

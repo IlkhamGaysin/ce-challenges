@@ -2,15 +2,18 @@ package main
 
 import "testing"
 
+type tuple struct {
+	n, a int
+}
+
 func TestXz(t *testing.T) {
-	if !xz(1, 5) {
-		t.Error("failed: 1 zeros in 5, got false")
-	}
-	if xz(1, 7) {
-		t.Error("failed: not 1 zeros in 7, got true")
-	}
-	if !xz(7, 10922) {
-		t.Error("failed: 7 zeros in 10922, got false")
+	for k, v := range map[tuple]bool{
+		tuple{1, 5}:     true,
+		tuple{1, 7}:     false,
+		tuple{7, 10922}: true} {
+		if r := xz(k.n, k.a); r != v {
+			t.Errorf("failed: xz %d %d is %t, got %t", k.n, k.a, v, r)
+		}
 	}
 }
 

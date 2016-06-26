@@ -2,15 +2,18 @@ package main
 
 import "testing"
 
+type tuple struct {
+	l, u float64
+}
+
 func TestLcase(t *testing.T) {
-	if rl, ru := lcase("-"); rl != 0 || ru != 0 {
-		t.Errorf("failed: lcase - is 0 0, got %f %f", rl, ru)
-	}
-	if rl, ru := lcase("thisTHIS"); rl != 50 || ru != 50 {
-		t.Errorf("failed: lcase thisTHIS is 50 50, got %f %f", rl, ru)
-	}
-	if rl, ru := lcase("aBCD"); rl != 25 || ru != 75 {
-		t.Errorf("failed: lcase aBCD is 25 75, got %f %f", rl, ru)
+	for k, v := range map[string]tuple{
+		"-":        tuple{0, 0},
+		"thisTHIS": tuple{50, 50},
+		"aBCD":     tuple{25, 75}} {
+		if rl, ru := lcase(k); rl != v.l || ru != v.u {
+			t.Errorf("failed: lcase %s is %f %f, got %f %f", k, v.l, v.u, rl, ru)
+		}
 	}
 }
 

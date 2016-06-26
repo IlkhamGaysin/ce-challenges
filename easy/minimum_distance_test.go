@@ -8,10 +8,9 @@ import (
 )
 
 func TestMinDist(t *testing.T) {
-	h := map[string]int{
+	for k, v := range map[string]int{
 		"4 3 3 5 7":  6,
-		"3 20 30 40": 20}
-	for k, v := range h {
+		"3 20 30 40": 20} {
 		if r := minDist(k); r != v {
 			t.Errorf("failed: minDist %s is %d, got %d", k, v, r)
 		}

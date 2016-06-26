@@ -7,12 +7,11 @@ import (
 )
 
 func TestRealFake(t *testing.T) {
-	h := map[string]bool{
+	for k, v := range map[string]bool{
 		"9999999999999999": false,
-		"9999999999999993": true}
-	for k, v := range h {
-		if res := realFake(k); res != v {
-			t.Errorf("failed: realFake %s is %t, got %t", k, v, res)
+		"9999999999999993": true} {
+		if r := realFake(k); r != v {
+			t.Errorf("failed: realFake %s is %t, got %t", k, v, r)
 		}
 	}
 }

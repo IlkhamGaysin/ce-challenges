@@ -2,15 +2,18 @@ package main
 
 import "testing"
 
+type tuple struct {
+	x, n int
+}
+
 func TestMultiples(t *testing.T) {
-	if res := multiples(13, 8); res != 16 {
-		t.Errorf("failed: multiples 13 8 is 16, got %d", res)
-	}
-	if res := multiples(17, 16); res != 32 {
-		t.Errorf("failed: multiples 17 16 is 32, got %d", res)
-	}
-	if res := multiples(2000000000000000, 1); res != 2000000000000000 {
-		t.Errorf("failed: multiples 2000000000000000 1 is 2000000000000000, got %d", res)
+	for k, v := range map[tuple]int{
+		tuple{13, 8}:               16,
+		tuple{17, 16}:              32,
+		tuple{2000000000000000, 1}: 2000000000000000} {
+		if r := multiples(k.x, k.n); r != v {
+			t.Errorf("failed: multiples %d %d is %d, got %d", k.x, k.n, v, r)
+		}
 	}
 }
 

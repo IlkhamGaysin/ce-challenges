@@ -2,18 +2,19 @@ package main
 
 import "testing"
 
+type tuple struct {
+	n, p, q uint
+}
+
 func TestXz(t *testing.T) {
-	if !bitEqual(86, 2, 3) {
-		t.Error("failed: bitEqual 86 2 3 should be true")
-	}
-	if bitEqual(125, 1, 2) {
-		t.Error("failed: bitEqual 125 1 2 should be false")
-	}
-	if !bitEqual(1, 1, 1) {
-		t.Error("failed: bitEqual 1 1 1 should be true")
-	}
-	if !bitEqual(0, 4, 16) {
-		t.Error("failed: bitEqual 0 4 16 should be true")
+	for k, v := range map[tuple]bool{
+		tuple{86, 2, 3}:  true,
+		tuple{125, 1, 2}: false,
+		tuple{1, 1, 1}:   true,
+		tuple{0, 4, 16}:  true} {
+		if r := bitEqual(k.n, k.p, k.q); r != v {
+			t.Errorf("failed: bitEqual %d %d %d is %t, got %t", k.n, k.p, k.q, v, r)
+		}
 	}
 }
 

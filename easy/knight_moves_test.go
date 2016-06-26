@@ -2,21 +2,27 @@ package main
 
 import "testing"
 
+type tuple struct {
+	l, r uint8
+}
+
 func TestPos(t *testing.T) {
-	if res := pos(0, 0); res != "a1" {
-		t.Error("failed: pos 0 0 is a1, got %s", res)
-	}
-	if res := pos(7, 7); res != "h8" {
-		t.Error("failed: pos 7 7 is h8, got %s", res)
+	for k, v := range map[tuple]string{
+		tuple{0, 0}: "a1",
+		tuple{7, 7}: "h8"} {
+		if r := pos(k.l, k.r); r != v {
+			t.Errorf("failed: pos %d %d is %s, got %s", k.l, k.r, v, r)
+		}
 	}
 }
 
 func TestPosConcat(t *testing.T) {
-	if res := posConcat(0, 0); res != "a1" {
-		t.Error("failed: posConcat 0 0 is a1, got %s", res)
-	}
-	if res := posConcat(7, 7); res != "h8" {
-		t.Error("failed: posConcat 7 7 is h8, got %s", res)
+	for k, v := range map[tuple]string{
+		tuple{0, 0}: "a1",
+		tuple{7, 7}: "h8"} {
+		if r := posConcat(k.l, k.r); r != v {
+			t.Errorf("failed: posConcat %d %d is %s, got %s", k.l, k.r, v, r)
+		}
 	}
 }
 
