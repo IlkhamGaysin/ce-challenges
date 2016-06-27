@@ -9,8 +9,26 @@ import (
 	"strings"
 )
 
-func main() {
+func bubble(q string) string {
 	var n, k int
+	t := strings.Split(q, " | ")
+	fmt.Sscan(t[1], &n)
+	u := strings.Fields(t[0])
+	v := make([]int, len(u))
+	for ix, i := range u {
+		fmt.Sscan(i, &k)
+		v[ix] = k
+	}
+	for i := 0; i < len(v)-n; i++ {
+		sort.Ints(v[i : i+n+1])
+	}
+	for ix, i := range v {
+		u[ix] = fmt.Sprint(i)
+	}
+	return strings.Join(u, " ")
+}
+
+func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -18,20 +36,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), " | ")
-		fmt.Sscanf(t[1], "%d", &n)
-		u := strings.Fields(t[0])
-		v := make([]int, len(u))
-		for ix, i := range u {
-			fmt.Sscanf(i, "%d", &k)
-			v[ix] = k
-		}
-		for i := 0; i < len(v)-n; i++ {
-			sort.Ints(v[i : i+n+1])
-		}
-		for ix, i := range v {
-			u[ix] = fmt.Sprint(i)
-		}
-		fmt.Println(strings.Join(u, " "))
+		fmt.Println(bubble(scanner.Text()))
 	}
 }
