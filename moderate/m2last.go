@@ -8,6 +8,17 @@ import (
 	"strings"
 )
 
+func m2last(q string) string {
+	t := strings.Fields(q)
+	var m uint
+	n := uint(len(t))
+	fmt.Sscan(t[n-1], &m)
+	if m < n {
+		return t[n-1-m]
+	}
+	return ""
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,11 +27,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t := strings.Fields(scanner.Text())
-		var m int
-		fmt.Sscan(t[len(t)-1], &m)
-		if m < len(t) {
-			fmt.Println(t[len(t)-1-m])
+		if r := m2last(scanner.Text()); len(r) > 0 {
+			fmt.Println(r)
 		}
 	}
 }
