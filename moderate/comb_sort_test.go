@@ -1,12 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestCombSort(t *testing.T) {
+	for k, v := range map[string]uint{
+		"3 1 2":     2,
+		"5 4 3 2 1": 3} {
+		if r := combSort(k); r != v {
+			t.Errorf("failed: combSort %s is %d, got %d", k, v, r)
+		}
+	}
+}
 
 const shrink = 1.25
 
@@ -35,16 +43,4 @@ func combSort(q string) uint {
 		}
 	}
 	return l
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(combSort(scanner.Text()))
-	}
 }
