@@ -8,6 +8,21 @@ import (
 	"strings"
 )
 
+func dupes(q string) string {
+	var (
+		p string
+		r []string
+	)
+	t := strings.Split(q, ",")
+	for _, i := range t {
+		if i != p {
+			r = append(r, i)
+			p = i
+		}
+	}
+	return strings.Join(r, ",")
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,17 +31,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var (
-			p string
-			q []string
-		)
-		t := strings.Split(scanner.Text(), ",")
-		for _, i := range t {
-			if i != p {
-				q = append(q, i)
-				p = i
-			}
-		}
-		fmt.Println(strings.Join(q, ","))
+		fmt.Println(dupes(scanner.Text()))
 	}
 }
