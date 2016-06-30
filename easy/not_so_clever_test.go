@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	a string
+	n int
+}
+
+func TestNotSoClever(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"4 3 2 1", 1}:   "3 4 2 1",
+		tuple{"5 4 3 2 1", 2}: "4 3 5 2 1"} {
+		if r := notSoClever(k.a, k.n); r != v {
+			t.Errorf("failed: notSoClever %s | %d is %s, got %s",
+				k.a, k.n, v, r)
+		}
+	}
+}
 
 func notSoClever(q string, n int) string {
 	var j, k int
@@ -38,19 +52,4 @@ func notSoClever(q string, n int) string {
 		u[ix] = fmt.Sprint(i)
 	}
 	return strings.Join(u, " ")
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), " | ")
-		fmt.Sscanf(t[1], "%d", &n)
-		fmt.Println(notSoClever(t[0], n))
-	}
 }
