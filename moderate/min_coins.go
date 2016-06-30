@@ -7,9 +7,18 @@ import (
 	"os"
 )
 
-func main() {
-	b := []int{0, 1, 2, 1, 2}
+var b []uint
 
+func init() {
+	b = []uint{0, 1, 2, 1, 2}
+}
+
+func minCoins(n uint) uint {
+	return n/5 + b[n%5]
+}
+
+func main() {
+	var n uint
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -17,8 +26,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var a int
-		fmt.Sscanf(scanner.Text(), "%d", &a)
-		fmt.Println(a/5 + b[a%5])
+		fmt.Sscan(scanner.Text(), &n)
+		fmt.Println(minCoins(n))
 	}
 }
