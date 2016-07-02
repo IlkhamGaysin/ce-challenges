@@ -8,8 +8,21 @@ import (
 	"strings"
 )
 
+func panacea(p, q string) bool {
+	var v, m int
+	l, r := strings.Fields(p), strings.Fields(q)
+	for _, i := range l {
+		fmt.Sscanf(i, "%x", &v)
+		m += v
+	}
+	for _, i := range r {
+		fmt.Sscanf(i, "%b", &v)
+		m -= v
+	}
+	return m <= 0
+}
+
 func main() {
-	var v int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -17,22 +30,11 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var m int
 		s := strings.Split(scanner.Text(), " | ")
-		l := strings.Fields(s[0])
-		r := strings.Fields(s[1])
-		for _, i := range l {
-			fmt.Sscanf(i, "%x", &v)
-			m += v
-		}
-		for _, i := range r {
-			fmt.Sscanf(i, "%b", &v)
-			m -= v
-		}
-		if m > 0 {
-			fmt.Println("False")
-		} else {
+		if panacea(s[0], s[1]) {
 			fmt.Println("True")
+		} else {
+			fmt.Println("False")
 		}
 	}
 }
