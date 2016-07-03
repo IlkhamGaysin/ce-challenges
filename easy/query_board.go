@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var p, v int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -22,8 +23,8 @@ func main() {
 	for scanner.Scan() {
 		t := strings.Fields(scanner.Text())
 		if strings.HasPrefix(t[0], "Query") {
-			var p, sum int
-			fmt.Sscanf(t[1], "%d", &p)
+			var sum int
+			fmt.Sscan(t[1], &p)
 			if strings.HasSuffix(t[0], "Row") {
 				for i := 0; i < 256; i++ {
 					sum += m[p][i]
@@ -35,9 +36,8 @@ func main() {
 			}
 			fmt.Println(sum)
 		} else {
-			var p, v int
-			fmt.Sscanf(t[1], "%d", &p)
-			fmt.Sscanf(t[2], "%d", &v)
+			fmt.Sscan(t[1], &p)
+			fmt.Sscan(t[2], &v)
 			if strings.HasSuffix(t[0], "Row") {
 				for i := 0; i < 256; i++ {
 					m[p][i] = v

@@ -46,7 +46,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		var r []string
-		fmt.Sscanf(scanner.Text(), "%d", &n)
+		fmt.Sscan(scanner.Text(), &n)
 		nextPrime := primeSeq()
 		for i := nextPrime(); n > 1<<i-1; i = nextPrime() {
 			r = append(r, fmt.Sprint(1<<i-1))

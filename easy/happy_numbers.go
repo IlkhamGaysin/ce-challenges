@@ -17,6 +17,7 @@ func happy(a uint) (ret uint) {
 }
 
 func main() {
+	var a uint
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -24,8 +25,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var a uint
-		fmt.Sscanf(scanner.Text(), "%d", &a)
+		fmt.Sscan(scanner.Text(), &a)
 		b := []uint{a}
 		for i := 0; a > 1 && i < 127; i++ {
 			a = happy(a)

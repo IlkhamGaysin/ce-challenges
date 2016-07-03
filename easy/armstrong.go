@@ -20,6 +20,7 @@ func powi(y, x int) int {
 }
 
 func main() {
+	var m int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -27,8 +28,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var m, e, t int
-		fmt.Sscanf(scanner.Text(), "%d", &m)
+		var e, t int
+		fmt.Sscan(scanner.Text(), &m)
 		for a := m; a > 0; a /= 10 {
 			e++
 		}

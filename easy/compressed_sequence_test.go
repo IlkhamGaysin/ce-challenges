@@ -76,7 +76,7 @@ func compressInt(s string) string {
 		n, c, k int
 	)
 	for _, i := range strings.Fields(s) {
-		fmt.Sscanf(i, "%d", &k)
+		fmt.Sscan(i, &k)
 		if k == n {
 			c++
 			continue

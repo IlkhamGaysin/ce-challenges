@@ -50,7 +50,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), " | ")
-		fmt.Sscanf(t[1], "%d", &n)
+		fmt.Sscan(t[1], &n)
 		fmt.Println(notSoClever(t[0], n))
 	}
 }

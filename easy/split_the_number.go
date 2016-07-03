@@ -17,8 +17,8 @@ func split(s, t string) int {
 		p = strings.Index(t, "-")
 		neg = true
 	}
-	fmt.Sscanf(s[0:p], "%d", &n)
-	fmt.Sscanf(s[p:len(s)], "%d", &m)
+	fmt.Sscan(s[0:p], &n)
+	fmt.Sscanf(s[p:len(s)], "%d", &m) // may have leading 0
 	if neg {
 		return n - m
 	}

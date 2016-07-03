@@ -18,7 +18,7 @@ func init() {
 
 func month(s string) int {
 	var k int
-	fmt.Sscanf(s[4:8], "%d", &k)
+	fmt.Sscan(s[4:8], &k)
 	return 12*(k-1990) + moy[s[0:3]]
 }
 

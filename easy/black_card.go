@@ -30,7 +30,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		t := strings.Split(scanner.Text(), " | ")
-		fmt.Sscanf(t[1], "%d", &m)
+		fmt.Sscan(t[1], &m)
 		fmt.Println(blackCard(strings.Fields(t[0]), m))
 	}
 }

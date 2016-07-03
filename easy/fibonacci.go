@@ -30,7 +30,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		fmt.Sscanf(scanner.Text(), "%d", &n)
+		fmt.Sscan(scanner.Text(), &n)
 		fmt.Println(fibo(n))
 	}
 }

@@ -8,15 +8,15 @@ import (
 )
 
 func main() {
+	var sum, v int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer data.Close()
-	var sum, v int
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		fmt.Sscanf(scanner.Text(), "%d", &v)
+		fmt.Sscan(scanner.Text(), &v)
 		sum += v
 	}
 	fmt.Println(sum)
