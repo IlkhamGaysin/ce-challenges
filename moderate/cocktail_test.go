@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	q string
+	n int
+}
+
+func TestCocktail(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"5 4 9 10 7 3 2 1 6", 1}: "1 4 5 9 7 3 2 6 10",
+		tuple{"9 8 7 6 5 4 3 2 1", 3}:  "1 2 3 6 5 4 7 8 9"} {
+		if r := cocktail(k.q, k.n); r != v {
+			t.Errorf("failed: cocktail %s | %d id %s, got %s",
+				k.q, k.n, v, r)
+		}
+	}
+}
 
 func min(a, b int) int {
 	if a < b {
@@ -38,19 +52,4 @@ func cocktail(q string, n int) string {
 		u[ix] = fmt.Sprint(i)
 	}
 	return strings.Join(u, " ")
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), " | ")
-		fmt.Sscan(t[1], &n)
-		fmt.Println(cocktail(t[0], n))
-	}
 }
