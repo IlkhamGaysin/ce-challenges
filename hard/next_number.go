@@ -17,7 +17,15 @@ func dsig(a int) (r int) {
 	return r
 }
 
+func nextNumber(d int) int {
+	e := d + 9
+	for ds := dsig(d); dsig(e) != ds; e += 9 {
+	}
+	return e
+}
+
 func main() {
+	var d int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -26,11 +34,7 @@ func main() {
 
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var d int
-		fmt.Sscanf(scanner.Text(), "%d", &d)
-		e := d + 9
-		for ds := dsig(d); dsig(e) != ds; e += 9 {
-		}
-		fmt.Println(e)
+		fmt.Sscan(scanner.Text(), &d)
+		fmt.Println(nextNumber(d))
 	}
 }
