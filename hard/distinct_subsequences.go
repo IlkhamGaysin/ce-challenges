@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func subs(s, t string) int {
+func subs(s, t string) uint {
 	if len(t) == 0 {
 		return 1
 	}
