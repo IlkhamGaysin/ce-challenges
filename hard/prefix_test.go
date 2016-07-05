@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestPrefix(t *testing.T) {
+	for k, v := range map[string]int{
+		"* + 2 3 4":      20,
+		"42":             42,
+		"* / * 2 10 2 7": 70} {
+		if r := prefix(k); r != v {
+			t.Errorf("failed: prefix %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func pol(o byte, a, b float32) float32 {
 	switch o {
@@ -29,16 +39,4 @@ func prefix(q string) int {
 		r = pol(s[n/2-i][0], r, v)
 	}
 	return int(r + 0.001)
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(prefix(scanner.Text()))
-	}
 }
