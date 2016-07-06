@@ -8,6 +8,34 @@ import (
 	"strings"
 )
 
+func repeatedSubstring(q string) string {
+	l, r := len(q), ""
+	if l == 0 {
+		return "NONE"
+	}
+	for n, c := 1, 0; n <= (l-c)/2; n++ {
+		var f bool
+		for i := c; i < l-n; i++ {
+			subs := q[i : i+n]
+			if len(strings.TrimSpace(subs)) == 0 {
+				continue
+			}
+			if strings.Contains(q[i+n:l], subs) {
+				r, c, f = subs, i, true
+				break
+			}
+		}
+		if !f {
+			break
+		}
+	}
+	if r == "" {
+		return "NONE"
+	} else {
+		return r
+	}
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,31 +44,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		l, m := len(scanner.Text()), ""
-		if l == 0 {
-			fmt.Println("NONE")
-			continue
-		}
-		for n, c := 1, 0; n <= (l-c)/2; n++ {
-			var f bool
-			for i := c; i < l-n; i++ {
-				subs := scanner.Text()[i : i+n]
-				if len(strings.TrimSpace(subs)) == 0 {
-					continue
-				}
-				if strings.Contains(scanner.Text()[i+n:l], subs) {
-					m, c, f = subs, i, true
-					break
-				}
-			}
-			if !f {
-				break
-			}
-		}
-		if m == "" {
-			fmt.Println("NONE")
-		} else {
-			fmt.Println(m)
-		}
+		fmt.Println(repeatedSubstring(scanner.Text()))
 	}
 }
