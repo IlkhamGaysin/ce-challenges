@@ -1,13 +1,23 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestDistinctTriangles(t *testing.T) {
+	for k, v := range map[string]uint{
+		"0 2,0 1,1 2,1 3,2 3": 2,
+		"1 3,1 8,3 8":         1,
+		"5 6,5 7,6 7":         1} {
+		if r := distinctTriangles(k); r != v {
+			t.Errorf("failed: distinctTriangles %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func contains(a []int, b int) bool {
 	ix := sort.SearchInts(a, b)
@@ -36,17 +46,4 @@ func distinctTriangles(q string) (r uint) {
 		}
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Println(distinctTriangles(s[1]))
-	}
 }
