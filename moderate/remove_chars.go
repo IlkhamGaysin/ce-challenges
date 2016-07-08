@@ -8,6 +8,16 @@ import (
 	"strings"
 )
 
+func removeChars(p, q string) string {
+	mapf := func(r rune) rune {
+		if strings.Contains(q, string(r)) {
+			return -1
+		}
+		return r
+	}
+	return strings.Map(mapf, p)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -17,12 +27,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), ", ")
-		mapf := func(r rune) rune {
-			if strings.Contains(s[1], string(r)) {
-				return -1
-			}
-			return r
-		}
-		fmt.Println(strings.Map(mapf, s[0]))
+		fmt.Println(removeChars(s[0], s[1]))
 	}
 }
