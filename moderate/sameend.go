@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+func sameend(p, q string) bool {
+	return strings.HasSuffix(p, q)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,11 +20,13 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		switch t := strings.Split(scanner.Text(), ","); {
-		case len(t) < 2:
-		case strings.HasSuffix(t[0], t[1]):
+		t := strings.Split(scanner.Text(), ",")
+		if len(t) < 2 {
+			continue
+		}
+		if sameend(t[0], t[1]) {
 			fmt.Println(1)
-		default:
+		} else {
 			fmt.Println(0)
 		}
 	}
