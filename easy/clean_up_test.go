@@ -1,12 +1,21 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestClean(t *testing.T) {
+	for k, v := range map[string]string{
+		"(--9Hello----World...--)":         "hello world",
+		"Can 0$9 ---you~":                  "can you",
+		"13What213are;11you-123+138doing7": "what are you doing"} {
+		if r := clean(k); r != v {
+			t.Errorf("failed: clean %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 func isAlpha(a rune) bool {
 	if (a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') {
@@ -37,16 +46,4 @@ func clean(q string) string {
 		r = append(r, string(c))
 	}
 	return strings.Join(r, " ")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(clean(scanner.Text()))
-	}
 }
