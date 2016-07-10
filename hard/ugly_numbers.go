@@ -54,10 +54,7 @@ func ugly(j int, n []int) bool {
 	} else {
 		s -= c
 	}
-	if s%2 == 0 || s%3 == 0 || s%5 == 0 || s%7 == 0 {
-		return true
-	}
-	return false
+	return s%2 == 0 || s%3 == 0 || s%5 == 0 || s%7 == 0
 }
 
 func main() {

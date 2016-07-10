@@ -30,10 +30,7 @@ func subcheck(s0, s1 string, q, r int) bool {
 		}
 		q, r = q+1, r+1
 	}
-	if r < len(s1) {
-		return false
-	}
-	return true
+	return r >= len(s1)
 }
 
 func main() {

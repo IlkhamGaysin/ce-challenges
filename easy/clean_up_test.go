@@ -18,10 +18,7 @@ func TestClean(t *testing.T) {
 }
 
 func isAlpha(a rune) bool {
-	if (a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') {
-		return true
-	}
-	return false
+	return (a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z')
 }
 
 func clean(q string) string {
