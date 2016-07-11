@@ -13,7 +13,8 @@ func TestXz(t *testing.T) {
 		tuple{1, 1, 1}:   true,
 		tuple{0, 4, 16}:  true} {
 		if r := bitEqual(k.n, k.p, k.q); r != v {
-			t.Errorf("failed: bitEqual %d %d %d is %t, got %t", k.n, k.p, k.q, v, r)
+			t.Errorf("failed: bitEqual %d %d %d is %t, got %t",
+				k.n, k.p, k.q, v, r)
 		}
 	}
 }

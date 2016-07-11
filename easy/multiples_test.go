@@ -12,7 +12,8 @@ func TestMultiples(t *testing.T) {
 		tuple{17, 16}:              32,
 		tuple{2000000000000000, 1}: 2000000000000000} {
 		if r := multiples(k.x, k.n); r != v {
-			t.Errorf("failed: multiples %d %d is %d, got %d", k.x, k.n, v, r)
+			t.Errorf("failed: multiples %d %d is %d, got %d",
+				k.x, k.n, v, r)
 		}
 	}
 }

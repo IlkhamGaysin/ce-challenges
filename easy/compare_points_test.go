@@ -13,7 +13,8 @@ func TestComparePoints(t *testing.T) {
 		tuple{0, 1, 0, 5}:     "N",
 		tuple{0, 0, 1, -5}:    "SE"} {
 		if r := comparePoints(k.x1, k.y1, k.x2, k.y2); r != v {
-			t.Errorf("failed: comparePoints %d %d %d %d is %s, got %s", k.x1, k.y1, k.x2, k.y2, v, r)
+			t.Errorf("failed: comparePoints %d %d %d %d is %s, got %s",
+				k.x1, k.y1, k.x2, k.y2, v, r)
 		}
 	}
 }

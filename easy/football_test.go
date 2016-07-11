@@ -23,7 +23,8 @@ func TestFootball(t *testing.T) {
 		"1 2 3 4 | 3 1 | 4 1":         "1:1,2,3; 2:1; 3:1,2; 4:1,3;",
 		"19 11 | 19 21 23 | 31 39 29": "11:1; 19:1,2; 21:2; 23:2; 29:3; 31:3; 39:3;"} {
 		if r := football(k); r != v {
-			t.Errorf("failed: football %s is %s, got %s", k, v, r)
+			t.Errorf("failed: football %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

@@ -14,7 +14,8 @@ func TestDetails(t *testing.T) {
 		"X.Y..Y,X..Y":                     1,
 		"XY.Y,XX.Y":                       0} {
 		if r := details(k); r != v {
-			t.Errorf("failed: details %s is %d, got %d", k, v, r)
+			t.Errorf("failed: details %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

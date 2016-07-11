@@ -12,7 +12,8 @@ func TestPowi(t *testing.T) {
 		tuple{0, 8}:  0,
 		tuple{0, 0}:  1} {
 		if r := powi(k.y, k.x); r != v {
-			t.Errorf("failed: %d^%d = %d, got %d", k.y, k.x, v, r)
+			t.Errorf("failed: %d^%d = %d, got %d",
+				k.y, k.x, v, r)
 		}
 	}
 }

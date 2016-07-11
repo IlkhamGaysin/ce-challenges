@@ -18,7 +18,8 @@ func TestMask(t *testing.T) {
 		tuple{"1232", "ab+cd"}:             44,
 		tuple{"90602", "a+bcde"}:           611} {
 		if r := split(k.s, k.t); r != v {
-			t.Errorf("failed: split %s %s is %d, got %d", k.s, k.t, v, r)
+			t.Errorf("failed: split %s %s is %d, got %d",
+				k.s, k.t, v, r)
 		}
 	}
 }

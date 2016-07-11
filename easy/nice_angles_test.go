@@ -13,7 +13,8 @@ func TestNiceAngles(t *testing.T) {
 		0.25:         "0.15'00\"",
 		254.16991217: "254.10'11\""} {
 		if r := niceAngles(k); r != v {
-			t.Errorf("failed: niceAngles %f is %s, got %s", k, v, r)
+			t.Errorf("failed: niceAngles %f is %s, got %s",
+				k, v, r)
 		}
 	}
 }

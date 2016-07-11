@@ -12,7 +12,8 @@ func TestDupes(t *testing.T) {
 		"3,3,3":             "3",
 		"2,3,4,5,5":         "2,3,4,5"} {
 		if r := dupes(k); r != v {
-			t.Errorf("failed: dupes %s is %s, got %s", k, v, r)
+			t.Errorf("failed: dupes %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

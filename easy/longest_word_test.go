@@ -10,7 +10,8 @@ func TestLongest(t *testing.T) {
 		"some line with text": "some",
 		"another line":        "another"} {
 		if r := longest(k); r != v {
-			t.Errorf("failed: longest %s is %s, got %s", k, v, r)
+			t.Errorf("failed: longest %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

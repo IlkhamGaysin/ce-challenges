@@ -17,7 +17,8 @@ func TestAgeDistribution(t *testing.T) {
 		66:  "The Golden Years",
 		101: "This program is for humans"} {
 		if r := ageDistribution(k); r != v {
-			t.Errorf("failed: ageDistribution %d is %s, got %s", k, v, r)
+			t.Errorf("failed: ageDistribution %d is %s, got %s",
+				k, v, r)
 		}
 	}
 }

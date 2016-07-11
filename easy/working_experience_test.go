@@ -12,7 +12,8 @@ func TestMonth(t *testing.T) {
 		"Aug 2011": 259,
 		"Sep 2013": 284} {
 		if r := month(k); r != v {
-			t.Errorf("failed: month %s is %d, got %d", k, v, r)
+			t.Errorf("failed: month %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

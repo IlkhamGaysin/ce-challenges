@@ -12,7 +12,8 @@ func TestHighestScore(t *testing.T) {
 		"10 25 -30 44 | 5 16 70 8 | 13 1 31 12":            "13 25 70 44",
 		"100 6 300 20 10 | 5 200 6 9 500 | 1 10 3 400 143": "100 200 300 400 500"} {
 		if r := highestScore(k); r != v {
-			t.Errorf("failed: highestScore %s is %s, got %s", k, v, r)
+			t.Errorf("failed: highestScore %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

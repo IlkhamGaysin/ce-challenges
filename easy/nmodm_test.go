@@ -12,7 +12,8 @@ func TestMod(t *testing.T) {
 		tuple{2, 3}:  2,
 		tuple{1, 1}:  0} {
 		if r := mod(k.n, k.m); r != v {
-			t.Errorf("failed: mod %d %d is %d, got %d", k.n, k.m, v, r)
+			t.Errorf("failed: mod %d %d is %d, got %d",
+				k.n, k.m, v, r)
 		}
 	}
 }

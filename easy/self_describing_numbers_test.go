@@ -17,7 +17,8 @@ func TestSelf(t *testing.T) {
 		"821000001000":  true,
 		"9210000001000": true} {
 		if r := self(k); r != v {
-			t.Errorf("failed: self %s is %t, got %t", k, v, r)
+			t.Errorf("failed: self %s is %t, got %t",
+				k, v, r)
 		}
 	}
 }

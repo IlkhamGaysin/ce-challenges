@@ -12,7 +12,8 @@ func TestTextToNumber(t *testing.T) {
 		"zero": 0,
 		"two million one hundred seven": 2000107} {
 		if r := textToNumber(k); r != v {
-			t.Errorf("failed: textToNumber %s is %d, got %d", k, v, r)
+			t.Errorf("failed: textToNumber %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

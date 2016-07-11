@@ -9,7 +9,7 @@ type tuple struct {
 	p, q string
 }
 
-func testRemoveChars(t *testing.T) {
+func TestRemoveChars(t *testing.T) {
 	for k, v := range map[tuple]string{
 		tuple{"how are you", "abc"}: "how re you",
 		tuple{"hello world", "def"}: "hllo worl"} {

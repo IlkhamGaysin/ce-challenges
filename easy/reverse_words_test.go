@@ -11,7 +11,8 @@ func TestReverse(t *testing.T) {
 		"Hello CodeEval":           "CodeEval Hello",
 		"can you talk like Yoda ?": "? Yoda like talk you can"} {
 		if r := reverse(k); r != v {
-			t.Errorf("failed: reverse %s is %s, got %s", k, v, r)
+			t.Errorf("failed: reverse %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }
@@ -22,7 +23,8 @@ func TestReverseS(t *testing.T) {
 		"Hello CodeEval":           "CodeEval Hello",
 		"can you talk like Yoda ?": "? Yoda like talk you can"} {
 		if r := reverseS(k); r != v {
-			t.Errorf("failed: reverseS %s is %s, got %s", k, v, r)
+			t.Errorf("failed: reverseS %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

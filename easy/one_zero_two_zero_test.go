@@ -12,7 +12,8 @@ func TestXz(t *testing.T) {
 		tuple{1, 7}:     false,
 		tuple{7, 10922}: true} {
 		if r := xz(k.n, k.a); r != v {
-			t.Errorf("failed: xz %d %d is %t, got %t", k.n, k.a, v, r)
+			t.Errorf("failed: xz %d %d is %t, got %t",
+				k.n, k.a, v, r)
 		}
 	}
 }

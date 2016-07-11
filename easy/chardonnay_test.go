@@ -16,7 +16,8 @@ func TestContainsAll(t *testing.T) {
 		tuple{"qwer", "ee"}:        false,
 		tuple{"Cabernet", "ot"}:    false} {
 		if r := containsAll(k.a, k.b); r != v {
-			t.Errorf("failed: containsAll %s %s is %t, got %t", k.a, k.b, v, r)
+			t.Errorf("failed: containsAll %s %s is %t, got %t",
+				k.a, k.b, v, r)
 		}
 	}
 }

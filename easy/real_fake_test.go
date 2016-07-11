@@ -11,7 +11,8 @@ func TestRealFake(t *testing.T) {
 		"9999999999999999": false,
 		"9999999999999993": true} {
 		if r := realFake(k); r != v {
-			t.Errorf("failed: realFake %s is %t, got %t", k, v, r)
+			t.Errorf("failed: realFake %s is %t, got %t",
+				k, v, r)
 		}
 	}
 }

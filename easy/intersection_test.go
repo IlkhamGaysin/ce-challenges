@@ -6,15 +6,19 @@ import (
 	"testing"
 )
 
+type tuple struct {
+	s, t string
+}
+
 func TestIntersect(t *testing.T) {
-	for k, v := range map[string]string{
-		"1,2,3,4;4,5,6":               "4",
-		"7,8,9;8,9,10,11,12":          "8,9",
-		"3,4,7;2,6,12":                "",
-		"1,3,5,7,9,11,13;2,3,5,6,8,9": "3,5,9"} {
-		s := strings.Split(k, ";")
-		if r := intersect(s[0], s[1]); r != v {
-			t.Errorf("failed: intersect %s is %s, got %s", k, v, r)
+	for k, v := range map[tuple]string{
+		tuple{"1,2,3,4", "4,5,6"}:               "4",
+		tuple{"7,8,9", "8,9,10,11,12"}:          "8,9",
+		tuple{"3,4,7", "2,6,12"}:                "",
+		tuple{"1,3,5,7,9,11,13", "2,3,5,6,8,9"}: "3,5,9"} {
+		if r := intersect(k.s, k.t); r != v {
+			t.Errorf("failed: intersect %s;%s is %s, got %s",
+				k.s, k.t, v, r)
 		}
 	}
 }

@@ -13,7 +13,8 @@ func TestIsPalindrome(t *testing.T) {
 		3490943:  true,
 		12345670: false} {
 		if r := isPalindrome(k); r != v {
-			t.Errorf("failed: isPalindrome %d is %t, got %t", k, v, r)
+			t.Errorf("failed: isPalindrome %d is %t, got %t",
+				k, v, r)
 		}
 	}
 }

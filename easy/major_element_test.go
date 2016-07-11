@@ -15,7 +15,8 @@ func TestMajor(t *testing.T) {
 		"4,4,4,1,2,3":           "None",
 		"1,2,3,100,100,100,100": "100"} {
 		if r := major(k); r != v {
-			t.Errorf("failed: major %s is %s, got %s", k, v, r)
+			t.Errorf("failed: major %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

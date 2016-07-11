@@ -3,10 +3,11 @@ package main
 import "testing"
 
 func TestZsum(t *testing.T) {
-	h := map[int]int{0: 0, 7: 7, 1003: 4, 1234567890: 45}
-	for k, v := range h {
-		if res := zsum(k); res != v {
-			t.Errorf("failed: zsum %d = %d, got %d", k, v, res)
+	for k, v := range map[int]int{
+		0: 0, 7: 7, 1003: 4, 1234567890: 45} {
+		if r := zsum(k); r != v {
+			t.Errorf("failed: zsum %d = %d, got %d",
+				k, v, r)
 		}
 	}
 }

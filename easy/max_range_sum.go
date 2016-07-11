@@ -8,11 +8,9 @@ import (
 	"strings"
 )
 
-func maxRangeSum(q string) (r int) {
-	s := strings.Split(q, ";")
-	t := strings.Fields(s[1])
-	var n, c int
-	fmt.Sscan(s[0], &n)
+func maxRangeSum(n int, q string) (r int) {
+	t := strings.Fields(q)
+	var c int
 	u := make([]int, len(t))
 	for ix, i := range t {
 		fmt.Sscan(i, &u[ix])
@@ -34,6 +32,7 @@ func maxRangeSum(q string) (r int) {
 }
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -41,6 +40,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		fmt.Println(maxRangeSum(scanner.Text()))
+		s := strings.Split(scanner.Text(), ";")
+		fmt.Sscan(s[0], &n)
+		fmt.Println(maxRangeSum(n, s[1]))
 	}
 }

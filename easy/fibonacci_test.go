@@ -7,7 +7,8 @@ func TestFibo(t *testing.T) {
 		0: 0, 1: 1, 2: 1, 3: 2, 4: 3, 5: 5, 6: 8, 7: 13,
 		12: 144, 23: 28657, 64: 10610209857723} {
 		if r := fibo(k); r != v {
-			t.Errorf("failed: fibo %d = %d, got %d", k, v, r)
+			t.Errorf("failed: fibo %d = %d, got %d",
+				k, v, r)
 		}
 	}
 }

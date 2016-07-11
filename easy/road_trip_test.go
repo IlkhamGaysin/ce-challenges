@@ -14,7 +14,8 @@ func TestRoadTrip(t *testing.T) {
 		"Yvnzjwk,5363; Pkabj,5999; Xznvb,3584; Jfksvx,1240; Inwm,5720;": "1240,2344,1779,357,279",
 		"Ramytdb,2683; Voclqmb,5236;":                                   "2683,2553"} {
 		if r := roadTrip(k); r != v {
-			t.Errorf("failed: roadTrip %s is %s, got %s", k, v, r)
+			t.Errorf("failed: roadTrip %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

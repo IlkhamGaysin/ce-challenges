@@ -17,7 +17,8 @@ func TestDelta(t *testing.T) {
 		tuple{23, 35, 7, 2, 49, 59}:   "20:45:08",
 		tuple{14, 31, 45, 14, 46, 56}: "00:15:11"} {
 		if r := delta(k.h1, k.m1, k.s1, k.h2, k.m2, k.s2); r != v {
-			t.Errorf("failed: delta %02d:%02d:%02d %02d:%02d:%02d is %s, got %s", k.h1, k.m1, k.s1, k.h2, k.m2, k.s2, v, r)
+			t.Errorf("failed: delta %02d:%02d:%02d %02d:%02d:%02d is %s, got %s",
+				k.h1, k.m1, k.s1, k.h2, k.m2, k.s2, v, r)
 		}
 	}
 }

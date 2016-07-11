@@ -13,7 +13,8 @@ func TestStepwise(t *testing.T) {
 		"asdf 0123456789 qwer": "0 *1 **2 ***3 ****4 *****5 ******6 *******7 ********8 *********9",
 		"a b c d e f":          "a"} {
 		if r := stepwise(k); r != v {
-			t.Errorf("failed: stepwise %s is %s, got %s", k, v, r)
+			t.Errorf("failed: stepwise %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

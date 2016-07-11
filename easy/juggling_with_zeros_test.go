@@ -14,7 +14,8 @@ func TestJuggle(t *testing.T) {
 		"0 000000000 00 00":                                                   3,
 		"00 0000000000000000000000000000000000000000000000000000000000000000": 18446744073709551615} {
 		if r := juggle(k); r != v {
-			t.Errorf("failed: juggle %s is %d, got %d", k, v, r)
+			t.Errorf("failed: juggle %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func testDec2bin(t *testing.T) {
+func TestDec2bin(t *testing.T) {
 	for k, v := range map[uint]string{
 		256:     "100000000",
 		10:      "1010",

@@ -6,7 +6,8 @@ func TestPow3(t *testing.T) {
 	for k, v := range map[int]int{
 		0: 1, 1: 3, 39: 4052555153018976267} {
 		if r := pow3(k); r != v {
-			t.Errorf("failed: 3^%d = %d, got %d", k, v, r)
+			t.Errorf("failed: 3^%d = %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -12,7 +12,8 @@ func TestMinDist(t *testing.T) {
 		"4 3 3 5 7":  6,
 		"3 20 30 40": 20} {
 		if r := minDist(k); r != v {
-			t.Errorf("failed: minDist %s is %d, got %d", k, v, r)
+			t.Errorf("failed: minDist %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -8,7 +8,8 @@ func TestHappy(t *testing.T) {
 		85: 89, 89: 145, 145: 42, 42: 20, 20: 4, 4: 16, 16: 37,
 		37: 58, 58: 89, 7: 49, 49: 97, 97: 130, 130: 10, 10: 1} {
 		if r := happy(k); r != v {
-			t.Errorf("failed: happy %d is %d, got %d", k, v, r)
+			t.Errorf("failed: happy %d is %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -11,7 +11,8 @@ func TestPos(t *testing.T) {
 		tuple{0, 0}: "a1",
 		tuple{7, 7}: "h8"} {
 		if r := pos(k.l, k.r); r != v {
-			t.Errorf("failed: pos %d %d is %s, got %s", k.l, k.r, v, r)
+			t.Errorf("failed: pos %d %d is %s, got %s",
+				k.l, k.r, v, r)
 		}
 	}
 }
@@ -21,7 +22,8 @@ func TestPosConcat(t *testing.T) {
 		tuple{0, 0}: "a1",
 		tuple{7, 7}: "h8"} {
 		if r := posConcat(k.l, k.r); r != v {
-			t.Errorf("failed: posConcat %d %d is %s, got %s", k.l, k.r, v, r)
+			t.Errorf("failed: posConcat %d %d is %s, got %s",
+				k.l, k.r, v, r)
 		}
 	}
 }

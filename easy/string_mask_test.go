@@ -12,7 +12,8 @@ func TestMask(t *testing.T) {
 		tuple{"world", "10000"}: "World",
 		tuple{"cba", "111"}:     "CBA"} {
 		if r := mask(k.s, k.t); r != v {
-			t.Errorf("failed: mask %s %s is %s, got %s", k.s, k.t, v, r)
+			t.Errorf("failed: mask %s %s is %s, got %s",
+				k.s, k.t, v, r)
 		}
 	}
 }

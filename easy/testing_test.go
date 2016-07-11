@@ -1,18 +1,19 @@
 package main
 
-import (
-	"strings"
-	"testing"
-)
+import "testing"
+
+type tuple struct {
+	s, t string
+}
 
 func TestTest(t *testing.T) {
-	for k, v := range map[string]string{
-		"Heelo Codevval | Hello Codeeval": "Low",
-		"hELLO cODEEVAL | Hello Codeeval": "Critical",
-		"Hello Codeeval | Hello Codeeval": "Done"} {
-		s := strings.Split(k, " | ")
-		if r := test(s[0], s[1]); r != v {
-			t.Errorf("failed: test %s is %s, got %s", k, v, r)
+	for k, v := range map[tuple]string{
+		tuple{"Heelo Codevval", "Hello Codeeval"}: "Low",
+		tuple{"hELLO cODEEVAL", "Hello Codeeval"}: "Critical",
+		tuple{"Hello Codeeval", "Hello Codeeval"}: "Done"} {
+		if r := test(k.s, k.t); r != v {
+			t.Errorf("failed: test %s | %s is %s, got %s",
+				k.s, k.t, v, r)
 		}
 	}
 }

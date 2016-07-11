@@ -12,7 +12,8 @@ func TestMultiplyLists(t *testing.T) {
 		"5 | 8":           "40",
 		"13 4 15 1 15 5 | 1 4 15 14 8 2": "13 16 225 14 120 10"} {
 		if r := multiplyLists(k); r != v {
-			t.Errorf("failed: multiplyLists %s is %s, got %s", k, v, r)
+			t.Errorf("failed: multiplyLists %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

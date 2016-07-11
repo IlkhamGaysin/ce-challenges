@@ -5,15 +5,19 @@ import (
 	"testing"
 )
 
+type tuple struct {
+	x1, y1, x2, y2 float64
+}
+
 func TestDist(t *testing.T) {
-	if res := dist(point{1, 1}, point{39999, 39999}); int(res) != 56565 {
-		t.Errorf("failed: dist (1, 1) (39999, 39999) is 56565.714067799, got %f", res)
-	}
-	if res := dist(point{3, 7}, point{1, 5}); int(1000*res) != 2828 {
-		t.Errorf("failed: dist (3, 7) (1, 5) is 2.828427125, got %f", res)
-	}
-	if res := dist(point{1, 9}, point{8, 3}); int(1000*res) != 9219 {
-		t.Errorf("failed: dist (1, 9) (8, 3) is 9.219544457, got %f", res)
+	for k, v := range map[tuple]int{
+		tuple{1, 1, 39999, 39999}: 56565714,
+		tuple{3, 7, 1, 5}:         2828,
+		tuple{1, 9, 8, 3}:         9219} {
+		if r := int(1000 * dist(point{k.x1, k.y1}, point{k.x2, k.y2})); r != v {
+			t.Errorf("failed: dist %f %f, %f %f is %f, got %f",
+				k.x1, k.y1, k.x2, k.y2, float64(v)/1000, r)
+		}
 	}
 }
 

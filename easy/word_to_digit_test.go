@@ -10,7 +10,8 @@ func TestWordToDigit(t *testing.T) {
 		"zero;two;five;seven;eight;four": "025784",
 		"three;seven;eight;nine;two":     "37892"} {
 		if r := wordToDigit(k); r != v {
-			t.Errorf("failed: wordToDigit %s is %s, got %s", k, v, r)
+			t.Errorf("failed: wordToDigit %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

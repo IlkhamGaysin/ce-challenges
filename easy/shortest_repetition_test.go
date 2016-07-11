@@ -11,7 +11,8 @@ func TestShortestRep(t *testing.T) {
 		"b":                            1,
 		"ll":                           1} {
 		if r := shortestRep(k); r != v {
-			t.Errorf("failed: shortestRep %s is %d, got %d", k, v, r)
+			t.Errorf("failed: shortestRep %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

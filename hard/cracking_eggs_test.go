@@ -9,16 +9,16 @@ type tuple struct {
 }
 
 func TestFloors(t *testing.T) {
-	h := map[tuple]int{
+	for k, v := range map[tuple]int{
 		tuple{2, 100}:    14,
-		tuple{90, 10000}: 14}
-	for k, v := range h {
+		tuple{90, 10000}: 14} {
 		var r int
 		for floors(k.e, r) < k.s {
 			r++
 		}
 		if r != v {
-			t.Errorf("failed: floors %d %d is %d, got %d", k.e, k.s, v, r)
+			t.Errorf("failed: floors %d %d is %d, got %d",
+				k.e, k.s, v, r)
 		}
 	}
 }

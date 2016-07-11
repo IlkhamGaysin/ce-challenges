@@ -13,7 +13,8 @@ func TestCompress(t *testing.T) {
 		"7": "1 7"}
 	for k, v := range h {
 		if res := compress(k); res != v {
-			t.Errorf("failed: compress %s is %s, got %s", k, v, res)
+			t.Errorf("failed: compress %s is %s, got %s",
+				k, v, res)
 		}
 	}
 }
@@ -25,7 +26,8 @@ func TestCompressInt(t *testing.T) {
 		"7": "1 7"}
 	for k, v := range h {
 		if res := compressInt(k); res != v {
-			t.Errorf("failed: compressInt %s is %s, got %s", k, v, res)
+			t.Errorf("failed: compressInt %s is %s, got %s",
+				k, v, res)
 		}
 	}
 }

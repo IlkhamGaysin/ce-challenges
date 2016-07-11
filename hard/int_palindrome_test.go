@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestIsPalindrome(t *testing.T) {
-	r := map[int]bool{
+	tests := map[int]bool{
 		1:        true,
 		2:        true,
 		10:       false,
@@ -12,12 +12,14 @@ func TestIsPalindrome(t *testing.T) {
 		12621:    true,
 		3490943:  true,
 		12345670: false}
-	for k, v := range r {
-		if res := isPalindrome(k); res != v {
-			t.Errorf("failed: isPalindrome %d is %t, got %t", k, v, res)
+	for k, v := range tests {
+		if r := isPalindrome(k); r != v {
+			t.Errorf("failed: isPalindrome %d is %t, got %t",
+				k, v, r)
 		}
-		if res := palindromeSlice(k); res != v {
-			t.Errorf("failed: palindromeSlice %d is %t, got %t", k, v, res)
+		if r := palindromeSlice(k); r != v {
+			t.Errorf("failed: palindromeSlice %d is %t, got %t",
+				k, v, r)
 		}
 	}
 }

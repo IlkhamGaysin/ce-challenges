@@ -9,7 +9,8 @@ func TestSumDigits(t *testing.T) {
 	for k, v := range map[string]uint{
 		"23": 5, "496": 19, "120345": 15} {
 		if r := sumDigits(k); r != v {
-			t.Errorf("failed: sumDigits %s is %d, got %d", k, v, r)
+			t.Errorf("failed: sumDigits %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }
