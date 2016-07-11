@@ -7,6 +7,11 @@ import (
 	"os"
 )
 
+func hex2dec(q string) (r int) {
+	fmt.Sscanf(q, "%x", &r)
+	return r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -15,8 +20,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var d int
-		fmt.Sscanf(scanner.Text(), "%x", &d)
-		fmt.Println(d)
+		fmt.Println(hex2dec(scanner.Text()))
 	}
 }
