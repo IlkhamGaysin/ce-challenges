@@ -7,11 +7,12 @@ import (
 )
 
 func TestLucky(t *testing.T) {
-	h := map[int64]string{2: "10", 4: "670", 6: "55252", 8: "4816030",
-		100: "138681178063913146486663255108385891670476531416644888545033078503482282975641730091720919340564340"}
-	for k, v := range h {
-		if res := fmt.Sprint(lucky(k)); res != v {
-			t.Errorf("failed: lucky %d is %s, got %s", k, v, res)
+	for k, v := range map[int64]string{
+		2: "10", 4: "670", 6: "55252", 8: "4816030",
+		100: "138681178063913146486663255108385891670476531416644888545033078503482282975641730091720919340564340"} {
+		if r := fmt.Sprint(lucky(k)); r != v {
+			t.Errorf("failed: lucky %d is %s, got %s",
+				k, v, r)
 		}
 	}
 }

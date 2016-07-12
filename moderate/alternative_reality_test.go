@@ -3,15 +3,17 @@ package main
 import "testing"
 
 func TestAlter(t *testing.T) {
-	r := map[int]int{4: 1, 17: 6, 100: 292}
-	for k, v := range r {
-		if res := alterMap(k, 50); res != v {
-			t.Errorf("failed: alterMap %d, 50 is %d, got %d", k, v, res)
+	tests := map[int]int{4: 1, 17: 6, 100: 292}
+	for k, v := range tests {
+		if r := alterMap(k, 50); r != v {
+			t.Errorf("failed: alterMap %d, 50 is %d, got %d",
+				k, v, r)
 		}
 	}
-	for k, v := range r {
-		if res := alter(k, 4); res != v {
-			t.Errorf("failed: alter %d, 4 is %d, got %d", k, v, res)
+	for k, v := range tests {
+		if r := alter(k, 4); r != v {
+			t.Errorf("failed: alter %d, 4 is %d, got %d",
+				k, v, r)
 		}
 	}
 }

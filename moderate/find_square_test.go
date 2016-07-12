@@ -2,15 +2,19 @@ package main
 
 import "testing"
 
+type tuple struct {
+	x1, y1, x2, y2 int
+}
+
 func TestDist2(t *testing.T) {
-	if res := dist2(point{0, 0}, point{10, 10}); res != 200 {
-		t.Errorf("failed: dist2 (0, 0) (10, 10) is 200, got %d", res)
-	}
-	if res := dist2(point{3, 7}, point{1, 5}); res != 8 {
-		t.Errorf("failed: dist2 (3, 7) (1, 5) is 8, got %d", res)
-	}
-	if res := dist2(point{1, 9}, point{8, 3}); res != 85 {
-		t.Errorf("failed: dist2 (1, 9) (8, 3) is 85, got %d", res)
+	for k, v := range map[tuple]int{
+		tuple{0, 0, 10, 10}: 200,
+		tuple{3, 7, 1, 5}:   8,
+		tuple{1, 9, 8, 3}:   85} {
+		if r := dist2(point{k.x1, k.y1}, point{k.x2, k.y2}); r != v {
+			t.Errorf("failed: dist2 (%d, %d) (%d, %d) is %d, got %d",
+				k.x1, k.y1, k.x2, k.y2, v, r)
+		}
 	}
 }
 

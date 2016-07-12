@@ -3,13 +3,13 @@ package main
 import "testing"
 
 func TestColumnNames(t *testing.T) {
-	h := map[int]string{
+	for k, v := range map[int]string{
 		52:    "AZ",
 		3702:  "ELJ",
-		18278: "ZZZ"}
-	for k, v := range h {
-		if res := columnNames(k); res != v {
-			t.Errorf("failed: columnNames %d is %s, got %s", k, v, res)
+		18278: "ZZZ"} {
+		if r := columnNames(k); r != v {
+			t.Errorf("failed: columnNames %d is %s, got %s",
+				k, v, r)
 		}
 	}
 }

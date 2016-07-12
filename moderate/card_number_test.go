@@ -7,15 +7,15 @@ import (
 )
 
 func TestCardNumber(t *testing.T) {
-	h := map[string]bool{
+	for k, v := range map[string]bool{
 		"6011594003199511":    false,
 		"5537021367976815":    true,
 		"5574836380229735":    false,
 		"30448507939130":      false,
-		"6370167590346211774": true}
-	for k, v := range h {
-		if res := cardNumber(k); res != v {
-			t.Errorf("failed: cardNumber %s is %t, got %t", k, v, res)
+		"6370167590346211774": true} {
+		if r := cardNumber(k); r != v {
+			t.Errorf("failed: cardNumber %s is %t, got %t",
+				k, v, r)
 		}
 	}
 }

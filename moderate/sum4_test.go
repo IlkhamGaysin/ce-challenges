@@ -3,14 +3,17 @@ package main
 import "testing"
 
 func TestNumzero(t *testing.T) {
-	if res := numzero([]int{-4, -1, 0, 1, 2, 3}, 4, 0); res != 2 {
-		t.Errorf("failed: numzero test 1 is 2, got %d", res)
+	if r := numzero([]int{-4, -1, 0, 1, 2, 3}, 4, 0); r != 2 {
+		t.Errorf("failed: numzero test 1 is 2, got %d",
+			r)
 	}
-	if res := numzero([]int{-2, -1, 0, 3}, 4, 0); res != 1 {
-		t.Errorf("failed: numzero test 2 is 1, got %d", res)
+	if r := numzero([]int{-2, -1, 0, 3}, 4, 0); r != 1 {
+		t.Errorf("failed: numzero test 2 is 1, got %d",
+			r)
 	}
-	if res := numzero([]int{0, 0, 0, 0, 0, 0, 0, 0}, 4, 0); res != 70 {
-		t.Errorf("failed: numzero test 3 is 70, got %d", res)
+	if r := numzero([]int{0, 0, 0, 0, 0, 0, 0, 0}, 4, 0); r != 70 {
+		t.Errorf("failed: numzero test 3 is 70, got %d",
+			r)
 	}
 }
 

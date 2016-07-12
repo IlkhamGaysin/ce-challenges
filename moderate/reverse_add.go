@@ -7,11 +7,11 @@ import (
 	"os"
 )
 
-func rev(a int) (ret int) {
+func rev(a int) (r int) {
 	for ; a > 0; a /= 10 {
-		ret = 10*ret + a%10
+		r = 10*r + a%10
 	}
-	return ret
+	return r
 }
 
 func main() {

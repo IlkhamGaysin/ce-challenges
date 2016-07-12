@@ -3,11 +3,12 @@ package main
 import "testing"
 
 func TestRev(t *testing.T) {
-	r := map[int]int{0: 0, 1: 1, 10: 1, 15: 51, 29: 92, 110: 11,
-		1001: 1001, 9990: 999, 9999: 9999}
-	for k, v := range r {
-		if res := rev(k); res != v {
-			t.Errorf("failed: rev %d is %d, got %d", k, v, res)
+	for k, v := range map[int]int{
+		0: 0, 1: 1, 10: 1, 15: 51, 29: 92, 110: 11,
+		1001: 1001, 9990: 999, 9999: 9999} {
+		if r := rev(k); r != v {
+			t.Errorf("failed: rev %d is %d, got %d",
+				k, v, r)
 		}
 	}
 }
@@ -18,9 +19,9 @@ func BenchmarkRev(b *testing.B) {
 	}
 }
 
-func rev(a int) (ret int) {
+func rev(a int) (r int) {
 	for ; a > 0; a /= 10 {
-		ret = 10*ret + a%10
+		r = 10*r + a%10
 	}
-	return ret
+	return r
 }

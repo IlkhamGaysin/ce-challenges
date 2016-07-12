@@ -6,16 +6,16 @@ import (
 )
 
 func TestJustify(t *testing.T) {
-	r := map[string]string{
+	for k, v := range map[string]string{
 		"Hello, World!": "Hello, World!",
 		"The precise 50-digits value of Pi is 3.14159265358979323846264338327950288419716939937510.": `The         precise         50-digits        value        of        Pi        is
 3.14159265358979323846264338327950288419716939937510.`,
 		"But he who would be a great man ought to regard, not himself or his interests, but what is just, whether the just act be his own or that of another. Next as to habitations. Such is the tradition.": `But  he  who would be a great man ought to regard, not himself or his interests,
 but what is just, whether the just act be his own or that of another. Next as to
-habitations. Such is the tradition.`}
-	for k, v := range r {
-		if res := justify(k); res != v {
-			t.Errorf("failed: justify\n%s\n is\n%s\n got\n%s", k, v, res)
+habitations. Such is the tradition.`} {
+		if r := justify(k); r != v {
+			t.Errorf("failed: justify\n%s\n is\n%s\n got\n%s",
+				k, v, r)
 		}
 	}
 }
