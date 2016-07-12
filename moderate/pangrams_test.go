@@ -6,12 +6,12 @@ import (
 )
 
 func TestPangram(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"A quick brown fox jumps over the lazy dog":        "NULL",
-		"A slow Yellow fox crawls Under the proactive dog": "bjkmqz"}
-	for k, v := range h {
-		if res := pangram(k); res != v {
-			t.Errorf("failed: pangram\n %s\nis\n %s,\ngot\n %s", k, v, res)
+		"A slow Yellow fox crawls Under the proactive dog": "bjkmqz"} {
+		if r := pangram(k); r != v {
+			t.Errorf("failed: pangram\n %s\nis\n %s,\ngot\n %s",
+				k, v, r)
 		}
 	}
 }

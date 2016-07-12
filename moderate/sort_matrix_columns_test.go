@@ -26,7 +26,8 @@ func TestSortMatrix(t *testing.T) {
 		"25 39 -26 -21 | -81 -98 -91 27 | 32 -87 67 98 | -90 -79 18 9": "-26 -21 25 39 | -91 27 -81 -98 | 67 98 32 -87 | 18 9 -90 -79",
 		"26 -10 39 | -62 66 97 | 22 85 36":                             "-10 26 39 | 66 -62 97 | 85 22 36"} {
 		if r := sortMatrix(k); r != v {
-			t.Errorf("failed: sortMatrix %s is %s, got %s", k, v, r)
+			t.Errorf("failed: sortMatrix %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

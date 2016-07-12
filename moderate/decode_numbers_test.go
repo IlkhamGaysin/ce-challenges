@@ -7,13 +7,13 @@ import (
 )
 
 func TestDecode(t *testing.T) {
-	h := map[string]uint{
+	for k, v := range map[string]uint{
 		"12": 2, "123": 3,
 		"4651236715636226712123765123": 432,
-		"66620": 1}
-	for k, v := range h {
+		"66620": 1} {
 		if r := decode(k); r != v {
-			t.Errorf("failed: decode %s is %d, got %d", k, v, r)
+			t.Errorf("failed: decode %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

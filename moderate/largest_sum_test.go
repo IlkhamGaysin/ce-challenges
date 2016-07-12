@@ -7,14 +7,14 @@ import (
 )
 
 func TestLargestSum(t *testing.T) {
-	h := map[string]int{
+	for k, v := range map[string]int{
 		"-10, 2, 3, -2, 0, 5, -15": 8,
 		"2,3,-2,-1,10":             12,
 		"1,2,3,-8,2,2,3":           7,
-		"-2,-2,-2,-3,-2":           -2}
-	for k, v := range h {
+		"-2,-2,-2,-3,-2":           -2} {
 		if r := largestSum(k); r != v {
-			t.Errorf("failed: largestSum %s is %d, got %d", k, v, r)
+			t.Errorf("failed: largestSum %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -3,11 +3,13 @@ package main
 import "testing"
 
 func TestIsBalanced(t *testing.T) {
-	h := map[string]bool{":))": false, "(:)": true, "j": true, "": true, ":):": true,
-		"( :) ))": false, "asdf(asdf:)ghjk:ghjk(ghjk)": true, "(((::))()": false}
-	for k, v := range h {
-		if res := isBalanced(trimRight(k), 0); res != v {
-			t.Errorf("failed: isBalanced2 %s is %t, got %t", k, v, res)
+	for k, v := range map[string]bool{
+		":))": false, "(:)": true, "j": true, "": true, ":):": true,
+		"( :) ))": false, "asdf(asdf:)ghjk:ghjk(ghjk)": true,
+		"(((::))()": false} {
+		if r := isBalanced(trimRight(k), 0); r != v {
+			t.Errorf("failed: isBalanced2 %s is %t, got %t",
+				k, v, r)
 		}
 	}
 }

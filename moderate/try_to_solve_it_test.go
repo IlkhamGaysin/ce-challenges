@@ -6,11 +6,11 @@ import (
 )
 
 func TestDeco(t *testing.T) {
-	h := map[string]string{
-		"mke": "try", "mh": "to", "lhsby": "solve", "pm": "it"}
-	for k, v := range h {
+	for k, v := range map[string]string{
+		"mke": "try", "mh": "to", "lhsby": "solve", "pm": "it"} {
 		if r := strings.Map(deco, k); r != v {
-			t.Errorf("failed: deco %s is %s, got %s", k, v, r)
+			t.Errorf("failed: deco %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

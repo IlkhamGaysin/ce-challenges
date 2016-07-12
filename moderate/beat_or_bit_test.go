@@ -6,12 +6,13 @@ import (
 )
 
 func TestG2d(t *testing.T) {
-	g := map[string]uint{"10": 3, "101": 6, "1111": 10,
-		"1110": 11, "1100001": 65}
-	for k, v := range g {
+	for k, v := range map[string]uint{
+		"10": 3, "101": 6, "1111": 10,
+		"1110": 11, "1100001": 65} {
 		b, _ := strconv.ParseInt(k, 2, 0)
-		if res := g2d(uint(b)); res != v {
-			t.Errorf("failed: g2d %s is %d, got %d", k, v, res)
+		if r := g2d(uint(b)); r != v {
+			t.Errorf("failed: g2d %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

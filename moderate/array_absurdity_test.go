@@ -7,32 +7,40 @@ import (
 )
 
 func TestAbsurd(t *testing.T) {
-	if res := absurd(5, strings.Split("0,1,2,3,0", ",")); res != 0 {
-		t.Errorf("failed: absurd 5 0,1,2,3,0 is 0, got %d", res)
+	if r := absurd(5, strings.Split("0,1,2,3,0", ",")); r != 0 {
+		t.Errorf("failed: absurd 5 0,1,2,3,0 is 0, got %d",
+			r)
 	}
-	if res := absurd(20, strings.Split("0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); res != 4 {
-		t.Errorf("failed: absurd 20 0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d", res)
+	if r := absurd(20, strings.Split("0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); r != 4 {
+		t.Errorf("failed: absurd 20 0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d",
+			r)
 	}
-	if res := absurd(6, strings.Split("4,0,1,2,3,0", ",")); res != 0 {
-		t.Errorf("failed: absurd 6 4,0,1,2,3,0 is 0, got %d", res)
+	if r := absurd(6, strings.Split("4,0,1,2,3,0", ",")); r != 0 {
+		t.Errorf("failed: absurd 6 4,0,1,2,3,0 is 0, got %d",
+			r)
 	}
-	if res := absurd(21, strings.Split("19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); res != 4 {
-		t.Errorf("failed: absurd 21 19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d", res)
+	if r := absurd(21, strings.Split("19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); r != 4 {
+		t.Errorf("failed: absurd 21 19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d",
+			r)
 	}
 }
 
 func TestAbsurdMap(t *testing.T) {
-	if res := absurdMap(5, strings.Split("0,1,2,3,0", ",")); res != 0 {
-		t.Errorf("failed: absurdMap 5 0,1,2,3,0 is 0, got %d", res)
+	if r := absurdMap(5, strings.Split("0,1,2,3,0", ",")); r != 0 {
+		t.Errorf("failed: absurdMap 5 0,1,2,3,0 is 0, got %d",
+			r)
 	}
-	if res := absurdMap(20, strings.Split("0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); res != 4 {
-		t.Errorf("failed: absurdMap 20 0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d", res)
+	if r := absurdMap(20, strings.Split("0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); r != 4 {
+		t.Errorf("failed: absurdMap 20 0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d",
+			r)
 	}
-	if res := absurdMap(6, strings.Split("4,0,1,2,3,0", ",")); res != 0 {
-		t.Errorf("failed: absurdMap 6 4,0,1,2,3,0 is 0, got %d", res)
+	if r := absurdMap(6, strings.Split("4,0,1,2,3,0", ",")); r != 0 {
+		t.Errorf("failed: absurdMap 6 4,0,1,2,3,0 is 0, got %d",
+			r)
 	}
-	if res := absurdMap(21, strings.Split("19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); res != 4 {
-		t.Errorf("failed: absurdMap 21 19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d", res)
+	if r := absurdMap(21, strings.Split("19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14", ",")); r != 4 {
+		t.Errorf("failed: absurdMap 21 19,0,1,10,3,2,4,5,7,6,8,11,9,15,12,13,4,16,18,17,14 is 0, got %d",
+			r)
 	}
 }
 

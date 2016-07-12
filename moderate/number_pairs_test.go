@@ -7,13 +7,13 @@ import (
 )
 
 func TestNumberPairs(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"1,2,3,4,6;5":        "1,4;2,3",
 		"2,4,5,6,9,11,15;20": "5,15;9,11",
-		"1,2,3,4;50":         "NULL"}
-	for k, v := range h {
+		"1,2,3,4;50":         "NULL"} {
 		if r := numberPairs(k); r != v {
-			t.Errorf("failed: numberPairs %s is %s, got %s", k, v, r)
+			t.Errorf("failed: numberPairs %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

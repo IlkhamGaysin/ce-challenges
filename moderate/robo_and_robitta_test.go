@@ -14,7 +14,8 @@ func TestRobo(t *testing.T) {
 		"50x50 | 50 1": 99} {
 		fmt.Sscanf(k, "%dx%d | %d %d", &a, &b, &x, &y)
 		if r := robo(a, b, x, y); r != v {
-			t.Errorf("failed: robo %s is %d, got %d", k, v, r)
+			t.Errorf("failed: robo %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

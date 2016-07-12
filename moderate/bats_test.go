@@ -6,14 +6,17 @@ import (
 )
 
 func TestBats(t *testing.T) {
-	if res := bats(22, 2, 2, []string{"9", "11"}); res != 3 {
-		t.Errorf("failed: bats 22 2 2 9 11 is 3, got %d", res)
+	if r := bats(22, 2, 2, []string{"9", "11"}); r != 3 {
+		t.Errorf("failed: bats 22 2 2 9 11 is 3, got %d",
+			r)
 	}
-	if res := bats(835, 125, 1, []string{"113"}); res != 5 {
-		t.Errorf("failed: bats 835 125 1 113 is 5, got %d", res)
+	if r := bats(835, 125, 1, []string{"113"}); r != 5 {
+		t.Errorf("failed: bats 835 125 1 113 is 5, got %d",
+			r)
 	}
-	if res := bats(47, 5, 0, []string{}); res != 8 {
-		t.Errorf("failed: bats 475 5 0 is 8, got %d", res)
+	if r := bats(47, 5, 0, []string{}); r != 8 {
+		t.Errorf("failed: bats 475 5 0 is 8, got %d",
+			r)
 	}
 }
 

@@ -7,13 +7,13 @@ import (
 )
 
 func TestCodeCombinations(t *testing.T) {
-	h := map[string]uint{
+	for k, v := range map[string]uint{
 		"**** | *co* | *de* | ****": 1,
 		"codx | decx":               2,
-		"co | dx":                   0}
-	for k, v := range h {
-		if res := codeCombinations(k); res != v {
-			t.Errorf("failed: codeCombinations %s is %d, got %d", k, v, res)
+		"co | dx":                   0} {
+		if r := codeCombinations(k); r != v {
+			t.Errorf("failed: codeCombinations %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

@@ -3,16 +3,16 @@ package main
 import "testing"
 
 func TestNrc(t *testing.T) {
-	h := map[string]string{
+	for k, v := range map[string]string{
 		"yellow":     "y",
 		"tooth":      "h",
 		"blablaG":    "G",
 		"Gagaga":     "G",
 		"1234512345": "",
-		"in nova fert animus mutatas dicere formas corpora di coeptis nam vos mutastis et illas adspirate meis primaque ab origine mundi": "q"}
-	for k, v := range h {
+		"in nova fert animus mutatas dicere formas corpora di coeptis nam vos mutastis et illas adspirate meis primaque ab origine mundi": "q"} {
 		if r := nrc(k); r != v {
-			t.Errorf("failed: nrc %s is %s, got %s", k, v, r)
+			t.Errorf("failed: nrc %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

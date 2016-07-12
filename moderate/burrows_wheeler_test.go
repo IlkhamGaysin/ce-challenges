@@ -11,7 +11,8 @@ func TestBurrowsWheeler(t *testing.T) {
 		"edarddddddddddntensr$  ehhhhhhhhhhhJ aeaaaaaaaaaaalhtf thmbfe           tcwohiahoJ eeec t e ": "James while John had had had had had had had had had had had a better effect on the teacher$",
 		"ooooio,io$Nnssshhhjo  ee  o  nnkkkkkkii ":                                                     "Neko no ko koneko, shishi no ko kojishi$"} {
 		if r := burrowsWheeler(k); r != v {
-			t.Errorf("failed: burrowsWheeler %s is %s, got %s", k, v, r)
+			t.Errorf("failed: burrowsWheeler %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

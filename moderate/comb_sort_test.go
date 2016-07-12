@@ -11,7 +11,8 @@ func TestCombSort(t *testing.T) {
 		"3 1 2":     2,
 		"5 4 3 2 1": 3} {
 		if r := combSort(k); r != v {
-			t.Errorf("failed: combSort %s is %d, got %d", k, v, r)
+			t.Errorf("failed: combSort %s is %d, got %d",
+				k, v, r)
 		}
 	}
 }

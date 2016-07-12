@@ -18,7 +18,8 @@ func TestBubble(t *testing.T) {
 		"42 | 1":        "42",
 		"1 2 3 4 5 | 0": "1 2 3 4 5"} {
 		if r := bubble(k); r != v {
-			t.Errorf("failed: bubble %s is %s, got %s", k, v, r)
+			t.Errorf("failed: bubble %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

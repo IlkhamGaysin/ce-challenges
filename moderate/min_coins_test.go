@@ -6,7 +6,8 @@ func TestMinCoins(t *testing.T) {
 	for k, v := range map[uint]uint{
 		11: 3, 20: 4, 12: 4, 13: 3} {
 		if r := minCoins(k); r != v {
-			t.Errorf("failed: minCoins %d is %d, got %d", k, v, r)
+			t.Errorf("failed: minCoins %d is %d, got %d",
+				k, v, r)
 		}
 	}
 }

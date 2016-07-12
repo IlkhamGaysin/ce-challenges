@@ -11,12 +11,12 @@ type tuple struct {
 }
 
 func TestFlavius(t *testing.T) {
-	h := map[tuple]string{
+	for k, v := range map[tuple]string{
 		tuple{10, 3}: "2 5 8 1 6 0 7 4 9 3",
-		tuple{5, 2}:  "1 3 0 4 2"}
-	for k, v := range h {
+		tuple{5, 2}:  "1 3 0 4 2"} {
 		if r := flavius(k.n, k.m); r != v {
-			t.Errorf("failed: flavius %d %d is %s, got %s", k.n, k.m, v, r)
+			t.Errorf("failed: flavius %d %d is %s, got %s",
+				k.n, k.m, v, r)
 		}
 	}
 }

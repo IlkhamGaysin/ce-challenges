@@ -14,7 +14,8 @@ func TestM2last(t *testing.T) {
 		"12 23 34 45 1": "45",
 		"0 1 2":         "0"} {
 		if r := m2last(k); r != v {
-			t.Errorf("failed: m2last %s is %s, got %s", k, v, r)
+			t.Errorf("failed: m2last %s is %s, got %s",
+				k, v, r)
 		}
 	}
 }

@@ -19,7 +19,8 @@ func TestInCircle(t *testing.T) {
 		fmt.Sscanf(k, "Center: (%f, %f); Radius: %f; Point: (%f, %f)",
 			&f[0], &f[1], &f[2], &f[3], &f[4])
 		if r := inCircle(f[0]-f[3], f[1]-f[4], f[2]); r != v {
-			t.Errorf("failed: inCircle %s is %t, got %t", k, v, r)
+			t.Errorf("failed: inCircle %s is %t, got %t",
+				k, v, r)
 		}
 	}
 }
