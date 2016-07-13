@@ -1,12 +1,25 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-	"strings"
+	"testing"
 )
+
+type tuple struct {
+	l, r string
+	t    byte
+}
+
+func TestWin(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"AD", "2H", 'H'}:  "2H",
+		tuple{"KD", "KH", 'C'}:  "KD KH",
+		tuple{"JH", "10S", 'C'}: "JH"} {
+		if r := win(k.l, k.r, k.t); r != v {
+			t.Errorf("failed: win %s %s | %c is %s, got %s",
+				k.l, k.r, k.t, v, r)
+		}
+	}
+}
 
 var v map[byte]int
 
@@ -31,17 +44,4 @@ func win(l, r string, t byte) string {
 		return r
 	}
 	return l + " " + r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Fields(scanner.Text())
-		fmt.Println(win(s[0], s[1], s[3][0]))
-	}
 }
