@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestBuildersTeam(t *testing.T) {
+	for k, v := range map[string]uint{
+		"1 2 | 6 7 | 7 2 | 1 6 | 2 3":             1,
+		"1 2 | 6 7 | 7 2 | 1 6 | 2 3 | 7 8 | 3 8": 2,
+		"1 2 | 1 6 | 6 7":                         0} {
+		if r := buildersTeam(k); r != v {
+			t.Errorf("failed: buildersTeam %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 var (
 	a, b     uint
@@ -56,16 +66,4 @@ func buildersTeam(q string) (r uint) {
 		}
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(buildersTeam(scanner.Text()))
-	}
 }
