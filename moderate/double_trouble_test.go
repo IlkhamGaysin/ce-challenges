@@ -1,11 +1,18 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+func TestDoubleTrouble(t *testing.T) {
+	for k, v := range map[string]uint{
+		"ABA*": 1,
+		"BAA*": 0,
+		"A*A*": 2} {
+		if r := doubleTrouble(k); r != v {
+			t.Errorf("failed: doubleTrouble %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func doubleTrouble(q string) uint {
 	var r uint = 1
@@ -20,16 +27,4 @@ func doubleTrouble(q string) uint {
 		}
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(doubleTrouble(scanner.Text()))
-	}
 }
