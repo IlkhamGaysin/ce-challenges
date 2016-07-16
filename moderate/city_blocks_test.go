@@ -1,12 +1,29 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	s, t string
+}
+
+func TestCityBlocks(t *testing.T) {
+	for k, v := range map[tuple]int{
+		tuple{"0,2,4,8,10,13,14,18,22,23,24,33,40,42,44,47,49,53,55,63,66,81,87,91", "0,147,220"}: 24,
+		tuple{"0,1,2,4", "0,1,3,4,5"}:                                                             6,
+		tuple{"0,1,3,4,6", "0,1,2,4"}:                                                             5,
+		tuple{"1,3", "1,2"}:                                                                       1,
+		tuple{"1", "1,2"}:                                                                         0,
+		tuple{"1,3", "2"}:                                                                         0} {
+		if r := cityBlocks(k.s, k.t); r != v {
+			t.Errorf("failed: cityBlocks %s %s is %d, got %d",
+				k.s, k.t, v, r)
+		}
+	}
+}
 
 func cityBlocks(s, t string) int {
 	p, q := strings.Split(s, ","), strings.Split(t, ",")
@@ -49,17 +66,4 @@ func cityBlocks(s, t string) int {
 		}
 	}
 	return len(st) + len(av) - intersec - 1
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ") (")
-		fmt.Println(cityBlocks(s[0][1:len(s[0])], s[1][0:len(s[1])-1]))
-	}
 }
