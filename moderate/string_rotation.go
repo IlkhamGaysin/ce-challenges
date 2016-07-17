@@ -8,6 +8,20 @@ import (
 	"strings"
 )
 
+func stringRotation(p, q string) bool {
+	var n int
+	for i := strings.Index(q, string(p[0])); i >= 0; i += n {
+		if strings.HasSuffix(q, string(p[0:len(p)-i])) && (i == 0 || strings.HasPrefix(q, string(p[len(p)-i:len(p)]))) {
+			return true
+		}
+		n = 1 + strings.Index(q[i+1:len(q)], string(p[0]))
+		if n == 0 {
+			break
+		}
+	}
+	return false
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -17,19 +31,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), ",")
-		var f bool
-		var next int
-		for i := strings.Index(s[1], string(s[0][0])); i >= 0; i += next {
-			if strings.HasSuffix(s[1], string(s[0][0:len(s[0])-i])) && (i == 0 || strings.HasPrefix(s[1], string(s[0][len(s[0])-i:len(s[0])]))) {
-				f = true
-				break
-			}
-			next = 1 + strings.Index(s[1][i+1:len(s[1])], string(s[0][0]))
-			if next == 0 {
-				break
-			}
-		}
-		if f {
+		if stringRotation(s[0], s[1]) {
 			fmt.Println("True")
 		} else {
 			fmt.Println("False")
