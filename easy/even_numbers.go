@@ -7,6 +7,10 @@ import (
 	"os"
 )
 
+func even(n int) int {
+	return 1 - n&1
+}
+
 func main() {
 	var m int
 	data, err := os.Open(os.Args[1])
@@ -17,6 +21,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		fmt.Sscan(scanner.Text(), &m)
-		fmt.Println(1 - m&1)
+		fmt.Println(even(m))
 	}
 }
