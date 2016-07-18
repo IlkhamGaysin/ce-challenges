@@ -8,6 +8,14 @@ import (
 	"strings"
 )
 
+func penultimate(q string) string {
+	t := strings.Fields(q)
+	if len(t) < 2 {
+		return ""
+	}
+	return t[len(t)-2]
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,11 +24,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		t := strings.Fields(scanner.Text())
-		if len(t) > 1 {
-			fmt.Println(t[len(t)-2])
-		} else {
-			fmt.Println()
-		}
+		fmt.Println(penultimate(scanner.Text()))
 	}
 }
