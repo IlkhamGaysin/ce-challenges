@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+func toLower(q string) string {
+	return strings.ToLower(q)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,6 +20,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		fmt.Println(strings.ToLower(scanner.Text()))
+		fmt.Println(toLower(scanner.Text()))
 	}
 }
