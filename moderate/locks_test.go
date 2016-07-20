@@ -1,11 +1,23 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+type tuple struct {
+	n, m int
+}
+
+func TestLocks(t *testing.T) {
+	for k, v := range map[tuple]int{
+		tuple{3, 1}:     2,
+		tuple{100, 100}: 50,
+		tuple{10, 10}:   5,
+		tuple{10, 7}:    7} {
+		if r := locks(k.n, k.m); r != v {
+			t.Errorf("failed: locks %d %d is %d, got %d",
+				k.n, k.m, v, r)
+		}
+	}
+}
 
 func locks(n, m int) int {
 	if n == 0 || m == 0 {
@@ -30,18 +42,4 @@ func locks(n, m int) int {
 		}
 	}
 	return c
-}
-
-func main() {
-	var n, m int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscanf(scanner.Text(), "%d %d", &n, &m)
-		fmt.Println(locks(n, m))
-	}
 }
