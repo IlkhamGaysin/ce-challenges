@@ -1,11 +1,21 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+func TestRoman(t *testing.T) {
+	for k, v := range map[uint]string{
+		159:  "CLIX",
+		296:  "CCXCVI",
+		3992: "MMMCMXCII",
+		1:    "I",
+		3999: "MMMCMXCIX",
+		347:  "CCCXLVII"} {
+		if r := roman(k); r != v {
+			t.Errorf("failed: roman %d is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 var (
 	ronum []uint
@@ -27,18 +37,4 @@ func roman(a uint) (r string) {
 		}
 	}
 	return r
-}
-
-func main() {
-	var a uint
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &a)
-		fmt.Println(roman(a))
-	}
 }
