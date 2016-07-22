@@ -1,12 +1,21 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestChain(t *testing.T) {
+	for k, v := range map[string]bool{
+		"4-2;BEGIN-3;3-4;2-END": true,
+		"4-2;BEGIN-3;3-4;2-3":   false,
+		"4-7;3-4;BEGIN-3":       false} {
+		if r := chain(k); r != v {
+			t.Errorf("failed: chain %s is %t, got %t",
+				k, v, r)
+		}
+	}
+}
 
 func chain(q string) bool {
 	var (
@@ -37,20 +46,4 @@ func chain(q string) bool {
 		return true
 	}
 	return false
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		if chain(scanner.Text()) {
-			fmt.Println("GOOD")
-		} else {
-			fmt.Println("BAD")
-		}
-	}
 }
