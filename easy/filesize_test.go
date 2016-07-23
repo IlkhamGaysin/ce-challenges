@@ -1,10 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
+	"testing"
 )
+
+func TestFilesize(t *testing.T) {
+	for k, v := range map[string]int64{
+		"/usr/src/linux/COPYING": 18693} {
+		if r := filesize(k); r != v {
+			t.Errorf("failed: filesize %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func filesize(q string) int64 {
 	data, err := os.Open(q)
@@ -17,8 +27,4 @@ func filesize(q string) int64 {
 		log.Fatal(err)
 	}
 	return stat.Size()
-}
-
-func main() {
-	fmt.Println(filesize(os.Args[1]))
 }
