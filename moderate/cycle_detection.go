@@ -17,6 +17,21 @@ func uniq(s []string, t string) bool {
 	return true
 }
 
+func cycle(q string) string {
+	s := strings.Fields(q)
+	for len(s) > 1 && uniq(s[1:len(s)], s[0]) {
+		s = s[1:len(s)]
+	}
+	if len(s) <= 1 {
+		return ""
+	}
+	t := []string{s[0]}
+	for i := 1; i < len(s) && s[i] != s[0]; i++ {
+		t = append(t, s[i])
+	}
+	return strings.Join(t, " ")
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -25,18 +40,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s := strings.Fields(scanner.Text())
-		for len(s) > 1 && uniq(s[1:len(s)], s[0]) {
-			s = s[1:len(s)]
-		}
-		if len(s) <= 1 {
-			fmt.Println()
-			continue
-		}
-		t := []string{s[0]}
-		for i := 1; i < len(s) && s[i] != s[0]; i++ {
-			t = append(t, s[i])
-		}
-		fmt.Println(strings.Join(t, " "))
+		fmt.Println(cycle(scanner.Text()))
 	}
 }
