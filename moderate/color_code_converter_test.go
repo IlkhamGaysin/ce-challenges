@@ -1,11 +1,28 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
+	"testing"
 )
+
+type tuple struct {
+	r, g, b int
+}
+
+func TestColorCode(t *testing.T) {
+	for k, v := range map[string]tuple{
+		"(0.56,0.94,0.21,0.02)": tuple{110, 15, 197},
+		"HSL(359,0,0)":          tuple{0, 0, 0},
+		"HSV(276,33,7)":         tuple{15, 12, 18},
+		"#cfa9c4":               tuple{207, 169, 196},
+		"HSL(98,100,50)":        tuple{94, 255, 0},
+		"#5eff00":               tuple{94, 255, 0}} {
+		if r, g, b := colorCode(k); r != v.r || g != v.g || b != v.b {
+			t.Errorf("failed: colorCode %s is %d %d %d, got %d %d %d",
+				k, v.r, v.g, v.b, r, g, b)
+		}
+	}
+}
 
 func abs(a float32) float32 {
 	if a < 0 {
@@ -72,17 +89,4 @@ func colorCode(q string) (r, g, b int) {
 		r, g, b = rint((1-c)*(1-k)), rint((1-m)*(1-k)), rint((1-y)*(1-k))
 	}
 	return r, g, b
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		r, g, b := colorCode(scanner.Text())
-		fmt.Printf("RGB(%d,%d,%d)\n", r, g, b)
-	}
 }
