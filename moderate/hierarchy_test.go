@@ -1,13 +1,21 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestHierarchy(t *testing.T) {
+	for k, v := range map[string]string{
+		"ab | ae | bc":                "a [b [c], e]",
+		"ab | bc | cd | ae | cx | xz": "a [b [c [d, x [z]]], e]"} {
+		if r := hierarchy(k); r != v {
+			t.Errorf("failed: hierarchy %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 type uint8s []uint8
 
@@ -75,16 +83,4 @@ func hierarchy(q string) string {
 		}
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(hierarchy(scanner.Text()))
-	}
 }
