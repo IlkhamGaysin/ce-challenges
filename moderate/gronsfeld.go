@@ -10,6 +10,14 @@ import (
 
 const k = ` !"#$%&'()*+,-./0123456789:<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`
 
+func gronsfeld(p, q string) string {
+	r := make([]byte, len(q))
+	for i := 0; i < len(q); i++ {
+		r[i] = k[(len(k)+strings.IndexRune(k, rune(q[i]))-int(p[i%len(p)]-'0'))%len(k)]
+	}
+	return string(r)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -19,10 +27,6 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), ";")
-		for i := 0; i < len(s[1]); i++ {
-			p := strings.IndexRune(k, rune(s[1][i])) - int(s[0][i%len(s[0])]-'0')
-			fmt.Printf("%c", k[(len(k)+p)%len(k)])
-		}
-		fmt.Println()
+		fmt.Println(gronsfeld(s[0], s[1]))
 	}
 }
