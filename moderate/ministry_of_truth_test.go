@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	p, q string
+}
+
+func TestMinistry(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"Higher meaning", "Hi mean"}:           "Hi____ mean___",
+		tuple{"this is impossible", "im possible"}:   "I cannot fix history",
+		tuple{"twenty   two minutes", "two minutes"}: "______ two minutes",
+		tuple{"Higher meaning", "e"}:                 "____e_ _______"} {
+		if r := ministry(k.p, k.q); r != v {
+			t.Errorf("failed: ministry %s;%s is %s, got %s",
+				k.p, k.q, v, r)
+		}
+	}
+}
 
 func contains(a, b string) (string, bool) {
 	r := strings.Repeat("_", len(a))
@@ -41,17 +55,4 @@ func ministry(p, q string) string {
 		return "I cannot fix history"
 	}
 	return strings.Join(r, " ")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Println(ministry(s[0], s[1]))
-	}
 }
