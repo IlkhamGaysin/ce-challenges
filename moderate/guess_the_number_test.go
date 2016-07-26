@@ -1,12 +1,21 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestGuessNumber(t *testing.T) {
+	for k, v := range map[string]int{
+		"100 Lower Lower Higher Lower Lower Lower Yay!": 13,
+		"948 Higher Lower Yay!":                         593} {
+		if r := guessNumber(k); r != v {
+			t.Errorf("failed: guessNumber %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func guessNumber(q string) int {
 	s := strings.Fields(q)
@@ -22,16 +31,4 @@ func guessNumber(q string) int {
 		c = (lo + hi) % 2
 	}
 	return (lo+hi)/2 + c
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(guessNumber(scanner.Text()))
-	}
 }
