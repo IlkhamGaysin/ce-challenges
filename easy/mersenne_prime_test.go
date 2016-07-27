@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestMersenne(t *testing.T) {
+	for k, v := range map[uint]string{
+		4:    "3",
+		308:  "3, 7, 31, 127",
+		3000: "3, 7, 31, 127, 2047"} {
+		if r := mersenne(k); r != v {
+			t.Errorf("failed: mersenne %d is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 var primes = []uint{2, 3}
 
@@ -43,18 +53,4 @@ func mersenne(a uint) string {
 		r = append(r, fmt.Sprint(1<<i-1))
 	}
 	return strings.Join(r, ", ")
-}
-
-func main() {
-	var a uint
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &a)
-		fmt.Println(mersenne(a))
-	}
 }
