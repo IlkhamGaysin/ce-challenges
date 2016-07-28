@@ -1,12 +1,29 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestPrimeLess(t *testing.T) {
+	for k, v := range map[uint]string{
+		10:  "2,3,5,7",
+		20:  "2,3,5,7,11,13,17,19",
+		100: "2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97",
+		42:  "2,3,5,7,11,13,17,19,23,29,31,37,41"} {
+		if r := primeLess(k); r != v {
+			t.Errorf("failed: primeLess %d is %s, got %s",
+				k, v, r)
+		}
+	}
+}
+
+func BenchmarkPrimeLess(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		primeLess(uint(i))
+	}
+}
 
 var primes = []uint{2, 3, 5, 7, 11, 13}
 
@@ -43,18 +60,4 @@ func primeLess(a uint) string {
 		r = append(r, fmt.Sprint(i))
 	}
 	return strings.Join(r, ",")
-}
-
-func main() {
-	var a uint
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &a)
-		fmt.Println(primeLess(a))
-	}
 }
