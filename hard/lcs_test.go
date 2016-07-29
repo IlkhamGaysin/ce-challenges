@@ -1,12 +1,22 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-	"strings"
-)
+import "testing"
+
+type tuple struct {
+	p, q string
+}
+
+func TestLcs(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"XMJYAUZ", "MZJAWXU"}:                                                           "MJAU",
+		tuple{"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"}: "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+		tuple{"ATEST", "TEISTG"}:                                                              "TEST"} {
+		if r := lcs(k.p, k.q); r != v {
+			t.Errorf("failed: lcs %s;%s is %s, got %s",
+				k.p, k.q, v, r)
+		}
+	}
+}
 
 func bt(c [][]int, x, y string, i, j int) string {
 	if i < 1 || j < 1 {
@@ -42,19 +52,4 @@ func lcs(p, q string) string {
 		}
 	}
 	return bt(c, p, q, len(p), len(q))
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), ";")
-		if len(t) == 2 {
-			fmt.Println(lcs(t[0], t[1]))
-		}
-	}
 }
