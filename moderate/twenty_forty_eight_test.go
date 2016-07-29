@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	n    int
+	p, q string
+}
+
+func TestTwentyFortyEight(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{4, "RIGHT", "4 0 2 0|0 0 0 8|4 0 2 4|2 4 2 2"}: "0 0 4 2|0 0 0 8|0 4 2 4|0 2 4 4",
+		tuple{4, "UP", "2 0 2 0|0 2 0 4|2 8 0 8|0 8 0 16"}:   "4 2 2 4|0 16 0 8|0 0 0 16|0 0 0 0"} {
+		if r := twentyFortyEight(k.n, k.p, k.q); r != v {
+			t.Errorf("failed: twentyFortyEight %s; %d; %s is %s, got %s",
+				k.p, k.n, k.q, v, r)
+		}
+	}
+}
 
 func slide(a []int) []int {
 	lastNum, lastNumID, lastZero := -1, -1, -1
@@ -89,19 +103,4 @@ func twentyFortyEight(n int, p, q string) string {
 		r[i] = strings.Join(u, " ")
 	}
 	return strings.Join(r, "|")
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Sscan(s[1], &n)
-		fmt.Println(twentyFortyEight(n, s[0], s[2]))
-	}
 }
