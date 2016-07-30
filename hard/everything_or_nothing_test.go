@@ -1,12 +1,21 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestEverything(t *testing.T) {
+	for k, v := range map[string]bool{
+		"user_1=>file_1=>read user_2=>file_2=>write":               true,
+		"user_1=>file_1=>grant=>read=>user_4 user_4=>file_1=>read": true,
+		"user_4=>file_1=>read":                                     false} {
+		if r := everything(k); r != v {
+			t.Errorf("failed: everything %s is %t, got %t",
+				k, v, r)
+		}
+	}
+}
 
 const (
 	read  = 4
@@ -47,20 +56,4 @@ func everything(q string) bool {
 		}
 	}
 	return true
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		if everything(scanner.Text()) {
-			fmt.Println("True")
-		} else {
-			fmt.Println("False")
-		}
-	}
 }
