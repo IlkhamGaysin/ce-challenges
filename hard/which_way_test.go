@@ -1,14 +1,23 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
 	"math"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestWhichWay(t *testing.T) {
+	for k, v := range map[string]int{
+		"**^F | P**P | **** | S***":             11,
+		"**^F | P*^P | **** | S***":             12,
+		"PS*** | ^^^^* | ***** | *^^^^ | ***FP": 22} {
+		if r := whichWay(k); r != v {
+			t.Errorf("failed: whichWay %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 type coor struct {
 	x, y, d int
@@ -120,16 +129,4 @@ func whichWay(q string) int {
 		sort.Sort(coords(t))
 	}
 	return l
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(whichWay(scanner.Text()))
-	}
 }
