@@ -1,13 +1,18 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
 
-var board = []string{"ABCE", "SFCS", "ADEE"}
+func TestWordSearch(t *testing.T) {
+	for k, v := range map[string]bool{
+		"ASADB":  false,
+		"ABCCED": true,
+		"ABCF":   false} {
+		if r := wordSearch(k); r != v {
+			t.Errorf("failed: wordSearch %s is %t, got %t",
+				k, v, r)
+		}
+	}
+}
 
 func isContained(pos []int, bee []string, st0 string) bool {
 	if st0 == "" {
@@ -40,6 +45,8 @@ func isContained(pos []int, bee []string, st0 string) bool {
 	return false
 }
 
+var board = []string{"ABCE", "SFCS", "ADEE"}
+
 func wordSearch(q string) bool {
 	var start [][]int
 	for ix, i := range board {
@@ -55,20 +62,4 @@ func wordSearch(q string) bool {
 		}
 	}
 	return false
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		if wordSearch(scanner.Text()) {
-			fmt.Println("True")
-		} else {
-			fmt.Println("False")
-		}
-	}
 }
