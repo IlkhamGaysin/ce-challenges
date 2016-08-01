@@ -7,6 +7,16 @@ import (
 	"os"
 )
 
+func swapCase(c byte) byte {
+	switch {
+	case c >= 'a' && c <= 'z':
+		return c & 223
+	case c >= 'A' && c <= 'Z':
+		return c | 32
+	}
+	return c
+}
+
 func main() {
 	var c byte = '\n'
 	data, err := os.Open(os.Args[1])
@@ -17,13 +27,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		c = scanner.Text()[0]
-		switch {
-		case c >= 'a' && c <= 'z':
-			c &= 223
-		case c >= 'A' && c <= 'Z':
-			c |= 32
-		}
+		c = swapCase(scanner.Text()[0])
 		fmt.Printf("%c", c)
 	}
 	if c != '\n' {
