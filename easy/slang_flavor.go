@@ -7,14 +7,27 @@ import (
 	"os"
 )
 
+var (
+	phrases = []string{", yeah!", ", this is crazy, I tell ya.",
+		", can U believe this?", ", eh?", ", aw yea.",
+		", yo.", "? No way!", ". Awesome!"}
+)
+
+func slang(q string, c int, l bool) (string, int, bool) {
+	if q == "." || q == "!" || q == "?" {
+		if l {
+			return phrases[c], (c + 1) % len(phrases), false
+		}
+		return q, c, true
+	}
+	return q, c, l
+}
+
 func main() {
 	var (
-		phrases = []string{", yeah!", ", this is crazy, I tell ya.",
-			", can U believe this?", ", eh?", ", aw yea.",
-			", yo.", "? No way!", ". Awesome!"}
 		c int
 		l bool
-		t byte = '\n'
+		t string = "\n"
 	)
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -23,18 +36,10 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
 	for scanner.Scan() {
-		t = scanner.Text()[0]
-		if t == '.' || t == '!' || t == '?' {
-			l = !l
-			if !l {
-				fmt.Print(phrases[c])
-				c = (c + 1) % len(phrases)
-				continue
-			}
-		}
-		fmt.Printf("%c", t)
+		t, c, l = slang(scanner.Text(), c, l)
+		fmt.Print(t)
 	}
-	if t != '\n' {
+	if t != "\n" {
 		fmt.Println()
 	}
 }
