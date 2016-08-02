@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestJolly(t *testing.T) {
+	for k, v := range map[string]bool{
+		"4 1 4 2 3":        true,
+		"5 76 34 75 78 77": false,
+		"5 76 74 75 78 74": true,
+		"6 7 5 8 5 6 9":    false,
+		"1 5":              true,
+		"2 6 5":            true,
+		"3 3 3 3":          false} {
+		if r := jolly(k); r != v {
+			t.Errorf("failed: jolly %s is %t, got %t",
+				k, v, r)
+		}
+	}
+}
 
 func abs(a int) int {
 	if a < 0 {
@@ -33,20 +47,4 @@ func jolly(q string) bool {
 		u[x-1], vp = true, v
 	}
 	return true
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		if jolly(scanner.Text()) {
-			fmt.Println("Jolly")
-		} else {
-			fmt.Println("Not jolly")
-		}
-	}
 }
