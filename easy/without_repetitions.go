@@ -7,21 +7,26 @@ import (
 	"os"
 )
 
+func withoutRepetitions(p, q string) (string, string) {
+	if p != q {
+		return q, q
+	}
+	return p, ""
+}
+
 func main() {
+	var p, q string
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
 	scanner := bufio.NewScanner(data)
 	scanner.Split(bufio.ScanBytes)
-	var c string
 	for scanner.Scan() {
-		if c != scanner.Text() {
-			fmt.Print(scanner.Text())
-		}
-		c = scanner.Text()
+		p, q = withoutRepetitions(p, scanner.Text())
+		fmt.Print(q)
 	}
-	if c != "\n" {
+	if p != "\n" {
 		fmt.Println()
 	}
 }
