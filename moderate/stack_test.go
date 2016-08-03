@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestStack(t *testing.T) {
+	for k, v := range map[string]string{
+		"1 2 3 4":   "4 2",
+		"10 -2 3 4": "4 -2",
+		"1 2 3 4 5": "5 3 1"} {
+		if r := stack(k); r != v {
+			t.Errorf("failed: stack %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 func stackpush(stack []int, n int) []int {
 	return append(stack, n)
@@ -38,16 +48,4 @@ func stack(q string) string {
 		stack, _ = stackpop(stack)
 	}
 	return strings.Join(r, " ")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(stack(scanner.Text()))
-	}
 }
