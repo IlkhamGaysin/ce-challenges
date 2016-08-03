@@ -7,8 +7,12 @@ import (
 	"os"
 )
 
+func sumint(n, s int) int {
+	return n + s
+}
+
 func main() {
-	var sum, v int
+	var n, s int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -16,8 +20,8 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &v)
-		sum += v
+		fmt.Sscan(scanner.Text(), &n)
+		s = sumint(n, s)
 	}
-	fmt.Println(sum)
+	fmt.Println(s)
 }
