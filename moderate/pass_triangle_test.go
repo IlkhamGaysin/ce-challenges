@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestPass(t *testing.T) {
+	for k, v := range map[string]int{
+		"5\n9 6\n4 6 8\n0 7 1 5": 27} {
+		u = []int{}
+		for _, i := range strings.Split(k, "\n") {
+			pass(i)
+		}
+		if r := maxis(u); r != v {
+			t.Errorf("failed: pass %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
+
+var u []int
 
 func maxi(a, b int) int {
 	if a > b {
@@ -24,8 +38,6 @@ func maxis(a []int) (r int) {
 	}
 	return r
 }
-
-var u []int
 
 func pass(q string) {
 	s := strings.Fields(q)
@@ -45,17 +57,4 @@ func pass(q string) {
 	u = make([]int, len(t))
 	copy(u, t)
 	return
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		pass(scanner.Text())
-	}
-	fmt.Println(maxis(u))
 }
