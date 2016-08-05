@@ -1,12 +1,30 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	p, q string
+}
+
+func TestSubstring(t *testing.T) {
+	for k, v := range map[tuple]bool{
+		tuple{"Hello", "ell"}:             true,
+		tuple{"This is good", " is "}:     true,
+		tuple{"CodeEval", "C*Eval"}:       true,
+		tuple{"test*ing", "test\\*ing"}:   true,
+		tuple{"test\\ing", "test\\\\ing"}: false,
+		tuple{"test*ing", "t*s*n*g"}:      true,
+		tuple{"test*ing", "t*t*s*g"}:      false,
+		tuple{"Old", "Young"}:             false} {
+		if r := substring(k.p, k.q); r != v {
+			t.Errorf("failed: substring %s,%s is %t, got %t",
+				k.p, k.q, v, r)
+		}
+	}
+}
 
 func subcheck(s0, s1 string, q, r int) bool {
 	for q < len(s0) && r < len(s1) {
@@ -44,17 +62,4 @@ func substring(p, q string) bool {
 		}
 	}
 	return false
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ",")
-		fmt.Println(substring(s[0], s[1]))
-	}
 }
