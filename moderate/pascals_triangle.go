@@ -5,9 +5,23 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
+func pascal(a uint) string {
+	r := []string{"1"}
+	for i := uint(1); i < a; i++ {
+		r = append(r, "1")
+		for b, j := uint(1), uint(1); j <= i; j++ {
+			b = (b * (i + 1 - j)) / j
+			r = append(r, fmt.Sprint(b))
+		}
+	}
+	return strings.Join(r, " ")
+}
+
 func main() {
+	var a uint
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -15,17 +29,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var n int
-		fmt.Sscanf(scanner.Text(), "%d", &n)
-		fmt.Print("1")
-		for i := 1; i < n; i++ {
-			fmt.Print(" 1")
-			r := 1
-			for j := 1; j <= i; j++ {
-				r = (r * (i + 1 - j)) / j
-				fmt.Printf(" %d", r)
-			}
-		}
-		fmt.Println()
+		fmt.Sscan(scanner.Text(), &a)
+		fmt.Println(pascal(a))
 	}
 }
