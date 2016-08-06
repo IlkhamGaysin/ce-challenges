@@ -1,13 +1,28 @@
 package main
 
 import (
-	"bufio"
 	"container/heap"
-	"fmt"
-	"log"
-	"os"
 	"sort"
+	"testing"
 )
+
+type tuple struct {
+	n, k, a, b, c, r int
+}
+
+func TestFindMin(t *testing.T) {
+	for k, v := range map[tuple]int{
+		tuple{97, 39, 34, 37, 656, 97}:   8,
+		tuple{186, 75, 68, 16, 539, 186}: 38,
+		tuple{137, 49, 48, 17, 461, 137}: 41,
+		tuple{98, 59, 6, 30, 524, 98}:    40,
+		tuple{46, 18, 7, 11, 9, 46}:      12} {
+		if r := findMin(k.n, k.k, k.a, k.b, k.c, k.r); r != v {
+			t.Errorf("failed: findMin %d,%d,%d,%d,%d,%d is %d, got %d",
+				k.n, k.k, k.a, k.b, k.c, k.r, v, r)
+		}
+	}
+}
 
 type intHeap []int
 
@@ -74,18 +89,4 @@ func findMin(n, k, a, b, c, r int) int {
 		m = append(m, p)
 	}
 	return heap.Pop(h).(int)
-}
-
-func main() {
-	var n, k, a, b, c, r int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscanf(scanner.Text(), "%d,%d,%d,%d,%d,%d", &n, &k, &a, &b, &c, &r)
-		fmt.Println(findMin(n, k, a, b, c, r))
-	}
 }
