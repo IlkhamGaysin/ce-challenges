@@ -1,12 +1,20 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestLakes(t *testing.T) {
+	for k, v := range map[string]int{
+		"o # o | # # # | o # o": 4,
+		"o # o | # o # | o # o": 1} {
+		if r := lakes(k); r != v {
+			t.Errorf("failed: lakes %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func lakes(q string) int {
 	l := make(map[int]bool)
@@ -71,16 +79,4 @@ func lakes(q string) int {
 		copy(last, curr)
 	}
 	return len(l)
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(lakes(scanner.Text()))
-	}
 }
