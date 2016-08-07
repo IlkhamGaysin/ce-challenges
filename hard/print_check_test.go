@@ -1,11 +1,25 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+func TestPrintCheck(t *testing.T) {
+	for k, v := range map[int]string{
+		0:         "ZeroDollars",
+		20:        "TwentyDollars",
+		25:        "TwentyFiveDollars",
+		347:       "ThreeHundredFortySevenDollars",
+		12567:     "TwelveThousandFiveHundredSixtySevenDollars",
+		5011:      "FiveThousandElevenDollars",
+		800000000: "EightHundredMillionDollars",
+		987654321: "NineHundredEightySevenMillionSixHundredFiftyFourThousandThreeHundredTwentyOneDollars",
+		101010:    "OneHundredOneThousandTenDollars",
+		777777777: "SevenHundredSeventySevenMillionSevenHundredSeventySevenThousandSevenHundredSeventySevenDollars"} {
+		if r := printCheck(k); r != v {
+			t.Errorf("failed: printCheck %d is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 var s0, s1, s2, s3 []string
 
@@ -54,18 +68,4 @@ func printCheck(n int) string {
 	}
 	s, _ := wrd(c[6], c[7], c[8])
 	return r + s + "Dollars"
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Sscan(scanner.Text(), &n)
-		fmt.Println(printCheck(n))
-	}
 }
