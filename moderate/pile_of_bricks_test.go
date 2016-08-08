@@ -1,14 +1,30 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
 	"math"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	a, b, c, d int
+	q          string
+}
+
+func TestPile(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{4, 3, 3, -3, "(1 [10,9,4] [9,4,2])"}:                                          "1",
+		tuple{-1, -5, 5, -2, "(1 [4,7,8] [2,9,0]);(2 [0,7,1] [5,9,8])"}:                     "1,2",
+		tuple{-4, -5, -5, -3, "(1 [4,8,6] [0,9,2]);(2 [8,-1,3] [0,5,4])"}:                   "-",
+		tuple{5, 5, -5, -5, "(11 [0,0,0] [1,1,1]);(3 [0,0,0] [1,1,1]);(2 [0,0,0] [1,1,1])"}: "2,3,11"} {
+		if r := pile(k.a, k.b, k.c, k.d, k.q); r != v {
+			t.Errorf("failed: pile %d %d %d %d %s is %s, got %s",
+				k.a, k.b, k.c, k.d, k.q)
+		}
+	}
+}
 
 func abs(a int) int {
 	if a < 0 {
@@ -45,19 +61,4 @@ func pile(a, b, c, d int, q string) string {
 		r2 = append(r2, fmt.Sprint(i))
 	}
 	return strings.Join(r2, ",")
-}
-
-func main() {
-	var a, b, c, d int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), "|")
-		fmt.Sscanf(t[0], "[%d,%d] [%d,%d]", &a, &b, &c, &d)
-		fmt.Println(pile(a, b, c, d, t[1]))
-	}
 }
