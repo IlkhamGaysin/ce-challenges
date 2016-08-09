@@ -5,18 +5,32 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 type point struct {
 	x, y int
 }
 
-func within(a []int, b point) bool {
-	return b.x >= a[0] && b.x <= a[2] && b.y >= a[3] && b.y <= a[1]
+func within(a, b, c point) bool {
+	return c.x >= a.x && c.x <= b.x && c.y >= b.y && c.y <= a.y
+}
+
+func overlapping(a, b, c, d point) bool {
+	for _, i := range []point{a, point{a.x, b.y}, point{b.x, a.y}, b} {
+		if within(c, d, i) {
+			return true
+		}
+	}
+	for _, i := range []point{c, point{c.x, d.y}, point{d.x, c.y}, d} {
+		if within(a, b, i) {
+			return true
+		}
+	}
+	return false
 }
 
 func main() {
+	var a, b, c, d point
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -24,31 +38,9 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ",")
-		t := make([]int, 8)
-		for ix, i := range s {
-			fmt.Sscanf(i, "%d", &t[ix])
-		}
-		p1 := []point{point{t[0], t[1]}, point{t[0], t[3]},
-			point{t[2], t[1]}, point{t[2], t[3]}}
-		p2 := []point{point{t[4], t[5]}, point{t[4], t[7]},
-			point{t[6], t[5]}, point{t[6], t[7]}}
-		var f bool
-		for _, i := range p1 {
-			if within(t[4:8], i) {
-				f = true
-				break
-			}
-		}
-		if !f {
-			for _, i := range p2 {
-				if within(t[0:4], i) {
-					f = true
-					break
-				}
-			}
-		}
-		if f {
+		fmt.Sscanf(scanner.Text(), "%d,%d,%d,%d,%d,%d,%d,%d",
+			&a.x, &a.y, &b.x, &b.y, &c.x, &c.y, &d.x, &d.y)
+		if overlapping(a, b, c, d) {
 			fmt.Println("True")
 		} else {
 			fmt.Println("False")
