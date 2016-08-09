@@ -1,13 +1,30 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	n int
+	q string
+}
+
+func TestTypeAhead(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{2, "the"}:         "lamb,0.375;teacher,0.250;children,0.125;eager,0.125;rule,0.125",
+		tuple{3, "the teacher"}: "did,0.500;turned,0.500",
+		tuple{4, "And"}:         "everywhere that Mary,0.333;so the teacher,0.333;waited patiently about,0.333",
+		tuple{2, "Mary"}:        "did,0.200;had,0.200;loves,0.200;so,0.200;went,0.200",
+		tuple{4, "the lamb"}:    "love Mary,0.333;was sure,0.333;you know,0.333"} {
+		if r := typeAhead(k.n, k.q); r != v {
+			t.Errorf("failed: typeAhead %d %s is %s, got %s",
+				k.n, k.q, v, r)
+		}
+	}
+}
 
 const text = `
 Mary had a little lamb its fleece was white as snow;
@@ -100,19 +117,4 @@ func typeAhead(n int, q string) string {
 		}
 	}
 	return strings.Join(p, ";")
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		t := strings.Split(scanner.Text(), ",")
-		fmt.Sscan(t[0], &n)
-		fmt.Println(typeAhead(n, t[1]))
-	}
 }
