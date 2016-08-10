@@ -8,6 +8,31 @@ import (
 	"strings"
 )
 
+func racing(n int, q string) (int, string) {
+	p := n
+	a, b := p-1, p+2
+	if a < 0 {
+		a = 0
+	}
+	if b > len(q) {
+		b = len(q)
+	}
+	c := strings.Index(q[a:b], "C")
+	if c == -1 {
+		c = a + strings.Index(q[a:b], "_")
+	} else {
+		c += a
+	}
+	if c < p {
+		q = q[:c] + "/" + q[c+1:]
+	} else if c == p {
+		q = q[:c] + "|" + q[c+1:]
+	} else {
+		q = q[:c] + `\` + q[c+1:]
+	}
+	return c, q
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -17,39 +42,16 @@ func main() {
 	scanner := bufio.NewScanner(data)
 
 	scanner.Scan()
-	s := scanner.Text()
-	curr := strings.Index(s, "C")
-	if curr == -1 {
-		curr = strings.Index(s, "_")
+	q := scanner.Text()
+	c := strings.Index(q, "C")
+	if c == -1 {
+		c = strings.Index(q, "_")
 	}
-	fmt.Println(s[:curr] + "|" + s[curr+1:])
-	var px int
+	fmt.Println(q[:c] + "|" + q[c+1:])
 	for scanner.Scan() {
-		px = curr
-		s = scanner.Text()
-		if len(s) < 1 {
-			continue
+		if len(scanner.Text()) > 0 {
+			c, q = racing(c, scanner.Text())
+			fmt.Println(q)
 		}
-		a, b := px-1, px+2
-		if a < 0 {
-			a = 0
-		}
-		if b > len(s) {
-			b = len(s)
-		}
-		curr = strings.Index(s[a:b], "C")
-		if curr == -1 {
-			curr = a + strings.Index(s[a:b], "_")
-		} else {
-			curr += a
-		}
-		if curr < px {
-			s = s[:curr] + "/" + s[curr+1:]
-		} else if curr == px {
-			s = s[:curr] + "|" + s[curr+1:]
-		} else {
-			s = s[:curr] + `\` + s[curr+1:]
-		}
-		fmt.Println(s)
 	}
 }
