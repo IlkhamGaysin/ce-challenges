@@ -1,12 +1,24 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	p, q string
+}
+
+func TestStrsubs(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"10011011001", "0110,1001,1001,0,10,11"}:   "11100110",
+		tuple{"1001101100010", "0110,1001,1001,0,10,11"}: "1110011110011"} {
+		if r := strsubs(k.p, k.q); r != v {
+			t.Errorf("failed: strsubs %s %s is %s, got %s",
+				k.p, k.q, v, r)
+		}
+	}
+}
 
 type segment struct {
 	s string
@@ -50,17 +62,4 @@ func strsubs(p, q string) (r string) {
 		r += i.s
 	}
 	return r
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Println(strsubs(s[0], s[1]))
-	}
 }
