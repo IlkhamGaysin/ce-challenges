@@ -32,18 +32,19 @@ func sortu(s string) (r string) {
 	return r
 }
 
-func slist(s, t string, n int) []string {
+func slist(s, t string, n int) string {
 	if n == 0 {
-		return []string{t}
+		return t
 	}
-	var ret []string
+	var r []string
 	for _, i := range s {
-		ret = append(ret, slist(s, t+string(i), n-1)...)
+		r = append(r, slist(s, t+string(i), n-1))
 	}
-	return ret
+	return strings.Join(r, ",")
 }
 
 func main() {
+	var n int
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -52,8 +53,7 @@ func main() {
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), ",")
-		var n int
 		fmt.Sscan(s[0], &n)
-		fmt.Println(strings.Join(slist(sortu(s[1]), "", n), ","))
+		fmt.Println(slist(sortu(s[1]), "", n))
 	}
 }
