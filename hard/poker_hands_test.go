@@ -1,13 +1,26 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"sort"
 	"strings"
+	"testing"
 )
+
+func TestPokerHand(t *testing.T) {
+	for k, v := range map[string]string{
+		"6D 7H AH 7S QC 6H 2D TD JD AS": "left",
+		"JH 5D 7H TC JS JD JC TS 5S 7S": "none",
+		"2H 8C AD TH 6H QD KD 9H 6S 6C": "right",
+		"JS JH 4H 2C 9H QH KC 9D 4D 3S": "left",
+		"TC 7H KH 4H JC 7D 9S 3H QS 7S": "right",
+		"6H 8H TH QH KH AS AC TS TD 3C": "left",
+		"3H AH 2H 4H 5H KD QD TD JD AC": "left"} {
+		if r := pokerHands(k); r != v {
+			t.Errorf("failed: pokerHands %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 const numCards = 5
 
@@ -136,16 +149,4 @@ func handRank(hand []string) int {
 func pokerHands(q string) string {
 	s := strings.Fields(q)
 	return poker(handRank(s[0:5]), handRank(s[5:10]))
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(pokerHands(scanner.Text()))
-	}
 }
