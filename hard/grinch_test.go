@@ -1,14 +1,29 @@
 package main
 
 import (
-	"bufio"
 	"container/heap"
 	"fmt"
-	"log"
 	"math"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	q    string
+	a, b uint
+}
+
+func TestGrinch(t *testing.T) {
+	for k, v := range map[tuple]string{
+		tuple{"1 2 2, 1 3 3, 3 4 3, 2 4 6, 4 5 16, 3 5 7", 1, 5}: "10",
+		tuple{"1 2 3, 2 8 10, 1 9 4, 8 9 2", 2, 8}:               "9",
+		tuple{"1 2 3, 4 5 6", 1, 5}:                              "False"} {
+		if r := grinch(k.q, k.a, k.b); r != v {
+			t.Errorf("failed: grinch %s %d %d is %s, got %s",
+				k.q, k.a, k.b, v, r)
+		}
+	}
+}
 
 const inf = math.MaxInt32
 
@@ -92,19 +107,4 @@ func grinch(q string, a, b uint) string {
 		return "False"
 	}
 	return fmt.Sprint(d)
-}
-
-func main() {
-	var a, b uint
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), " | ")
-		fmt.Sscanf(s[1], "%d %d", &a, &b)
-		fmt.Println(grinch(s[0], a, b))
-	}
 }
