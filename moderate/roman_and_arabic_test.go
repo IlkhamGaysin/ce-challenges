@@ -1,11 +1,17 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+func TestRomanArabic(t *testing.T) {
+	for k, v := range map[string]int{
+		"3M1D2C":     3700,
+		"2I3I2X9V1X": -16} {
+		if r := romanArabic(k); r != v {
+			t.Errorf("failed: romanArabic %s is %d, got %d",
+				k, v, r)
+		}
+	}
+}
 
 func romanArabic(q string) int {
 	var n, b, r, s int
@@ -35,16 +41,4 @@ func romanArabic(q string) int {
 		b, s = a, r
 	}
 	return n + b*s
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(romanArabic(scanner.Text()))
-	}
 }
