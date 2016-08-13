@@ -1,12 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	n int
+	q string
+}
+
+func TestSudoku(t *testing.T) {
+	for k, v := range map[tuple]bool{
+		tuple{4, "1,4,2,3,2,3,1,4,4,2,3,1,3,1,4,2"}: true,
+		tuple{4, "2,1,3,2,3,2,1,4,1,4,2,3,2,3,4,1"}: false} {
+		if r := sudoku(k.n, k.q); r != v {
+			t.Errorf("failed: sudoku %d %s is %t, got %t",
+				k.n, k.q, v, r)
+		}
+	}
+}
 
 func sq(a int) (ret int) {
 	switch a {
@@ -50,23 +64,4 @@ func sudoku(n int, q string) bool {
 		}
 	}
 	return true
-}
-
-func main() {
-	var n int
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ";")
-		fmt.Sscan(s[0], &n)
-		if sudoku(n, s[1]) {
-			fmt.Println("True")
-		} else {
-			fmt.Println("False")
-		}
-	}
 }
