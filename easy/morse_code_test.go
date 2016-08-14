@@ -1,11 +1,18 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
-)
+import "testing"
+
+func TestMorseCode(t *testing.T) {
+	for k, v := range map[string]string{
+		".- ...- ..--- .-- .... .. . -.-. -..-  ....- .....": "AV2WHIECX 45",
+		"-... .... ...--":                                    "BH3",
+		"-----":                                              "0"} {
+		if r := morseCode(k); r != v {
+			t.Errorf("failed: morseCode %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 const morse = "ETIANMSURWDKGOHVF L PJBXCYZQ  54 3   2       16       7   8 90"
 
@@ -33,16 +40,4 @@ func morseCode(q string) string {
 		r = append(r, morse[m-2])
 	}
 	return string(r)
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(morseCode(scanner.Text()))
-	}
 }
