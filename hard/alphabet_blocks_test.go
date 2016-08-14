@@ -1,12 +1,25 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+type tuple struct {
+	p, q string
+}
+
+func TestAlphabet(t *testing.T) {
+	for k, v := range map[tuple]bool{
+		tuple{"DOG", "UPZRHR INOYLC KXDHNQ BAGMZI"}:                 true,
+		tuple{"HAPPY", "PKMFQP KTXGCV OSDMAJ SDSIMY OEPGLE JZCDHI"}: true,
+		tuple{"PLAIN", "BFUBZD XMQBNM IDXVCN JCOIAM OZYAYH"}:        false} {
+		if r := alphabet(k.p, k.q); r != v {
+			t.Errorf("failed: alphabet %s, %s is %t, got %t",
+				k.p, k.q, v, r)
+		}
+	}
+}
 
 func alpha(b [][]int) bool {
 	if len(b) == 0 {
@@ -56,21 +69,4 @@ func alphabet(p, q string) bool {
 		}
 	}
 	return alpha(blocks)
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), " | ")
-		if alphabet(s[1], s[2]) {
-			fmt.Println("True")
-		} else {
-			fmt.Println("False")
-		}
-	}
 }
