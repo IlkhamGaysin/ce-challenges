@@ -1,12 +1,20 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestGlue(t *testing.T) {
+	for k, v := range map[string]string{
+		"deEva|lan t|to ha|evil |ankin|il-ev|o hac| to h|vil p|an to|The e|CodeE| evil|plan |hack |Eval |ack C|l ran|king.|l-evi|evil-|-evil|l pla|il pl| hack|al ra|vil-e|odeEv|he ev|n to |ck Co|eEval|nking| rank| Code|e evi|ranki|k Cod| plan|val r": "The evil-evil plan to hack CodeEval ranking.",
+		"abl|ana|ana|a b|ban|bla|bla|lab|la |nan| ba": "blabla banana"} {
+		if r := glue(k); r != v {
+			t.Errorf("failed: glue %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 type seg struct {
 	s     string
@@ -152,16 +160,4 @@ func glue(q string) string {
 		}
 	}
 	return strings.Join(p, "|")
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(glue(strings.Trim(scanner.Text(), "|")))
-	}
 }
