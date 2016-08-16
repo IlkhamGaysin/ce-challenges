@@ -23,6 +23,12 @@ func TestAgeDistribution(t *testing.T) {
 	}
 }
 
+func BenchmarkAgeDistribution(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ageDistribution(i % 102)
+	}
+}
+
 var (
 	category []string
 	age      []int
