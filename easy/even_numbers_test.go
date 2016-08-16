@@ -16,6 +16,12 @@ func TestEven(t *testing.T) {
 	}
 }
 
+func BenchmarkEven(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		even(i)
+	}
+}
+
 func even(n int) int {
 	return 1 - n&1
 }
