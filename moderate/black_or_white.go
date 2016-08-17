@@ -37,6 +37,35 @@ func isNum(m []int, n, x, y, nc int) bool {
 	return r == nc
 }
 
+func blackOrWhite(q string) string {
+	var rm, rn int
+	s := strings.Split(q, "|")
+	m := make([]int, len(s))
+	for ix, i := range s {
+		fmt.Sscanf(strings.TrimSpace(i), "%b", &m[ix])
+	}
+
+	for rm = 1; rm <= len(s); rm++ {
+		f := false
+		rn = numCar(m, rm)
+		for i := 0; i < len(s)-rm+1; i++ {
+			for j := 0; j < len(s)-rm+1; j++ {
+				if !isNum(m, rm, i, j, rn) {
+					f = true
+					break
+				}
+			}
+			if f {
+				break
+			}
+		}
+		if !f {
+			break
+		}
+	}
+	return fmt.Sprintf("%dx%d, %d", rm, rm, rn)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -45,32 +74,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var rm, rn int
-		s := strings.Split(scanner.Text(), "|")
-		m := make([]int, len(s))
-		for ix, i := range s {
-			fmt.Sscanf(strings.TrimSpace(i), "%b", &m[ix])
-		}
-
-		for rm = 1; rm <= len(s); rm++ {
-			f := false
-			rn = numCar(m, rm)
-			for i := 0; i < len(s)-rm+1; i++ {
-				for j := 0; j < len(s)-rm+1; j++ {
-					if !isNum(m, rm, i, j, rn) {
-						f = true
-						break
-					}
-				}
-				if f {
-					break
-				}
-			}
-			if !f {
-				break
-			}
-		}
-
-		fmt.Printf("%dx%d, %d\n", rm, rm, rn)
+		fmt.Println(blackOrWhite(scanner.Text()))
 	}
 }
