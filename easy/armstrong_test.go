@@ -18,6 +18,19 @@ func TestPowi(t *testing.T) {
 	}
 }
 
+func TestArmstrong(t *testing.T) {
+	for k, v := range map[int]bool{
+		6:   true,
+		153: true,
+		351: false,
+		0:   true} {
+		if r := armstrong(k); r != v {
+			t.Errorf("failed: armstrong %d is %t, got %t",
+				k, v, r)
+		}
+	}
+}
+
 func BenchmarkPowi(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		powi(i%10, i%20)
@@ -27,6 +40,12 @@ func BenchmarkPowi(b *testing.B) {
 func BenchmarkPowiNaive(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		powiNaive(i%10, i%20)
+	}
+}
+
+func BenchmarkArmstrong(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		armstrong(i)
 	}
 }
 
@@ -48,4 +67,15 @@ func powiNaive(a, b int) (ret int) {
 		ret *= a
 	}
 	return ret
+}
+
+func armstrong(n int) bool {
+	var e, t int
+	for a := n; a > 0; a /= 10 {
+		e++
+	}
+	for a := n; a > 0; a /= 10 {
+		t += powi(a%10, e)
+	}
+	return n == t
 }
