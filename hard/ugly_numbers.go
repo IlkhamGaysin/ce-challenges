@@ -57,6 +57,20 @@ func ugly(j int, n []int) bool {
 	return s%2 == 0 || s%3 == 0 || s%5 == 0 || s%7 == 0
 }
 
+func uglyNumbers(q string) (r int) {
+	t := make([]int, len(q))
+	for ix, i := range q {
+		t[ix] = int(i - '0')
+	}
+	p := pow3(len(t) - 1)
+	for j := 0; j < p; j++ {
+		if ugly(j, t) {
+			r++
+		}
+	}
+	return r
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -65,19 +79,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var (
-			u int
-			t []int
-		)
-		for _, i := range scanner.Text() {
-			t = append(t, int(i-'0'))
-		}
-		p := pow3(len(t) - 1)
-		for j := 0; j < p; j++ {
-			if ugly(j, t) {
-				u++
-			}
-		}
-		fmt.Println(u)
+		fmt.Println(uglyNumbers(scanner.Text()))
 	}
 }
