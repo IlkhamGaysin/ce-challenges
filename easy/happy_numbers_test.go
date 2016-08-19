@@ -14,17 +14,50 @@ func TestHappy(t *testing.T) {
 	}
 }
 
+func TestHappyNumbers(t *testing.T) {
+	for k, v := range map[uint]bool{
+		1:                    true,
+		7:                    true,
+		22:                   false,
+		12345678901234567890: false} {
+		if r := happyNumbers(k); r != v {
+			t.Errorf("failed: happyNumbers %d is %t, got %t",
+				k, v, r)
+		}
+	}
+}
+
 func BenchmarkHappy(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		happy(uint(i))
 	}
 }
 
-func happy(a uint) (ret uint) {
+func BenchmarkHappyNumbers(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		happyNumbers(uint(i))
+	}
+}
+
+func happy(a uint) (r uint) {
 	for a > 0 {
 		b := a % 10
-		ret += b * b
+		r += b * b
 		a /= 10
 	}
-	return ret
+	return r
+}
+
+func happyNumbers(a uint) bool {
+	b := []uint{a}
+	for i := 0; a > 1 && i < 127; i++ {
+		a = happy(a)
+		for _, j := range b {
+			if j == a {
+				return false
+			}
+		}
+		b = append(b, a)
+	}
+	return a == 1
 }
