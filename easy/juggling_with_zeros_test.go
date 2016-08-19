@@ -26,15 +26,15 @@ func BenchmarkJuggle(b *testing.B) {
 	}
 }
 
-func juggle(s string) (ret uint64) {
-	t := strings.Fields(s)
+func juggle(q string) (r uint64) {
+	t := strings.Fields(q)
 	for i := 0; i < len(t); i += 2 {
-		ret <<= uint(len(t[i+1]))
+		r <<= uint(len(t[i+1]))
 		if t[i] == "00" {
-			ret += (1 << uint(len(t[i+1]))) - 1
+			r += (1 << uint(len(t[i+1]))) - 1
 		}
 	}
-	return ret
+	return r
 }
 
 func unjuggle(n uint64) (s string) {
