@@ -22,6 +22,18 @@ func month(s string) int {
 	return 12*(k-1990) + moy[s[0:3]]
 }
 
+func working(q string) int {
+	work := make(map[int]bool)
+	t := strings.Split(q, "; ")
+	for _, i := range t {
+		t0, t1 := month(i[0:8]), month(i[9:17])
+		for j := t0; j <= t1; j++ {
+			work[j] = true
+		}
+	}
+	return len(work) / 12
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -30,14 +42,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		work := make(map[int]bool)
-		t := strings.Split(scanner.Text(), "; ")
-		for _, i := range t {
-			t0, t1 := month(i[0:8]), month(i[9:17])
-			for j := t0; j <= t1; j++ {
-				work[j] = true
-			}
-		}
-		fmt.Println(len(work) / 12)
+		fmt.Println(working(scanner.Text()))
 	}
 }
