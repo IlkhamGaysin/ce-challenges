@@ -1,12 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strings"
+	"testing"
 )
+
+func TestWordChain(t *testing.T) {
+	for k, v := range map[string]string{
+		"soup,sugar,peas,rice":        "4",
+		"ljhqi,nrtxgiu,jdtphez,wosqm": "None",
+		"cjz,tojiv,sgxf,awonm,fcv":    "2"} {
+		if r := wordChain(k); r != v {
+			t.Errorf("failed: wordChain %s is %s, got %s",
+				k, v, r)
+		}
+	}
+}
 
 func lwc(f []string, c string) int {
 	m := len(c) / 2
@@ -39,17 +49,5 @@ func wordChain(q string) string {
 		return "None"
 	} else {
 		return fmt.Sprint(l)
-	}
-}
-
-func main() {
-	data, err := os.Open(os.Args[1])
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.Close()
-	scanner := bufio.NewScanner(data)
-	for scanner.Scan() {
-		fmt.Println(wordChain(scanner.Text()))
 	}
 }
