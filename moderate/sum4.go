@@ -23,6 +23,16 @@ func numzero(t []int, c, z int) int {
 	}
 }
 
+func sum4(q string) int {
+	s := strings.Split(q, ",")
+	t := make([]int, len(s))
+	for ix, i := range s {
+		fmt.Sscan(i, &t[ix])
+	}
+	sort.Ints(t)
+	return numzero(t, 4, 0)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -31,12 +41,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), ",")
-		t := make([]int, len(s))
-		for ix, i := range s {
-			fmt.Sscanf(i, "%d", &t[ix])
-		}
-		sort.Ints(t)
-		fmt.Println(numzero(t, 4, 0))
+		fmt.Println(sum4(scanner.Text()))
 	}
 }
