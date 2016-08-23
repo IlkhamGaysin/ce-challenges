@@ -10,7 +10,7 @@ func TestPangram(t *testing.T) {
 		"A quick brown fox jumps over the lazy dog":        "NULL",
 		"A slow Yellow fox crawls Under the proactive dog": "bjkmqz"} {
 		if r := pangram(k); r != v {
-			t.Errorf("failed: pangram\n %s\nis\n %s,\ngot\n %s",
+			t.Errorf("failed: pangram %s is %s, got %s",
 				k, v, r)
 		}
 	}
@@ -26,15 +26,16 @@ func BenchmarkPangram(b *testing.B) {
 	}
 }
 
-func pangram(s string) (r string) {
-	s = strings.ToLower(s)
-	for i := 'a'; i <= 'z'; i++ {
-		if !strings.Contains(s, string(i)) {
-			r += string(i)
+func pangram(q string) string {
+	var r []byte
+	q = strings.ToLower(q)
+	for i := byte('a'); i <= 'z'; i++ {
+		if !strings.Contains(q, string(i)) {
+			r = append(r, i)
 		}
 	}
-	if r == "" {
-		r = "NULL"
+	if len(r) == 0 {
+		return "NULL"
 	}
-	return r
+	return string(r)
 }

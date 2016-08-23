@@ -8,6 +8,20 @@ import (
 	"strings"
 )
 
+func pangram(q string) string {
+	var r []byte
+	q = strings.ToLower(q)
+	for i := byte('a'); i <= 'z'; i++ {
+		if !strings.Contains(q, string(i)) {
+			r = append(r, i)
+		}
+	}
+	if len(r) == 0 {
+		return "NULL"
+	}
+	return string(r)
+}
+
 func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
@@ -16,18 +30,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s := strings.ToLower(scanner.Text())
-		var f bool
-		for i := 'a'; i <= 'z'; i++ {
-			if !strings.Contains(s, string(i)) {
-				fmt.Print(string(i))
-				f = true
-			}
-		}
-		if !f {
-			fmt.Println("NULL")
-		} else {
-			fmt.Println()
-		}
+		fmt.Println(pangram(scanner.Text()))
 	}
 }
