@@ -43,6 +43,19 @@ func init() {
 	}
 }
 
+func magicNumbers(a, b int) string {
+	var r []string
+	for i := 0; i < len(magic) && magic[i] <= b; i++ {
+		if magic[i] >= a {
+			r = append(r, fmt.Sprint(magic[i]))
+		}
+	}
+	if len(r) == 0 {
+		return "-1"
+	}
+	return strings.Join(r, " ")
+}
+
 func main() {
 	var a, b int
 	data, err := os.Open(os.Args[1])
@@ -52,17 +65,7 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		var r []string
 		fmt.Sscanf(scanner.Text(), "%d %d", &a, &b)
-		for i := 0; i < len(magic) && magic[i] <= b; i++ {
-			if magic[i] >= a {
-				r = append(r, fmt.Sprint(magic[i]))
-			}
-		}
-		if len(r) > 0 {
-			fmt.Println(strings.Join(r, " "))
-		} else {
-			fmt.Println(-1)
-		}
+		fmt.Println(magicNumbers(a, b))
 	}
 }
