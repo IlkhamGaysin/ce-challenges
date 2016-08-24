@@ -15,8 +15,17 @@ func g2d(a uint) uint {
 	return a
 }
 
-func main() {
+func beatOrBit(q string) string {
 	var v uint
+	s := strings.Split(q, " | ")
+	for i := range s {
+		fmt.Sscanf(s[i], "%b", &v)
+		s[i] = fmt.Sprint(g2d(v))
+	}
+	return strings.Join(s, " | ")
+}
+
+func main() {
 	data, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
@@ -24,11 +33,6 @@ func main() {
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), " | ")
-		for i := range s {
-			fmt.Sscanf(s[i], "%b", &v)
-			s[i] = fmt.Sprint(g2d(v))
-		}
-		fmt.Println(strings.Join(s, " | "))
+		fmt.Println(beatOrBit(scanner.Text()))
 	}
 }
